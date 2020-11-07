@@ -1,0 +1,15 @@
+.ant-form {
+    margin-top: 40px;
+}
+.ant-form-item {
+    margin: 10px 0px;
+    padding: -20px 0px;
+}
+.ant-form-item p {
+    font-size: 17px;
+}
+.ant-form-item h1,
+p {
+    margin-bottom: 5px;
+    padding: 0px;
+}
