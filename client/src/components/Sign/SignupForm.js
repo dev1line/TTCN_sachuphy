@@ -3,9 +3,14 @@ import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined, GoogleOutlined } from '@ant-design/icons';
 import "./SignupForm.css"
 import { Link } from "react-router-dom";
+import {getToken} from '../../action/tokenAction'
+import {useSelector, useDispatch} from 'react-redux'
 const SignupForm = (props) => {
+    const dispatch = useDispatch();
     const onFinish = values => {
-      
+      console.log("finish", values);
+        dispatch(getToken(values.txtusername, values.txtpassword, values.txtemail));
+
     };
 
     const onFinishFailed = errorInfo => {

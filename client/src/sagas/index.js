@@ -1,9 +1,9 @@
 import { all, takeLatest } from 'redux-saga/effects';
-
+import {getTokenLogin} from './tokenSagas';
+import {GET_TOKEN} from '../constants'
 function* rootSagas() {
     yield all([
-        //fork(forkAll)
-        // takeLatest(SET_DEFAULT, getDataDefault),      
+        takeLatest(GET_TOKEN, getTokenLogin),      
     ])
 }
 
