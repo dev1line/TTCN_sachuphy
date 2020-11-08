@@ -8,9 +8,14 @@
     "start": "nodemon src/app.js -L"
   },
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "chalk": "^4.1.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "joi": "^17.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "mongoose": "^5.10.13",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.6"
   }

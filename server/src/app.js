@@ -2,6 +2,9 @@ const express = require("express")
 
 const app = express()
 
+// Connect to database
+require('./db')
+
 app.use(
   express.urlencoded({
     extended: false,
@@ -24,8 +27,6 @@ app.use(morgan('dev'))
 const { v1Router } = require("./routers")
 
 app.use('/api/v1', v1Router)
-
-console.log(app._router)
 
 // Error Handler
 
