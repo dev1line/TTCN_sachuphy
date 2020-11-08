@@ -1,0 +1,37 @@
+
+
+
+.imgBanner {
+    display: block;
+    height: 200px;
+    width: 400px;
+    margin: 40px auto 40px auto;
+}
+
+.lxtext {
+    display: block;
+    text-align: center;
+    font-size:24px;
+    color:white;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+.lxShop {
+    display: block;
+    background-color: white;
+    color: #1789FC;
+    width: 319px; 
+    height: 60px; 
+    font-size:24px;
+    float: left;
+    margin-top: 20px;
+}
+
+.brand {
+    display: block;
+    height: 60px;
+    width: 180px;
+    margin: 50px auto 40px auto;
+}

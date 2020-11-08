@@ -2,6 +2,7 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import Signin from "./components/Sign/Signin"
 import Signup from "./components/Sign/Signup"
+import Home from "./page/home"
 // import Headers from './components/Home/Headers'
 // import Footers from './components/Home/Footers'
 import { Row, Col } from 'antd'
@@ -20,6 +21,13 @@ const App = () => {
         </Col>
       </Row> */}
       <Switch>
+        <Route exact path="/">
+          <Row>
+            <Col span={24}>
+              <Home></Home>
+            </Col>
+          </Row>
+        </Route>
         <Route exact path="/signin">
           <Row>
             <Col offset={6}></Col>
