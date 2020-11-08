@@ -49,6 +49,27 @@ const SignupForm = (props) => {
             >
                 <Input.Password size="large" prefix={<LockOutlined className="site-form-item-icon" />} placeholder="Password" />
             </Form.Item>
+            <Form.Item
+                name="confirm"
+                dependencies={['txtpassword']}
+                hasFeedback
+                rules={[
+                {
+                    required: true,
+                    message: 'Please confirm your password!',
+                },
+                ({ getFieldValue }) => ({
+                    validator(rule, value) {
+                    if (!value || getFieldValue('txtpassword') === value) {
+                        return Promise.resolve();
+                    }
+                    return Promise.reject('The two passwords that you entered do not match!');
+                    },
+                }),
+                ]}
+            >
+            <Input.Password size="large" prefix={<LockOutlined className="site-form-item-icon" />} placeholder ="Confirm Password" />
+        </Form.Item>
             <Form.Item >
                 <Button size="large" type="success" htmlType="submit" style={{ float: 'right', backgroundColor: "green", color: "white" }}>
                     Sign Up
