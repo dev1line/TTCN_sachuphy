@@ -1,5 +1,6 @@
 const initial = {
     token:'',
+    signup_success: false,
 }
 
 const tokenReducer = (state = initial, action) => {
@@ -8,6 +9,18 @@ const tokenReducer = (state = initial, action) => {
             return {
                 ...state,
                 token: action.token
+            }
+        }
+        case "SET_TOKEN_SUCCESS": {
+            return {
+                ...state,
+                signup_success: true,
+            }
+        }
+        case "SET_TOKEN_FAIL": {
+            return {
+                ...state,
+                signup_success: false,
             }
         }
         default: {

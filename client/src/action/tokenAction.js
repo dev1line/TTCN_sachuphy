@@ -1,9 +1,9 @@
-import {GET_TOKEN} from '../constants'
- export const getToken = (user, pass, email) => {
+import {SET_TOKEN} from '../constants'
+ export const setToken = (username, password, confirm_password) => {
     return {
-        type:GET_TOKEN,
-        user,
-        pass,
-        email
+        type:SET_TOKEN,
+        username,
+        password,
+        confirm_password
     }
 }
