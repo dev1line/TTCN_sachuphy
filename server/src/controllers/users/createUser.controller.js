@@ -1,13 +1,13 @@
 const UserModel = require("../../models/user.model")
 
-const SignUpValidator = require("../../validators/signUp.validator")
+const UserValidator = require("../../validators/user.validator")
 
-module.exports = async function signUpController(req, res, next) {
-  const { username, password, confirm_password } = req.body
+module.exports = async function createUserController(req, res, next) {
+  const { username, password, role } = req.body
 
   // Validating
   try {
-    await SignUpValidator.validateAsync({ username, password, confirm_password })
+    await UserValidator.validateAsync({ username, password, role })
     let usernameDoesExist = await UserModel.exists({ username })
     if (usernameDoesExist) throw new Error("username.exist")
   } catch (err) {
@@ -25,10 +25,11 @@ module.exports = async function signUpController(req, res, next) {
   await UserModel.create({
     username,
     password,
+    role
   })
 
   return res.status(200).json({
     success: true,
-    message: "Registered successfully",
+    message: "Created successfully",
   })
 }

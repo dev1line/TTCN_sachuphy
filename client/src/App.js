@@ -14,11 +14,12 @@ import {
 const App = () => {
   return (
     <Router>
-      {/* <Row>
+      <Row>
         <Col span={24}>
-          <Headers />
+          dwadiasdi21
+          {/* <Headers /> */}
         </Col>
-      </Row> */}
+      </Row>
       <Switch>
         <Route exact path="/signin">
           <Row>
@@ -35,10 +36,10 @@ const App = () => {
           </Row>
         </Route>
       </Switch>
-      {/* <Row>
+      <Row>
         <Col span={24} style={{ height: '52px' }}></Col>
-        <Col span={24}><Footer /></Col>
-      </Row> */}
+        {/* <Col span={24}>dadasdasd<Footer /></Col> */}
+      </Row>
     </Router>
   );
 }
