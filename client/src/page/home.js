@@ -7,7 +7,7 @@ import { MapShow } from '../components/Map'
 
 const Home = (props) => {
     return (
-        <Row>
+        <Row style={{marginTop: "10px"}}>
             <Col span={24}>
                 <CarouselImage></CarouselImage>
             </Col>

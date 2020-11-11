@@ -3,6 +3,7 @@ import 'antd/dist/antd.css';
 import Signin from "./components/Sign/Signin"
 import Signup from "./components/Sign/Signup"
 import Home from "./page/home"
+import Product from "./page/product"
 // import Headers from './components/Home/Headers'
 // import Footers from './components/Home/Footers'
 import { Row, Col } from 'antd'
@@ -25,6 +26,13 @@ const App = () => {
           <Row>
             <Col span={24}>
               <Home></Home>
+            </Col>
+          </Row>
+        </Route>
+        <Route exact path="/product">
+          <Row>
+            <Col span={24}>
+              <Product></Product>
             </Col>
           </Row>
         </Route>
