@@ -1,6 +1,7 @@
 import {  Menu } from 'antd';
 import { UserOutlined, LaptopOutlined } from '@ant-design/icons';
 
+
 const { SubMenu } = Menu;
 
 
@@ -10,7 +11,7 @@ export const LeftContent = (props) => {
         console.log(e.key)
     }
     return (
-        <div>
+        <div style={{position:"fixed"}}>
             <Menu
           mode="inline"
           style={{ height: '100%', borderRight: 0 }}

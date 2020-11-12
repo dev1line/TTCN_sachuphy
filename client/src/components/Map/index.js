@@ -13,8 +13,8 @@ export const MapShow = (props) => {
         <Map
             style={style}
             containerStyle={{
-                height: '50vh',
-                width: '80vw',
+                height: '500px',
+                width: '100%',
                 marginLeft:"auto",
                 marginRight:"auto",
                 marginTop: "100px"
