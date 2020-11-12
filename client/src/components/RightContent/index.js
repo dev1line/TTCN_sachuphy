@@ -1,7 +1,7 @@
 import React from 'react'
 import { Row, Col, Select, Pagination } from 'antd'
 import { Item } from '../Item'
-import { Map } from '../Map'
+
 
 const { Option} = Select;
 

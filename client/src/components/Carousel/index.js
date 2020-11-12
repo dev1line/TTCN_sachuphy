@@ -2,9 +2,11 @@ import React from 'react'
 import { Carousel } from 'antd';
 
 const style = {
-    display: "block",
-    marginLeft: "auto",
-    marginRight: "auto",
+    width:"100%",
+    height: "auto",
+    // display: "block",
+    // marginLeft: "auto",
+    // marginRight: "auto",
 }
 
 const CarouselImage = (props) => {

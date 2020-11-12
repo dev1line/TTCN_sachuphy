@@ -15,10 +15,10 @@ const Product = (props) => {
                 <Col  style={{marginLeft:"30px", marginRight: "30px"}}>
                     <RightContent></RightContent>
                     <ListItem></ListItem>
+                </Col >
+                <Col style={{marginLeft:"30px", marginRight: "30px"}}>
+                    <MapShow></MapShow>
                 </Col>
-            </Col>
-            <Col span={24}>
-                <MapShow></MapShow>
             </Col>
         </Row>
     );

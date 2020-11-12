@@ -23,28 +23,28 @@ const App = () => {
       </Row>
       <Switch>
         <Route exact path="/">
-          <Row>
+          <Row className="main">
             <Col span={24}>
               <Home></Home>
             </Col>
           </Row>
         </Route>
         <Route exact path="/product">
-          <Row>
+          <Row className="main">
             <Col span={24}>
               <Product></Product>
             </Col>
           </Row>
         </Route>
         <Route exact path="/signin">
-          <Row>
+          <Row className="main">
             <Col offset={6}></Col>
             <Col span={12}><Signin /></Col>
             <Col offset={6}></Col>
           </Row>
         </Route>
         <Route exact path="/signup">
-          <Row>
+          <Row className="main">
             <Col offset={6}></Col>
             <Col span={12}><Signup /></Col>
             <Col offset={6}></Col>
