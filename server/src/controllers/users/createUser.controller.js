@@ -18,18 +18,30 @@ module.exports = async function createUserController(req, res, next) {
       })
     return res.status(422).json({
       success: false,
-      message: err.message
+      message: err.message,
     })
   }
 
-  await UserModel.create({
+  const userDoc = await UserModel.create({
     username,
     password,
-    role
+    role,
   })
+
+  const user = userDoc.toObject()
+
+  // Extract sensitive data from created user
+
+  const sanitizedUser = sanitizeUser(user)
 
   return res.status(200).json({
     success: true,
     message: "Created successfully",
+    user: sanitizedUser,
   })
+}
+
+function sanitizeUser(user) {
+  let {password, __v, ...sanitizedUser} = user
+  return sanitizedUser
 }

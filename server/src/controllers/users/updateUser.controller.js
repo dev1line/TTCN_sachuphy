@@ -15,15 +15,15 @@ module.exports = async function updateUserController(req, res, next) {
       message: "You can not modify your own account.",
     })
 
-  const user = await UserModel.findOne({ username })
+  const userDoc = await UserModel.findOne({ username })
 
-  if (!user)
+  if (!userDoc)
     return res.status(422).json({
       success: false,
       message: "user.notFound",
     })
 
-  if (user.deleted_at)
+  if (userDoc.deleted_at)
     return res.status(422).json({
       success: false,
       message: "user.deleted",
@@ -44,12 +44,22 @@ module.exports = async function updateUserController(req, res, next) {
   }
 
   for(let key in payload) {
-    user[key] = payload[key]
+    userDoc[key] = payload[key]
   }
-  await user.save()
+  await userDoc.save()
+
+  const userObj = userDoc.toObject()
+
+  const sanitizedUser = sanitizeUser(userObj)
 
   return res.status(200).json({
     success: true,
     message: "Updated successfully",
+    user: sanitizedUser
   })
+}
+
+function sanitizeUser(user) {
+  let {password, __v, ...sanitizedUser} = user
+  return sanitizedUser
 }

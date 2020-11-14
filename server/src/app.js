@@ -2,22 +2,18 @@ const express = require("express")
 
 const app = express()
 
+const configs = require("./configs")
+
+const { PORT, HOST } = configs
+
+configs.APP_PATH = __dirname
+
+const path = require('path')
+
+// app.use('/static', express.static(path.join(__dirname, 'public')))
+
 // Connect to database
 require("./db")
-
-app.use(express.static('src/public'))
-
-// app.use()
-
-app.get('/', (req, res) => {
-  res.sendFile(require('path').join(__dirname, "public", "index.html"))
-})
-
-app.get("/admin", (req, res) => {
-  res.sendFile("./public/admin/index.html", {
-    root: __dirname,
-  })
-})
 
 app.use(
   express.urlencoded({
@@ -53,9 +49,7 @@ app.use(function (err, req, res, next) {
   res.status(500).send("Internal Server Error!")
 })
 
-const configs = require("./configs")
 
-const { PORT, HOST } = configs
 
 const chalk = require("chalk")
 
