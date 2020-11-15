@@ -38,7 +38,9 @@
   content: none;
 }
 /* reset tabs */
-
+.about {
+  width: 100vw;
+}
 .image-background {
   background-image: url("../../image/1.jpeg");
   height: 100vh;

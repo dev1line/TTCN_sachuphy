@@ -4,6 +4,7 @@ import Signin from "./components/Sign/Signin"
 import Signup from "./components/Sign/Signup"
 import Home from "./page/home"
 import Product from "./page/product"
+import About from "./page/about/about"
 import "./App.css"
 // import Headers from './components/Home/Headers'
 // import Footers from './components/Home/Footers'
@@ -49,6 +50,11 @@ const App = () => {
             <Col offset={6}></Col>
             <Col span={12}><Signup /></Col>
             <Col offset={6}></Col>
+          </Row>
+        </Route>
+        <Route exact path="/about">
+          <Row className="main">
+            <Col span={24}><About /></Col>
           </Row>
         </Route>
       </Switch>
