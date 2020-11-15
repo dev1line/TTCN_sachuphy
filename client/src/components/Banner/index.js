@@ -1,5 +1,6 @@
 import React from 'react'
 import { Row, Col, Button } from 'antd'
+import { Link } from 'react-router-dom'
 import "./style.css"
 
 
@@ -7,14 +8,14 @@ import "./style.css"
 
 export const Banner1 = (props) => {
     return (
-        <Row>
-            <Col flex={3}>
+        <Row style={{display:"flex", flexDirection:"row", justifyContent:"space-between" ,flexWrap:"nowrap"}}>
+            <Col  >
                 <img className="imgBanner" alt="img" src= "https://cdn.tgdd.vn/Products/Images/42/220522/Feature/samsung-galaxy-note-20-ultra-km-720x333.jpg"></img>          
             </Col>
-            <Col flex={3}>
+            <Col >
                 <img className="imgBanner" alt="img" src= "https://cdn.tgdd.vn/Products/Images/42/220522/Feature/samsung-galaxy-note-20-ultra-km-720x333.jpg"></img>           
             </Col>
-            <Col flex={3}>
+            <Col >
                 <img className="imgBanner" alt="img" src= "https://cdn.tgdd.vn/Products/Images/42/220522/Feature/samsung-galaxy-note-20-ultra-km-720x333.jpg"></img>          
             </Col>
         </Row>
@@ -23,13 +24,12 @@ export const Banner1 = (props) => {
 
 export const Banner2 = (props) => {
     return (
-        <Row style={{backgroundColor: "#1789FC", height: "100px"}}>
-                <Col flex={4}>
+        <Row style={{backgroundColor: "#1789FC", height: "100%", display:"flex", flexDirection:"row" , justifyContent:"space-around"}}>
                     <p className = "lxtext">What are you still waiting for? Choose your own lovely laptop now!</p>
-                </Col>
-                <Col flex={1}>
-                    <Button className = "lxShop" >SHOPPING NOW</Button>
-                </Col>
+                    <Link to="/product">
+                    <Button  className = "lxShop" >SHOPPING NOW</Button>
+                    </Link>
+                    
         </Row>
     );
 }
@@ -41,7 +41,7 @@ export const Banner3 = (props) => {
     
     }
     return (
-        <Row style={{height:"200px"}}>
+        <Row style={{height:"100%"}}>
             <Col flex={2}>
                 <img alt="img" name="lenovo" onClick={onClick} className= "brand" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Branding_lenovo-logo_lenovologoposred_low_res.png/1200px-Branding_lenovo-logo_lenovologoposred_low_res.png"></img>
             </Col>

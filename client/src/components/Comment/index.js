@@ -34,7 +34,7 @@ export const BodyCmt = (props) =>{
                 <LeftOutlined onClick={handlePrev} style={{display:"block", float:"right", fontSize: "50px", marginTop:"200px"}}/>
             </Col>
             <Col span={18}>
-                <Carousel ref={carouselRef}>
+                <Carousel autoplay ref={carouselRef}>
                     <div style={{display:"flex", flexDirection:"row"}}>
                         <div style={{float:"left", marginLeft:"40px"}}>
                             <img style={{height:"400px", width:"400px"}} alt="img" src="https://msmobile.com.vn/upload_images/images/hinh-nen-mau-den-cho-dien-thoai-1.jpg"></img>
