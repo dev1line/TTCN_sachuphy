@@ -10,7 +10,6 @@ const Product = (props) => {
             <Col span ={4}>
                 <LeftContent></LeftContent>
             </Col>
-
             <Col span ={20}>
                 <Col  style={{marginLeft:"30px", marginRight: "30px"}}>
                     <RightContent></RightContent>

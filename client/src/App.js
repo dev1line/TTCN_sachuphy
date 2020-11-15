@@ -1,17 +1,15 @@
-import React from 'react';
-import 'antd/dist/antd.css';
-import Signin from "./components/Sign/Signin"
-import Signup from "./components/Sign/Signup"
-import Home from "./page/home"
-import Product from "./page/product"
+import React from "react";
+import "antd/dist/antd.css";
+import Signin from "./components/Sign/Signin";
+import Signup from "./components/Sign/Signup";
+import Home from "./page/home";
+import Product from "./page/product";
+import About from "./page/about/about";
+import "../src/App.css";
 // import Headers from './components/Home/Headers'
 // import Footers from './components/Home/Footers'
-import { Row, Col } from 'antd'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { Row, Col } from "antd";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {
   return (
@@ -39,15 +37,26 @@ const App = () => {
         <Route exact path="/signin">
           <Row>
             <Col offset={6}></Col>
-            <Col span={12}><Signin /></Col>
+            <Col span={12}>
+              <Signin />
+            </Col>
             <Col offset={6}></Col>
           </Row>
         </Route>
         <Route exact path="/signup">
           <Row>
             <Col offset={6}></Col>
-            <Col span={12}><Signup /></Col>
+            <Col span={12}>
+              <Signup />
+            </Col>
             <Col offset={6}></Col>
+          </Row>
+        </Route>
+        <Route exact path="/about">
+          <Row>
+            <Col span={24}>
+              <About />
+            </Col>
           </Row>
         </Route>
       </Switch>
@@ -57,6 +66,6 @@ const App = () => {
       </Row> */}
     </Router>
   );
-}
+};
 
 export default App;
