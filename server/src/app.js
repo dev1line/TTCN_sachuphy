@@ -10,7 +10,7 @@ configs.APP_PATH = __dirname
 
 const path = require('path')
 
-// app.use('/static', express.static(path.join(__dirname, 'public')))
+app.use('/static', express.static(path.join(__dirname, 'assets')))
 
 // Connect to database
 require("./db")
