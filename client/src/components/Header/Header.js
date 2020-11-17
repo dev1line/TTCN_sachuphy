@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col, Menu, Dropdown, Image, Input, Button, Badge } from "antd";
 import { DownOutlined, ShoppingCartOutlined } from "@ant-design/icons";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import "antd/dist/antd.css";
 import "./style.css";
 const { Search } = Input;
@@ -35,7 +35,6 @@ const Header = (props) => {
         ))}
     </Menu>
   );
-
   const menuAccount = (acc = accs) => (
     <Menu>
       {acc &&
@@ -46,9 +45,7 @@ const Header = (props) => {
         ))}
     </Menu>
   );
-
   const onSearch = (value) => console.log(value);
-
   return (
     <div className="header">
       <Row className="headbar">
@@ -82,7 +79,9 @@ const Header = (props) => {
       <Row className="navbar">
         <Col offset={1}></Col>
         <Col span={1} className="logo">
-          <Image width="60px" height="60px" src="./logo192.png" alt="logo" />
+          <Link to="/">
+            <Image width="60px" height="60px" src="./logo192.png" alt="logo" />
+          </Link>
         </Col>
         <Col span={5} className="name">
           <span>SACHUPHY</span>
@@ -112,10 +111,18 @@ const Header = (props) => {
       <Row>
         <Col offset={12}></Col>
         <Col span={12} className="menubar">
-          <Link className="menu-item is-active" to="/">HOME</Link>
-          <Link className="menu-item" to="/product">SHOP</Link>
-          <Link className="menu-item" to="/about">ABOUT US</Link>
-          <Link className="menu-item" to="/product">CONTACT US</Link>
+          <Link className="menu-item" to="/">
+            HOME
+          </Link>
+          <Link className="menu-item" to="/product">
+            SHOP
+          </Link>
+          <Link className="menu-item" to="/about">
+            ABOUT US
+          </Link>
+          <Link className="menu-item" to="/product">
+            CONTACT US
+          </Link>
         </Col>
       </Row>
     </div>

@@ -1,16 +1,4 @@
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-::-webkit-scrollbar-thumb {
-  background: #ebebeb;
-  border-radius: 10px;
-  box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.25),
-    inset -2px -2px 2px rgba(0, 0, 0, 0.25);
-}
-::-webkit-scrollbar-track {
-  background: white;
-}
+
 /* reset tabs */
 .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
   border: 0px;

@@ -1,9 +1,8 @@
 import React from "react";
-import "../about/about.css";
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
-import AOS from "aos";
-import "aos/dist/aos.css";
+import "../about/styles.css";
+import "animate.css";
+import Header from "../../components/Header/Header";
+// import Footer from "../../components/Footer/Footer";
 import { Row, Col, Tabs, Form, Input, InputNumber, Button, Rate } from "antd";
 import {
   TwitterOutlined,
@@ -13,7 +12,6 @@ import {
   DownOutlined,
 } from "@ant-design/icons";
 
-AOS.init();
 const { TabPane } = Tabs;
 const layout = {
   labelCol: { span: 8 },
@@ -22,8 +20,10 @@ const layout = {
 
 const About = (props) => {
   return (
-    <Row className="about" data-aos="fade-down">
-            <Col span={24}><Header/></Col>
+    <Row className="about">
+      <Col span={24}>
+        <Header />
+      </Col>
       {/* <Col offset={3}></Col>
       <Col span={18}>
         <div className="image-background">
@@ -46,7 +46,8 @@ const About = (props) => {
         style={{
           background:
             "linear-gradient(180deg, rgba(248,252,255,1) 0%, rgba(250,253,255,1) 31%, rgba(216,238,255,1) 31%, rgba(214,237,255,1) 100%)",
-        }}></Col>
+        }}
+      ></Col>
       <Col span={18}>
         <Tabs defaultActiveKey="1" type="card" tabPosition="bottom">
           <TabPane
@@ -58,10 +59,11 @@ const About = (props) => {
                 <h4 className="header">We are</h4>
               </div>
             }
-            key="1">
+            key="1"
+          >
             <div className="content-wrapper">
               <h1 className="title">We are Sachuphy</h1>
-              <div className="card-list" data-aos="fade-up">
+              <div className="card-list animate__animated animate__fadeIn">
                 <article className="card">
                   <header className="card-header">
                     <p>Teammate</p>
@@ -104,7 +106,8 @@ const About = (props) => {
                 <h4 className="header">Contact us</h4>
               </div>
             }
-            key="2">
+            key="2"
+          >
             <div className="content-wrapper" data-aos="fade-in">
               <Row>
                 <Col span={12}>
@@ -113,7 +116,8 @@ const About = (props) => {
                     <Form.Item
                       style={{ marginBottom: "20px" }}
                       name={["Name"]}
-                      label="Name">
+                      label="Name"
+                    >
                       <Input />
                     </Form.Item>
                     <Form.Item name={["Email"]} label="Email">
@@ -165,7 +169,8 @@ const About = (props) => {
                 <h4 className="header">What we do</h4>
               </div>
             }
-            key="3">
+            key="3"
+          >
             <Row>
               <Col offset={12}></Col>
               <Col span={12}>
@@ -189,7 +194,8 @@ const About = (props) => {
       </Col>
       <Col
         span={3}
-        style={{ backgroundColor: "#D6EDFF", height: "62vh" }}></Col>
+        style={{ backgroundColor: "#D6EDFF", height: "62vh" }}
+      ></Col>
     </Row>
   );
 };

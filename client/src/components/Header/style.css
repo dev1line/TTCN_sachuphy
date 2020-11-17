@@ -97,7 +97,7 @@
   transition: 0.4s;
 }
 .menubar .menu-item:hover,
-.menubar .is-active {
+.menubar .active {
   color: #1789fc;
   transition: 0.4s;
 }
