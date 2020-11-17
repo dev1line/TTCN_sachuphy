@@ -1,12 +1,12 @@
 import React from "react";
-import CarouselImage from "../components/Carousel";
+import CarouselImage from "../../components/Carousel";
 import 'animate.css';
 // import Header from '../components/Header/Header';
 // import Footer from '../components/Footer/Footer';
 import { Row, Col } from "antd";
-import { Banner1, Banner2, Banner3 } from "../components/Banner";
-import { BeginCmt, BodyCmt, EndCmt } from "../components/Comment";
-import { MapShow } from "../components/Map";
+import { Banner1, Banner2, Banner3 } from "../../components/Banner";
+import { BeginCmt, BodyCmt, EndCmt } from "../../components/Comment";
+import { MapShow } from "../../components/Map";
 
 const Home = (props) => {
   return (

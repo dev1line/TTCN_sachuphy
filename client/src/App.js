@@ -1,9 +1,11 @@
 import React from "react";
+import Header from "./components/Header/Header";
+// import Footer from '../components/Footer/Footer';
 import Signin from "./components/Sign/Signin";
 import Signup from "./components/Sign/Signup";
-import About from "./page/about/about";
-import Product from "./page/product";
-import Home from "./page/home";
+import About from "./page/About/about";
+import Product from "./page/Product/product";
+import Home from "./page/Home/home";
 import "./App.css";
 import {Col, Row} from 'antd';
 import Header from './components/Header/Header'
@@ -12,7 +14,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
 } from "react-router-dom";
 
 const App = () => {
@@ -40,7 +41,6 @@ const App = () => {
         <Route exact path="/about">
           <About />
         </Route>
-        <Redirect to="/404" />
       </Switch>
       
       <Footer />
