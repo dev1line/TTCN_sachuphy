@@ -17,6 +17,7 @@
   text-align: right;
 }
 .ant-dropdown-trigger {
+  cursor: pointer;
   padding-left: 1rem;
 }
 .ant-dropdown-trigger:not(:last-child) {
@@ -93,10 +94,10 @@
   line-height: 19px;
   letter-spacing: 5px;
   color: #636363;
-  transition: .4s;
+  transition: 0.4s;
 }
-.menubar .menu-item:hover, .menubar .is-active {
-  color: #1789FC;
-  transition: .4s;
+.menubar .menu-item:hover,
+.menubar .is-active {
+  color: #1789fc;
+  transition: 0.4s;
 }
-
