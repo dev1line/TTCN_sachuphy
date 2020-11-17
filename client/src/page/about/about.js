@@ -1,5 +1,7 @@
 import React from "react";
 import "../about/about.css";
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Row, Col, Tabs, Form, Input, InputNumber, Button, Rate } from "antd";
@@ -21,7 +23,8 @@ const layout = {
 const About = (props) => {
   return (
     <Row className="about" data-aos="fade-down">
-      <Col offset={3}></Col>
+            <Col span={24}><Header/></Col>
+      {/* <Col offset={3}></Col>
       <Col span={18}>
         <div className="image-background">
           <h1 data-aos="fade-down" data-aos-duration="2000" className="page">
@@ -36,7 +39,7 @@ const About = (props) => {
           </a>
         </div>
       </Col>
-      <Col offset={3}></Col>
+      <Col offset={3}></Col> */}
       <Col
         id="information"
         span={3}
