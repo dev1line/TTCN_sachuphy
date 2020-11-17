@@ -1,7 +1,7 @@
 import React from "react";
 import "../about/styles.css";
 import "animate.css";
-import Header from "../../components/Header/Header";
+// import Header from "../../components/Header/Header";
 // import Footer from "../../components/Footer/Footer";
 import { Row, Col, Tabs, Form, Input, InputNumber, Button, Rate } from "antd";
 import {
@@ -21,9 +21,9 @@ const layout = {
 const About = (props) => {
   return (
     <Row className="about">
-      <Col span={24}>
+      {/* <Col span={24}>
         <Header />
-      </Col>
+      </Col> */}
       {/* <Col offset={3}></Col>
       <Col span={18}>
         <div className="image-background">

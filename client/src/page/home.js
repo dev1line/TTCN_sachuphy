@@ -1,7 +1,7 @@
 import React from "react";
 import CarouselImage from "../components/Carousel";
 import 'animate.css';
-import Header from '../components/Header/Header';
+// import Header from '../components/Header/Header';
 // import Footer from '../components/Footer/Footer';
 import { Row, Col } from "antd";
 import { Banner1, Banner2, Banner3 } from "../components/Banner";
@@ -10,8 +10,8 @@ import { MapShow } from "../components/Map";
 
 const Home = (props) => {
   return (
-    <Row>
-      <Col span={24}><Header/></Col>
+    <Row span={24}>
+      {/* <Col span={24}><Header/></Col> */}
       <Col span={24}>
         <CarouselImage></CarouselImage>
       </Col>

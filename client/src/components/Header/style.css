@@ -101,3 +101,7 @@
   color: #1789fc;
   transition: 0.4s;
 }
+.active {
+  text-decoration: underline;
+  font-weight: 500;
+}

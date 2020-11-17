@@ -5,6 +5,9 @@ import About from "./page/about/about";
 import Product from "./page/product";
 import Home from "./page/home";
 import "./App.css";
+import {Col, Row} from 'antd';
+import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,11 +18,12 @@ import {
 const App = () => {
   return (
     <Router className="main">
-      {/* <Row className="main">
-        <Col span={24}>
-          <Header />
-        </Col>
-      </Row> */}
+      <Row>
+        <Col span={20} xs></Col>
+        <Col style={{maxWidth:1440}}>
+    
+        <Header />
+   
       <Switch>
         <Route exact path="/">
           <Home />
@@ -38,10 +42,13 @@ const App = () => {
         </Route>
         <Redirect to="/404" />
       </Switch>
-      {/* <Row>
-        <Col span={24} style={{ height: '52px' }}></Col>
-        <Col span={24}><Footer /></Col>
-      </Row> */}
+      
+      <Footer />
+
+        </Col>
+        <Col xs></Col>
+      </Row>
+      
     </Router>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col, Menu, Dropdown, Image, Input, Button, Badge } from "antd";
 import { DownOutlined, ShoppingCartOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "antd/dist/antd.css";
 import "./style.css";
 const { Search } = Input;
@@ -111,18 +111,18 @@ const Header = (props) => {
       <Row>
         <Col offset={12}></Col>
         <Col span={12} className="menubar">
-          <Link className="menu-item" to="/">
+          <NavLink exact activeClassName="active" className="menu-item" to="/">
             HOME
-          </Link>
-          <Link className="menu-item" to="/product">
+          </NavLink>
+          <NavLink exact activeClassName="active" className="menu-item" to="/product">
             SHOP
-          </Link>
-          <Link className="menu-item" to="/about">
+          </NavLink>
+          <NavLink exact activeClassName="active" className="menu-item" to="/about">
             ABOUT US
-          </Link>
-          <Link className="menu-item" to="/product">
+          </NavLink>
+          <NavLink exact activeClassName="active" className="menu-item" to="/contact">
             CONTACT US
-          </Link>
+          </NavLink>
         </Col>
       </Row>
     </div>
