@@ -1,0 +1,9 @@
+.btn {
+    flex: 1;
+    margin-left: 8;
+
+}
+.btn:hover {
+    background-color: '#1789FC';
+    color:'white';
+}

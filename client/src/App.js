@@ -6,7 +6,7 @@ import Home from "./page/home"
 import Product from "./page/product"
 import About from "./page/about/about"
 import "./App.css"
-// import Headers from './components/Home/Headers'
+import Header from './components/Home/Header'
 // import Footers from './components/Home/Footers'
 import { Row, Col } from 'antd'
 import {
@@ -18,11 +18,11 @@ import {
 const App = () => {
   return (
     <Router>
-      {/* <Row>
+      <Row>
         <Col span={24}>
-          <Headers />
+          <Header />
         </Col>
-      </Row> */}
+      </Row>
       <Switch>
         <Route exact path="/">
           <Row className="main">
