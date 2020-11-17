@@ -36,7 +36,7 @@ const About = (props) => {
           </a>
         </div>
       </Col>
-      <Col span={3}></Col>
+      <Col offset={3}></Col>
       <Col
         id="information"
         span={3}
