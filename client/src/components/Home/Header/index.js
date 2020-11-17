@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import { Row, Col, Menu, Dropdown, Image, Input, Typography, Button, Divider, Badge } from 'antd'
+import { Row, Col, Menu, Dropdown, Image, Input, Typography, Button, Badge } from 'antd'
 import { DownOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import './style.css';
 const {Paragraph} = Typography;
 const {Search} = Input;
-const { Title } = Typography;
+
 const Header = (props) => {
     
     const currs = ["VNĐ","USD"];
@@ -14,7 +14,7 @@ const Header = (props) => {
     const [currency, setCurrency] = useState(currs[0]);
     const [language, setLanguage] = useState(langs[0]);
     const [account, setAccount] = useState(accs[0]);
-
+    console.log("account", account);
     const menuCurrency = (curr = currs) => (
         <Menu>
            {curr && curr.map((c) => {
