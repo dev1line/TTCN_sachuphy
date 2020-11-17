@@ -18,7 +18,7 @@ import {
 const App = () => {
   return (
     <Router>
-      <Row>
+      <Row className="main">
         <Col span={24}>
           <Header />
         </Col>
