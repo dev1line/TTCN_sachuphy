@@ -3,7 +3,7 @@ import { Row, Col, Menu, Dropdown, Image, Input, Button, Badge } from "antd";
 import { DownOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import "antd/dist/antd.css";
-import "./style.css";
+import "./Header.css";
 const { Search } = Input;
 
 const Header = (props) => {
@@ -46,6 +46,7 @@ const Header = (props) => {
     </Menu>
   );
   const onSearch = (value) => console.log(value);
+
   return (
     <div className="header">
       <Row className="headbar">
@@ -78,13 +79,11 @@ const Header = (props) => {
       </Row>
       <Row className="navbar">
         <Col offset={1}></Col>
-        <Col span={1} className="logo">
+        <Col span={6} className="logo">
           <Link to="/">
             <Image width="60px" height="60px" src="./logo192.png" alt="logo" />
+            <span className="name">SACHUPHY</span>
           </Link>
-        </Col>
-        <Col span={5} className="name">
-          <span>SACHUPHY</span>
         </Col>
         <Col span={12} className="search">
           <Search

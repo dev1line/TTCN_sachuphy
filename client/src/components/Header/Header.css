@@ -1,6 +1,3 @@
-.header {
-  margin-bottom: 2rem;
-}
 
 .headbar {
   padding: 1rem 0;
@@ -33,18 +30,17 @@
 .navbar {
   padding: 2rem 0 1rem;
 }
-.logo > {
-  width: 60px;
-  height: 60px;
+.logo > a {
+  display: flex;
+  align-items: flex-end;
 }
-.name > span {
+.name {
   font-weight: 900;
   font-size: 24px;
   line-height: 28px;
   letter-spacing: 5px;
   color: #4c4c4c;
 }
-.name,
 .search {
   display: flex;
   align-items: flex-end;
@@ -83,21 +79,20 @@
 }
 
 .menubar {
-  padding: 2rem 0 1rem;
+  padding: 1rem 0 1rem;
   display: flex;
   justify-content: space-between;
 }
 .menubar .menu-item {
-  padding-bottom: 0.5rem;
+  padding: 1rem 0;
   font-weight: bold;
   font-size: 16px;
   line-height: 19px;
-  letter-spacing: 5px;
+  letter-spacing: 3px;
   color: #636363;
   transition: 0.4s;
 }
-.menubar .menu-item:hover,
-.menubar .active {
+.menu-item:hover {
   color: #1789fc;
-  transition: 0.4s;
 }
+

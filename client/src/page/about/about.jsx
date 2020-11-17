@@ -1,5 +1,5 @@
 import React from "react";
-import "../about/styles.css";
+import "./styles.css";
 import "animate.css";
 import Header from "../../components/Header/Header";
 // import Footer from "../../components/Footer/Footer";
@@ -20,10 +20,7 @@ const layout = {
 
 const About = (props) => {
   return (
-    <Row className="about">
-      <Col span={24}>
-        <Header />
-      </Col>
+    <Row className="about animate__animated animate__fadeIn">
       {/* <Col offset={3}></Col>
       <Col span={18}>
         <div className="image-background">
@@ -108,7 +105,7 @@ const About = (props) => {
             }
             key="2"
           >
-            <div className="content-wrapper" data-aos="fade-in">
+            <div className="content-wrapper animate__animated animate__fadeIn">
               <Row>
                 <Col span={12}>
                   <h1 className="title">Get in touch</h1>
@@ -141,7 +138,7 @@ const About = (props) => {
                 </Col>
                 <Col span={12}>
                   <p></p>
-                  <h1 className="title">Social media</h1>
+                  <h1 className="title animate__animated animate__fadeIn">Social media</h1>
                   <div className="social-media">
                     <a className="media" href="#">
                       <InstagramOutlined />
@@ -174,11 +171,11 @@ const About = (props) => {
             <Row>
               <Col offset={12}></Col>
               <Col span={12}>
-                <div className="content-wrapper">
+                <div className="content-wrapper animate__animated animate__fadeIn">
                   <h1 className="title">Ưhat ưe do</h1>
-                  <div className="contne">
-                    <h1 data-aos="fade-left">Sachuphy</h1>
-                    <p data-aos="fade-left" className="sub-content animate">
+                  <div className="content animate__animated animate__fadeIn">
+                    <h1>Sachuphy</h1>
+                    <p className="sub-content animate">
                       Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                       Asperiores laboriosam sapiente repellat cupiditate
                       officiis impedit dicta? Aliquam, dolores repellat optio
