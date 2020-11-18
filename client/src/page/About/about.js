@@ -1,15 +1,12 @@
 import React from "react";
 import "./styles.css";
 import "animate.css";
-// import Header from "../../components/Header/Header";
-// import Footer from "../../components/Footer/Footer";
 import { Row, Col, Tabs, Form, Input, InputNumber, Button, Rate } from "antd";
 import {
   TwitterOutlined,
   InstagramOutlined,
   YoutubeFilled,
   GithubOutlined,
-  DownOutlined,
 } from "@ant-design/icons";
 
 const { TabPane } = Tabs;
