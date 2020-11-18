@@ -1,5 +1,4 @@
 /* 
-/* reset tabs */
 .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
   border: 0px;
   margin: 0 !important;
@@ -25,7 +24,6 @@
 .ant-tabs-bottom > .ant-tabs-nav::before {
   content: none;
 }
-/* reset tabs */
 .about {
   width: 100%;
 }

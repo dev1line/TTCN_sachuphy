@@ -8,6 +8,4 @@ function* rootSagas() {
     ])
 }
 
-
-
 export default rootSagas;

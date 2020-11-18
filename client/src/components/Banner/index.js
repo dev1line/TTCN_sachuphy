@@ -43,8 +43,9 @@ export const Banner2 = (props) => {
     <Row
       style={{
         backgroundColor: "#1789FC",
-        height: "100%",
+        height: "140px",
         display: "flex",
+        
         flexDirection: "row",
         justifyContent: "space-around",
       }}

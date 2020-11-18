@@ -1,19 +1,23 @@
 import { Menu } from "antd";
+import React from 'react'
+import './style.css'
 import { UserOutlined, LaptopOutlined } from "@ant-design/icons";
 
 const { SubMenu } = Menu;
 
-export const LeftContent = (props) => {
-  const handleChange = (e) => {
-    console.log(e.key);
-  };
+
+// const handleChange = (e) => {
+//   console.log(e.key);
+// };
+
+const LeftContent = React.forwardRef((props, ref) => {
   return (
-    <div style={{ position: "fixed" }}>
+    <div ref={ref} style={{'width': props.width ? `${props.width}px` : ''}} className={props.shouldAnchor ? 'is-anchored' : ''}>
       <Menu mode="inline" style={{ height: "100%", borderRight: 0 }}>
         <SubMenu
           key="brand"
           icon={<UserOutlined />}
-          onClick={handleChange}
+          // onClick={handleChange}
           title="Hãng sản xuất">
           <Menu.Item key="asus">Asus</Menu.Item>
           <Menu.Item key="dell">Dell</Menu.Item>
@@ -31,4 +35,6 @@ export const LeftContent = (props) => {
       </Menu>
     </div>
   );
-};
+});
+
+export default LeftContent;

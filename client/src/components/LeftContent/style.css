@@ -27,3 +27,8 @@
     margin-right: auto;
     margin-top: 10px;
 }
+
+.is-anchored {
+    position: fixed;
+    top: 0;
+}

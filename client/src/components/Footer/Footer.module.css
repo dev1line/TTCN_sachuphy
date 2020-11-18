@@ -1,13 +1,15 @@
 .footer {
   position: relative;
+  margin-top: 80px;
 }
 .newsletters {
   background: #4c4c4c;
-  height: 90px;
-  width: 1280px;
   position: absolute;
   top: 420px;
-  left: 80px;
+  height: 85px;
+  width: calc(100% - 150px);
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
   display: flex;
   align-items: flex-end;
@@ -19,27 +21,28 @@
   letter-spacing: 2px;
   color: white;
 }
-.footer .search {
-  width: 700px;
+.search {
+  width: 48%;
   position: absolute;
   top: 530px;
-  left: 367px;
+  left: 50%;
   z-index: 11;
+  transform: translateX(-50%);
 }
 .footer_body {
   display: flex;
-  height: 320px;
   background: #4c4c4c;
-  padding-top: 100px;
+  padding: 6rem 0 1rem;
 }
-.footer_body .name {
+.name {
   font-weight: 900;
   font-size: 24px;
   line-height: 28px;
   letter-spacing: 5px;
   color: #fff;
+  padding-bottom: 1.25rem;
 }
-.footer_body .para {
+.para {
   font-size: 16px;
   line-height: 19px;
   letter-spacing: 2px;
@@ -48,55 +51,38 @@
 .icon {
   color: white;
   font-size: 24px;
-  margin-right: 2rem;
+  margin: 1.25rem 2rem 0 0;
 }
-/* .title1 {
-  font-size: 24px;
-  line-height: 36px;
-  letter-spacing: 2px;
-  color: white;
-}
-
-.row2 {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.input > span {
-  width: 707px;
-} */
-/* .title3 {
-  color: white;
-  font-size: 20px;
-  line-height: 30px;
-  letter-spacing: 2px;
-}
-.col31 {
-  transform: translateX(61px);
-}
-.col3 {
-  transform: translateX(61px);
-}
-.title31 {
-  font-size: 24px;
-  line-height: 28px;
-  letter-spacing: 5px;
-  color: white;
-}
-.para {
-  color: #dbdbdb;
-}
-.icon > svg {
-  height: 40px;
-  width: 40px;
-  margin: 10px 20px 10px 0;
-}
-.icon > svg:first-child {
-    height: 40px;
-    width: 40px;
-}
-.row4 {
+.footer-main {
   display: flex;
   justify-content: space-between;
-  padding: 0 20px 10px;
-} */
+}
+.content {
+  font-size: 20px;
+  line-height: 150%;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+}
+.sub-content {
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 2px;
+  color: #dbdbdb;
+  margin: 0.5rem 0;
+}
+.copyright {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 4rem;
+  border-top: 1px solid #636363;
+  background: #4c4c4c;
+}
+.para {
+  font-size: 14px;
+  line-height: 150%;
+  text-align: right;
+  letter-spacing: 2px;
+  color: #d1d1d1;
+}

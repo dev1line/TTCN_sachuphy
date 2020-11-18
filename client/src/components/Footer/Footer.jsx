@@ -1,16 +1,22 @@
 import React from "react";
-import { Row, Col, Input, Typography } from "antd";
+import { Row, Col, Input } from "antd";
 import {
   FacebookOutlined,
   InstagramOutlined,
   TwitterOutlined,
 } from "@ant-design/icons";
-// import { Link, NavLink } from "react-router-dom";
 import "antd/dist/antd.css";
 import styles from "./Footer.module.css";
 import MapShow from "../Map/MapShow";
 
 const { Search } = Input;
+
+function scrollToTop() {
+  return window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
+}
 
 const Footer = (props) => {
   return (
@@ -35,57 +41,43 @@ const Footer = (props) => {
         <Col offset={1}></Col>
         <Col span={11}>
           <p className={styles.name}>SACHUPHY</p>
-          <p className={styles.para}>Trung tâm phân phối laptop dành riêng cho bạn</p>
-          <p className={styles.para}>Địa chỉ tại 69 Trần Duy Hưng</p>
-          <Row>
-            <FacebookOutlined className={styles.icon} />
-            <InstagramOutlined className={styles.icon} />
-            <TwitterOutlined className={styles.icon} />
+          <p className={styles["sub-content"]}>Trung tâm phân phối laptop dành riêng cho bạn</p>
+          <p className={styles["sub-content"]}>Địa chỉ tại 69 Trần Duy Hưng</p>
+          <Row >
+            <a href="#"><FacebookOutlined className={styles.icon} /></a>
+            <a href="#"><InstagramOutlined className={styles.icon} /></a>
+            <a href="#"><TwitterOutlined className={styles.icon} /></a>
           </Row>
         </Col>
-        <Col span={11} className="col3">
+        <Col span={11} className={styles["footer-main"]}>
           <div>
-            <Typography className="title3">Thông tin thêm</Typography>
-            <Typography className="para">Về chúng tôi</Typography>
-            <Typography className="para">Chính sách bảo mật</Typography>
-            <Typography className="para">Điều khoản</Typography>
+            <p className={styles.content}>Thông tin thêm</p>
+            <p className={styles["sub-content"]}>Về chúng tôi</p>
+            <p className={styles["sub-content"]}>Chính sách bảo mật</p>
+            <p className={styles["sub-content"]}>Điều khoản</p>
           </div>
           <div>
-            <Typography className="title3">Dịch vụ khách hàng</Typography>
-            <Typography className="para">Bảo hành</Typography>
-            <Typography className="para">Vân chuển đơn hàng</Typography>
-            <Typography className="para">Liên hệ chúng tôi</Typography>
+            <p className={styles.content}>Dịch vụ khách hàng</p>
+            <p className={styles["sub-content"]}>Bảo hành</p>
+            <p className={styles["sub-content"]}>Vân chuển đơn hàng</p>
+            <p className={styles["sub-content"]}>Liên hệ chúng tôi</p>
           </div>
           <div>
-            <Typography className="title3">Tài khoản</Typography>
-            <Typography className="para">Giỏ hàng</Typography>
-            <Typography className="para">Lịch sử đặt hàng</Typography>
-            <Typography className="para">Thay đổi mật khẩu</Typography>
+            <p className={styles.content}>Tài khoản</p>
+            <p className={styles["sub-content"]}>Giỏ hàng</p>
+            <p className={styles["sub-content"]}>Lịch sử đặt hàng</p>
+            <p className={styles["sub-content"]}>Thay đổi mật khẩu</p>
           </div>
         </Col>
       </Col>
-      <Col offset={1}></Col>
-      <Col span={24}>
-        <Typography className="para">
+      <Col span={24} className={styles.copyright}>
+        <p className={styles.para}>
           Bản quyền @ 2020 website thuộc SACHUPHY
-        </Typography>
-        <Typography className="para">Về đầu trang</Typography>
+        </p>
+        <a onClick={scrollToTop} className={styles.para}>Về đầu trang</a>
       </Col>
     </Row>
   );
 };
 
 export default Footer;
-
-/* <Row className="row2">
-  <Col className="col2">
-  <Search
-  className="input"
-  placeholder="Nhập email của bạn tại đây"
-  allowClear
-  enterButton="Tham gia"
-  size="large"
-  // onSearch={handleSendEmail}
-  />
-  </Col>
-</Row> */

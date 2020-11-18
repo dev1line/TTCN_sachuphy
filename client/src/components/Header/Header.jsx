@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Col, Menu, Dropdown, Image, Input, Button, Badge } from "antd";
+import { Row, Col, Menu, Dropdown, Input, Button, Badge } from "antd";
 import { DownOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { Link, NavLink } from "react-router-dom";
 import "antd/dist/antd.css";
@@ -81,11 +81,11 @@ const Header = (props) => {
         <Col offset={1}></Col>
         <Col span={6} className={styles.logo}>
           <Link to="/">
-            <Image width="60px" height="60px" src="./logo192.png" alt="logo" />
+            <img width="60px" height="60px" src="./logo192.png" alt="logo" />
             <span className={styles.name}>SACHUPHY</span>
           </Link>
         </Col>
-        <Col span={12} className={styles.search}>
+        <Col span={12} className={styles["search"]}>
           <Search
             placeholder="What are you looking for ..."
             allowClear
@@ -94,14 +94,14 @@ const Header = (props) => {
             onSearch={onSearch}
           />
         </Col>
-        <Col span={2} className={styles.shop}>
+        <Col span={2} className={styles["shop"]}>
           <Badge count={4} style={{ backgroundColor: "#1789FC" }}>
             <Button type="primary" className={styles.btn}>
               <ShoppingCartOutlined style={{ fontSize: 28 }} />
             </Button>
           </Badge>
         </Col>
-        <Col span={2} className={styles.shoping}>
+        <Col span={2} className={styles["shopping"]}>
           <b>My trolley</b>
           <span>$200.00</span>
         </Col>
@@ -109,17 +109,17 @@ const Header = (props) => {
       </Row>
       <Row>
         <Col offset={12}></Col>
-        <Col span={12} className={styles.menubar}>
-          <NavLink exact activeClassName="is-active" className={styles.menu_item} to="/">
+        <Col span={12} className={styles["menubar"]}>
+          <NavLink exact activeClassName={styles["is-active"]} className={styles["menu-item"]} to="/">
             HOME
           </NavLink>
-          <NavLink exact activeClassName="is-active" className={styles.menu_item} to="/product">
+          <NavLink exact activeClassName={styles["is-active"]} className={styles["menu-item"]} to="/product">
             SHOP
           </NavLink>
-          <NavLink exact activeClassName="is-active" className={styles.menu_item} to="/about">
+          <NavLink exact activeClassName={styles["is-active"]} className={styles["menu-item"]} to="/about">
             ABOUT US
           </NavLink>
-          <NavLink exact activeClassName="is-active" className={styles.menu_item} to="/contact">
+          <NavLink exact activeClassName={styles["is-active"]} className={styles["menu-item"]} to="/contact">
             CONTACT US
           </NavLink>
         </Col>

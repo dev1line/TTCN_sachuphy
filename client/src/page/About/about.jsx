@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles.css";
+import "./About.module.css";
 import "animate.css";
 import { Row, Col, Tabs, Form, Input, InputNumber, Button, Rate } from "antd";
 import {
@@ -18,22 +18,6 @@ const layout = {
 const About = (props) => {
   return (
     <Row className="about animate__animated animate__fadeIn">
-      {/* <Col offset={3}></Col>
-      <Col span={18}>
-        <div className="image-background">
-          <h1 data-aos="fade-down" data-aos-duration="2000" className="page">
-            ABOUT US
-          </h1>
-          <a
-            href="#information"
-            className="page down"
-            data-aos="fade-down"
-            data-aos-duration="3000">
-            <DownOutlined />
-          </a>
-        </div>
-      </Col>
-      <Col offset={3}></Col> */}
       <Col
         id="information"
         span={3}

@@ -1,9 +1,9 @@
 import React from "react";
 import { Header, Footer } from "./components";
-import Signin from "./components/Sign/Signin";
-import Signup from "./components/Sign/Signup";
-import Product from "./page/Product/product";
-import About from "./page/About/about";
+import Signin from "./page/Sign/Signin";
+import Signup from "./page/Sign/Signup";
+import Product from "./page/Product/Product";
+// import About from "./page/About/About";
 import Home from "./page/Home/home";
 import "./App.module.css";
 import { Col, Row } from "antd";
@@ -28,9 +28,9 @@ const App = () => {
             <Route exact path="/signup">
               <Signup />
             </Route>
-            <Route exact path="/about">
+            {/* <Route exact path="/about">
               <About />
-            </Route>
+            </Route> */}
           </Switch>
           <Footer />
         </Col>
