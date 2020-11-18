@@ -1,8 +1,7 @@
 .footer {
   display: flex;
-  justify-content: center;
-  background-color: #4c4c4c;
   position: relative;
+  background: #4c4c4c;
   flex-direction: column;
   color: white;
 }
@@ -14,27 +13,20 @@
 }
 
 .row1 {
-  background-color: #4c4c4c;
   height: 140px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
-  transform: translate(6.75%, -53%);
 }
 .row2 {
-  background-color: #4c4c4c;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translate(52.75%, -189%);
   position: absolute;
+  top: 0;
+  left: 0;
 }
 .input > span {
   width: 707px;
 }
 .row3 {
-  display: inline-flex;
+  display: flex;
+  height: 256px;
 }
 .title3 {
   color: white;

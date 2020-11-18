@@ -19,7 +19,7 @@ const Footer = (props) => {
           </Typography>
         </Col>
       </Row>
-      <Row className="row2">
+      {/* <Row className="row2">
         <Col className="col2">
           <Search
             className="input"
@@ -30,7 +30,7 @@ const Footer = (props) => {
             // onSearch={handleSendEmail}
           />
         </Col>
-      </Row>
+      </Row> */}
       <Row className="row3">
         <Col span={12} className="col31">
           <Typography className="title31">SACHUPHY</Typography>
@@ -62,8 +62,6 @@ const Footer = (props) => {
           <Typography className="para">Lịch sử đặt hàng</Typography>
           <Typography className="para">Thay đổi mật khẩu</Typography>
         </Col>
-      </Row>
-      <Row className="row4">
         <Typography className="para">
           Bản quyền @ 2020 website thuộc SACHUPHY
         </Typography>
