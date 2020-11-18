@@ -1,13 +1,12 @@
 import React from "react";
+import { Header, Footer } from "./components";
 import Signin from "./components/Sign/Signin";
 import Signup from "./components/Sign/Signup";
 import Product from "./page/Product/product";
 import About from "./page/About/about";
 import Home from "./page/Home/home";
-import "./App.css";
+import "./App.module.css";
 import { Col, Row } from "antd";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {

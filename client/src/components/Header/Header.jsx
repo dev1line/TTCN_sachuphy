@@ -3,7 +3,7 @@ import { Row, Col, Menu, Dropdown, Image, Input, Button, Badge } from "antd";
 import { DownOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { Link, NavLink } from "react-router-dom";
 import "antd/dist/antd.css";
-import "./Header.css";
+import styles from './Header.module.css'
 const { Search } = Input;
 
 const Header = (props) => {
@@ -48,44 +48,44 @@ const Header = (props) => {
   const onSearch = (value) => console.log(value);
 
   return (
-    <div className="header">
-      <Row className="headbar">
+    <div className={styles.header}>
+      <Row className={styles.headbar}>
         <Col offset={1}></Col>
-        <Col span={12} className="hotline">
+        <Col span={12} className={styles.hotline}>
           Tel: +84 965 857 082
         </Col>
         <Col offset={4}></Col>
-        <Col className="item" span={6}>
-          <Dropdown overlay={menuCurrency} trigger={["click"]}>
+        <Col className={styles.item} span={6}>
+          <Dropdown className={styles.dropdown} overlay={menuCurrency} trigger={["click"]}>
             <div>
               {currency}
-              <DownOutlined />
+              <DownOutlined className={styles.icon} />
             </div>
           </Dropdown>
-          <Dropdown overlay={menuLanguage} trigger={["click"]}>
+          <Dropdown className={styles.dropdown} overlay={menuLanguage} trigger={["click"]}>
             <div>
               {language}
-              <DownOutlined />
+              <DownOutlined className={styles.icon} />
             </div>
           </Dropdown>
-          <Dropdown overlay={menuAccount} trigger={["click"]}>
+          <Dropdown className={styles.dropdown} overlay={menuAccount} trigger={["click"]}>
             <div>
               {account}
-              <DownOutlined />
+              <DownOutlined className={styles.icon} />
             </div>
           </Dropdown>
         </Col>
         <Col offset={1}></Col>
       </Row>
-      <Row className="navbar">
+      <Row className={styles.navbar}>
         <Col offset={1}></Col>
-        <Col span={6} className="logo">
+        <Col span={6} className={styles.logo}>
           <Link to="/">
             <Image width="60px" height="60px" src="./logo192.png" alt="logo" />
-            <span className="name">SACHUPHY</span>
+            <span className={styles.name}>SACHUPHY</span>
           </Link>
         </Col>
-        <Col span={12} className="search">
+        <Col span={12} className={styles.search}>
           <Search
             placeholder="What are you looking for ..."
             allowClear
@@ -94,14 +94,14 @@ const Header = (props) => {
             onSearch={onSearch}
           />
         </Col>
-        <Col span={2} className="shop">
+        <Col span={2} className={styles.shop}>
           <Badge count={4} style={{ backgroundColor: "#1789FC" }}>
-            <Button type="primary" className="btn">
+            <Button type="primary" className={styles.btn}>
               <ShoppingCartOutlined style={{ fontSize: 28 }} />
             </Button>
           </Badge>
         </Col>
-        <Col span={2} className="shoping">
+        <Col span={2} className={styles.shoping}>
           <b>My trolley</b>
           <span>$200.00</span>
         </Col>
@@ -109,17 +109,17 @@ const Header = (props) => {
       </Row>
       <Row>
         <Col offset={12}></Col>
-        <Col span={12} className="menubar">
-          <NavLink exact activeClassName="active" className="menu-item" to="/">
+        <Col span={12} className={styles.menubar}>
+          <NavLink exact activeClassName="is-active" className={styles.menu_item} to="/">
             HOME
           </NavLink>
-          <NavLink exact activeClassName="active" className="menu-item" to="/product">
+          <NavLink exact activeClassName="is-active" className={styles.menu_item} to="/product">
             SHOP
           </NavLink>
-          <NavLink exact activeClassName="active" className="menu-item" to="/about">
+          <NavLink exact activeClassName="is-active" className={styles.menu_item} to="/about">
             ABOUT US
           </NavLink>
-          <NavLink exact activeClassName="active" className="menu-item" to="/contact">
+          <NavLink exact activeClassName="is-active" className={styles.menu_item} to="/contact">
             CONTACT US
           </NavLink>
         </Col>

@@ -1,0 +1,102 @@
+.footer {
+  position: relative;
+}
+.newsletters {
+  background: #4c4c4c;
+  height: 90px;
+  width: 1280px;
+  position: absolute;
+  top: 420px;
+  left: 80px;
+  z-index: 10;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.newsletters > div {
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: 2px;
+  color: white;
+}
+.footer .search {
+  width: 700px;
+  position: absolute;
+  top: 530px;
+  left: 367px;
+  z-index: 11;
+}
+.footer_body {
+  display: flex;
+  height: 320px;
+  background: #4c4c4c;
+  padding-top: 100px;
+}
+.footer_body .name {
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: 5px;
+  color: #fff;
+}
+.footer_body .para {
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 2px;
+  color: #dbdbdb;
+}
+.icon {
+  color: white;
+  font-size: 24px;
+  margin-right: 2rem;
+}
+/* .title1 {
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: 2px;
+  color: white;
+}
+
+.row2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.input > span {
+  width: 707px;
+} */
+/* .title3 {
+  color: white;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 2px;
+}
+.col31 {
+  transform: translateX(61px);
+}
+.col3 {
+  transform: translateX(61px);
+}
+.title31 {
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: 5px;
+  color: white;
+}
+.para {
+  color: #dbdbdb;
+}
+.icon > svg {
+  height: 40px;
+  width: 40px;
+  margin: 10px 20px 10px 0;
+}
+.icon > svg:first-child {
+    height: 40px;
+    width: 40px;
+}
+.row4 {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px 10px;
+} */

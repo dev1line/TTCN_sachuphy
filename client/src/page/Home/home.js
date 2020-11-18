@@ -4,7 +4,6 @@ import 'animate.css';
 import { Row, Col } from "antd";
 import { Banner1, Banner2, Banner3 } from "../../components/Banner";
 import { BeginCmt, BodyCmt, EndCmt } from "../../components/Comment";
-import { MapShow } from "../../components/Map";
 
 const Home = (props) => {
   return (
@@ -30,9 +29,6 @@ const Home = (props) => {
       </Col>
       <Col span={24}>
         <EndCmt></EndCmt>
-      </Col>
-      <Col span={24}>
-        <MapShow></MapShow>
       </Col>
     </Row>
   );
