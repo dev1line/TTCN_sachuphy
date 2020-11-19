@@ -3,7 +3,7 @@ import { Row, Col, Menu, Dropdown, Input, Button, Badge } from "antd";
 import { DownOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { Link, NavLink } from "react-router-dom";
 import "antd/dist/antd.css";
-import styles from './Header.module.css'
+import styles from './styles.module.css'
 const { Search } = Input;
 
 const Header = (props) => {
@@ -95,7 +95,7 @@ const Header = (props) => {
           />
         </Col>
         <Col span={2} className={styles["shop"]}>
-          <Badge count={4} style={{ backgroundColor: "#1789FC" }}>
+          <Badge count={1} style={{ backgroundColor: "#1789FC" }}>
             <Button type="primary" className={styles.btn}>
               <ShoppingCartOutlined style={{ fontSize: 28 }} />
             </Button>
@@ -109,7 +109,7 @@ const Header = (props) => {
       </Row>
       <Row>
         <Col offset={12}></Col>
-        <Col span={12} className={styles["menubar"]}>
+        <Col span={11} className={styles["menubar"]}>
           <NavLink exact activeClassName={styles["is-active"]} className={styles["menu-item"]} to="/">
             HOME
           </NavLink>
@@ -123,6 +123,7 @@ const Header = (props) => {
             CONTACT US
           </NavLink>
         </Col>
+        <Col offset={1}></Col>
       </Row>
     </div>
   );

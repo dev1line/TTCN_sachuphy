@@ -6,7 +6,7 @@ import {
   TwitterOutlined,
 } from "@ant-design/icons";
 import "antd/dist/antd.css";
-import styles from "./Footer.module.css";
+import styles from "./styles.module.css";
 import MapShow from "../Map/MapShow";
 
 const { Search } = Input;
