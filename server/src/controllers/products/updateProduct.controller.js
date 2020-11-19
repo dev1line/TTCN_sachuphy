@@ -33,6 +33,6 @@ module.exports = async function updateProductController(req, res, next) {
 
   return res.status(200).json({
     success: true,
-    specification: resultSpec
+    message: "Updated successfully."
   })
 }

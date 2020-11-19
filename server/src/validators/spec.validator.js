@@ -57,6 +57,6 @@ module.exports = joi.object({
   operating_system: joi.array().items(joi.string()).optional(),
   price: joi.number().min(1000).required(),
   images: joi.array().items(joi.string()),
-  model: joi.string(),
+  model: joi.string().optional(),
   slug: joi.string().min(5).max(100).required(),
 })
