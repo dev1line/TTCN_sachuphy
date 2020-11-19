@@ -1,7 +1,7 @@
 import React from "react";
 import "animate.css";
 import { Row, Col } from "antd";
-import { BodyCmt, EndCmt } from "../../components/Comment";
+import { EndCmt } from "../../components/Comment";
 import {
   PromotionsCarousel,
   CommentsCarousel,
