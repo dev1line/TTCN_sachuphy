@@ -14,10 +14,10 @@
 }
 .dropdown {
   cursor: pointer;
-  padding-left: 1rem;
+  padding: 0 1rem;
 }
-.dropdown:not(:last-child) {
-  padding-right: 1rem;
+.dropdown:last-child {
+  padding-right: 0rem;
 }
 .icon {
   margin-left: 0.5rem;

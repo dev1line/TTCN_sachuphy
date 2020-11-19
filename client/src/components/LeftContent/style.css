@@ -1,34 +1,48 @@
 .left {
-    border: #E5E5E5 2px solid;
-    padding: 5px;
-    margin-left: 50px;
-    margin-right: 10px;
-    width: auto;
+  border: #e5e5e5 2px solid;
+  padding: 5px;
+  margin-left: 50px;
+  margin-right: 10px;
+  width: auto;
 }
 
 .selectdiv {
-    height: 300px;
-    width: auto;
+  height: 300px;
+  width: auto;
 }
 
 .divse {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
 }
 .count {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .pSlider {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
 }
 
 .is-anchored {
-    position: fixed;
-    top: 0;
+  position: fixed;
+  top: 0;
+}
+
+.left-content {
+  max-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.left-content::-webkit-scrollbar {
+  display: none;
+}
+.is-anchored-bottom {
+  position: absolute;
+  bottom: 0;
+  top: auto;
 }
