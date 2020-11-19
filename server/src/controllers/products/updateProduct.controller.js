@@ -1,5 +1,5 @@
-const ProductModel = require("../../models/product.model")
 const SpecModel = require("../../models/specification.model")
+const SpecValidator = require("../../validators/spec.validator")
 
 module.exports = async function updateProductController(req, res, next) {
   const { productSlug } = req.params
@@ -14,46 +14,25 @@ module.exports = async function updateProductController(req, res, next) {
       message: "product.notFound",
     })
 
-  const { options, default_spec } = req.body
+  const data = req.body
+
+  data.slug = productSlug
 
   try {
-    await ProductValidator.validateAsync({
-      default_spec,
-      options,
-    })
-  } catch (err) {
-    console.log(err)
-    if (err.name === "ValidationError")
-      return res.status(422).json({
-        success: false,
-        message: err.details[0].message,
+    await SpecValidator.validateAsync(data)
+  }
+  catch(err) {
+    if(err.name === "ValidationError") {
+      return res.status(400).json({
+        message: err.details[0].message
       })
-    return res.status(422).json({
-      success: false,
-      message: err.message,
-    })
+    }
   }
 
-  if (!default_spec.name) {
-    return res.status(422).json({
-      success: false,
-      message: "Missing default specification name.",
-    })
-  }
+  const resultSpec = await specByProductSlug.updateOne(data).select("-__v").lean()
 
-  const slugs = [default_spec.slug, ...options.map((o) => o.slug)]
-
-  const existSpecBySlug = await SpecModel.findOne({
-    slug: {
-      $in: slugs,
-    },
-  }).lean()
-
-  if (existSpecBySlug) {
-    return res.status(422).json({
-      success: false,
-      message: "Slug has been taken",
-      slug: existSpecBySlug.slug,
-    })
-  }
+  return res.status(200).json({
+    success: true,
+    specification: resultSpec
+  })
 }

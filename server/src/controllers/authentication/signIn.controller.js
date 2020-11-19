@@ -18,7 +18,7 @@ module.exports = async function signInController(req, res, next) {
       password,
     })
     user = await UserModel.findOne({ username }).select('-__v').exec()
-    if (!user) throw new Error()
+    if (!user) throw new Error("user.notExisted")
     let isPasswordMatched = await bcrypt.compare(password, user.password)
     if (!isPasswordMatched) throw new Error("credentials.wrong")
     if(user.deleted_at) throw new Error("user.deleted")

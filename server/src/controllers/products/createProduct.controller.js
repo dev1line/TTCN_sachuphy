@@ -55,13 +55,15 @@ module.exports = async function createProductController(req, res, next) {
 
   const defaultSpecObj = defaultSpecDoc.toObject()
 
-  const optionsSpecsObjectIds = async.map(options, async (spec) => {
+  const optionsSpecsObjectIds = await async.map(options, async (spec) => {
     const specDoc = await SpecModel.create({
       ...spec,
     })
     const specObj = specDoc.toObject()
     return specObj._id
   })
+
+  console.log(optionsSpecsObjectIds)
 
   const productDoc = await ProductModel.create({
     default_spec: defaultSpecObj._id,
