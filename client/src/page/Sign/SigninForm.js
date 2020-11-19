@@ -9,8 +9,8 @@ import { Link, Redirect } from "react-router-dom";
 const SigninForm = props => {
     const dispatch = useDispatch();
     const token = useSelector(state => state.token.token);
-    console.log("token", token);
-    localStorage.setItem("token", token);
+    // console.log("token", token);
+    // localStorage.setItem("token", token);
     const onFinish = values => {
         console.log("value:", values);
         dispatch({type:"LOGIN", username: values.user, password: values.pass});

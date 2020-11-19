@@ -5,7 +5,7 @@ import Signup from "./page/Sign/Signup";
 import { Home, Product, About } from "./page";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
+import ShopCart from './page/ShopCart/ShopCart'
 const App = () => {
   return (
     <Router>
@@ -25,6 +25,9 @@ const App = () => {
         </Route>
         <Route exact path="/About">
           <About />
+        </Route>
+        <Route exact path="/shopcart">
+          <ShopCart />
         </Route>
       </Switch>
       <Footer />

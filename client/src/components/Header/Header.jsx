@@ -1,18 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col, Menu, Dropdown, Input, Button, Badge } from "antd";
 import { DownOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { Link, NavLink } from "react-router-dom";
 import "antd/dist/antd.css";
 import styles from './styles.module.css'
+import { useSelector, useDispatch } from "react-redux";
 const { Search } = Input;
 
 const Header = (props) => {
+  const token = useSelector(state => state.token.token);
+  const dispatch = useDispatch();
   const currs = ["VNĐ", "USD"];
   const langs = ["Tiếng Việt", "English"];
   const accs = ["My Account", "Log out"];
+  const signs = ["Sign In", "Sign Up"];
+  const links = ["SignIn", "SignUp"];
   const [currency, setCurrency] = useState(currs[0]);
   const [language, setLanguage] = useState(langs[0]);
   const [account, setAccount] = useState(accs[0]);
+  const [sign, setSign] = useState(signs[0]);
+  useEffect(() => {
+    if(localStorage.getItem("token") && token === "") {
+      dispatch({type:"GET_TOKEN_SUCCESS", token: localStorage.getItem("token")});
+    } 
+  },[token, dispatch])
+
+  useEffect(() => {
+    if(account === "Log out") {
+      dispatch({type:"LOG_OUT"});
+    }
+  },[account, dispatch]);
+
+  if (token) 
+      console.log("token header:", token);
   const menuCurrency = (curr = currs) => (
     <Menu>
       {curr &&
@@ -45,6 +65,16 @@ const Header = (props) => {
         ))}
     </Menu>
   );
+  const menuSign = (sign = signs, link =links) => (
+    <Menu>
+      {sign &&
+        sign.map((s, index) => (
+          <Menu.Item key={s} onClick={() => setSign(s)}>
+            <Link exact="true" to={`/${link[index]}`}>{s}</Link>
+          </Menu.Item>
+        ))}
+    </Menu>
+  );
   const onSearch = (value) => console.log(value);
 
   return (
@@ -68,12 +98,21 @@ const Header = (props) => {
               <DownOutlined className={styles.icon} />
             </div>
           </Dropdown>
+          {token === "" ? 
+          <Dropdown className={styles.dropdown} overlay={menuSign} trigger={["click"]}>
+            <div>
+              {sign}
+              <DownOutlined className={styles.icon} />
+            </div>
+          </Dropdown>
+          :
           <Dropdown className={styles.dropdown} overlay={menuAccount} trigger={["click"]}>
             <div>
               {account}
               <DownOutlined className={styles.icon} />
             </div>
           </Dropdown>
+          }
         </Col>
         <Col offset={1}></Col>
       </Row>
@@ -97,7 +136,7 @@ const Header = (props) => {
         <Col span={2} className={styles["shop"]}>
           <Badge count={1} style={{ backgroundColor: "#1789FC" }}>
             <Button type="primary" className={styles.btn}>
-              <ShoppingCartOutlined style={{ fontSize: 28 }} />
+              <Link exact="true" to="/shopcart"><ShoppingCartOutlined style={{ fontSize: 28 }} /></Link>
             </Button>
           </Badge>
         </Col>

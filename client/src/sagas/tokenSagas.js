@@ -18,8 +18,11 @@ function* getTokenLogin(input) {
         return err.data;
     })
     console.log("data", data);
-    if(data && data.success)
-    yield put({type:"GET_TOKEN_SUCCESS", token:data.token})
+    if(data && data.success) {
+        localStorage.setItem("token", data.token);
+        yield put({type:"GET_TOKEN_SUCCESS", token:data.token});
+    }
+    
 }
 
 function* setTokenLogin(input) {
@@ -37,12 +40,26 @@ function* setTokenLogin(input) {
     }).catch(err => {
         return err.data;
     })
-    if (data && data.success)
-        yield put({type:"SET_TOKEN_SUCCESS", success: data.success})
+    if (data && data.success) {        
+        yield put({type:"SET_TOKEN_SUCCESS", success: data.success});
+    }       
     else
-    yield put({type:"SET_TOKEN_FAIL"})
+        yield put({type:"SET_TOKEN_FAIL"})
+}
+
+function* logOut() {
+    yield axios({
+        method:"POST",
+        url:`${url}/sign-out`,
+        headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+    })
+    yield localStorage.clear();
+    yield put({type:"LOG_OUT_DONE"})
 }
 export {
     getTokenLogin,
-    setTokenLogin
+    setTokenLogin,
+    logOut
 }
