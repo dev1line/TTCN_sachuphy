@@ -2,7 +2,7 @@ import React from "react";
 import { Header, Footer } from "./components";
 import Signin from "./page/Sign/Signin";
 import Signup from "./page/Sign/Signup";
-import Product from "./page/Product/Product";
+import Product from "./page/Product/product";
 // import About from "./page/About/About";
 import Home from "./page/Home/home";
 import "./App.module.css";

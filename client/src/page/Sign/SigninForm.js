@@ -37,13 +37,13 @@ const SigninForm = props => {
             </Form.Item>
             <Form.Item
                 name="user"
-                rules={[{ required: true, message: 'Please input your username!' }]}
+                rules={[{ required: true, message: 'Please input your username a-z A-Z 0-9 6-20 character ', pattern: /([A-Za-z0-9]){6,20}/g, }]}
             >
                 <Input size="large" prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
             </Form.Item>
             <Form.Item
                 name="pass"
-                rules={[{ required: true, message: 'Please input your password!' }]}
+                rules={[{ required: true, message: 'Please input your password!', pattern: /(\w|\W){6,20}/g, }]}
             >
                 <Input.Password size="large" prefix={<LockOutlined className="site-form-item-icon" />} placeholder="Password" />
             </Form.Item>

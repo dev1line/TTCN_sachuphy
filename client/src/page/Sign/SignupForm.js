@@ -65,13 +65,22 @@ const SignupForm = (props) => {
             </Form.Item>
             <Form.Item
                 name="txtusername"
-                rules={[{ required: true, message: 'Please input your username!' }]}
+                rules={[{ 
+                    required: true, 
+                    message: 'Please input your username!' ,
+                    pattern: /([A-Za-z0-9]){6,20}/,
+                    }]}
+
             >
                 <Input size="large" prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
             </Form.Item>
             <Form.Item
                 name="txtpassword"
-                rules={[{ required: true, message: 'Please input your password!' }]}
+                rules={[{ 
+                    required: true, 
+                    message: 'Please input your password!',
+                    pattern: /(\w|\W){6,20}/g,
+                     }]}
             >
                 <Input.Password size="large" prefix={<LockOutlined className="site-form-item-icon" />} placeholder="Password" />
             </Form.Item>
