@@ -38,14 +38,13 @@ const Product = (props) => {
   useEffect(() => {
     function handleAnchorBottom() {
       if (!LeftContentDOM.current) return;
-      // console.log(LeftContentDOM.current.offsetHeight);
       if (
         window.scrollY + LeftContentDOM.current.offsetHeight >
           document.getElementById("product").offsetTop +
             document.getElementById("product").offsetHeight &&
         !shouldAnchorBottom
       ) {
-        setShouldAnchor(false)
+        setShouldAnchor(false);
         setShouldAnchorBottom(true);
       } else if (
         window.scrollY + LeftContentDOM.current.offsetHeight <
@@ -53,7 +52,7 @@ const Product = (props) => {
             document.getElementById("product").offsetHeight &&
         shouldAnchorBottom
       ) {
-        setShouldAnchor(true)
+        setShouldAnchor(true);
         setShouldAnchorBottom(false);
       }
     }
@@ -62,7 +61,6 @@ const Product = (props) => {
       window.removeEventListener("scroll", handleAnchorBottom);
     };
   });
-
   return (
     <Row>
       {/* <Col span={24}><Header/></Col> */}
