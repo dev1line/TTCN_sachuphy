@@ -2,10 +2,10 @@ import React from "react";
 import { Header, Footer } from "./components";
 import Signin from "./page/Sign/Signin";
 import Signup from "./page/Sign/Signup";
-import Product from "./page/Product/Product";
-import ShopCart from "./page/ShopCart/ShopCart"
+import Product from "./page/Product";
+import ShopCart from "./page/ShopCart/ShopCart.js"
 // import About from "./page/About/About";
-import Home from "./page/Home/home";
+import Home from "./page/Home/index.js";
 import "./App.module.css";
 import { Col, Row } from "antd";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
