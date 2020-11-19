@@ -2,9 +2,7 @@ import React from "react";
 import { Header, Footer } from "./components";
 import Signin from "./page/Sign/Signin";
 import Signup from "./page/Sign/Signup";
-import Product from "./page/Product/Product";
-// import About from "./page/About/About";
-import Home from "./page/Home/home";
+import { Home, Product, About } from "./page";
 import "./App.module.css";
 import { Col, Row } from "antd";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -28,9 +26,9 @@ const App = () => {
             <Route exact path="/signup">
               <Signup />
             </Route>
-            {/* <Route exact path="/about">
+            <Route exact path="/About">
               <About />
-            </Route> */}
+            </Route>
           </Switch>
           <Footer />
         </Col>

@@ -61,9 +61,10 @@ const Product = (props) => {
       window.removeEventListener("scroll", handleAnchorBottom);
     };
   });
+
+  
   return (
     <Row>
-      {/* <Col span={24}><Header/></Col> */}
       <Col span={4}>
         <LeftContent
           ref={LeftContentDOM}

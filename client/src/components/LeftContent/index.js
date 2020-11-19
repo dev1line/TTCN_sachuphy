@@ -11,9 +11,6 @@ const { SubMenu } = Menu;
 //   console.log(e.key);
 // };
 
-
-
-
 const LeftContent = React.forwardRef((props, ref) => {
   var leftContentClasses = classnames({
     'left-content': true,

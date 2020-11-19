@@ -1,22 +1,22 @@
 import React from "react";
-import CarouselImage from "../../components/Carousel";
-import 'animate.css';
+import "animate.css";
 import { Row, Col } from "antd";
-import { Banner1, Banner2, Banner3 } from "../../components/Banner";
+import { Banner2, Banner3 } from "../../components/Banner";
 import { BeginCmt, BodyCmt, EndCmt } from "../../components/Comment";
+import { PromotionsCarousel, Promotions } from "../../components";
 
 const Home = (props) => {
   return (
     <Row span={24}>
       {/* <Col span={24}><Header/></Col> */}
+      <Col span={24}>
+        <PromotionsCarousel />
+      </Col>
       <Col offset={1}></Col>
       <Col span={22}>
-        <CarouselImage></CarouselImage>
+        <Promotions />
       </Col>
       <Col offset={1}></Col>
-      <Col span={24}>
-        <Banner1></Banner1>
-      </Col>
       <Col span={24}>
         <Banner2></Banner2>
       </Col>

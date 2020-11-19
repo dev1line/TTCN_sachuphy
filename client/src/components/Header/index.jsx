@@ -3,7 +3,7 @@ import { Row, Col, Menu, Dropdown, Input, Button, Badge } from "antd";
 import { DownOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { Link, NavLink } from "react-router-dom";
 import "antd/dist/antd.css";
-import styles from './Header.module.css'
+import styles from './styles.module.css'
 const { Search } = Input;
 
 const Header = (props) => {
