@@ -3,9 +3,6 @@ const SpecModel = require("../../models/specification.model")
 
 const async = require("async")
 
-const slugify = require("slugify")
-const faker = require('faker')
-
 const ProductValidator = require("../../validators/product.validator")
 
 module.exports = async function createProductController(req, res, next) {
@@ -29,29 +26,39 @@ module.exports = async function createProductController(req, res, next) {
     })
   }
 
-  if(!default_spec.name || !default_spec.model) {
+  if(!default_spec.name) {
     return res.status(422).json({
       success: false,
-      message: "Missing defaut specification name and model"
+      message: "Missing default specification name."
     })
   }
 
-  let defaultSpecSlug = slugify(default_spec.name + default_spec.model)
+  const slugs = [default_spec.slug, ...options.map(o => o.slug)]
 
-  
+  const existSpecBySlug = await SpecModel.findOne({
+    slug: {
+      $in: slugs
+    }
+  }).lean()
 
-  while(await SpecModel.exists({slug: defaultSpecSlug})) {
-    defaultSpecSlug += defaultSpecSlug + faker.random.number(1000)
+  if(existSpecBySlug) {
+    return res.status(422).json({
+      success: false,
+      message: "Slug has been taken",
+      slug: existSpecBySlug.slug
+    })
   }
 
   const defaultSpecDoc = await SpecModel.create({
-    ...default_spec
+    ...default_spec,
   })
 
   const defaultSpecObj = defaultSpecDoc.toObject()
 
-  const optionsSpecsObjectIds = await async.map(options, async (spec) => {
-    const specDoc = await SpecModel.create(spec)
+  const optionsSpecsObjectIds = async.map(options, async (spec) => {
+    const specDoc = await SpecModel.create({
+      ...spec,
+    })
     const specObj = specDoc.toObject()
     return specObj._id
   })
@@ -65,7 +72,7 @@ module.exports = async function createProductController(req, res, next) {
 
   const sanitizedProductObj = sanitizeProductObj(productObj)
 
-  const populatedProductObj = {...sanitizedProductObj, default_spec, options}
+  const populatedProductObj = { ...sanitizedProductObj, default_spec, options }
 
   return res.status(200).json({
     success: true,
@@ -75,6 +82,6 @@ module.exports = async function createProductController(req, res, next) {
 }
 
 function sanitizeProductObj(product) {
-  const {__v, ...sanitizedProduct} = product
-  return sanitizedProduct 
+  const { __v, ...sanitizedProduct } = product
+  return sanitizedProduct
 }

@@ -6,8 +6,26 @@ const SpecSchema = new Schema({
   name: {
     type: String,
   },
+  manufacturer: {
+    type: String,
+    min: 1
+  },
+  color: {
+    type: [String],
+  },
+  visibility: {
+    type: String,
+    default: 'public',
+    enum: ['public', 'hidden']
+  },
   processor: {
     type: String,
+  },
+  discount: {
+    type: Number,
+    min: 0,
+    max: 100,
+    default: 0
   },
   model: {
     type: String
@@ -38,10 +56,14 @@ const SpecSchema = new Schema({
     required: true
   },
   price: {
-    type: [Number, String],
+    type: Number,
     required: true,
   },
   images: [{ type: String }],
+  created_at: {
+    type: Date,
+    default: Date.now
+  }
 })
 
 const SpecModel = mongoose.model("Spec", SpecSchema)

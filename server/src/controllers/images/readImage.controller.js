@@ -22,7 +22,7 @@ module.exports = async function createImageController(req, res, next) {
     name: imageName
   })
   
-  if(!imageDoesExist) return res.status(400).json({
+  if(!imageDoesExist) return res.status(404).json({
     success: false,
     message: "No image found."
   })

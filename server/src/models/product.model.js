@@ -13,14 +13,6 @@ const ProductSchema = new Schema({
       ref: "Spec"
     }
   ],
-  created_at: {
-    type: Date,
-    default: Date.now
-  },
-  deleted_at: {
-    type: Date,
-    default: null
-  }
 })
 
 const ProductModel = mongoose.model("Product", ProductSchema)
