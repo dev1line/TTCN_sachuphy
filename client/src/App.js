@@ -3,6 +3,7 @@ import { Header, Footer } from "./components";
 import Signin from "./page/Sign/Signin";
 import Signup from "./page/Sign/Signup";
 import Product from "./page/Product/Product";
+import ShopCart from "./page/ShopCart/ShopCart"
 // import About from "./page/About/About";
 import Home from "./page/Home/home";
 import "./App.module.css";
@@ -31,6 +32,9 @@ const App = () => {
             {/* <Route exact path="/about">
               <About />
             </Route> */}
+            <Route exact path="/checkout">
+              <ShopCart />
+            </Route>
           </Switch>
           <Footer />
         </Col>
