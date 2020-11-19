@@ -9,9 +9,11 @@ const Home = (props) => {
   return (
     <Row span={24}>
       {/* <Col span={24}><Header/></Col> */}
-      <Col span={24}>
+      <Col offset={1}></Col>
+      <Col span={22}>
         <CarouselImage></CarouselImage>
       </Col>
+      <Col offset={1}></Col>
       <Col span={24}>
         <Banner1></Banner1>
       </Col>

@@ -109,7 +109,7 @@ const Header = (props) => {
       </Row>
       <Row>
         <Col offset={12}></Col>
-        <Col span={12} className={styles["menubar"]}>
+        <Col span={11} className={styles["menubar"]}>
           <NavLink exact activeClassName={styles["is-active"]} className={styles["menu-item"]} to="/">
             HOME
           </NavLink>
@@ -123,6 +123,7 @@ const Header = (props) => {
             CONTACT US
           </NavLink>
         </Col>
+        <Col offset={1}></Col>
       </Row>
     </div>
   );
