@@ -95,7 +95,7 @@ const Header = (props) => {
           />
         </Col>
         <Col span={2} className={styles["shop"]}>
-          <Badge count={4} style={{ backgroundColor: "#1789FC" }}>
+          <Badge count={1} style={{ backgroundColor: "#1789FC" }}>
             <Button type="primary" className={styles.btn}>
               <ShoppingCartOutlined style={{ fontSize: 28 }} />
             </Button>

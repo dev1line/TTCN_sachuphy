@@ -1,14 +1,18 @@
 import React from "react";
 import "animate.css";
 import { Row, Col } from "antd";
-import { Banner2, Banner3 } from "../../components/Banner";
-import { BeginCmt, BodyCmt, EndCmt } from "../../components/Comment";
-import { PromotionsCarousel, Promotions } from "../../components";
+import { BodyCmt, EndCmt } from "../../components/Comment";
+import {
+  PromotionsCarousel,
+  CommentsCarousel,
+  Promotions,
+  Shopping,
+  Brands,
+} from "../../components";
 
 const Home = (props) => {
   return (
-    <Row span={24}>
-      {/* <Col span={24}><Header/></Col> */}
+    <Row span={24} gutter={[0, 80]}>
       <Col span={24}>
         <PromotionsCarousel />
       </Col>
@@ -18,16 +22,13 @@ const Home = (props) => {
       </Col>
       <Col offset={1}></Col>
       <Col span={24}>
-        <Banner2></Banner2>
+        <Shopping />
       </Col>
       <Col span={24}>
-        <Banner3></Banner3>
+        <Brands />
       </Col>
       <Col span={24}>
-        <BeginCmt></BeginCmt>
-      </Col>
-      <Col span={24}>
-        <BodyCmt></BodyCmt>
+        <CommentsCarousel />
       </Col>
       <Col span={24}>
         <EndCmt></EndCmt>
