@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './styles.module.css'
+import styles from './PromotionsCarousel.module.css'
 import { Carousel } from 'antd'
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 
@@ -16,7 +16,7 @@ const PromotionsCarousel = (props) => {
 	return (
 		<div className={styles.container}>
 			<LeftOutlined className={styles.left} onClick={previous} />
-			<Carousel ref={carousel} className={styles.carousel} dots={{className: styles['dots']}}>
+			<Carousel ref={carousel} className={styles.carousel} dots={{ className: styles['dots'] }}>
 				<div>
 					<img alt="" src="https://cdn.tgdd.vn/2020/11/banner/reno4-800-300-800x300-2.png" className={styles.img} />
 				</div>

@@ -1,0 +1,36 @@
+.shopping {
+  background: #1789fc;
+  height: 140px;
+  position: relative;
+}
+.shopping::before {
+  content: "";
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: white;
+  top: 0;
+  left: 0;
+}
+.shopping::after {
+  content: "";
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: white;
+  bottom: 0;
+  right: 0;
+}
+.content {
+  font-size: 24px;
+  letter-spacing: 2px;
+  color: #ffffff;
+}
+.btn {
+  color: #1789fc;
+  width: 320px;
+  height: 60px;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}

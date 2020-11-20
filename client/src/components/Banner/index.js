@@ -60,58 +60,58 @@ export const Banner2 = (props) => {
   );
 };
 
-export const Banner3 = (props) => {
-  const onClick = (e) => {
-    const { name } = e.target;
-    console.log(name);
-  };
-  return (
-    <Row style={{ height: "100%" }}>
-      <Col flex={2}>
-        <img
-          alt="img"
-          name="lenovo"
-          onClick={onClick}
-          className="brand"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Branding_lenovo-logo_lenovologoposred_low_res.png/1200px-Branding_lenovo-logo_lenovologoposred_low_res.png"
-        ></img>
-      </Col>
-      <Col flex={2}>
-        <img
-          alt="img"
-          name="asus"
-          onClick={onClick}
-          className="brand"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/ASUS_Logo.svg/1280px-ASUS_Logo.svg.png"
-        ></img>
-      </Col>
-      <Col flex={2}>
-        <img
-          alt="img"
-          name="dell"
-          onClick={onClick}
-          className="brand"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Dell_Logo.png/640px-Dell_Logo.png"
-        ></img>
-      </Col>
-      <Col flex={2}>
-        <img
-          alt="img"
-          name="acer"
-          onClick={onClick}
-          className="brand"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Acer_2011.svg/1024px-Acer_2011.svg.png"
-        ></img>
-      </Col>
-      <Col flex={2}>
-        <img
-          alt="img"
-          name="msi"
-          onClick={onClick}
-          className="brand"
-          src="https://logos-download.com/wp-content/uploads/2019/11/Msi_Logo.png"
-        ></img>
-      </Col>
-    </Row>
-  );
-};
+// export const Banner3 = (props) => {
+//   const onClick = (e) => {
+//     const { name } = e.target;
+//     console.log(name);
+//   };
+//   return (
+//     <Row style={{ height: "100%" }}>
+//       <Col flex={2}>
+//         <img
+//           alt="img"
+//           name="lenovo"
+//           onClick={onClick}
+//           className="brand"
+//           src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Branding_lenovo-logo_lenovologoposred_low_res.png/1200px-Branding_lenovo-logo_lenovologoposred_low_res.png"
+//         ></img>
+//       </Col>
+//       <Col flex={2}>
+//         <img
+//           alt="img"
+//           name="asus"
+//           onClick={onClick}
+//           className="brand"
+//           src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/ASUS_Logo.svg/1280px-ASUS_Logo.svg.png"
+//         ></img>
+//       </Col>
+//       <Col flex={2}>
+//         <img
+//           alt="img"
+//           name="dell"
+//           onClick={onClick}
+//           className="brand"
+//           src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Dell_Logo.png/640px-Dell_Logo.png"
+//         ></img>
+//       </Col>
+//       <Col flex={2}>
+//         <img
+//           alt="img"
+//           name="acer"
+//           onClick={onClick}
+//           className="brand"
+//           src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Acer_2011.svg/1024px-Acer_2011.svg.png"
+//         ></img>
+//       </Col>
+//       <Col flex={2}>
+//         <img
+//           alt="img"
+//           name="msi"
+//           onClick={onClick}
+//           className="brand"
+//           src="https://logos-download.com/wp-content/uploads/2019/11/Msi_Logo.png"
+//         ></img>
+//       </Col>
+//     </Row>
+//   );
+// };

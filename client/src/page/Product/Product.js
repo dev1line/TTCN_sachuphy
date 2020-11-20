@@ -62,23 +62,24 @@ const Product = (props) => {
     };
   });
 
-  
   return (
-    <Row>
-      <Col span={4}>
-        <LeftContent
-          ref={LeftContentDOM}
-          width={leftContentWidth}
-          shouldAnchor={shouldAnchor}
-          shouldAnchorBottom={shouldAnchorBottom}></LeftContent>
-      </Col>
-      <Col id="product" span={20}>
-        <Col style={{ marginLeft: "30px", marginRight: "30px" }}>
-          <RightContent></RightContent>
-          <ListItem></ListItem>
+    <div className="animate__animated animate_fadeIn">
+      <Row>
+        <Col span={4}>
+          <LeftContent
+            ref={LeftContentDOM}
+            width={leftContentWidth}
+            shouldAnchor={shouldAnchor}
+            shouldAnchorBottom={shouldAnchorBottom}></LeftContent>
         </Col>
-      </Col>
-    </Row>
+        <Col id="product" span={20}>
+          <Col style={{ marginLeft: "30px", marginRight: "30px" }}>
+            <RightContent></RightContent>
+            <ListItem></ListItem>
+          </Col>
+        </Col>
+      </Row>
+    </div>
   );
 };
 

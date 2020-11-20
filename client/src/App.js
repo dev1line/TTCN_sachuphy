@@ -2,8 +2,8 @@ import React from "react";
 import { Header, Footer } from "./components";
 import Signin from "./page/Sign/Signin";
 import Signup from "./page/Sign/Signup";
-import { Home, Product, About } from "./page";
-import "./App.module.css";
+import "./App.css";
+import { Home, Product, About, Contact } from "./page";
 import { Col, Row } from "antd";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -15,19 +15,34 @@ const App = () => {
           <Header />
           <Switch>
             <Route exact path="/">
-              <Home />
+              <div className="main">
+                <Home />
+              </div>
             </Route>
             <Route exact path="/product">
-              <Product />
+              <div className="main">
+                <Product />
+              </div>
             </Route>
             <Route exact path="/signin">
-              <Signin />
+              <div className="main">
+                <Signin />
+              </div>
             </Route>
             <Route exact path="/signup">
-              <Signup />
+              <div className="main">
+                <Signup />
+              </div>
             </Route>
             <Route exact path="/About">
-              <About />
+              <div className="main">
+                <About />
+              </div>
+            </Route>
+            <Route exact path="/Contact">
+              <div className="main">
+                <About />
+              </div>
             </Route>
           </Switch>
           <Footer />
