@@ -1,20 +1,7 @@
-.container {
-  width: 100%;
-  position: fixed;
-  height: 200px;
-  z-index: 100;
-  top: 0;
-  background: white;
-  border-bottom: 1px solid #DBDBDB;
-}
-.header {
-  width: 1440px;
-  margin: auto;
-}
 .headbar {
   padding: 1rem 0;
   justify-content: space-between;
-  border-bottom: 1px solid #DBDBDB;
+  border-bottom: 1px solid #dbdbdb;
 }
 .hotline {
   color: #636363;
@@ -36,7 +23,7 @@
   margin-left: 0.5rem;
 }
 .navbar {
-  padding: 1rem 0;
+  padding: 2rem 0 1rem;
 }
 .logo > a {
   display: flex;
@@ -86,6 +73,7 @@ button {
   justify-content: space-between;
 }
 .menu-item {
+  padding: 1rem 0;
   font-weight: bold;
   font-size: 16px;
   line-height: 19px;

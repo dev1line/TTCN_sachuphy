@@ -1,11 +1,10 @@
 import React from "react";
-import "./styles.css";
+import "./styles.module.css";
 import "animate.css";
 
 const About = (props) => {
   return (
-    <div className="animate__animated animate__fadeIn">
-      dsad
+    <div>
     </div>
   )
 }

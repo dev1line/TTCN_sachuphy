@@ -1,4 +1,8 @@
-.main {
+body {
   max-width: 1440px;
-  margin: 220px auto 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+.header {
+  position: fixed;
 }

@@ -4,7 +4,10 @@ import { DownOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { Link, NavLink } from "react-router-dom";
 import "antd/dist/antd.css";
 import styles from './styles.module.css'
+<<<<<<< HEAD
 import { useSelector, useDispatch } from "react-redux";
+=======
+>>>>>>> parent of a5fdbcc... push for fun
 const { Search } = Input;
 
 const Header = (props) => {
@@ -98,6 +101,7 @@ const Header = (props) => {
               <DownOutlined className={styles.icon} />
             </div>
           </Dropdown>
+<<<<<<< HEAD
           {token === "" ? 
           <Dropdown className={styles.dropdown} overlay={menuSign} trigger={["click"]}>
             <div>
@@ -106,13 +110,18 @@ const Header = (props) => {
             </div>
           </Dropdown>
           :
+=======
+>>>>>>> parent of a5fdbcc... push for fun
           <Dropdown className={styles.dropdown} overlay={menuAccount} trigger={["click"]}>
             <div>
               {account}
               <DownOutlined className={styles.icon} />
             </div>
           </Dropdown>
+<<<<<<< HEAD
           }
+=======
+>>>>>>> parent of a5fdbcc... push for fun
         </Col>
         <Col offset={1}></Col>
       </Row>
@@ -136,7 +145,11 @@ const Header = (props) => {
         <Col span={2} className={styles["shop"]}>
           <Badge count={1} style={{ backgroundColor: "#1789FC" }}>
             <Button type="primary" className={styles.btn}>
+<<<<<<< HEAD
               <Link exact="true" to="/shopcart"><ShoppingCartOutlined style={{ fontSize: 28 }} /></Link>
+=======
+              <ShoppingCartOutlined style={{ fontSize: 28 }} />
+>>>>>>> parent of a5fdbcc... push for fun
             </Button>
           </Badge>
         </Col>

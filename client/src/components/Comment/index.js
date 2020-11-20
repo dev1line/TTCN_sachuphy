@@ -1,20 +1,20 @@
 import React from "react";
-import styles from "./styles.module.css";
-import { Row, Col, Carousel } from "antd";
+import { Col, Row, Carousel } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 
-const CommentsCarousel = (props) => {
+export const BodyCmt = (props) => {
+  const carouselRef = React.createRef();
 
-  const ref = React.createRef()
   const handlePrev = (e) => {
-    ref.current.prev()
-  }
+    carouselRef.current.prev();
+  };
+
   const handleNext = (e) => {
-    ref.current.next()
-  }
+    carouselRef.current.next();
+  };
 
   return (
-    <Row span={24}>
+    <Row span={24} >
       <Col span={3}>
         <LeftOutlined
           onClick={handlePrev}
@@ -27,14 +27,13 @@ const CommentsCarousel = (props) => {
         />
       </Col>
       <Col span={18}>
-        <Carousel autoplay ref={ref}>
+        <Carousel autoplay ref={carouselRef}>
           <div style={{ display: "flex", flexDirection: "row" }}>
             <div style={{ float: "left", marginLeft: "40px" }}>
               <img
                 style={{ height: "400px", width: "400px" }}
                 alt="img"
-                src="https://msmobile.com.vn/upload_images/images/hinh-nen-mau-den-cho-dien-thoai-1.jpg"
-              ></img>
+                src="https://msmobile.com.vn/upload_images/images/hinh-nen-mau-den-cho-dien-thoai-1.jpg"></img>
             </div>
             <div
               style={{
@@ -42,8 +41,7 @@ const CommentsCarousel = (props) => {
                 display: "block",
                 marginTop: "140px",
                 marginRight: "40px",
-              }}
-            >
+              }}>
               <p style={{ fontSize: "28px", fontStyle: "italic" }}>
                 "Tôi thực sự rất hài lòng sản phẩm ở đây, <br></br>mọi thứ rất
                 hoàn hảo, dịch vụ rất tốt."
@@ -53,8 +51,7 @@ const CommentsCarousel = (props) => {
                   fontStyle: "italic",
                   fontSize: "24px",
                   color: "#1789FC",
-                }}
-              >
+                }}>
                 Nguyễn Thành Hoàng
               </p>
               <p style={{ fontSize: "16px", color: "#636363" }}>
@@ -68,8 +65,7 @@ const CommentsCarousel = (props) => {
               <img
                 style={{ height: "400px", width: "400px" }}
                 alt="img"
-                src="https://msmobile.com.vn/upload_images/images/hinh-nen-mau-den-cho-dien-thoai-1.jpg"
-              ></img>
+                src="https://msmobile.com.vn/upload_images/images/hinh-nen-mau-den-cho-dien-thoai-1.jpg"></img>
             </div>
             <div
               style={{
@@ -77,8 +73,7 @@ const CommentsCarousel = (props) => {
                 display: "block",
                 marginTop: "140px",
                 marginRight: "40px",
-              }}
-            >
+              }}>
               <p style={{ fontSize: "28px", fontStyle: "italic" }}>
                 "Tôi thực sự rất hài lòng sản phẩm ở đây, <br></br>mọi thứ rất
                 hoàn hảo, dịch vụ rất tốt."
@@ -88,8 +83,7 @@ const CommentsCarousel = (props) => {
                   fontStyle: "italic",
                   fontSize: "24px",
                   color: "#1789FC",
-                }}
-              >
+                }}>
                 Nguyễn Thành Hoàng
               </p>
               <p style={{ fontSize: "16px", color: "#636363" }}>
@@ -103,8 +97,7 @@ const CommentsCarousel = (props) => {
               <img
                 style={{ height: "400px", width: "400px" }}
                 alt="img"
-                src="https://msmobile.com.vn/upload_images/images/hinh-nen-mau-den-cho-dien-thoai-1.jpg"
-              ></img>
+                src="https://msmobile.com.vn/upload_images/images/hinh-nen-mau-den-cho-dien-thoai-1.jpg"></img>
             </div>
             <div
               style={{
@@ -112,8 +105,7 @@ const CommentsCarousel = (props) => {
                 display: "block",
                 marginTop: "140px",
                 marginRight: "40px",
-              }}
-            >
+              }}>
               <p style={{ fontSize: "28px", fontStyle: "italic" }}>
                 "Tôi thực sự rất hài lòng sản phẩm ở đây, <br></br>mọi thứ rất
                 hoàn hảo, dịch vụ rất tốt."
@@ -123,8 +115,7 @@ const CommentsCarousel = (props) => {
                   fontStyle: "italic",
                   fontSize: "24px",
                   color: "#1789FC",
-                }}
-              >
+                }}>
                 Nguyễn Thành Hoàng
               </p>
               <p style={{ fontSize: "16px", color: "#636363" }}>
@@ -138,8 +129,7 @@ const CommentsCarousel = (props) => {
               <img
                 style={{ height: "400px", width: "400px" }}
                 alt="img"
-                src="https://msmobile.com.vn/upload_images/images/hinh-nen-mau-den-cho-dien-thoai-1.jpg"
-              ></img>
+                src="https://msmobile.com.vn/upload_images/images/hinh-nen-mau-den-cho-dien-thoai-1.jpg"></img>
             </div>
             <div
               style={{
@@ -147,8 +137,7 @@ const CommentsCarousel = (props) => {
                 display: "block",
                 marginTop: "140px",
                 marginRight: "40px",
-              }}
-            >
+              }}>
               <p style={{ fontSize: "28px", fontStyle: "italic" }}>
                 "Tôi thực sự rất hài lòng sản phẩm ở đây, <br></br>mọi thứ rất
                 hoàn hảo, dịch vụ rất tốt."
@@ -158,8 +147,7 @@ const CommentsCarousel = (props) => {
                   fontStyle: "italic",
                   fontSize: "24px",
                   color: "#1789FC",
-                }}
-              >
+                }}>
                 Nguyễn Thành Hoàng
               </p>
               <p style={{ fontSize: "16px", color: "#636363" }}>
@@ -185,4 +173,21 @@ const CommentsCarousel = (props) => {
   );
 };
 
-export default CommentsCarousel;
+export const EndCmt = (props) => {
+  return (
+    <Row style={{ marginTop: "20px" }}>
+      <Col span={24}>
+        <h2 style={{ textAlign: "center", fontSize: "24px" }}>
+          NHẬN XÉT TIÊU BIỂU
+        </h2>
+      </Col>
+      <Col span={24}>
+        <p style={{ textAlign: "center", fontSize: "24px" }}>
+          Chúng tôi luôn đánh giá cao những nhận xét của khách hàng dành cho
+          chúng tôi<br></br> và hoàn toàn trung thực trong việc trình bày các
+          nhận xét.
+        </p>
+      </Col>
+    </Row>
+  );
+};
