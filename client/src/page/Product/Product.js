@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import 'animate.css'
+import "animate.css";
 import { Row, Col } from "antd";
 import { FilterProduct } from "../../components";
 import { RightContent, ListItem } from "../../components/RightContent";
@@ -13,13 +13,13 @@ const Product = (props) => {
       if (!LeftContentDOM.current) return;
       if (
         window.scrollY + LeftContentDOM.current.offsetHeight >
-            document.getElementById("product").offsetHeight &&
+          document.getElementById("product").offsetHeight &&
         !shouldAnchorBottom
       ) {
         setShouldAnchorBottom(true);
       } else if (
         window.scrollY + LeftContentDOM.current.offsetHeight <
-            document.getElementById("product").offsetHeight &&
+          document.getElementById("product").offsetHeight &&
         shouldAnchorBottom
       ) {
         setShouldAnchorBottom(false);

@@ -2,11 +2,19 @@
   float: right;
 	font-size: 50px;
 	margin: 160px 40px;
+	color: #636363;
+	transition: .4s;
 }
 .next {
 	float: left;
 	font-size:50px;
 	margin: 160px 40px;
+	color: #636363;
+	transition: .4s;
+}
+.previous:hover, .next:hover {
+	transition: .4s;
+	color: #000000;
 }
 .comments {
 	width: 100%;
@@ -16,7 +24,7 @@
 	align-items: center;
 }
 .comment-content {
-	margin-left: 200px;
+	margin: 0 40px;
   text-align: right;
 }
 .review {
