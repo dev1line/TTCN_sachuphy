@@ -1,10 +1,11 @@
 import React from "react";
+import 'animate.css';
 import { Header, Footer } from "./components";
 import Signin from "./page/Sign/Signin";
 import Signup from "./page/Sign/Signup";
-import { Home, Product, About } from "./page";
-import "./App.css";
+import { Home, Product, About, Contact } from "./page";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./App.css";
 
 const App = () => {
   return (
@@ -12,19 +13,34 @@ const App = () => {
       <Header />
       <Switch>
         <Route exact path="/">
-          <Home />
+          <div className="main">
+            <Home />
+          </div>
         </Route>
         <Route exact path="/product">
-          <Product />
+          <div className="main">
+            <Product />
+          </div>
         </Route>
         <Route exact path="/signin">
-          <Signin />
+          <div className="main">
+            <Signin />
+          </div>
         </Route>
         <Route exact path="/signup">
-          <Signup />
+          <div className="main">
+            <Signup />
+          </div>
         </Route>
-        <Route exact path="/About">
-          <About />
+        <Route exact path="/about">
+          <div className="main">
+            <About />
+          </div>
+        </Route>
+        <Route exact path="/contact">
+          <div className="main">
+            <Contact />
+          </div>
         </Route>
       </Switch>
       <Footer />

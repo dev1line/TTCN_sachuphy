@@ -30,13 +30,14 @@
 
 .is-anchored {
   position: fixed;
-  top: 0;
+  bottom: 200px;
 }
 
 .left-content {
   max-height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+  position: fixed;
 }
 .left-content::-webkit-scrollbar {
   display: none;

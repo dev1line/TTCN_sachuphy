@@ -1,0 +1,12 @@
+import React from "react";
+import "./styles.css";
+import "animate.css";
+
+const Contact = (props) => {
+  return (
+    <div className="animate__animated animate__fadeIn">
+      dsad
+    </div>
+  )
+}
+export default Contact;

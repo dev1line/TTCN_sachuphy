@@ -1,6 +1,6 @@
 import { Menu } from "antd";
 import React from 'react'
-import './style.css'
+import './styles.css';
 import { UserOutlined, LaptopOutlined } from "@ant-design/icons";
 import classnames from 'classnames'
 
@@ -11,15 +11,14 @@ const { SubMenu } = Menu;
 //   console.log(e.key);
 // };
 
-const LeftContent = React.forwardRef((props, ref) => {
+const ProductSelection = React.forwardRef((props, ref) => {
   var leftContentClasses = classnames({
     'left-content': true,
-    'is-anchored': props.shouldAnchor,
     'is-anchored-bottom': props.shouldAnchorBottom
   });
   
   return (
-    <div ref={ref} style={{'width': props.width ? `${props.width}px` : ''}} className={leftContentClasses}>
+    <div ref={ref} className={leftContentClasses}>
       <Menu mode="inline" style={{ borderRight: 0 }}>
         <SubMenu
           key="brand"
@@ -54,4 +53,4 @@ const LeftContent = React.forwardRef((props, ref) => {
   );
 });
 
-export default LeftContent;
+export default ProductSelection;

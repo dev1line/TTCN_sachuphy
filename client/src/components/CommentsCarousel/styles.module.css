@@ -1,0 +1,47 @@
+.left {
+  display: block;
+  float: right;
+  font-size: 50px;
+  margin-top: 200px;
+}
+.right {
+  display: block;
+  float: left;
+  font-size: 50px;
+  margin-top: 200px;
+}
+.container {
+  display: flex !important;
+}
+.img {
+  width: 400px;
+  height: 400px;
+}
+.comment {
+  text-align: right;
+  margin-right: 60px;
+}
+.review {
+  font-size: 28px;
+  line-height: 150%;
+  color: #636363;
+}
+.author {
+  font-size: 24px;
+  color: #1789fc;
+}
+.date {
+  font-size: 16px;
+  color: #636363;
+}
+.highlights-comment {
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  color: #4c4c4c;
+}
+.content {
+  font-size: 24px;
+  text-align: center;
+  color: #4C4C4C;
+}
