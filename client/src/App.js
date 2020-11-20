@@ -1,46 +1,33 @@
 import React from "react";
-import 'animate.css';
 import { Header, Footer } from "./components";
 import Signin from "./page/Sign/Signin";
 import Signup from "./page/Sign/Signup";
-import { Home, Product, About, Contact } from "./page";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Home, Product, About } from "./page";
 import "./App.css";
-
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ShopCart from './page/ShopCart/ShopCart'
 const App = () => {
   return (
     <Router>
       <Header />
       <Switch>
         <Route exact path="/">
-          <div className="main">
-            <Home />
-          </div>
+          <Home />
         </Route>
         <Route exact path="/product">
-          <div className="main">
-            <Product />
-          </div>
+          <Product />
         </Route>
         <Route exact path="/signin">
-          <div className="main">
-            <Signin />
-          </div>
+          <Signin />
         </Route>
         <Route exact path="/signup">
-          <div className="main">
-            <Signup />
-          </div>
+          <Signup />
         </Route>
-        <Route exact path="/about">
-          <div className="main">
-            <About />
-          </div>
+        <Route exact path="/About">
+          <About />
         </Route>
-        <Route exact path="/contact">
-          <div className="main">
-            <Contact />
-          </div>
+        <Route exact path="/shopcart">
+          <ShopCart />
         </Route>
       </Switch>
       <Footer />
