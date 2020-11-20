@@ -23,6 +23,12 @@ const tokenReducer = (state = initial, action) => {
         signup_success: false,
       };
     }
+    case "LOG_OUT_DONE": {
+      return {
+        ...state,
+        token: "",
+      }
+    }
     default: {
       return state;
     }

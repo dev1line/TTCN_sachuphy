@@ -19,7 +19,7 @@ export const Item = (props) => {
         <p>Ram: 8gb</p>
         <Button
           size="large"
-          style={{ marginRight: "auto", marginLeft: "auto", display: "block" }}
+          style={{ marginRight: "auto", marginLeft: "auto", display: "block", width:"100%"}}
         >
           Thêm vào giỏ hàng
         </Button>

@@ -13,7 +13,7 @@ import {
 
 const Home = (props) => {
   return (
-    <div className="animate__animated animate_fadeIn">
+    <div className="animate__animated animate__fadeIn">
       <Row span={24} gutter={[0, 80]}>
         <Col span={24}>
           <PromotionsCarousel />

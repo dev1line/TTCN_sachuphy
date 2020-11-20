@@ -1,6 +1,7 @@
 .footer {
   position: relative;
-  margin-top: 60px;
+  max-width: 1440px;
+  margin: 60px auto 0;
 }
 .newsletters {
   background: #4c4c4c;

@@ -6,4 +6,4 @@ export { default as Promotions } from './Promotions/Promotions';
 export { default as Brands } from './Brands/Brands';
 export { default as Comments } from './Comments/Comments';
 export { default as Shopping } from './Shopping/Shopping';
-// export { default as Header } from './Header/Header';
+export { default as FilterProduct } from './FilterProduct/FilterProduct';

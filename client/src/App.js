@@ -3,10 +3,9 @@ import { Header, Footer } from "./components";
 import Signin from "./page/Sign/Signin";
 import Signup from "./page/Sign/Signup";
 import "./App.css";
-import { Home, Product, About, Contact } from "./page";
+import { Home, Product, About, Contact, Shopcart } from "./page";
 import { Col, Row } from "antd";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 const App = () => {
   return (
     <Router>
@@ -41,7 +40,12 @@ const App = () => {
             </Route>
             <Route exact path="/Contact">
               <div className="main">
-                <About />
+                <Contact />
+              </div>
+            </Route>
+            <Route exact path="/Shopcart">
+              <div className="main">
+                <Shopcart />
               </div>
             </Route>
           </Switch>
