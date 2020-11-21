@@ -14,7 +14,7 @@ const Header = (props) => {
   const langs = ["Tiếng Việt", "English"];
   const accs = ["My Account", "Log out"];
   const signs = ["Sign In", "Sign Up"];
-  const links = ["SignIn", "SignUp"];
+  const links = ["Signin", "Signup"];
   const [currency, setCurrency] = useState(currs[0]);
   const [language, setLanguage] = useState(langs[0]);
   const [account, setAccount] = useState(accs[0]);

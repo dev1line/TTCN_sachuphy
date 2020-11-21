@@ -7,15 +7,9 @@ const styleImage = {
     height: "150px"
 }
 
-
-
 const TableItem = (props) =>{
     var data = props.data;
-
     const [Items, setItem] = useState(data);
-
-
-
     const columns = [
       {
         dataIndex: 'key',

@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col } from "antd";
-import SigninForm from "./SigninForm";
+import SigninForm from "./SignInForm";
 
 const Signin = (props) => {
   return (

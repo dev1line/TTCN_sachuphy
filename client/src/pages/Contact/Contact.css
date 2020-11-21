@@ -4,10 +4,7 @@
   /* background-attachment: fixed; */
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
-}
-.contact {
-  /* background-color: #f6f6f6; */
+  background-size: contain;
 }
 .form {
   display: flex;

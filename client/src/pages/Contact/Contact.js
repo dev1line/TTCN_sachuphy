@@ -1,9 +1,15 @@
 import React from "react";
 import "./Contact.css";
 import "animate.css";
-import { Row, Col } from "antd";
+import { Row, Col, message } from "antd";
 
 const About = (props) => {
+  const message = {
+    name: "",
+    email: "",
+    message: "",
+  };
+  const onFinish = (e) => {};
   return (
     <div className="animate__animated animate__fadeIn">
       <Row justify="center">
@@ -29,7 +35,7 @@ const About = (props) => {
               </div>
             </div>
           </div>
-          <div className="footer-section wrapper">
+          <form className="footer-section wrapper">
             <h2 className={"message"}>Get a quote</h2>
             <div className="input-data">
               <input className="input" type="text" required></input>
@@ -41,12 +47,14 @@ const About = (props) => {
             </div>
             <div className="input-data">
               <label>Message</label>
-              <textarea placeholder="Type here ..." className="textarea"></textarea>
+              <textarea
+                placeholder="Type here ..."
+                className="textarea"></textarea>
             </div>
-          </div>
-          <div className="btn-send">
-            <button>Send message</button>
-          </div>
+            <div className="btn-send">
+              <button onClick={onFinish}>Send message</button>
+            </div>
+          </form>
           <div className="contact-footer">
             <h2 className="follow">Follow us</h2>
             <div className="social-media">
