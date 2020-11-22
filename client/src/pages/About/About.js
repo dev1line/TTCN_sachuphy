@@ -8,9 +8,9 @@ const About = (props) => {
       <div className="card-list">
         <div className="card"></div>
         <div className="card"></div>
+        <div className="card"></div>
       </div>
       <div className="card-list">
-        <div className="card"></div>
         <div className="card"></div>
         <div className="card"></div>
       </div>
