@@ -31,7 +31,7 @@ const About = (props) => {
               </div>
               <div className="phone-us">
                 <p className="content">Phone</p>
-                <p className="sub-content">+84-132-456-789</p>
+                <p className="sub-content">+84 132 456 789</p>
               </div>
             </div>
           </div>
