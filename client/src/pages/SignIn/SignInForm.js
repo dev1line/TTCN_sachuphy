@@ -19,19 +19,19 @@ const SigninForm = (props) => {
   };
   return (
     <Form
-      name="basic"
+      className="container"
       initialValues={{
         remember: true,
       }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}>
       <Form.Item>
-        <h1 style={{ color: "black", fontSize: "42px", margin: "-10px 0px" }}>
-          Sign In
+        <h1 className="title">
+          SIGN IN
         </h1>
       </Form.Item>
       <Form.Item>
-        <p style={{ color: "black", margin: "0px" }}>
+        <p className="subtitle">
           <Link to="/signup">Need an account ?</Link>
         </p>
       </Form.Item>
@@ -58,8 +58,10 @@ const SigninForm = (props) => {
           size="large"
           type="success"
           htmlType="submit"
-          style={{ float: "right", backgroundColor: "green", color: "white" }}>
-          Sign In
+          className="btnsub"
+          style={{ backgroundColor:' #1789fc', fontWeight:'bold', color:'#FFFFFF'}}
+          >
+          SIGN IN
         </Button>
       </Form.Item>
       {token !== "" ? <Redirect to="/" /> : <Redirect to="/signin" />}

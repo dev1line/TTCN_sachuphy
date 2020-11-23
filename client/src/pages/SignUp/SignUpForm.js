@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Form, Input, Button, Modal } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-// import "./SignupForm.css";
+import "./SignupForm.css";
 import { Link } from "react-router-dom";
 import { setToken } from "../../action/tokenAction";
 import { useSelector, useDispatch } from "react-redux";
@@ -39,6 +39,7 @@ const SignupForm = (props) => {
   };
   return (
     <Form
+      className="container"
       form={form}
       name="basis"
       initialValues={{
@@ -47,21 +48,14 @@ const SignupForm = (props) => {
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}>
       <Form.Item>
-        <h1 style={{ color: "black", fontSize: "42px", margin: "-10px 0px" }}>
-          Sign Up
+        <h1 className="title">
+          SIGN UP
         </h1>
       </Form.Item>
-      <Form.Item>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-          }}>
-          <p style={{ color: "black", margin: "0px" }}>
+      <Form.Item>      
+          <p className='subtitle'>
             <Link to="/signin">Have an account ?</Link>
           </p>
-        </div>
         <Modal
           title="Notification"
           visible={visiable}
@@ -120,8 +114,10 @@ const SignupForm = (props) => {
           size="large"
           type="success"
           htmlType="submit"
-          style={{ float: "right", backgroundColor: "green", color: "white" }}>
-          Sign Up
+          className="btnsub"
+          style={{ backgroundColor:' #1789fc', fontWeight:'bold', color:'#FFFFFF'}}
+          >
+          SIGN UP
         </Button>
       </Form.Item>
     </Form>

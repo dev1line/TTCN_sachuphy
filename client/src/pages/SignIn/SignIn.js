@@ -6,7 +6,7 @@ const Signin = (props) => {
   return (
     <Row>
       <Col offset={4}></Col>
-      <Col span={16}>
+      <Col span={16} style={{display:'flex', justifyContent:"center", alignItems:'center'}}>
         <SigninForm />
       </Col>
       <Col offset={4}></Col>
