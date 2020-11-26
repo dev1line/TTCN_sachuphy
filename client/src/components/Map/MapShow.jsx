@@ -13,7 +13,7 @@ export const MapShow = (props) => {
     <Map
       style={style}
       containerStyle={{
-        height: "500px",
+        height: "380px",
         width: "100%",
       }}>
       <Layer type="symbol" id="marker" layout={{ "icon-image": "marker-15" }}>

@@ -4,24 +4,26 @@
   top: 0;
   z-index: 1000;
   background: #ffffff;
-  border-bottom: .1px solid #f3f3f4;
+  border-bottom: 0.1px solid #f3f3f4;
 }
 
 .headbar-wrapper {
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   border-bottom: 1px solid #dbdbdb;
 }
 .headbar,
 .navbar,
 .menubar-wrapper {
-  width: 1440px;
+  width: 1280px;
   margin: 0 auto;
 }
 .hotline {
   color: #636363;
   letter-spacing: 2px;
+  font-size: 1px;
 }
 .item {
+  font-size: 12px;
   display: flex;
   justify-content: flex-end;
   text-align: right;
@@ -60,12 +62,12 @@ button {
 }
 .shop {
   text-align: end;
+  
 }
 .btn {
   background-color: #1789fc;
-  height: 60px;
-  width: 60px;
-  justify-content: right;
+  height: 52px;
+  width: 52px;
 }
 .shopping {
   display: flex;
@@ -86,7 +88,7 @@ button {
   justify-content: space-between;
 }
 .menu-item {
-  padding: 1rem 0;
+  padding: .5rem 0 .75rem;
   font-weight: bold;
   font-size: 16px;
   line-height: 19px;
@@ -102,9 +104,9 @@ button {
 .is-active::after {
   content: "";
   position: absolute;
-  height: 4px;
+  height: 3px;
   width: 100%;
-  top: 48px;
+  top: 36px;
   left: 0;
   background: #1789fc;
 }

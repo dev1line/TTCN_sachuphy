@@ -22,15 +22,16 @@
   right: 0;
 }
 .content {
-  font-size: 24px;
+  font-size: 20px;
   letter-spacing: 2px;
   color: #ffffff;
+  margin-bottom: 0;
 }
 .btn {
   color: #1789fc;
-  width: 320px;
-  height: 60px;
-  font-size: 24px;
+  width: 240px;
+  height: 52px;
+  font-size: 20px;
   font-weight: bold;
   letter-spacing: 2px;
 }

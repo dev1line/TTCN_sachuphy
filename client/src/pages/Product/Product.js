@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "animate.css";
 import { Row, Col } from "antd";
 import { FilterProduct } from "../../components";
-import { RightContent, ListItem } from "../../components/RightContent";
+import { ListItem } from "../../components/RightContent";
 
 const Product = (props) => {
   const [shouldAnchorBottom, setShouldAnchorBottom] = useState(null);
@@ -42,7 +42,6 @@ const Product = (props) => {
         </Col>
         <Col id="product" span={20}>
           <Col style={{ marginLeft: "30px", marginRight: "30px" }}>
-            <RightContent></RightContent>
             <ListItem></ListItem>
           </Col>
         </Col>

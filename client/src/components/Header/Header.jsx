@@ -81,12 +81,11 @@ const Header = (props) => {
     <div className={styles.header}>
       <div className={styles["headbar-wrapper"]}>
         <Row className={styles.headbar}>
-          <Col offset={1}></Col>
-          <Col span={12} className={styles.hotline}>
+          <Col span={13} className={styles.hotline}>
             Tel: +84 965 857 082
         </Col>
           <Col offset={4}></Col>
-          <Col className={styles.item} span={6}>
+          <Col className={styles.item} span={7}>
             <Dropdown className={styles.dropdown} overlay={menuCurrency} trigger={["click"]}>
               <div>
                 {currency}
@@ -115,14 +114,12 @@ const Header = (props) => {
               </Dropdown>
             }
           </Col>
-          <Col offset={1}></Col>
         </Row>
       </div>
       <Row className={styles.navbar}>
-        <Col offset={1}></Col>
         <Col span={6} className={styles.logo}>
           <Link to="/">
-            <img width="60px" height="60px" src="./logo192.png" alt="logo" />
+            <img width="52px" height="52px" src="./logo192.png" alt="logo" />
             <span className={styles.name}>SACHUPHY</span>
           </Link>
         </Col>
@@ -135,18 +132,17 @@ const Header = (props) => {
             onSearch={onSearch}
           />
         </Col>
-        <Col span={2} className={styles["shop"]}>
+        <Col span={3} className={styles["shop"]}>
           <Badge count={1} style={{ backgroundColor: "#1789FC" }}>
             <Button type="primary" className={styles.btn}>
-              <Link exact="true" to="/shopcart"><ShoppingCartOutlined style={{ fontSize: 28 }} /></Link>
+              <Link exact="true" to="/shopcart"><ShoppingCartOutlined style={{ fontSize: 24 }} /></Link>
             </Button>
           </Badge>
         </Col>
-        <Col span={2} className={styles["shopping"]}>
+        <Col span={3} className={styles["shopping"]}>
           <b>My trolley</b>
           <span>$200.00</span>
         </Col>
-        <Col offset={1}></Col>
       </Row>
       <Row className={styles["menubar-wrapper"]}>
         <Col offset={12}></Col>
