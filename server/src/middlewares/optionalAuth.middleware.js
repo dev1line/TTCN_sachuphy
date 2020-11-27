@@ -10,25 +10,17 @@ const AccessTokenManager = require("../security/accessTokenManager")
 
 module.exports = async (req, res, next) => {
   const token = extractTokenFromHeaders(req.headers)
-  if (!token)
-    return res.status(401).json({
-      message: "Missing token",
-    })
+  if (!token) return next()
 
   let isVerified
 
   try {
     isVerified = AccessTokenManager.verify(token)
   } catch (err) {
-    return res.status(401).json({
-      message: "Missing token or not authorized",
-    })
+    return next()
   }
 
-  if (!isVerified)
-    return res.status(401).json({
-      message: "Missing token or not authorized",
-    })
+  if (!isVerified) return next()
 
   const { username } = AccessTokenManager.decode(token)
 
@@ -36,18 +28,12 @@ module.exports = async (req, res, next) => {
     .select("-password -__v")
     .exec()
 
-  if (!user)
-    return res.status(401).json({
-      message: "Unauthorized",
-    })
+  if (!user) return next()
 
-  if (user.deleted_at)
-    return res.status(401).json({
-      message: "Your account has been deleted.",
-    })
+  if (user.deleted_at) return next()
 
   req.user = user
   req.token = token
 
-  next()
+  return next()
 }

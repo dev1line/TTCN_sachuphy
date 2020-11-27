@@ -14,6 +14,14 @@ const UserSchema = new Schema({
     type: String,
     default: "user",
   },
+  created_at: {
+    type: Date,
+    default: Date.now
+  },
+  deleted_at: {
+    type: Date,
+    default: null
+  }
 })
 
 const bcrypt = require("bcrypt")

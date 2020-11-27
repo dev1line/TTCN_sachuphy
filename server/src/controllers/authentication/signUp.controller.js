@@ -18,7 +18,7 @@ module.exports = async function signUpController(req, res, next) {
       })
     return res.status(422).json({
       success: false,
-      message: "username.exist"
+      message: err.message
     })
   }
 

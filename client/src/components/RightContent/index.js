@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col, Select, Pagination } from "antd";
+import { useSelector, useDispatch } from "react-redux";
 import { Item } from "../Item";
 
 const { Option } = Select;
 
 export const ListItem = (props) => {
+  // const [prorducts, getProducts] = useState({});
+  const dispatch = useDispatch();
+
+  const products = useSelector((state) => state.products);
+
+  useEffect(() => {
+  // getProducts(products)
+  dispatch({ type: "GET_ALL_PRODUCT" });
+  console.log(products);
+  },[dispatch]);
+
   return (
     <div>
       <Row>
