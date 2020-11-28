@@ -7,3 +7,4 @@ export { default as Brands } from './Brands/Brands';
 export { default as Comments } from './Comments/Comments';
 export { default as Shopping } from './Shopping/Shopping';
 export { default as FilterProduct } from './FilterProduct/FilterProduct';
+export { default as Cards } from './Cards/Cards';
