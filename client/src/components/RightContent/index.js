@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Row, Col, Select, Pagination } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { Item } from "../Item";
@@ -6,16 +6,13 @@ import { Item } from "../Item";
 const { Option } = Select;
 
 export const ListItem = (props) => {
-  // const [prorducts, getProducts] = useState({});
   const dispatch = useDispatch();
 
-  const products = useSelector((state) => state.products);
+  const products = useSelector((state) => state.products.products);
 
   useEffect(() => {
-  // getProducts(products)
-  dispatch({ type: "GET_ALL_PRODUCT" });
-  console.log(products);
-  },[dispatch]);
+    dispatch({ type: "GET_ALL_PRODUCT" });
+  }, [dispatch]);
 
   return (
     <div>
@@ -45,24 +42,14 @@ export const ListItem = (props) => {
         </Row>
         <Row span={24} style={{ marginTop: "30px" }}>
           <Row gutter={[32, 32]}>
-            <Col className="gutter-row" span={8}>
-              <Item></Item>
-            </Col>
-            <Col className="gutter-row" span={8}>
-              <Item></Item>
-            </Col>
-            <Col className="gutter-row" span={8}>
-              <Item></Item>
-            </Col>
-            <Col className="gutter-row" span={8}>
-              <Item></Item>
-            </Col>
-            <Col className="gutter-row" span={8}>
-              <Item></Item>
-            </Col>
-            <Col className="gutter-row" span={8}>
-              <Item></Item>
-            </Col>
+            {products.map((product, i) => (
+              <Col key={i} className="gutter-row" span={8}>
+                <Item
+                  name={product.default_spec.name}
+                  price={product.default_spec.price}
+                  ram={product.default_spec.memory.capacity}></Item>
+              </Col>
+            ))}
           </Row>
         </Row>
         <Row

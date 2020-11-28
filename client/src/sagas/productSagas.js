@@ -8,15 +8,8 @@ function* getAllProduct() {
     method: "get",
     url: `${url}`,
   })
-    // .then((res) => {
-    //   return res.data;
-    // })
-    // .catch((err) => {
-    //   return err.data;
-    // });
-  if (data) {
-    console.log(data);
-    yield put({ type: "GET_PRODUCT_SUCCESS", products: data.products });
+  if(data) {
+    yield put({ type: "GET_PRODUCT_SUCCESS", products: data.data.products });
   }
 }
 export { getAllProduct };
