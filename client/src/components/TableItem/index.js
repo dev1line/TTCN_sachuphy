@@ -1,90 +1,107 @@
-import React, { useState} from "react"
-import { Table, InputNumber } from "antd"
-import { CloseCircleOutlined } from "@ant-design/icons"
-
+import React from "react";
+import { Table, InputNumber } from "antd";
+import { CloseCircleOutlined } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
 const styleImage = {
-    width: "150px",
-    height: "150px"
-}
+  width: "150px",
+  height: "150px",
+};
 
-const TableItem = (props) =>{
-    var data = props.data;
-    const [Items, setItem] = useState(data);
-    const columns = [
-      {
-        dataIndex: 'key',
-        key: 'key',
-      },
-      {
-    
-        title: 'Ảnh',
-        dataIndex: 'image',
-        key: 'image',
-        render: theImage => <img style={styleImage} alt={theImage} src={theImage}/>,
-      },
-      {
-        title: 'Tên sản phẩm',
-        dataIndex: 'name',
-        key: 'name',
-      },
-      {
-        title: 'Giá',
-        dataIndex: 'price',
-        key: 'price',
-        render: price => <p>{price} VNĐ</p>
-      },
-      {
-          title: 'Số lượng',
-          dataIndex: 'sl',
-          key: 'sl',
-          render: (theNumber, row) => <InputNumber min={1} max={100} defaultValue={theNumber} onChange={(value)=>onChange(value, row.key)}/>,
-      },
-      {
-          title: 'Tổng',
-          dataIndex: 'all',
-          key: 'all',
-          render: all => <p>{all} VNĐ</p>
-      },
-      {
-          title: 'Action',
-          dataIndex: '',
-          key: 'x',
-          render: (row) => <CloseCircleOutlined onClick={()=>onClick(row.key)} />,
-      },
-    ];
-    
-
-    const onChange = (value, id) => {
-      console.log('changed'+ value+ "in"+ id);
-      data[id-1].sl=value;
-      console.log(data[id-1].all);
-      data[id-1].all=data[id-1].sl * data[id-1].price;
-      const newData = [...data];
-      setItem(newData);
-  }
-
-    const onClick = (e) =>{
-      console.log(e);
-      data.pop(e-1);
-      const newData = [...data];
-      setItem(newData);
-    }
-
-    var all_in = 0;
-    Items.map(el =>{
-      all_in = all_in+el.all;
-      return 0;
-    });
-    
-    return(
-      <div>
-        <Table
-            columns={columns}
-            dataSource={Items}
+const TableItem = (props) => {
+  const dispatch = useDispatch();
+  const data = props.data;
+  console.log("data:", data);
+  const dataFormatted = data.map((curr, index) => {
+    return {
+      key: index,
+      name: curr.default_spec.slug,
+      price: curr.default_spec.price,
+      number: 1,
+      // number: newData.forEach((element, index) => {
+      //   if (element.default_spec.slug === curr.default_spec.slug) {
+      //     newData[index].number + 1;
+      //     return true;
+      //   } else return false;
+      // })
+      //   ? ""
+      //   : 1,
+    };
+  }, []);
+  const columns = [
+    {
+      title: "STT",
+      dataIndex: "key",
+      key: "key",
+    },
+    {
+      title: "Ảnh",
+      dataIndex: "slug",
+      render: (slug) => (
+        <img
+          style={styleImage}
+          alt={slug}
+          src="https://fptshop.com.vn/Uploads/Originals/2020/6/2/637266923420476975_hp-15s-fq-bac-1.png"
         />
-        <h2 style={{textAlign:"left"}}>Tổng tiền: {all_in} VNĐ</h2>
-      </div>
-    );
-}
+      ),
+    },
+    {
+      title: "Tên sản phẩm",
+      dataIndex: "name",
+      key: "name",
+    },
+    {
+      title: "Giá",
+      dataIndex: "price",
+      key: "price",
+      render: (price) => <p>{price} VNĐ</p>,
+    },
+    {
+      title: "Số lượng",
+      dataIndex: "number",
+      key: "number",
+      render: () => (
+        <InputNumber
+          min={1}
+          max={100}
+          defaultValue={1}
+          // onChange={(value) => onChange(value, row.key)}
+        />
+      ),
+    },
+    {
+      title: "Tổng",
+      dataIndex: "price",
+      key: "price",
+      render: (all) => <p>{all} VNĐ</p>,
+    },
+    {
+      title: "Action",
+      dataIndex: "x",
+      key: "x",
+      render: (index) => (
+        <CloseCircleOutlined onClick={(index) => handleClick(index)} />
+      ),
+    },
+  ];
+
+  const handleClick = (index) => {
+    console.log("index", index);
+    dispatch({ type: "DELETE_ITEM", index });
+    // dataFormatted.splice(index, 1);
+  };
+
+  var all_in = 0;
+  dataFormatted.map((el) => {
+    all_in = all_in + el.price;
+    return 0;
+  });
+
+  return (
+    <div>
+      <Table columns={columns} dataSource={dataFormatted} />
+      <h2 style={{ textAlign: "left" }}>Tổng tiền:{all_in} VNĐ</h2>
+    </div>
+  );
+};
 
 export default TableItem;

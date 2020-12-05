@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Col, Form, Input, Button, Select } from "antd";
 import TableItem from "../TableItem";
 import "./style.css";
+import { useDispatch, useSelector } from "react-redux";
 
 const { Option } = Select;
 
@@ -14,46 +15,49 @@ const layout = {
   },
 };
 
-const data = [
-  {
-    key: 1,
-    image:
-      "https://fptshop.com.vn/Uploads/Originals/2020/6/2/637266923420476975_hp-15s-fq-bac-1.png",
-    name: "John Brown",
-    price: 32,
-    sl: 1,
-    all: 32,
-  },
-  {
-    key: 2,
-    image:
-      "https://fptshop.com.vn/Uploads/Originals/2020/6/2/637266923420476975_hp-15s-fq-bac-1.png",
-    name: "John Brown",
-    price: 32,
-    sl: 1,
-    all: 32,
-  },
-  {
-    key: 3,
-    image:
-      "https://fptshop.com.vn/Uploads/Originals/2020/6/2/637266923420476975_hp-15s-fq-bac-1.png",
-    name: "John Brown",
-    price: 32,
-    sl: 1,
-    all: 32,
-  },
-  {
-    key: 4,
-    image:
-      "https://fptshop.com.vn/Uploads/Originals/2020/6/2/637266923420476975_hp-15s-fq-bac-1.png",
-    name: "John Brown",
-    price: 32,
-    sl: 1,
-    all: 32,
-  },
-];
+// const data = [
+//   {
+//     key: 1,
+//     image:
+//       "https://fptshop.com.vn/Uploads/Originals/2020/6/2/637266923420476975_hp-15s-fq-bac-1.png",
+//     name: "John Brown",
+//     price: 32,
+//     sl: 1,
+//     all: 32,
+//   },
+//   {
+//     key: 2,
+//     image:
+//       "https://fptshop.com.vn/Uploads/Originals/2020/6/2/637266923420476975_hp-15s-fq-bac-1.png",
+//     name: "John Brown",
+//     price: 32,
+//     sl: 1,
+//     all: 32,
+//   },
+//   {
+//     key: 3,
+//     image:
+//       "https://fptshop.com.vn/Uploads/Originals/2020/6/2/637266923420476975_hp-15s-fq-bac-1.png",
+//     name: "John Brown",
+//     price: 32,
+//     sl: 1,
+//     all: 32,
+//   },
+//   {
+//     key: 4,
+//     image:
+//       "https://fptshop.com.vn/Uploads/Originals/2020/6/2/637266923420476975_hp-15s-fq-bac-1.png",
+//     name: "John Brown",
+//     price: 32,
+//     sl: 1,
+//     all: 32,
+//   },
+// ];
 
 const FormInfo = (props) => {
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.cart.cartList);
+  console.log("data first:", data);
   const onFinish = (values) => {
     console.log(values);
   };
@@ -61,10 +65,12 @@ const FormInfo = (props) => {
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select
-        defaultValue="+84"
+        defaultValue="84"
+        value="84"
         style={{
           width: 70,
-        }}>
+        }}
+      >
         <Option value="84">+84</Option>
         <Option value="1">+1</Option>
         <Option value="2">+2</Option>
@@ -78,7 +84,8 @@ const FormInfo = (props) => {
           {...layout}
           name="nest-messages"
           onFinish={onFinish}
-          className="abc-form">
+          className="abc-form"
+        >
           <h1 style={{ textAlign: "center" }}> Thông tin khách hàng</h1>
           <Form.Item
             name="name"
@@ -88,7 +95,8 @@ const FormInfo = (props) => {
                 required: true,
                 message: "Vui lòng nhập Tên!",
               },
-            ]}>
+            ]}
+          >
             <Input placeholder="Nguyễn Văn A" />
           </Form.Item>
           <Form.Item
@@ -103,7 +111,8 @@ const FormInfo = (props) => {
                 type: "email",
                 message: "Email không hợp lệ!",
               },
-            ]}>
+            ]}
+          >
             <Input placeholder="iloveyou300@gmail.com" />
           </Form.Item>
           <Form.Item
@@ -114,7 +123,8 @@ const FormInfo = (props) => {
                 required: true,
                 message: "Vui lòng nhập địa chỉ!",
               },
-            ]}>
+            ]}
+          >
             <Input placeholder="Cho bố cái địa chỉ!?" />
           </Form.Item>
           <Form.Item
@@ -125,7 +135,8 @@ const FormInfo = (props) => {
                 required: true,
                 message: "Vui lòng nhập số điện thoại!",
               },
-            ]}>
+            ]}
+          >
             <Input
               placeholder="vd: 0123456789"
               addonBefore={prefixSelector}
@@ -142,7 +153,8 @@ const FormInfo = (props) => {
             className="checkout"
             size="large"
             type="primary"
-            htmlType="submit">
+            htmlType="submit"
+          >
             Đặt Hàng
           </Button>
         </Form>

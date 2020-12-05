@@ -14,6 +14,10 @@ export const ListItem = (props) => {
     dispatch({ type: "GET_ALL_PRODUCT" });
   }, [dispatch]);
 
+  const handleClick = (item) => {
+    console.log("click item:", item);
+    dispatch({ type: "ADD_CART", item });
+  };
   return (
     <div>
       <Row>
@@ -35,7 +39,8 @@ export const ListItem = (props) => {
           <Select
             size="large"
             defaultValue="ten"
-            style={{ width: 200, float: "right" }}>
+            style={{ width: 200, float: "right" }}
+          >
             <Option value="ten">Sắp xếp theo tên</Option>
             <Option value="gia">Sắp xếp theo giá</Option>
           </Select>
@@ -47,13 +52,17 @@ export const ListItem = (props) => {
                 <Item
                   name={product.default_spec.name}
                   price={product.default_spec.price}
-                  ram={product.default_spec.memory.capacity}></Item>
+                  ram={product.default_spec.memory.capacity}
+                  product={product}
+                  onClick={(name) => handleClick(name)}
+                />
               </Col>
             ))}
           </Row>
         </Row>
         <Row
-          style={{ display: "block", marginLeft: "auto", marginRight: "auto" }}>
+          style={{ display: "block", marginLeft: "auto", marginRight: "auto" }}
+        >
           <Pagination defaultCurrent={1} total={50} />
         </Row>
       </Row>
