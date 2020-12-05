@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
-import { Row, Col, Select, Pagination } from "antd";
+import { Row, Col, Select, Pagination, Spin } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { Item } from "../Item";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
 
 export const ListItem = (props) => {
+  const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+  const data = useSelector((state) => state.products.filterProducts);
   const dispatch = useDispatch();
-
-  const products = useSelector((state) => state.products.products);
-
   useEffect(() => {
     dispatch({ type: "GET_ALL_PRODUCT" });
-  }, [dispatch]);
+  }, []);
 
   const handleClick = (item) => {
     console.log("click item:", item);
@@ -21,20 +21,18 @@ export const ListItem = (props) => {
   return (
     <div>
       <Row>
-        <div>
-          <Col span={24}>
-            <img
-              alt="img"
-              style={{ width: "100%", height: "250px" }}
-              src="https://previews.123rf.com/images/alhovik/alhovik1708/alhovik170800009/84049519-weekend-sale-banner-this-weekend-special-offer-banner-template.jpg"
-            />
-          </Col>
-        </div>
+        <Col span={24}>
+          <img
+            alt="img"
+            style={{ width: "100%", height: "250px" }}
+            src="https://previews.123rf.com/images/alhovik/alhovik1708/alhovik170800009/84049519-weekend-sale-banner-this-weekend-special-offer-banner-template.jpg"
+          />
+        </Col>
       </Row>
       <Row>
         <Row style={{ marginTop: "30px", width: "100%", display: "block" }}>
           <p style={{ float: "left", fontSize: "18px", paddingTop: "5px" }}>
-            Có 20 sản phẩm
+            Tim thay {data.length} sản phẩm
           </p>
           <Select
             size="large"
@@ -45,10 +43,10 @@ export const ListItem = (props) => {
             <Option value="gia">Sắp xếp theo giá</Option>
           </Select>
         </Row>
-        <Row span={24} style={{ marginTop: "30px" }}>
-          <Row gutter={[32, 32]}>
-            {products.map((product, i) => (
-              <Col key={i} className="gutter-row" span={8}>
+        <Row gutter={[32, 32]} style={{ marginTop: "30px" }}>
+          {data.length ? (
+            data.map((product, i) => (
+              <Col key={i} span={8}>
                 <Item
                   name={product.default_spec.name}
                   price={product.default_spec.price}
@@ -57,14 +55,16 @@ export const ListItem = (props) => {
                   onClick={(name) => handleClick(name)}
                 />
               </Col>
-            ))}
-          </Row>
+            ))
+          ) : (
+            <Col>
+              <Spin indicator={antIcon} />
+            </Col>
+          )}
         </Row>
-        <Row
-          style={{ display: "block", marginLeft: "auto", marginRight: "auto" }}
-        >
-          <Pagination defaultCurrent={1} total={50} />
-        </Row>
+      </Row>
+      <Row justify="center">
+        <Pagination defaultCurrent={1} total={50} />
       </Row>
     </div>
   );

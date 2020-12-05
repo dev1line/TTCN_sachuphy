@@ -1,5 +1,6 @@
 const initialize = {
   products: [],
+  filterProducts: []
 };
 
 const productReducer = (state = initialize, action) => {
@@ -8,7 +9,14 @@ const productReducer = (state = initialize, action) => {
       return {
         ...state,
         products: action.products,
+        filterProducts: action.products
       };
+    }
+    case "FILTER_PRODUCT_SUCCESS": {
+      return {
+        ...state,
+        filterProducts: action.products
+      }
     }
     default: return state
   }

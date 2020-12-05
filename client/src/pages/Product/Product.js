@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "animate.css";
 import { Row, Col } from "antd";
 import { FilterProduct } from "../../components";
-import { ListItem } from "../../components/RightContent";
+import { ListItem } from "../../components/ListItem";
 
 const Product = (props) => {
   const [shouldAnchorBottom, setShouldAnchorBottom] = useState(null);
@@ -32,7 +32,7 @@ const Product = (props) => {
   });
 
   return (
-    <div className="animate__animated animate__fadeIn">
+    <div className="animate__animated animate__fadeIn" style={{'marginBottom': '40px'}}>
       <Row>
         <Col span={4}>
           <FilterProduct
