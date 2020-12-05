@@ -23,7 +23,8 @@ export const Item = (props) => {
             marginLeft: "auto",
             display: "block",
             width: "100%",
-          }}>
+          }}
+          >
           Thêm vào giỏ hàng
         </Button>
       </div>

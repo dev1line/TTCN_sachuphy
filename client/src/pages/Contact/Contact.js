@@ -11,7 +11,7 @@ const About = (props) => {
   };
   const onFinish = (e) => {};
   return (
-    <div className="animate__animated animate__fadeIn">
+    <div className="animate__animated animate__fadeIn" style={{'marginBottom': '40px'}}>
       <Row justify="center">
         <Col className="parallax" span={9} offset={2}></Col>
         <Col className="form" span={9} offset={1}>
