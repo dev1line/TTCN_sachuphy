@@ -1,20 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Row, Col, Select, Pagination, Spin } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { Item } from "../Item";
 import { LoadingOutlined } from "@ant-design/icons";
-// import _ from 'lodash'
 
 const { Option } = Select;
 
 export const ListItem = (props) => {
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
-  const data = useSelector((state) => state.products.products);
+  const data = useSelector((state) => state.products.filterProducts);
   const dispatch = useDispatch();
-  // console.log(products);
-
-  // const getAllProducts = () =>
-
   useEffect(() => {
     dispatch({ type: "GET_ALL_PRODUCT" });
   }, []);
