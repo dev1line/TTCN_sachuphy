@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Table, InputNumber } from "antd";
 import { CloseCircleOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
@@ -9,24 +9,39 @@ const styleImage = {
 
 const TableItem = (props) => {
   const dispatch = useDispatch();
+  
   const data = props.data;
-  console.log("data:", data);
+  // console.log("data:", data);
   const dataFormatted = data.map((curr, index) => {
     return {
       key: index,
       name: curr.default_spec.slug,
       price: curr.default_spec.price,
       number: 1,
-      // number: newData.forEach((element, index) => {
-      //   if (element.default_spec.slug === curr.default_spec.slug) {
-      //     newData[index].number + 1;
-      //     return true;
-      //   } else return false;
-      // })
-      //   ? ""
-      //   : 1,
+      total: curr.default_spec.price,
     };
   }, []);
+  console.log(dataFormatted);
+  let ans = [];
+  let isExist = (arr, x) => {
+    for(let i = 0; i < arr.length; i++) {
+      if (arr[i].name === x.name)
+      {
+        arr[i].number ++;
+        arr[i].total *= arr[i].number;
+        console.log(arr[i].number);
+        return true;
+      } 
+    }
+    
+    return false;
+  }
+  dataFormatted.map((el, index) => {
+    if(!isExist(ans, el)) ans.push(el);
+    return 0;
+  })
+  const [Data, setData] = useState(ans);
+  
   const columns = [
     {
       title: "STT",
@@ -59,20 +74,20 @@ const TableItem = (props) => {
       title: "Số lượng",
       dataIndex: "number",
       key: "number",
-      render: () => (
+      render: (number, row) => (
         <InputNumber
           min={1}
           max={100}
-          defaultValue={1}
-          // onChange={(value) => onChange(value, row.key)}
+          defaultValue={ number }
+          onChange={(value) => onChange(value, row.key)}
         />
       ),
     },
     {
       title: "Tổng",
-      dataIndex: "price",
-      key: "price",
-      render: (all) => <p>{all} VNĐ</p>,
+      dataIndex: "total",
+      key: "total",
+      render: (value) => <p>{value} VNĐ</p>,
     },
     {
       title: "Action",
@@ -90,15 +105,24 @@ const TableItem = (props) => {
     // dataFormatted.splice(index, 1);
   };
 
+  const onChange = (value, key) =>{
+      console.log(value);
+      ans[key].number = value;
+      ans[key].total = ans[key].price * ans[key].number;
+      let newans = [...ans]
+      setData(newans)
+      // console.log(newans);
+  }
+
   var all_in = 0;
-  dataFormatted.map((el) => {
+  ans.map((el) => {
     all_in = all_in + el.price;
     return 0;
   });
-
+  
   return (
     <div>
-      <Table columns={columns} dataSource={dataFormatted} />
+      <Table columns={columns} dataSource={Data} />
       <h2 style={{ textAlign: "left" }}>Tổng tiền:{all_in} VNĐ</h2>
     </div>
   );

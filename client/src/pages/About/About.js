@@ -13,6 +13,11 @@ const About = (props) => {
   const teammate = [
     {
       img: "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+      name: "Phuc",
+      description: "Hello Hoan =))))",
+    },
+    {
+      img: "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
       name: "Hoaneekkk",
       description: "Chao cac ban nho'",
     },
