@@ -19,7 +19,6 @@ function* getAllProduct() {
 function* filterProduct(input) {
   const filter = input.filterByName;
   console.log(input);
-  console.log(filter);
   const data = yield select();
   const products = data.products.products;
   console.log(products);

@@ -10,7 +10,7 @@ const { SubMenu } = Menu;
 const FilterProduct = React.forwardRef((props, ref) => {
   const dispatch = useDispatch();
   const handleChange = (e) => {
-    console.log("onChange: ", e);
+    // console.log("onChange: ", e);
     dispatch({ type: "FILTER_PRODUCT", filterByName: e.key });
   };
   var leftContentClasses = classnames({
@@ -27,7 +27,7 @@ const FilterProduct = React.forwardRef((props, ref) => {
 
   return (
     <div ref={ref} className={leftContentClasses}>
-      <Menu mode="inline" style={{ borderRight: 0 }} defaultSelectedKeys={['All']}>
+      <Menu mode="inline" style={{ borderRight: 0 }} defaultSelectedKeys={['All']} defaultOpenKeys={['brand']}>
         <SubMenu
           key="brand"
           icon={<UserOutlined />}

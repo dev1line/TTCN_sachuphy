@@ -32,7 +32,7 @@ const Product = (props) => {
   });
 
   return (
-    <div className="animate__animated animate__fadeIn" style={{'marginBottom': '40px'}}>
+    <div className="animate__animated animate__fadeIn" style={{'marginBottom': '40px', minHeight: '100vh'}}>
       <Row>
         <Col span={4}>
           <FilterProduct
