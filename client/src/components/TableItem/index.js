@@ -104,6 +104,12 @@ const TableItem = (props) => {
     dispatch({ type: "DELETE_ITEM", index });
     // dataFormatted.splice(index, 1);
   };
+  var all_in = 0;
+  ans.map((el) => {
+    all_in = all_in + el.total;
+    return 0;
+  });
+const [total, SetTotal] = useState(all_in)
 
   const onChange = (value, key) =>{
       console.log(value);
@@ -111,19 +117,20 @@ const TableItem = (props) => {
       ans[key].total = ans[key].price * ans[key].number;
       let newans = [...ans]
       setData(newans)
+      ans.map((el) => {
+        all_in = all_in + el.total;
+        return 0;
+      });
+      SetTotal(all_in);
       // console.log(newans);
   }
 
-  var all_in = 0;
-  ans.map((el) => {
-    all_in = all_in + el.price;
-    return 0;
-  });
+  
   
   return (
     <div>
       <Table columns={columns} dataSource={Data} />
-      <h2 style={{ textAlign: "left" }}>Tổng tiền:{all_in} VNĐ</h2>
+      <h2 style={{ textAlign: "left" }}>Tổng tiền:{total} VNĐ</h2>
     </div>
   );
 };
