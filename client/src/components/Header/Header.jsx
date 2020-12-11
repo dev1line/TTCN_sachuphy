@@ -31,6 +31,8 @@ const Header = (props) => {
     }
   }, [account, dispatch]);
 
+  const cartListItem = useSelector((state) => state.cart.cartList);
+
   if (token)
     console.log("token header:", token);
   const menuCurrency = (curr = currs) => (
@@ -133,7 +135,7 @@ const Header = (props) => {
           />
         </Col>
         <Col span={3} className={styles["shop"]}>
-          <Badge count={1} style={{ backgroundColor: "#1789FC" }}>
+          <Badge count={ cartListItem.length } style={{ backgroundColor: "#1789FC" }}>
             <Button type="primary" className={styles.btn}>
               <Link exact="true" to="/shopcart"><ShoppingCartOutlined style={{ fontSize: 24 }} /></Link>
             </Button>

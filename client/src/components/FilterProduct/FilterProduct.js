@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./FilterProduct.css";
 import { Menu, Slider, Row, Col } from "antd";
 import { UserOutlined, LaptopOutlined } from "@ant-design/icons";
@@ -8,20 +8,20 @@ import { useDispatch } from "react-redux";
 const { SubMenu } = Menu;
 
 const FilterProduct = React.forwardRef((props, ref) => {
+  const [rangePrice, setRangePrice] = useState([0, 100]);
+  const [nameProduct, setNameProduct] = useState("");
   const dispatch = useDispatch();
   const handleChange = (e) => {
-    // console.log("onChange: ", e);
-    dispatch({ type: "FILTER_PRODUCT", filterByName: e.key });
+    setNameProduct(e.key);
+    dispatch({ type: "FILTER_PRODUCT", filterByName: e.key, filterByPrice: rangePrice });
   };
   var leftContentClasses = classnames({
     "left-content": true,
     "is-anchored-bottom": props.shouldAnchorBottom,
   });
   function onChange(value) {
-    console.log(value[0]);
-    console.log(value[1]);
-    const priceFrom = value[0]
-    const priceto = value[1]
+    setRangePrice(value);
+    dispatch({ type: "FILTER_PRODUCT",  filterByName: nameProduct, filterByPrice: value });
   }
   
 
@@ -31,21 +31,21 @@ const FilterProduct = React.forwardRef((props, ref) => {
         <SubMenu
           key="brand"
           icon={<UserOutlined />}
-          // onClick={handleChange}
+          onClick={handleChange}
           title="Hãng sản xuất">
-          <Menu.Item onClick={handleChange} key="All">
+          <Menu.Item key="All">
             Tất cả sản phẩm
           </Menu.Item>
-          <Menu.Item onClick={handleChange} key="Asus">
+          <Menu.Item key="Asus">
             Asus
           </Menu.Item>
-          <Menu.Item onClick={handleChange} key="Dell">
+          <Menu.Item key="Dell">
             Dell
           </Menu.Item>
-          <Menu.Item onClick={handleChange} key="Lenovo">
+          <Menu.Item key="Lenovo">
             Lenovo
           </Menu.Item>
-          <Menu.Item onClick={handleChange} key="MSI">
+          <Menu.Item key="MSI">
             MSI
           </Menu.Item>
         </SubMenu>
@@ -63,13 +63,16 @@ const FilterProduct = React.forwardRef((props, ref) => {
             step={5}
             defaultValue={[0, 100]}
             onChange={onChange}
-            onAfterChange={handleChange}
+            // onAfterChange={handleChange}
           />
         </Col>
       </Row>
       <Row>
         <Col offset={2}>
-          aa
+          {rangePrice[0]} Tr
+        </Col>
+        <Col offset={12}>
+        {rangePrice[1]} Tr
         </Col>
       </Row>
       {/* <Menu mode="inline" style={{ borderRight: 0 }}>

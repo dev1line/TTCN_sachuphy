@@ -17,17 +17,19 @@ function* getAllProduct() {
   }
 }
 function* filterProduct(input) {
-  const filter = input.filterByName;
+  const filterName = input.filterByName;
+  const filterPrice = input.filterByPrice;
   console.log(input);
   const data = yield select();
   const products = data.products.products;
   console.log(products);
   const filterProduct = yield _.filter(products, function (o) {
-    if (filter === "All") {
-      return products;
-    } else return o.default_spec.manufacturer === filter;
+    if (filterName === "All") {
+      return o.default_spec.price >= (filterPrice[0]*1000000) && o.default_spec.price <= (filterPrice[1]*1000000);
+    } else return o.default_spec.manufacturer === filterName && o.default_spec.price >= (filterPrice[0]*1000000) && o.default_spec.price <= (filterPrice[1]*1000000);
   });
   if (filterProduct) {
+    console.log(filterProduct, "ok");
     yield put({ type: "FILTER_PRODUCT_SUCCESS", products: filterProduct });
   }
 }
