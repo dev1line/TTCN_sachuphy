@@ -37,8 +37,7 @@ export const ListItem = (props) => {
           <Select
             size="large"
             defaultValue="ten"
-            style={{ width: 200, float: "right" }}
-          >
+            style={{ width: 200, float: "right" }}>
             <Option value="ten">Sắp xếp theo tên</Option>
             <Option value="gia">Sắp xếp theo giá</Option>
           </Select>
