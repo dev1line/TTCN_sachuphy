@@ -6,7 +6,7 @@ import {
   TwitterOutlined,
 } from "@ant-design/icons";
 import "antd/dist/antd.css";
-import styles from "./styles.module.css";
+import styles from "./Footer.module.css";
 import MapShow from "../Map/MapShow";
 
 const { Search } = Input;
@@ -44,9 +44,9 @@ const Footer = (props) => {
           <p className={styles["sub-content"]}>Trung tâm phân phối laptop dành riêng cho bạn</p>
           <p className={styles["sub-content"]}>Địa chỉ tại 69 Trần Duy Hưng</p>
           <Row >
-            <a href="#"><FacebookOutlined className={styles.icon} /></a>
-            <a href="#"><InstagramOutlined className={styles.icon} /></a>
-            <a href="#"><TwitterOutlined className={styles.icon} /></a>
+            <a href="/"><FacebookOutlined className={styles.icon} /></a>
+            <a href="/"><InstagramOutlined className={styles.icon} /></a>
+            <a href="/"><TwitterOutlined className={styles.icon} /></a>
           </Row>
         </Col>
         <Col span={11} className={styles["footer-main"]}>
@@ -74,7 +74,7 @@ const Footer = (props) => {
         <p className={styles.para}>
           Bản quyền @ 2020 website thuộc SACHUPHY
         </p>
-        <a onClick={scrollToTop} className={styles.para}>Về đầu trang</a>
+        <a href="/" onClick={scrollToTop} className={styles.para}>Về đầu trang</a>
       </Col>
     </Row>
   );

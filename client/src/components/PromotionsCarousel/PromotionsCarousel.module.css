@@ -1,0 +1,46 @@
+.container {
+  position: relative;
+  width: 100%;
+  background: lightblue;
+}
+
+.left {
+  position: absolute;
+  font-size: 50px;
+  top: 48%;
+  left: 1%;
+  z-index: 10;
+  transition: 0.4s;
+  color: rgba(255, 255, 255, 0.5);
+}
+.right {
+  position: absolute;
+  font-size: 50px;
+  top: 48%;
+  right: 1%;
+  z-index: 10;
+  transition: 0.4s;
+  color: rgba(255, 255, 255, 0.5);
+}
+.right:hover,
+.left:hover {
+  transition: 0.4s;
+  color: rgba(255, 255, 255, 1);
+}
+.dots {
+  height: 20px;
+  padding: 0;
+  margin: 0;
+}
+.dots li button {
+	height: 14px !important;
+	width: 14px !important;
+	border-radius: 999px !important;
+}
+.dots li.slick-active button {
+  width: 0 !important;
+  height: 14px;
+}
+.img {
+  width: 100%;
+}

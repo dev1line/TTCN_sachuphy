@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Button } from "antd";
 
 export const Item = (props) => {
+  const product = props.product;
   return (
     <Card
       hoverable
@@ -14,12 +15,18 @@ export const Item = (props) => {
       }
     >
       <div className="additional">
-        <h3>Lap top MSI lenovo abc xyz</h3>
-        <p className="price">Price: 20$</p>
-        <p>Ram: 8gb</p>
+        <h3>{props.name}</h3>
+        <p className="price">{props.price}</p>
+        <p>{props.ram}</p>
         <Button
+          onClick={() => props.onClick(product)}
           size="large"
-          style={{ marginRight: "auto", marginLeft: "auto", display: "block" }}
+          style={{
+            marginRight: "auto",
+            marginLeft: "auto",
+            display: "block",
+            width: "100%",
+          }}
         >
           Thêm vào giỏ hàng
         </Button>

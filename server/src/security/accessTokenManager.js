@@ -11,7 +11,7 @@ const revokedTokens = []
 module.exports = {
   generate: function(payload) {
     return jwt.sign(payload, PRIVATE_KEY, {
-      expiresIn: moment.duration(60, 'minutes').asMilliseconds()
+      expiresIn: "6h"
     })
   },
   verify: function(token) {

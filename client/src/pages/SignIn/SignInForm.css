@@ -1,0 +1,22 @@
+
+.container {
+    width: 500px;
+    border: 1px solid #1789fc;
+    align-items: center;
+    padding:12px;
+}
+.title {
+    text-align: center;
+    color:#1789fc;
+    box-shadow: rgba(0.2, 0.2, 0.2, 0.02);
+    font-size: 48px;
+}
+.subtitle {
+    text-align: center;
+    cursor: pointer;
+}
+button {
+    width: 100%;
+    font-weight: bold;
+}
+

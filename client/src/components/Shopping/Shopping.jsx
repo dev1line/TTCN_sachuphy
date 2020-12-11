@@ -1,19 +1,23 @@
-import React from "react";
-import styles from "./styles.module.css";
-import { Row, Button } from "antd";
-import {Link} from 'react-router-dom';
+import React from 'react';
+import styles from './Shopping.module.css'
+import { Row, Col, Button } from 'antd'
+import { Link } from 'react-router-dom'
 
 const Shopping = (props) => {
-  return (
-    <Row className={styles.shopping}>
-      <p>
-        What are you still waiting for? Choose your own lovely laptop now!
-      </p>
-      <Link to="/product">
-        <Button className={styles.btn}>SHOPPING NOW</Button>
-      </Link>
-    </Row>
-  );
-};
+	return (
+		<div>
+			<Row justify="space-around" align="middle" className={styles.shopping}>
+				<Col offset={1}></Col>
+				<p className={styles.content}>
+					What are you still waiting for? Choose your own lovely laptop now!
+      	</p>
+				<Link to="/product">
+					<Button className={styles.btn}>SHOPPING NOW</Button>
+				</Link>
+				<Col offset={1}></Col>
+			</Row>
+		</div>
+	)
+}
 
 export default Shopping;
