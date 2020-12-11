@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col, Select, Pagination, Spin } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { Item } from "../Item";
@@ -9,15 +9,25 @@ const { Option } = Select;
 export const ListItem = (props) => {
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
   const data = useSelector((state) => state.products.filterProducts);
+  const numEachPage = 9;
+  const [maxminPage, setMaxminPage] = useState([0,8]);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({ type: "GET_ALL_PRODUCT" });
-  }, []);
+  }, [dispatch]);
 
   const handleClick = (item) => {
     console.log("click item:", item);
     dispatch({ type: "ADD_CART", item });
   };
+
+  const handleChangePage = (value) => {
+    console.log("page:", value);
+    maxminPage[0] = (value - 1) * numEachPage;
+    maxminPage[1] = value * numEachPage;
+    const new_data = [...maxminPage];
+    setMaxminPage(new_data);
+  }
   return (
     <div>
       <Row>
@@ -45,7 +55,7 @@ export const ListItem = (props) => {
         </Row>
         <Row gutter={[32, 32]} style={{ marginTop: "30px" }}>
           {data.length ? (
-            data.map((product, i) => (
+            data.slice(maxminPage[0], maxminPage[1]).map((product, i) => (
               <Col key={i} span={8}>
                 <Item
                   name={product.default_spec.name}
@@ -64,7 +74,12 @@ export const ListItem = (props) => {
         </Row>
       </Row>
       <Row justify="center">
-        <Pagination defaultCurrent={1} total={50} />
+        <Pagination
+          defaultCurrent={1}
+          defaultPageSize={numEachPage} //default size of page
+          onChange={(value) => handleChangePage(value)}
+          total={ data.length < 9 ? 1 : Math.round(data.length/numEachPage) } //total number of card data available
+           />
       </Row>
     </div>
   );
