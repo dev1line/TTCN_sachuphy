@@ -9,6 +9,7 @@ import {
   Shopcart,
   SignUp,
   SignIn,
+  DetailProduct,
 } from "./pages";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 const App = () => {
@@ -36,19 +37,24 @@ const App = () => {
             <SignUp />
           </div>
         </Route>
-        <Route exact path="/About">
+        <Route exact path="/about">
           <div className="main">
             <About />
           </div>
         </Route>
-        <Route exact path="/Contact">
+        <Route exact path="/contact">
           <div className="main">
             <Contact />
           </div>
         </Route>
-        <Route exact path="/Shopcart">
+        <Route exact path="/shop-cart">
           <div className="main">
             <Shopcart />
+          </div>
+        </Route>
+        <Route exact path="/detail-product">
+          <div className="main">
+            <DetailProduct />
           </div>
         </Route>
       </Switch>
