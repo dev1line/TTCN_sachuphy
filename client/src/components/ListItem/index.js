@@ -15,8 +15,8 @@ export const ListItem = (props) => {
   }, []);
 
   const handleClick = (item) => {
-    console.log("click item:", item);
-    dispatch({ type: "ADD_CART", item });
+    console.log("click item:", item.default_spec.price);
+    dispatch({ type: "ADD_CART", item , price:item.default_spec.price });
   };
   return (
     <div>

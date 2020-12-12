@@ -15,48 +15,10 @@ const layout = {
   },
 };
 
-// const data = [
-//   {
-//     key: 1,
-//     image:
-//       "https://fptshop.com.vn/Uploads/Originals/2020/6/2/637266923420476975_hp-15s-fq-bac-1.png",
-//     name: "John Brown",
-//     price: 32,
-//     sl: 1,
-//     all: 32,
-//   },
-//   {
-//     key: 2,
-//     image:
-//       "https://fptshop.com.vn/Uploads/Originals/2020/6/2/637266923420476975_hp-15s-fq-bac-1.png",
-//     name: "John Brown",
-//     price: 32,
-//     sl: 1,
-//     all: 32,
-//   },
-//   {
-//     key: 3,
-//     image:
-//       "https://fptshop.com.vn/Uploads/Originals/2020/6/2/637266923420476975_hp-15s-fq-bac-1.png",
-//     name: "John Brown",
-//     price: 32,
-//     sl: 1,
-//     all: 32,
-//   },
-//   {
-//     key: 4,
-//     image:
-//       "https://fptshop.com.vn/Uploads/Originals/2020/6/2/637266923420476975_hp-15s-fq-bac-1.png",
-//     name: "John Brown",
-//     price: 32,
-//     sl: 1,
-//     all: 32,
-//   },
-// ];
-
 const FormInfo = (props) => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.cart.cartList);
+  const total = useSelector(state => state.cart.total);
   console.log("data first:", data);
   const onFinish = (values) => {
     console.log(values);
@@ -148,7 +110,7 @@ const FormInfo = (props) => {
           <Form.Item name="information" label="Chú thích thêm">
             <Input.TextArea placeholder="something" />
           </Form.Item>
-          <TableItem data={data}></TableItem>
+          <TableItem data={data} total={total}></TableItem>
           <Button
             className="checkout"
             size="large"

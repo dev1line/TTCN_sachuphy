@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table, InputNumber } from "antd";
 import { CloseCircleOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
+import {change} from '../../help/convert'
 const styleImage = {
   width: "150px",
   height: "150px",
@@ -10,37 +11,8 @@ const styleImage = {
 const TableItem = (props) => {
   const dispatch = useDispatch();
   
-  const data = props.data;
-  // console.log("data:", data);
-  const dataFormatted = data.map((curr, index) => {
-    return {
-      key: index,
-      name: curr.default_spec.slug,
-      price: curr.default_spec.price,
-      number: 1,
-      total: curr.default_spec.price,
-    };
-  }, []);
-  console.log(dataFormatted);
-  let ans = [];
-  let isExist = (arr, x) => {
-    for(let i = 0; i < arr.length; i++) {
-      if (arr[i].name === x.name)
-      {
-        arr[i].number ++;
-        arr[i].total *= arr[i].number;
-        console.log(arr[i].number);
-        return true;
-      } 
-    }
-    
-    return false;
-  }
-  dataFormatted.map((el, index) => {
-    if(!isExist(ans, el)) ans.push(el);
-    return 0;
-  })
-  const [Data, setData] = useState(ans);
+  const {data, total} = props;
+  console.log("data:",change(data))
   
   const columns = [
     {
@@ -51,8 +23,9 @@ const TableItem = (props) => {
     {
       title: "Ảnh",
       dataIndex: "slug",
-      render: (slug) => (
+      render: (slug, index) => (
         <img
+          key={index}
           style={styleImage}
           alt={slug}
           src="https://fptshop.com.vn/Uploads/Originals/2020/6/2/637266923420476975_hp-15s-fq-bac-1.png"
@@ -61,21 +34,22 @@ const TableItem = (props) => {
     },
     {
       title: "Tên sản phẩm",
-      dataIndex: "name",
-      key: "name",
+      dataIndex: "slug",
+      key: "slug",
     },
     {
       title: "Giá",
       dataIndex: "price",
       key: "price",
-      render: (price) => <p>{price} VNĐ</p>,
+      render: (price, index) => <p key={index}>{price} VNĐ</p>,
     },
     {
       title: "Số lượng",
       dataIndex: "number",
       key: "number",
-      render: (number, row) => (
+      render: (number, row, index) => (
         <InputNumber
+          key={index}
           min={1}
           max={100}
           defaultValue={ number }
@@ -87,41 +61,43 @@ const TableItem = (props) => {
       title: "Tổng",
       dataIndex: "total",
       key: "total",
-      render: (value) => <p>{value} VNĐ</p>,
+      render: (value, key) => <p key={key}>{value} VNĐ</p>,
     },
     {
       title: "Action",
-      dataIndex: "x",
-      key: "x",
-      render: (index) => (
-        <CloseCircleOutlined onClick={(index) => handleClick(index)} />
-      ),
+      dataIndex: "slug",
+      key: "slug",
+      // render: (row, index) => (
+      //   <CloseCircleOutlined value={1} key={index} onClick={() => handleClick(row.key)} />
+      // ),
     },
   ];
 
   const handleClick = (index) => {
     console.log("index", index);
-    dispatch({ type: "DELETE_ITEM", index });
+    // dispatch({ type: "DELETE_ITEM", index });
     // dataFormatted.splice(index, 1);
   };
-  var all_in = 0;
-  ans.map((el) => {
-    all_in = all_in + el.total;
-    return 0;
-  });
-const [total, SetTotal] = useState(all_in)
-
+//   var all_in = 0;
+//   ans.map((el) => {
+//     all_in = all_in + el.total;
+//     return 0;
+//   });
+// const [total, SetTotal] = useState(all_in)
+// useEffect(() => {
+//   dispatch({type:"CHANGE_TOTAL", total})
+// },[total])
   const onChange = (value, key) =>{
       console.log(value);
-      ans[key].number = value;
-      ans[key].total = ans[key].price * ans[key].number;
-      let newans = [...ans]
-      setData(newans)
-      ans.map((el) => {
-        all_in = all_in + el.total;
-        return 0;
-      });
-      SetTotal(all_in);
+      // ans[key].number = value;
+      // ans[key].total = ans[key].price * ans[key].number;
+      // let newans = [...ans]
+      // setData(newans)
+      // ans.map((el) => {
+      //   all_in = all_in + el.total;
+      //   return 0;
+      // });
+      // SetTotal(all_in);
       // console.log(newans);
   }
 
@@ -129,7 +105,7 @@ const [total, SetTotal] = useState(all_in)
   
   return (
     <div>
-      <Table columns={columns} dataSource={Data} />
+      <Table columns={columns} dataSource={change(data)} />
       <h2 style={{ textAlign: "left" }}>Tổng tiền:{total} VNĐ</h2>
     </div>
   );

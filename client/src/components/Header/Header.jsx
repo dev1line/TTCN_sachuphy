@@ -10,6 +10,7 @@ const { Search } = Input;
 const Header = (props) => {
   const token = useSelector(state => state.token.token);
   const dispatch = useDispatch();
+  const total = useSelector(state => state.cart.total);
   const currs = ["VNĐ", "USD"];
   const langs = ["Tiếng Việt", "English"];
   const accs = ["My Account", "Log out"];
@@ -135,7 +136,7 @@ const Header = (props) => {
           />
         </Col>
         <Col span={3} className={styles["shop"]}>
-          <Badge count={ cartListItem.length } style={{ backgroundColor: "#1789FC" }}>
+          <Badge count={ cartListItem && cartListItem.length } style={{ backgroundColor: "#1789FC" }}>
             <Button type="primary" className={styles.btn}>
               <Link exact="true" to="/shopcart"><ShoppingCartOutlined style={{ fontSize: 24 }} /></Link>
             </Button>
@@ -143,7 +144,7 @@ const Header = (props) => {
         </Col>
         <Col span={3} className={styles["shopping"]}>
           <b>My trolley</b>
-          <span>$200.00</span>
+          <span>{total}</span>
         </Col>
       </Row>
       <Row className={styles["menubar-wrapper"]}>
