@@ -14,7 +14,6 @@ module.exports = async function createProductController(req, res, next) {
       options,
     })
   } catch (err) {
-    console.log(err)
     if (err.name === "ValidationError")
       return res.status(422).json({
         success: false,
