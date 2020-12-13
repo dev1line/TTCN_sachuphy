@@ -5,6 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import "antd/dist/antd.css";
 import styles from './Header.module.css'
 import { useSelector, useDispatch } from "react-redux";
+import logo from "../../logo192.png";
 const { Search } = Input;
 
 const Header = (props) => {
@@ -122,7 +123,7 @@ const Header = (props) => {
       <Row className={styles.navbar}>
         <Col span={6} className={styles.logo}>
           <Link to="/">
-            <img width="52px" height="52px" src="./logo192.png" alt="logo" />
+            <img width="52px" height="52px" src={logo} alt="logo" />
             <span className={styles.name}>SACHUPHY</span>
           </Link>
         </Col>
@@ -136,8 +137,8 @@ const Header = (props) => {
           />
         </Col>
         <Col span={3} className={styles["shop"]}>
-          <Badge count={ cartListItem && cartListItem.length } style={{ backgroundColor: "#1789FC" }}>
-            <Button type="primary" className={styles.btn}>
+        <Badge count={ cartListItem && cartListItem.length } style={{ backgroundColor: "#1789FC" }}>            
+        <Button type="primary" className={styles.btn}>
               <Link exact="true" to="/shopcart"><ShoppingCartOutlined style={{ fontSize: 24 }} /></Link>
             </Button>
           </Badge>
