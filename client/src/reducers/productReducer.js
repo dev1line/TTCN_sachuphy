@@ -1,11 +1,12 @@
 const initialize = {
   products: [],
-  filterProducts: []
+  filterProducts: [],
+  product: [],
 };
 
 const productReducer = (state = initialize, action) => {
   switch (action.type) {
-    case "GET_PRODUCT_SUCCESS": {
+    case "GET_PRODUCTS_SUCCESS": {
       return {
         ...state,
         products: action.products,
@@ -16,6 +17,12 @@ const productReducer = (state = initialize, action) => {
       return {
         ...state,
         filterProducts: action.products
+      }
+    }
+    case "GET_PRODUCT_SUCCESS": {
+      return {
+        ...state,
+        product: action.products
       }
     }
     default: return state

@@ -47,12 +47,12 @@ const App = () => {
             <Contact />
           </div>
         </Route>
-        <Route exact path="/shop-cart">
+        <Route exact path="/shopcart">
           <div className="main">
             <Shopcart />
           </div>
         </Route>
-        <Route exact path="/detail-product">
+        <Route exact path="/product/:slug">
           <div className="main">
             <DetailProduct />
           </div>

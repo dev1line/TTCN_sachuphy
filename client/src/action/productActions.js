@@ -1,14 +1,24 @@
-import { GET_ALL_PRODUCT, FILTER_PRODUCT } from "../constants";
+import {
+  GET_PRODUCTS,
+  FILTER_PRODUCT,
+  GET_PRODUCT_BY_SLUG,
+} from "../constants";
 
-export const getALLProduct=(products) => {
-	return {
-		type: GET_ALL_PRODUCT,
-		products,
-	}
-}
-export const filterProduct=(products) => {
-	return {
-		type: FILTER_PRODUCT,
-		products
-	}
-}
+export const getProducts = (products) => {
+  return {
+    type: GET_PRODUCTS,
+    products,
+  };
+};
+export const filterProduct = (products) => {
+  return {
+    type: FILTER_PRODUCT,
+    products,
+  };
+};
+export const getProductBySlug = (products) => {
+  return {
+    type: GET_PRODUCT_BY_SLUG,
+    products,
+  };
+};
