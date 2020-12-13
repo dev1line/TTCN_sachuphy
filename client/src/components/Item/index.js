@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 export const Item = (props) => {
   const product = props.product;
+  
   return (
     <Link to="/detail-product">
       <Card
@@ -13,6 +14,7 @@ export const Item = (props) => {
           <img
             alt="example"
             src="https://hanoicomputercdn.com/media/product/52023_17z90n_v_ah75a5.png"
+            // onClick={() => deatailProduct(props.slug)}
           />
         }>
         <div className="additional">

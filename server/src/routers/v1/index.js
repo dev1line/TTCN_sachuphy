@@ -8,6 +8,10 @@ const makeProductRouter = require('./products')
 
 const makeImageRouter = require('./images')
 
+const makeCartRouter = require('./carts')
+
+makeCartRouter(router)
+
 makeAuthenticationRouter(router)
 
 makeUserRouter(router)

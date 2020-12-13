@@ -20,19 +20,17 @@ module.exports = async function updateProductController(req, res, next) {
 
   try {
     await SpecValidator.validateAsync(data)
-  }
-  catch(err) {
-    if(err.name === "ValidationError") {
+  } catch (err) {
+    if (err.name === "ValidationError") {
       return res.status(400).json({
-        message: err.details[0].message
+        message: err.details[0].message,
       })
     }
   }
 
-  const resultSpec = await specByProductSlug.updateOne(data).select("-__v").lean()
-
+  await specByProductSlug.updateOne(data).select("-__v").lean()
   return res.status(200).json({
     success: true,
-    message: "Updated successfully."
+    message: "Updated successfully.",
   })
 }
