@@ -1,5 +1,6 @@
 export const GET_TOKEN = "GET_TOKEN";
 export const SET_TOKEN = "SET_TOKEN";
-export const GET_PRODUCTS = "GET_PRODUCTS";
-export const FILTER_PRODUCT = "FILTER_PRODUCT"
+export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
+export const FILTER_PRODUCTS = "FILTER_PRODUCTS"
 export const GET_PRODUCT_BY_SLUG = "GET_PRODUCT_BY_SLUG"
+export const CHANGE_OPTION = "CHANGE_OPTION"

@@ -13,7 +13,7 @@ const FilterProduct = React.forwardRef((props, ref) => {
   const dispatch = useDispatch();
   const handleChange = (e) => {
     setNameProduct(e.key);
-    dispatch({ type: "FILTER_PRODUCT", filterByName: e.key, filterByPrice: rangePrice });
+    dispatch({ type: "FILTER_PRODUCTS", filterByName: e.key, filterByPrice: rangePrice });
   };
   var leftContentClasses = classnames({
     "left-content": true,
@@ -21,7 +21,7 @@ const FilterProduct = React.forwardRef((props, ref) => {
   });
   function onChange(value) {
     setRangePrice(value);
-    dispatch({ type: "FILTER_PRODUCT",  filterByName: nameProduct, filterByPrice: value });
+    dispatch({ type: "FILTER_PRODUCTS",  filterByName: nameProduct, filterByPrice: value });
   }
   
 
@@ -75,23 +75,6 @@ const FilterProduct = React.forwardRef((props, ref) => {
         {rangePrice[1]} Tr
         </Col>
       </Row>
-      {/* <Menu mode="inline" style={{ borderRight: 0 }}>
-      </Menu> */}
-      {/* <SubMenu key="money" icon={<LaptopOutlined />} title="Giá tiền">
-          
-          <Menu.Item onClick={handleChange} key1="1">
-            1 Tr -- 5Tr
-          </Menu.Item>
-          <Menu.Item onClick={handleChange} key1="2">
-            5 Tr -- 10Tr
-          </Menu.Item>
-          <Menu.Item onClick={handleChange} key1="3">
-            10 Tr -- 15Tr
-          </Menu.Item>
-          <Menu.Item onClick={handleChange} key1="4">
-            Lớn hơn 15 Tr
-          </Menu.Item>
-        </SubMenu> */}
     </div>
   );
 });

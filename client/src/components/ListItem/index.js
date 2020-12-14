@@ -8,12 +8,13 @@ const { Option } = Select;
 
 export const ListItem = (props) => {
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
-  const data = useSelector((state) => state.products.filterProducts);
+  const data = useSelector((state) => state.products.products);
+  // console.log(data);
   const numEachPage = 9;
   const [maxminPage, setMaxminPage] = useState([0, 8]);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch({ type: "GET_PRODUCTS" });
+    dispatch({ type: "GET_ALL_PRODUCTS" });
   }, [dispatch]);
 
   const handleClick = (item) => {
