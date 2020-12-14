@@ -4,7 +4,12 @@ import { Link } from "react-router-dom";
 
 export const Item = (props) => {
   const product = props.product;
-
+  function scrollToTop() {
+    return window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
   return (
     <Card
       hoverable
@@ -14,10 +19,18 @@ export const Item = (props) => {
           alt="example"
           src="https://hanoicomputercdn.com/media/product/52023_17z90n_v_ah75a5.png"
         />
-      }>
+      }
+    >
       <div className="additional">
         <h3>{props.name}</h3>
-        <p className="price">{props.price}</p>
+        <p className="price">
+          <span style={{ fontWeight: "500", fontSize: "20px" }}>
+            {(props.price * (100 - props.discount)) / 100}
+          </span>{" "}
+          <span style={{ textDecoration: "line-through", color: "#636363" }}>
+            {props.price}
+          </span>
+        </p>
         <p>{props.ram}</p>
         <Button
           onClick={() => props.onClick(product)}
@@ -27,7 +40,8 @@ export const Item = (props) => {
             marginLeft: "auto",
             display: "block",
             width: "100%",
-          }}>
+          }}
+        >
           Thêm vào giỏ hàng
         </Button>
         <Button
@@ -37,8 +51,10 @@ export const Item = (props) => {
             marginLeft: "auto",
             display: "block",
             width: "100%",
-          }}>
-          <Link to={`/product/${props.slug}`} a={props.name}>Chi tiết sản phẩm</Link>
+          }}
+          onClick={scrollToTop}
+        >
+          <Link to={`/product/${props.slug}`}>Chi tiết sản phẩm</Link>
         </Button>
       </div>
     </Card>

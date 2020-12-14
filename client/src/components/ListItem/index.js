@@ -59,6 +59,7 @@ export const ListItem = (props) => {
                 <Item
                   name={product.default_spec.name}
                   price={product.default_spec.price}
+                  discount={product.default_spec.discount}
                   ram={product.default_spec.memory.capacity}
                   slug={product.default_spec.slug}
                   product={product}
