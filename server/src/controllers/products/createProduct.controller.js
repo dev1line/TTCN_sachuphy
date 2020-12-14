@@ -3,6 +3,8 @@ const SpecModel = require("../../models/specification.model")
 
 const async = require("async")
 
+const {uniq} = require('lodash')
+
 const ProductValidator = require("../../validators/product.validator")
 
 module.exports = async function createProductController(req, res, next) {
@@ -25,14 +27,15 @@ module.exports = async function createProductController(req, res, next) {
     })
   }
 
-  if(!default_spec.name) {
+  // Check duplicate slug
+  const slugs = [default_spec.slug, ...options.map(o => o.slug)]
+
+  if(uniq(slugs).length !== slugs.length) {
     return res.status(422).json({
       success: false,
-      message: "Missing default specification name."
+      message: "Slug must be unique."
     })
   }
-
-  const slugs = [default_spec.slug, ...options.map(o => o.slug)]
 
   const existSpecBySlug = await SpecModel.findOne({
     slug: {
