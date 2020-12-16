@@ -25,9 +25,8 @@ const ProductParameter = (props) => {
             <Col span={7} offset={1} key={i}>
               <Button
                 style={{ height: "5vh", borderRadius: "10px" }}
-                onClick={() => props.changeOption()}
-                >
-                {option.name}
+              >
+                <Link to={`/product/${option.slug}`}>{option.name}</Link>
               </Button>
             </Col>
           ))}
@@ -76,7 +75,8 @@ const ProductParameter = (props) => {
               <Button
                 onClick={() => props.click(props.product)}
                 type="primary"
-                style={{ height: "50px" }}>
+                style={{ height: "50px" }}
+              >
                 Mua ngay
               </Button>
             </Link>

@@ -1,7 +1,8 @@
 const initialize = {
   all_products: [],
   products: [],
-  product: [],
+  default_product: [],
+  options: [],
 };
 
 const productReducer = (state = initialize, action) => {
@@ -22,13 +23,15 @@ const productReducer = (state = initialize, action) => {
     case "GET_PRODUCT_SUCCESS": {
       return {
         ...state,
-        product: action.fetchProduct,
+        default_product: action.fetchProduct.default_spec,
+        options: action.fetchProduct.options,
       }
     }
     case "CHANGE_OPTION_SUCCESS": {
       return {
         ...state,
-        product: action.data
+        default_product: action.fetchProduct,
+        // options: action.fetchProduct.options,
       }
     }
     default: return state

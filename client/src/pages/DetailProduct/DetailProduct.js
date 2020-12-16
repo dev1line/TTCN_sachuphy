@@ -6,27 +6,21 @@ import { ProductParameter, Loading } from "../../components";
 
 const DetailProduct = (props) => {
   const { slug } = useParams();
-  const product = useSelector((state) => state.products.product);
-  const options = product ? product.options : null;
-  // console.log(product.length);
+  const product = useSelector((state) => state.products.default_product);
+  const options = useSelector((state) => state.products.options);
+  console.log(product.length);
   // console.log(options);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({ type: "GET_PRODUCT_BY_SLUG", slug: slug });
-  }, [dispatch]);
+  }, [dispatch, slug]);
   const handleClick = (product) => {
     scrollToTop();
     dispatch({
       type: "ADD_CART",
       item: product,
-      price: product.default_spec.price,
+      price: product.price,
     });
-  };
-
-  const changeOption = (option) => {
-    scrollToTop();
-    dispatch({ type: "CHANGE_OPTION", option: option });
-    console.log(product);
   };
 
   function scrollToTop() {
@@ -35,20 +29,19 @@ const DetailProduct = (props) => {
       behavior: "smooth",
     });
   }
-  return product.length != 0 ? (
+  return product.length !== 0 ? (
     <ProductParameter
       slug={slug}
-      name={product.default_spec.name}
-      price={product.default_spec.price}
-      discount={product.default_spec.discount}
-      display={product.default_spec.display}
-      processor={product.default_spec.processor}
-      memory={product.default_spec.memory}
-      storage={product.default_spec.storage}
-      operating_system={product.default_spec.operating_system}
-      graphic_card={product.default_spec.graphic_card}
+      name={product.name}
+      price={product.price}
+      discount={product.discount}
+      display={product.display}
+      processor={product.processor}
+      memory={product.memory}
+      storage={product.storage}
+      operating_system={product.operating_system}
+      graphic_card={product.graphic_card}
       click={(product) => handleClick(product)}
-      changeOption={(option) => changeOption(option)}
       product={product}
       options={options}
     />
