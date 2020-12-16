@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col, Form, Input, Button, Select } from "antd";
 import TableItem from "../TableItem";
 import "./style.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const { Option } = Select;
 
@@ -16,7 +16,7 @@ const layout = {
 };
 
 const FormInfo = (props) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const data = useSelector((state) => state.cart.cartList);
   const total = useSelector(state => state.cart.total);
   console.log("data first:", data);
