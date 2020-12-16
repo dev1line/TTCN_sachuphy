@@ -8,17 +8,18 @@ const { Option } = Select;
 
 export const ListItem = (props) => {
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
-  const data = useSelector((state) => state.products.filterProducts);
+  const data = useSelector((state) => state.products.products);
+  // console.log(data);
   const numEachPage = 9;
-  const [maxminPage, setMaxminPage] = useState([0,8]);
+  const [maxminPage, setMaxminPage] = useState([0, 8]);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch({ type: "GET_ALL_PRODUCT" });
+    dispatch({ type: "GET_ALL_PRODUCTS" });
   }, [dispatch]);
 
   const handleClick = (item) => {
     console.log("click item:", item.default_spec.price);
-    dispatch({ type: "ADD_CART", item , price:item.default_spec.price });
+    dispatch({ type: "ADD_CART", item, price: item.default_spec.price });
   };
 
   const handleChangePage = (value) => {
@@ -27,7 +28,7 @@ export const ListItem = (props) => {
     maxminPage[1] = value * numEachPage;
     const new_data = [...maxminPage];
     setMaxminPage(new_data);
-  }
+  };
   return (
     <div>
       <Row>
@@ -42,7 +43,7 @@ export const ListItem = (props) => {
       <Row>
         <Row style={{ marginTop: "30px", width: "100%", display: "block" }}>
           <p style={{ float: "left", fontSize: "18px", paddingTop: "5px" }}>
-            Tim thay {data.length} sản phẩm
+            Tim thay {data.length ? data.length : "0"} sản phẩm
           </p>
           <Select
             size="large"
@@ -59,7 +60,9 @@ export const ListItem = (props) => {
                 <Item
                   name={product.default_spec.name}
                   price={product.default_spec.price}
+                  discount={product.default_spec.discount}
                   ram={product.default_spec.memory.capacity}
+                  slug={product.default_spec.slug}
                   product={product}
                   onClick={(name) => handleClick(name)}
                 />
@@ -77,8 +80,8 @@ export const ListItem = (props) => {
           defaultCurrent={1}
           defaultPageSize={numEachPage} //default size of page
           onChange={(value) => handleChangePage(value)}
-          total={ data.length < 9 ? 1 : Math.round(data.length/numEachPage) } //total number of card data available
-           />
+          total={data.length < 9 ? 1 : Math.round(data.length / numEachPage)} //total number of card data available
+        />
       </Row>
     </div>
   );

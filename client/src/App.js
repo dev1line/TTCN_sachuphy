@@ -10,6 +10,7 @@ import {
   SignUp,
   SignIn,
   DetailProduct,
+  NotFound,
 } from "./pages";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 const App = () => {
@@ -47,14 +48,19 @@ const App = () => {
             <Contact />
           </div>
         </Route>
-        <Route exact path="/shop-cart">
+        <Route exact path="/shopcart">
           <div className="main">
             <Shopcart />
           </div>
         </Route>
-        <Route exact path="/detail-product">
+        <Route exact path="/product/:slug">
           <div className="main">
             <DetailProduct />
+          </div>
+        </Route>
+        <Route>
+          <div className="main">
+            <NotFound />
           </div>
         </Route>
       </Switch>

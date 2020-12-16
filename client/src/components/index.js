@@ -8,3 +8,5 @@ export { default as Comments } from './Comments/Comments';
 export { default as Shopping } from './Shopping/Shopping';
 export { default as FilterProduct } from './FilterProduct/FilterProduct';
 export { default as Cards } from './Cards/Cards';
+export { default as ProductParameter } from './ProductParameter/ProductParameter';
+export { default as Loading } from './Loading/Loading';

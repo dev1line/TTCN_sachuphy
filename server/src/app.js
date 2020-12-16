@@ -49,8 +49,6 @@ app.use(function (err, req, res, next) {
   res.status(500).send("Internal Server Error!")
 })
 
-
-
 const chalk = require("chalk")
 
 app.listen(PORT, HOST, () => {

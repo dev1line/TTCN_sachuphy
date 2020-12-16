@@ -6,3 +6,4 @@ export { default as Shopcart } from "./Shopcart/Shopcart";
 export { default as SignIn } from "./SignIn/SignIn";
 export { default as SignUp } from "./SignUp/SignUp";
 export { default as DetailProduct } from "./DetailProduct/DetailProduct";
+export { default as NotFound } from "./NotFound/NotFound";

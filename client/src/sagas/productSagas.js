@@ -4,33 +4,91 @@ import _ from "lodash";
 
 const url = "http://localhost:3000/api/v1/product";
 
-function* getAllProduct() {
+function* getProducts() {
   const fetchProducts = yield axios({
     method: "get",
     url: `${url}`,
   });
   if (fetchProducts) {
     yield put({
-      type: "GET_PRODUCT_SUCCESS",
-      products: fetchProducts.data.products,
+      type: "GET_PRODUCTS_SUCCESS",
+      fetchProducts: fetchProducts.data.products,
     });
   }
 }
-function* filterProduct(input) {
+function* filterProducts(input) {
   const filterName = input.filterByName;
   const filterPrice = input.filterByPrice;
-  console.log(input);
+  // console.log(input);
   const data = yield select();
-  const products = data.products.products;
-  console.log(products);
-  const filterProduct = yield _.filter(products, function (o) {
+  const products = data.products.all_products;
+  // console.log(products);
+  const filteredProducts = yield _.filter(products, function (o) {
     if (filterName === "All") {
-      return o.default_spec.price >= (filterPrice[0]*1000000) && o.default_spec.price <= (filterPrice[1]*1000000);
-    } else return o.default_spec.manufacturer === filterName && o.default_spec.price >= (filterPrice[0]*1000000) && o.default_spec.price <= (filterPrice[1]*1000000);
+      return (
+        o.default_spec.price >= filterPrice[0] * 1000000 &&
+        o.default_spec.price <= filterPrice[1] * 1000000
+      );
+    } else return o.default_spec.manufacturer === filterName && o.default_spec.price >= filterPrice[0] * 1000000 && o.default_spec.price <= filterPrice[1] * 1000000;
   });
-  if (filterProduct) {
-    console.log(filterProduct, "ok");
-    yield put({ type: "FILTER_PRODUCT_SUCCESS", products: filterProduct });
+  if (filteredProducts) {
+    // console.log(filterProduct, "ok");
+    yield put({
+      type: "FILTER_PRODUCTS_SUCCESS",
+      filteredProducts: filteredProducts,
+    });
   }
 }
-export { getAllProduct, filterProduct };
+function* getProductBySlug(input) {
+  const slug = input.slug;
+  // const option = input.option;
+  const data = yield select();
+  const products = data.products.all_products;
+  console.log(products);
+  if (products.length) {
+    const productDefault = products.find((o) => o.default_spec.slug === slug);
+    // if (!productDefault.length) {
+    //   const productOptionDetail = products.find((o) =>
+    //     o.options.find((o) => 
+    //     o.slug === slug)
+    //   );
+    //   const optionBySlug = productOptionDetail.options.find(
+    //     (o) => o.slug === slug
+    //   );
+    //   const productOption = {...productOptionDetail, ...optionBySlug}
+    //   if (productOption) {
+    //     yield put({ type: "GET_PRODUCT_SUCCESS", fetchProduct: productOption });
+    //   }
+    // } else {
+      if (productDefault) {
+        yield put({
+          type: "GET_PRODUCT_SUCCESS",
+          fetchProduct: productDefault,
+        });
+      }
+    // }
+  } else {
+    const fetchProduct = yield axios({
+      method: "get",
+      url: `${url}/${slug}`,
+    });
+    // console.log(fetchProduct.data.product);
+    if (fetchProduct) {
+      yield put({
+        type: "GET_PRODUCT_SUCCESS",
+        fetchProduct: fetchProduct.data.product,
+      });
+    }
+  }
+}
+function* changeOption(input) {
+  // const option = input.option
+  // const data = yield select();
+  // const product = data.products
+  // console.log(input);
+  // console.log("asdsad");
+  // if (option) {
+  //   yield put ({type: "CHANGE_PRODUCT_SUCCESS", data: {...products,...option}})
+  // }
+}
+export { getProducts, filterProducts, getProductBySlug, changeOption };
