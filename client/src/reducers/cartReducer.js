@@ -34,9 +34,11 @@ const cartReducer = (state = initial, action) => {
     }
     case "DELETE": {
       state.cartList.splice(action.index,1);
-      console.log(state.cartList);
+      const temp = state.cartList;
+      console.log("CL:",temp);
       return {
         ...state,
+        cartList:temp,
         total: state.total - action.total
       }
     }

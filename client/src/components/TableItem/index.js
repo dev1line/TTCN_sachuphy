@@ -7,12 +7,17 @@ const styleImage = {
   width: "150px",
   height: "150px",
 };
-
+var renderer = [];
 const TableItem = (props) => {
   const dispatch = useDispatch();
   
   const {data, total} = props;
-  console.log("data:",change(data))
+  // const [x, setX] = useState([]);
+  // useEffect(() => {
+  //   setX(data);
+  //   renderer = change(data);
+  // },[data,x]);
+  // console.log("data:",change(data))
   
   const columns = [
     {
@@ -47,12 +52,13 @@ const TableItem = (props) => {
       title: "Số lượng",
       dataIndex: "number",
       key: "number",
-      render: (number, row, index) => (
+      render: (number, row) => (
         <InputNumber
-          key={index}
+          // key={index}
+          value={row.number}
           min={1}
           max={100}
-          defaultValue={ number }
+          // defaultValue={ number }
           onChange={(value) => onChange(value, row.price, row.key)}
         />
       ),
@@ -79,6 +85,7 @@ const TableItem = (props) => {
   const onChange = (value, price, key) =>{
       console.log(value);
       console.log(data[key]);
+      
       // const item = {
       //   default_spec: {
       //     slug:slug
