@@ -49,6 +49,7 @@ const DetailProduct = (props) => {
       return { ...defaultSpecProduct, ...sanitisedOptionProduct };
     }
     const currentProduct = getCurrentProductBySlug();
+    console.log(currentProduct);
     setProduct(currentProduct);
   }, [productBySlug, slug]);
 

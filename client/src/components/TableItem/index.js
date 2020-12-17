@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Table, InputNumber } from "antd";
-import { CloseCircleOutlined } from "@ant-design/icons";
-import { useDispatch } from "react-redux";
+// import { CloseCircleOutlined } from "@ant-design/icons";
+// import { useDispatch } from "react-redux";
 import {change} from '../../help/convert'
 const styleImage = {
   width: "150px",
@@ -9,7 +9,7 @@ const styleImage = {
 };
 
 const TableItem = (props) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   
   const {data, total} = props;
   console.log("data:",change(data))
@@ -73,11 +73,11 @@ const TableItem = (props) => {
     },
   ];
 
-  const handleClick = (index) => {
-    console.log("index", index);
-    // dispatch({ type: "DELETE_ITEM", index });
-    // dataFormatted.splice(index, 1);
-  };
+  // const handleClick = (index) => {
+  //   console.log("index", index);
+  //   // dispatch({ type: "DELETE_ITEM", index });
+  //   // dataFormatted.splice(index, 1);
+  // };
 //   var all_in = 0;
 //   ans.map((el) => {
 //     all_in = all_in + el.total;

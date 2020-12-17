@@ -23,10 +23,11 @@ const ProductParameter = (props) => {
         <Row style={{ margin: "2vh 0 1vh" }}>
           {props.options.map((option, i) => (
             <Col span={7} offset={1} key={i}>
-              <Button
-                style={{ height: "5vh", borderRadius: "10px" }}
-              >
-                <Link to={`/product/${option.slug}`}> {`${i === 0 ? "Default" : option.name}`}</Link>
+              <Button style={{ height: "5vh", borderRadius: "10px" }}>
+                <Link to={`/product/${option.slug}`}>
+                  {" "}
+                  {`${i === 0 ? "Default" : option.name}`}
+                </Link>
               </Button>
             </Col>
           ))}
@@ -55,11 +56,23 @@ const ProductParameter = (props) => {
             </Row>
             <Row style={{ padding: "10px", borderBottom: "1px solid #dbdbdb" }}>
               <Col span={10}>RAM:</Col>
-              <Col span={14}>{props.memory[0].text}</Col>
+              <Col span={14}>
+                {props.memory.map((memory, i) => (
+                  <div key={i}>
+                    {memory.text}{`${i === 0 ? ", (On board)" : ""}`}{`${i === (props.memory.length - 1) ? "" : ","}`} <br />
+                  </div>
+                ))}
+              </Col>
             </Row>
             <Row style={{ padding: "10px", borderBottom: "1px solid #dbdbdb" }}>
               <Col span={10}>Ổ cứng:</Col>
-              <Col span={14}>{props.storage[0].text}</Col>
+              <Col span={14}>
+              {props.storage.map((storage, i) => (
+                  <div key={i}>
+                    {storage.text}{`${i !== (props.storage.length - 1) ? "," : ""}`} <br />
+                  </div>
+                ))}
+                </Col>
             </Row>
             <Row style={{ padding: "10px", borderBottom: "1px solid #dbdbdb" }}>
               <Col span={10}>Hệ điều hành:</Col>
@@ -75,8 +88,7 @@ const ProductParameter = (props) => {
               <Button
                 onClick={() => props.click(props.product)}
                 type="primary"
-                style={{ height: "50px" }}
-              >
+                style={{ height: "50px" }}>
                 Mua ngay
               </Button>
             </Link>
@@ -94,5 +106,6 @@ const ProductParameter = (props) => {
     </Row>
   );
 };
+
 
 export default ProductParameter;
