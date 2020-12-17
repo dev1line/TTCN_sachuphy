@@ -24,6 +24,22 @@ const cartReducer = (state = initial, action) => {
         total: state.total - action.price
       };
     }
+    case "CHANGE_NUMBER": {
+      const prevNumber = state.cartList[action.key].number;
+      state.cartList[action.key].number = action.value;
+      return {
+        ...state,
+        total: state.total + (action.value - prevNumber)*action.price
+      };
+    }
+    case "DELETE": {
+      state.cartList.splice(action.index,1);
+      console.log(state.cartList);
+      return {
+        ...state,
+        total: state.total - action.total
+      }
+    }
     // case "CHANGE_TOTAL": {
     //   console.log("total",action.total)
     //   console.log("state2",state.cartList)

@@ -53,7 +53,7 @@ const TableItem = (props) => {
           min={1}
           max={100}
           defaultValue={ number }
-          onChange={(value) => onChange(value, row.key)}
+          onChange={(value) => onChange(value, row.price, row.key)}
         />
       ),
     },
@@ -65,40 +65,30 @@ const TableItem = (props) => {
     },
     {
       title: "Action",
-      dataIndex: "slug",
-      key: "slug",
-      // render: (row, index) => (
-      //   <CloseCircleOutlined value={1} key={index} onClick={() => handleClick(row.key)} />
-      // ),
+      render: (row, index) => (
+        <CloseCircleOutlined value={1} key={index} onClick={() => handleClick(row.key, row.total)} />
+      ),
     },
   ];
 
-  const handleClick = (index) => {
+  const handleClick = (index, total) => {
     console.log("index", index);
-    // dispatch({ type: "DELETE_ITEM", index });
-    // dataFormatted.splice(index, 1);
+    dispatch({ type: "DELETE", index, total });
   };
-//   var all_in = 0;
-//   ans.map((el) => {
-//     all_in = all_in + el.total;
-//     return 0;
-//   });
-// const [total, SetTotal] = useState(all_in)
-// useEffect(() => {
-//   dispatch({type:"CHANGE_TOTAL", total})
-// },[total])
-  const onChange = (value, key) =>{
+
+  const onChange = (value, price, key) =>{
       console.log(value);
-      // ans[key].number = value;
-      // ans[key].total = ans[key].price * ans[key].number;
-      // let newans = [...ans]
-      // setData(newans)
-      // ans.map((el) => {
-      //   all_in = all_in + el.total;
-      //   return 0;
-      // });
-      // SetTotal(all_in);
-      // console.log(newans);
+      console.log(data[key]);
+      // const item = {
+      //   default_spec: {
+      //     slug:slug
+      //   }
+      // };
+      // if (value < change(data)[key].number)
+      //   dispatch({type:"DELETE_ITEM", value:value, item});
+      // else
+      // dispatch({type:"ADD_ITEM", value:value, item});
+      dispatch({type:"CHANGE_NUMBER", value, key, price});
   }
 
   
