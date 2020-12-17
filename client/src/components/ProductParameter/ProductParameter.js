@@ -26,7 +26,7 @@ const ProductParameter = (props) => {
               <Button
                 style={{ height: "5vh", borderRadius: "10px" }}
               >
-                <Link to={`/product/${option.slug}`}>{option.name}</Link>
+                <Link to={`/product/${option.slug}`}> {`${i === 0 ? "Default" : option.name}`}</Link>
               </Button>
             </Col>
           ))}
