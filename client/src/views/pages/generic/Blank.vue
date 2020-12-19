@@ -63,7 +63,11 @@
                 <b-button size="sm" variant="alt-primary">
                   <i class="fa fa-fw fa-pencil-alt"></i>
                 </b-button>
-                <b-button size="sm" variant="alt-danger" @click="showDeleteProduct(product.default_spec.slug)">
+                <b-button
+                  size="sm"
+                  variant="alt-danger"
+                  @click="showDeleteProduct(product.default_spec.slug)"
+                >
                   <i class="fa fa-fw fa-times"></i>
                 </b-button>
               </b-td>
@@ -88,32 +92,32 @@
             <div class="row gutters-tiny" style="justify-content: center">
               <div class="col-6 px-2">
                 <b-form-group label="Name" label-for="block-form5-username">
-                  <b-form-input></b-form-input>
+                  <b-form-input v-model="form.default_spec.name"></b-form-input>
                 </b-form-group>
                 <b-form-group
                   label="Manufacturer"
                   label-for="block-form5-username"
                 >
-                  <b-form-input></b-form-input>
+                  <b-form-input v-model="form.default_spec.manufacturer"></b-form-input>
                 </b-form-group>
                 <b-form-group
                   label="Processor"
                   label-for="block-form5-username"
                 >
-                  <b-form-input></b-form-input>
+                  <b-form-input v-model="form.default_spec.processor"></b-form-input>
                 </b-form-group>
                 <b-form-group label="Color" label-for="block-form5-username">
                   <b-form-tags
                     input-id="tags-basic"
-                    v-model="value"
+                    v-model="form.default_spec.color"
                     placeholder="Add color ..."
                   ></b-form-tags>
                 </b-form-group>
                 <b-form-group label="Price" label-for="block-form5-username">
-                  <b-form-input></b-form-input>
+                  <b-form-input v-model="form.default_spec.price"></b-form-input>
                 </b-form-group>
                 <b-form-group label="Discount" label-for="block-form5-username">
-                  <b-form-input></b-form-input>
+                  <b-form-input v-model="form.default_spec.discount"></b-form-input>
                 </b-form-group>
                 <b-form-group label="Image" label-for="block-form5-username">
                   <b-form-tags
@@ -131,38 +135,39 @@
                       v-model="value"
                       placeholder="Add Storage ..."
                     ></b-form-tags>
-                    <b-button variant="secondary" class="col-3" @click="showAddStorage"
+                    <b-button
+                      variant="secondary"
+                      class="col-3"
+                      @click="showAddStorage"
                       >Storage</b-button
                     >
                   </b-row>
                 </b-form-group>
                 <b-form-group label="Option" label-for="block-form5-username">
-                  <b-button variant="secondary" class="col-2"
-                    >Option</b-button
-                  >
+                  <b-button variant="secondary" class="col-2">Option</b-button>
                 </b-form-group>
               </div>
               <div class="col-6 px-2">
                 <b-form-group label="Slug" label-for="block-form5-username">
-                  <b-form-input></b-form-input>
+                  <b-form-input v-model="this.slugAuto"></b-form-input>
                 </b-form-group>
                 <b-form-group label="Model" label-for="block-form5-username">
-                  <b-form-input></b-form-input>
+                  <b-form-input v-model="form.default_spec.model"></b-form-input>
                 </b-form-group>
                 <b-form-group
                   label="Graphic Card"
                   label-for="block-form5-username"
                 >
-                  <b-form-input></b-form-input>
+                  <b-form-input v-model="form.default_spec.graphic_card"></b-form-input>
                 </b-form-group>
                 <b-form-group
                   label="Description"
                   label-for="block-form5-username"
                 >
-                  <b-form-input></b-form-input>
+                  <b-form-input v-model="form.default_spec.description"></b-form-input>
                 </b-form-group>
                 <b-form-group label="Quantity" label-for="block-form5-username">
-                  <b-form-input></b-form-input>
+                  <b-form-input v-model="form.default_spec.quantity"></b-form-input>
                 </b-form-group>
                 <b-form-group
                   label="Operating System"
@@ -170,7 +175,7 @@
                 >
                   <b-form-tags
                     input-id="tags-basic"
-                    v-model="value"
+                    v-model="form.default_spec.operating_system"
                     placeholder="Add operating system ..."
                   ></b-form-tags>
                 </b-form-group>
@@ -200,7 +205,10 @@
                       v-model="value"
                       placeholder="Add Features ..."
                     ></b-form-tags>
-                    <b-button variant="secondary" class="col-3" @click="showAddFeature"
+                    <b-button
+                      variant="secondary"
+                      class="col-3"
+                      @click="showAddFeature"
                       >Feature</b-button
                     >
                   </b-row>
@@ -214,13 +222,16 @@
                       v-model="value"
                       placeholder="Add Display ..."
                     ></b-form-tags>
-                    <b-button variant="secondary" class="col-3" @click="showAddDisplay"
+                    <b-button
+                      variant="secondary"
+                      class="col-3"
+                      @click="showAddDisplay"
                       >Display</b-button
                     >
                   </b-row>
                 </b-form-group>
               </div>
-              
+
               <div class="col-auto px-2">
                 <!-- Sales -->
                 <b-button variant="success">Lưu</b-button>
@@ -305,7 +316,7 @@
               <div class="col-12 px-2">
                 <b-form-group label="Capacity" label-for="block-form5-username">
                   <b-form-input></b-form-input>
-                </b-form-group> 
+                </b-form-group>
                 <b-form-group label="Type" label-for="block-form5-username">
                   <b-form-input></b-form-input>
                 </b-form-group>
@@ -346,8 +357,11 @@
               <div class="col-12 px-2">
                 <b-form-group label="Name" label-for="block-form5-username">
                   <b-form-input></b-form-input>
-                </b-form-group> 
-                <b-form-group label="More Info" label-for="block-form5-username">
+                </b-form-group>
+                <b-form-group
+                  label="More Info"
+                  label-for="block-form5-username"
+                >
                   <b-form-input></b-form-input>
                 </b-form-group>
               </div>
@@ -382,16 +396,22 @@
           <div class="block-content block-content-full">
             <div class="row gutters-tiny" style="justify-content: center">
               <div class="col-12 px-2">
-                <b-form-group label="Resolution" label-for="block-form5-username">
+                <b-form-group
+                  label="Resolution"
+                  label-for="block-form5-username"
+                >
                   <b-form-input></b-form-input>
-                </b-form-group> 
+                </b-form-group>
                 <b-form-group label="Size" label-for="block-form5-username">
                   <b-form-input></b-form-input>
                 </b-form-group>
                 <b-form-group label="Panel" label-for="block-form5-username">
                   <b-form-input></b-form-input>
                 </b-form-group>
-                <b-form-group label="More Info" label-for="block-form5-username">
+                <b-form-group
+                  label="More Info"
+                  label-for="block-form5-username"
+                >
                   <b-form-input></b-form-input>
                 </b-form-group>
               </div>
@@ -419,7 +439,9 @@
       >
         <div class="block block-themed block-transparent mb-0">
           <div class="block-header bg-primary-dark">
-            <h3 class="block-title">Bạn muốn xóa sản phẩm có slug {{currentSelectedProduct}} không ?</h3>
+            <h3 class="block-title">
+              Bạn muốn xóa sản phẩm có slug {{ currentSelectedProduct }} không ?
+            </h3>
           </div>
           <div class="block-content block-content-full">
             <div class="row gutters-tiny" style="justify-content: center">
@@ -454,8 +476,7 @@ import { chunk } from "lodash";
 export default {
   data() {
     return {
-      currentSelectedProduct:"",
-      value:[],
+      currentSelectedProduct: "",
       currentPage: 1,
       perPage: 5,
       form: {
@@ -464,7 +485,7 @@ export default {
           model: "82B500FXVN",
           manufacturer: "Lenovo",
           processor: "AMD Ryzen 5 4600H",
-          color: ["Black"],
+          color: ["Black","Yellow"],
           graphic_card: "NVIDIA GeForce GTX 1650 4GB GDDR6",
           memory: [
             {
@@ -577,6 +598,9 @@ export default {
       if (!this.products) return [];
       return this.paginatedProducts;
     },
+    slugAuto() {
+      return this.stringToSlug(this.form.default_spec.name);
+    },
     ...mapState("products", {
       products: "products",
     }),
@@ -592,7 +616,7 @@ export default {
     },
     ...mapActions("products", {
       fetchProducts: "fetchProducts",
-      deleteProduct:"deleteProduct",
+      deleteProduct: "deleteProduct",
     }),
     showCreateProduct() {
       this.$bvModal.show("modal-create-product");
@@ -600,24 +624,39 @@ export default {
     showAddMemory() {
       this.$bvModal.show("modal-add-memory");
     },
-    showAddStorage(){
+    showAddStorage() {
       this.$bvModal.show("modal-add-storage");
     },
-    showAddFeature(){
+    showAddFeature() {
       this.$bvModal.show("modal-add-feature");
     },
-    showAddDisplay(){
+    showAddDisplay() {
       this.$bvModal.show("modal-add-display");
     },
-    showDeleteProduct(slug){
+    showDeleteProduct(slug) {
       this.$bvModal.show("modal-delete-product");
-      this.currentSelectedProduct=slug;
+      this.currentSelectedProduct = slug;
     },
-    deleteProductConfirm(){
+    deleteProductConfirm() {
       const productSlug = this.currentSelectedProduct;
       this.deleteProduct(productSlug);
       this.$bvModal.hide("modal-delete-product");
-    }
+    },
+    stringToSlug(str) {
+      str = str.replace(/^\s+|\s+$/g, ""); // trim
+      str = str.toLowerCase();
+
+      // remove accents, swap ñ for n, etc
+      var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
+      var to = "aaaaeeeeiiiioooouuuunc------";
+      for (var i = 0, l = from.length; i < l; i++) {
+        str = str.replace(new RegExp(from.charAt(i), "g"), to.charAt(i));
+      }
+
+      str = str.replace(/[^a-z0-9 -]/g, "").replace(/\s+/g, "-").replace(/-+/g, "-");
+
+      return str;
+    },
   },
 };
 </script>
