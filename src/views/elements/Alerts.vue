@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- Hero -->
+ 
     <base-page-heading title="Alerts" subtitle="Inform your users about important events happenning in your app.">
       <template #extra>
         <b-breadcrumb class="breadcrumb-alt">
