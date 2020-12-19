@@ -1,0 +1,2410 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+        <title>OneUI Vue Docs by pixelcave</title>
+
+        <meta name="description" content="OneUI Vue Edition documentation created by pixelcave">
+        <meta name="author" content="pixelcave">
+        <meta name="robots" content="noindex, nofollow">
+
+        <!-- Icons -->
+        <link rel="shortcut icon" href="assets/media/favicons/favicon.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="assets/media/favicons/favicon-192x192.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/media/favicons/apple-touch-icon-180x180.png">
+
+        <!-- Stylesheets -->
+        <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700" rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/pixelcave.docs.min.css">
+    </head>
+    <body>
+        <!-- Page Container -->
+        <div id="page-container" class="sidebar-o side-scroll">
+            <!-- Sidebar -->
+            <nav id="sidebar">
+                <!-- Sidebar Content -->
+                <div class="sidebar-content">
+                    <div class="content-side content-side-full pos-relative">
+                        <!-- Close Sidebar, Visible only on mobile screens -->
+                        <div class="pos-absolute pos-top-right d-lg-none">
+                            <a class="d-inline-block text-danger m-3" href="javascript:void(0)" data-toggle="layout" data-action="sidebar_close">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                        <!-- END Close Sidebar -->
+
+                        <!-- Side Header -->
+                        <div class="mb-3">
+                            <h1 class="font-size-lg font-w700 mb-2">
+                                OneUI Vue <a href="">Docs</a>
+                            </h1>
+                            <div class="font-size-sm font-w600 text-muted">v1.2 - April 1, 2020</div>
+                        </div>
+                        <!-- END Side Header -->
+
+                        <!-- Side Navigation -->
+                        <ul class="nav-main">
+                            <li class="nav-main-heading">Template</li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="#section-changelog" data-toggle="scroll-to" data-offset="50">
+                                    <i class="nav-main-link-icon fa fa-list text-primary"></i>
+                                    <span class="nav-main-link-name">Changelog</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="#section-updating" data-toggle="scroll-to" data-offset="50">
+                                    <i class="nav-main-link-icon fa fa-arrow-up text-primary"></i>
+                                    <span class="nav-main-link-name">Updating</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-heading">Intro</li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="#section-package" data-toggle="scroll-to" data-offset="50">
+                                    <i class="nav-main-link-icon fa fa-briefcase text-muted"></i>
+                                    <span class="nav-main-link-name">Package</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="#section-bootstrap" data-toggle="scroll-to" data-offset="50">
+                                    <i class="nav-main-link-icon fa fa-rocket text-muted"></i>
+                                    <span class="nav-main-link-name">Bootstrap</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="#section-vue-cli" data-toggle="scroll-to" data-offset="50">
+                                    <i class="nav-main-link-icon fa fa-wrench text-muted"></i>
+                                    <span class="nav-main-link-name">Vue CLI</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="#section-getting-started" data-toggle="scroll-to" data-offset="50">
+                                    <i class="nav-main-link-icon fa fa-flag text-muted"></i>
+                                    <span class="nav-main-link-name">Getting Started</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-heading">Structure</li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="#section-html" data-toggle="scroll-to" data-offset="50">
+                                    <i class="nav-main-link-icon fa fa-code text-info"></i>
+                                    <span class="nav-main-link-name">HTML</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="#section-sass" data-toggle="scroll-to" data-offset="50">
+                                    <i class="nav-main-link-icon fa fa-code text-info"></i>
+                                    <span class="nav-main-link-name">Sass</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="#section-directives" data-toggle="scroll-to" data-offset="50">
+                                    <i class="nav-main-link-icon fab fa-vuejs text-info"></i>
+                                    <span class="nav-main-link-name">Directives</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="#section-components" data-toggle="scroll-to" data-offset="50">
+                                    <i class="nav-main-link-icon fab fa-vuejs text-info"></i>
+                                    <span class="nav-main-link-name">Components</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="#section-plugins" data-toggle="scroll-to" data-offset="50">
+                                    <i class="nav-main-link-icon fab fa-vuejs text-info"></i>
+                                    <span class="nav-main-link-name">Plugins</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-heading">More</li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="#section-tips" data-toggle="scroll-to" data-offset="50">
+                                    <i class="nav-main-link-icon fa fa-thumbs-up text-warning"></i>
+                                    <span class="nav-main-link-name">Quick Tips</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="#section-credits" data-toggle="scroll-to" data-offset="50">
+                                    <i class="nav-main-link-icon fa fa-link text-warning"></i>
+                                    <span class="nav-main-link-name">Credits</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-heading">Pixelcave</li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="#section-thankyou" data-toggle="scroll-to" data-offset="50">
+                                    <i class="nav-main-link-icon fa fa-heart text-danger"></i>
+                                    <span class="nav-main-link-name">Thank you</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="https://pixelcave.com">
+                                    <i class="nav-main-link-icon fa fa-globe text-danger"></i>
+                                    <span class="nav-main-link-name">pixelcave.com</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- END Side Navigation -->
+                    </div>
+                </div>
+                <!-- Sidebar Content -->
+            </nav>
+            <!-- END Sidebar -->
+
+            <!-- Main Container -->
+            <main id="main-container">
+                <!-- Toggle Sidebar -->
+                <div class="pos-fixed pos-ontop-content d-print-none">
+                    <button type="button" class="btn btn-secondary pos-absolute pos-top-left m-1 m-lg-3" data-toggle="layout" data-action="sidebar_toggle">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+                <!-- END Toggle Sidebar -->
+
+                <!-- Pixelcave Links -->
+                <div class="content d-print-none">
+                    <div class="row text-center py-5">
+                        <div class="col-6 col-md-3 py-3 invisible" data-toggle="appear" data-class="animated fadeInDown">
+                            <a class="item item-danger" href="https://pixelcave.com/#subscribe">
+                                <div class="item-icon">
+                                    <i class="fa fa-envelope-open"></i>
+                                </div>
+                                <div class="item-text">
+                                    Subscribe to our news
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-3 py-3 invisible" data-toggle="appear" data-class="animated fadeInDown" data-timeout="200">
+                            <a class="item item-success" href="https://pixelcave.com">
+                                <div class="item-icon">
+                                    <i class="fa fa-briefcase"></i>
+                                </div>
+                                <div class="item-text">
+                                    Check out more projects
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-3 py-3 invisible" data-toggle="appear" data-class="animated fadeInDown" data-timeout="400">
+                            <a class="item item-twitter" href="https://twitter.com/pixelcave">
+                                <div class="item-icon">
+                                    <i class="fab fa-twitter"></i>
+                                </div>
+                                <div class="item-text">
+                                    Find us on Twitter
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-3 py-3 invisible" data-toggle="appear" data-class="animated fadeInDown" data-timeout="600">
+                            <a class="item item-facebook" href="https://facebook.com/pixelcave">
+                                <div class="item-icon">
+                                    <i class="fab fa-facebook"></i>
+                                </div>
+                                <div class="item-text">
+                                    Find us on Facebook
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Pixelcave Links -->
+
+                <!-- Page Content -->
+                <div class="content">
+                    <!-- Changelog -->
+                    <h2 id="section-changelog" class="mt-0">Changelog</h2>
+                    <div class="accordion" id="changelog">
+                        <!-- Update 1.2 -->
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0" id="changelog-update12-h">
+                                    <button class="btn btn-link font-w600 p-0" type="button" data-toggle="collapse" data-target="#changelog-update12-c" aria-expanded="true" aria-controls="changelog-update12-c">
+                                        1.2 Update
+                                    </button>
+                                </h5>
+                                <div class="font-size-sm text-muted">April 1, 2020</div>
+                            </div>
+                            <div id="changelog-update12-c" class="collapse show" aria-labelledby="changelog-update12-h" data-parent="#changelog">
+                                <div class="card-body">
+                                    <h4>New Features</h4>
+                                    <ul class="fa-ul">
+                                        <li>
+                                            <i class="fa fa-plus fa-li text-success"></i> Boxed Backend
+                                        </li>
+                                    </ul>
+                                    <h4>Updates</h4>
+                                    <ul class="fa-ul">
+                                        <li>
+                                            <i class="fa fa-angle-double-up fa-li text-info"></i> FontAwesome 5.13.0 (5.12.1) - 26 new icons!
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-angle-double-up fa-li text-info"></i> bootstrap-vue 2.9.0 (2.7.0)
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-angle-double-up fa-li text-info"></i> vue-select 3.9.5 (3.9.1)
+                                        </li>
+                                    </ul>
+                                    <h4>Changes</h4>
+                                    <ul class="fa-ul">
+                                        <li>
+                                            <i class="fa fa-code fa-li text-warning"></i> <code>layouts/Base.vue</code> A new slot named <strong>content</strong> was added
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-code fa-li text-warning"></i> <code>layouts/variations/*.vue</code> Various template options are set in the method <strong>created()</strong> of each layout variation. Instead of setting the configuration in the main store <code>store/index.js</code> for all, we overriding them in each layout.
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-code fa-li text-warning"></i> <code>layouts/variations/BackendBoxed.vue</code> A new layout variation was added along with example pages at <code>views/pages/boxed/*.vue</code>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Update 1.2 -->
+
+                        <!-- Update 1.1 -->
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0" id="changelog-update11-h">
+                                    <button class="btn btn-link font-w600 p-0" type="button" data-toggle="collapse" data-target="#changelog-update11-c" aria-expanded="true" aria-controls="changelog-update11-c">
+                                        1.1 Update
+                                    </button>
+                                </h5>
+                                <div class="font-size-sm text-muted">March 19, 2020</div>
+                            </div>
+                            <div id="changelog-update11-c" class="collapse" aria-labelledby="changelog-update11-h" data-parent="#changelog">
+                                <div class="card-body">
+                                    <h4>New Features</h4>
+                                    <ul class="fa-ul">
+                                        <li>
+                                            <i class="fa fa-plus fa-li text-success"></i> Starter Router (simple boilerplate router for a clean starting point)
+                                        </li>
+                                    </ul>
+                                    <h4>Improvements</h4>
+                                    <ul class="fa-ul">
+                                        <li>
+                                            <i class="fa fa-check fa-li text-primary"></i> Updated scroll behavior on each router view change (now the scroll position from the previous view is not saved)
+                                        </li>
+                                    </ul>
+                                    <h4>Updates</h4>
+                                    <ul class="fa-ul">
+                                        <li>
+                                            <i class="fa fa-angle-double-up fa-li text-info"></i> bootstrap-vue 2.7.0 (2.6.1)
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-angle-double-up fa-li text-info"></i> vuex 3.1.3 (3.1.2)
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-angle-double-up fa-li text-info"></i> vue-select 3.9.1 (3.7.1)
+                                        </li>
+                                    </ul>
+                                    <h4>Changes</h4>
+                                    <ul class="fa-ul">
+                                        <li>
+                                            <i class="fa fa-code fa-li text-warning"></i> A new router was added (<code>router/starter.js</code>) and you can enable it in your main.js file to get a clean starting point. Example layout variation (<code>layout/variations/BackendStarter.vue</code>) and views (<code>views/starter/*.vue</code>) were added too.
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-code fa-li text-warning"></i> The scroll behavior applied at the init section of each router <code>router/*.js</code> by adding the following function:
+                                            <pre class="pre-sh"><code class="javascirpt">scrollBehavior () {
+  return { x: 0, y: 0 }
+}</code></pre>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Update 1.1 -->
+
+                        <!-- Release 1.0 -->
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">
+                                    1.0 Release
+                                </h5>
+                                <div class="font-size-sm text-muted">March 11, 2020</div>
+                            </div>
+                        </div>
+                        <!-- END Release 1.0 -->
+                    </div>
+                    <!-- END Changelog -->
+
+                    <!-- Updating -->
+                    <h2 id="section-updating">Updating</h2>
+                    <p>
+                        <strong>OneUI Vue Edition</strong> will receive free updates in the future. One of the main goals was to make sure the update progress is going to be as easy as possible. Due to its nature (template), updating can become an unpleasant task.
+                    </p>
+                    <p>
+                        Therefore we’ve tried to make it as easy as possible to let you apply your own overrides (in case you would like to) to Sass (<code>src/assets/scss/</code>) files without altering the original files. Please check <a href="#section-sass" data-toggle="scroll-to" data-offset="50">Sass</a> section for more info!
+                    </p>
+                    <p>
+                        In general, the following core folders/files will have to be updated with each update:
+                    </p>
+                    <div class="bg-body-light p-3 rounded push">
+                        <ul class="fa-ul mb-0">
+                            <li>
+                                <i class="far fa-folder fa-li"></i>
+                                <code>src/assets/fonts/*</code>
+                            </li>
+                            <li>
+                                <i class="far fa-folder fa-li"></i>
+                                <code>src/assets/scss/oneui/*</code>
+                            </li>
+                            <li>
+                                <i class="far fa-folder fa-li"></i>
+                                <code>src/assets/scss/vendor/*</code>
+                            </li>
+                            <li>
+                                <i class="far fa-folder fa-li"></i>
+                                <code>src/directives/*</code>
+                            </li>
+                            <li>
+                                <i class="far fa-folder fa-li"></i>
+                                <code>src/components/*</code>
+                            </li>
+                        </ul>
+                    </div>
+                    <p>
+                        After copying over the new files, please make sure that you’ve read the <a href="#section-changelog" data-toggle="scroll-to" data-offset="50">changelog</a>. If a new dependency is added, a file needs to be updated or a breaking change was made, we will let you know, so you can apply those additional changes in your project.
+                    </p>
+                    <p>
+                        Finally, after applying any possible changes, you will just have to run <code>npm update</code> from your system’s console to update all your project’s dependencies.
+                    </p>
+                    <p class="alert alert-warning">
+                        Remember that it’s always a good idea to backup your work before updating to a new version!
+                    </p>
+                    <p class="alert alert-primary">
+                        When a new update becomes available, you will be able to download it from <a class="font-w600" href="https://1.envato.market/jeV0n">Themeforest</a>. You can check the checkbox under the product (<em> <i class="far fa-check-square"></i> Get notified by email if this item is updated</em>), <a class="font-w600" href="https://twitter.com/pixelcave">follow us on Twitter</a> or <a class="font-w600" href="https://pixelcave.com/#subscribe">subscribe to our news</a> to stay up to date about the availability of new updates.
+                    </p>
+                    <!-- END Updating -->
+
+                    <!-- Package -->
+                    <h2 id="section-package">Package</h2>
+                    <p>
+                        <strong>OneUI Vue Edition</strong> was built with extra care based on the valuable feedback we keep receiving over the past years working full-time on dashboard templates. It follows the best practices using the latest technologies and we really hope that you will enjoy working with it. <strong>OneUI Vue Edition</strong> will enable you to build fast, beautiful, user friendly web applications and websites that will work seamlessly across various screens and devices.
+                    </p>
+                    <p>
+                        Let's have a look at the contents of the current package:
+                    </p>
+                    <ul class="fa-ul">
+                        <li>
+                            <i class="far fa-folder fa-li"></i>
+                            <code>01 - OneUI Vue Edition Source</code>
+                            <div>
+                                Includes the source code of the project. Vue CLI tooling was used to build it, so feel free to have a look at the <a href="#section-vue-cli" data-toggle="scroll-to" data-offset="50">related section</a> to get started.
+                            </div>
+                        </li>
+                        <li>
+                            <i class="far fa-folder fa-li"></i>
+                            <code>Documentation</code>
+                            <div>
+                                Of course, it includes current documentation!
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- END Package -->
+
+                    <!-- Bootstrap -->
+                    <h2 id="section-bootstrap">Bootstrap</h2>
+                    <p>
+                        <a href="http://getbootstrap.com/">Bootstrap</a> is the world's most popular front-end component library. It is easy to use and offers a large variety of CSS as well as JavaScript components. <strong>OneUI Vue Edition</strong> uses this framework at its core and builds on top its unique UI layout and features. It extends the original styles and introduces new ones, featuring a modern and clean design.
+                    </p>
+                    <p>
+                       <a href="https://bootstrap-vue.js.org/">BootstrapVue</a> provides one of the most comprehensive implementations of the Bootstrap component and grid system available for Vue.js. It is used in <strong>OneUI Vue Edition</strong> to build the pages and offer interactive examples for Bootstrap’s JS components. Its <a href="https://bootstrap-vue.js.org/">official website</a> will help you out a lot if you are unfamiliar with it, but if you just want to start quickly, you can easily replicate any feature or component we already present in the example pages. If you find a feature in the official BootstrapVue docs you would like to use, feel free to, since they are almost all available.
+                    </p>
+                    <p class="alert alert-primary">
+                       Please have in mind that the <code>navbar</code> and <code>card</code> components are not included by default since custom implementations are used but you can easily include them if you need them by uncommenting them in <code>assets/scss/main.scss</code>.
+                    </p>
+                    <!-- END Bootstrap -->
+
+                    <!-- Vue CLI -->
+                    <h2 id="section-vue-cli">Vue CLI</h2>
+                    <p>
+                        <a href="https://cli.vuejs.org/">Vue CLI</a> is a full system for rapid Vue.js development, providing interactive project scaffolding, zero config rapid prototyping, an extensible and upgradeable runtime dependency along with a full graphical user interface to create and manage Vue.js based projects.
+                    </p>
+                    <p>
+                        To use Vue CLI and start building, you will first have to:
+                    </p>
+                    <ol>
+                        <li>
+                            <a href="https://nodejs.org/">Download and install Node.js</a>
+                            <div class="text-muted">
+                                Prefer the LTS version just to make sure there won't be any incompatibilities
+                            </div>
+                        </li>
+                        <li>
+                            Install Vue CLI globally by running the following command in your system’s console:
+                            <br><code>npm install -g @vue/cli</code>
+                        </li>
+                        <li>
+                            Create your project folder and copy over the source code you will find in the package. Afterwards, install all required dependencies in your project’s folder by running the following command in your system’s console <em>(you will have to run it from your project’s root folder)</em>:<br>
+                            <code>npm install</code>
+                        </li>
+                    </ol>
+                    <p>
+                        After you’ve successfully completed the previous steps, you will be able to run the following commands in your system’s console from your project’s root folder and start building:
+                    </p>
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                            <tr>
+                                <th class="w-25">Command</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <code>npm run serve</code>
+                                </td>
+                                <td>
+                                    <p class="mb-0">
+                                        Compiles and hot-reloads for development
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>npm run build</code>
+                                </td>
+                                <td>
+                                    <p class="mb-0">
+                                        Compiles and minifies for production
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>npm run lint</code>
+                                </td>
+                                <td>
+                                    <p class="mb-0">
+                                        Lints and fixes files
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <code>vue ui</code>
+                                </td>
+                                <td>
+                                    <p class="mb-0">
+                                        Manage your project through a graphical web interface. You can also run tasks through this dashboard or set various configuration options.
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- END Vue CLI -->
+
+                    <!-- Getting Started -->
+                    <h2 id="section-getting-started">Getting Started</h2>
+                    <p>
+                        Let us guide you through the vital folders and files you should focus first to start building your Vue.js based app.
+                    </p>
+                    <table class="table table-bordered push">
+                        <thead class="thead-light">
+                            <tr>
+                                <th style="width: 230px;">File</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <i class="far fa-fw fa-folder mr-1"></i>
+                                    <code>public/</code>
+                                </td>
+                                <td>
+                                    <p class="mb-0">
+                                        In this folder you will find your main index.html file where all build files will be auto injected. It is also the place where you can add your static assets, eg your logo.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="far fa-fw fa-file-alt mr-1"></i>
+                                    <code>src/main.js</code>
+                                </td>
+                                <td>
+                                    <p class="mb-0">
+                                        This is the entry point of your app. This is where all vital libraries are added (Vue.js/Vuex/Vue Router), global plugins/components/directives are registered and the app is mounted. This is also where you can include the <code>router/starter.js</code> instead of the default one to get a clean starting point for your app.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="far fa-fw fa-file-alt mr-1"></i>
+                                    <code>src/App.vue</code>
+                                </td>
+                                <td>
+                                    <p class="mb-0">
+                                        This is the main .vue file where also all required styles for our app are included. The main.scss file, BootstrapVue styles along with all available color themes. It is recommended to comment out the color themes you won’t use to minimize your CSS file size.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="far fa-fw fa-file-alt mr-1"></i>
+                                    <code>src/store/index.js</code>
+                                </td>
+                                <td>
+                                    <p class="mb-0">
+                                        In this file, our Vuex store can be found. This is where you can set various layout options, set a default color theme or change other options which are available in all your components. For some options, it’s better to set them afterwards in the <strong>created()</strong> method of each layout variation file under <code>layouts/variations/</code> folder, just like we did for main content or header style. <a href="https://vuex.vuejs.org/">Vuex</a> is a state management pattern and library for Vue.js. It serves as a centralized store for all the components in an application, with rules ensuring that the state can only be mutated in a predictable fashion.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="far fa-fw fa-file-alt mr-1"></i>
+                                    <code>src/router/index.js</code>
+                                </td>
+                                <td>
+                                    <p class="mb-0">
+                                        This is where all our routes are specified. The layout variation that will be used for each view or a subset of views is set in here as well.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="far fa-fw fa-file-alt mr-1"></i>
+                                    <code>src/views/*</code>
+                                </td>
+                                <td>
+                                    <p class="mb-0">
+                                        All page views can be found in here. This is the place where you can add your own or alter existing ones.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="far fa-fw fa-file-alt mr-1"></i>
+                                    <code>src/layouts/partials/*</code>
+                                </td>
+                                <td>
+                                    <p class="mb-0">
+                                        This is where you can change the content of the common sections (sidebar, side overlay, header and footer). Each section has its own file which you can alter to match your preferences. For more info regarding layout, be sure to have a look at the <a href="#section-html" data-toggle="scroll-to" data-offset="50">next section</a> as well. The main navigation is auto created in <code>src/layouts/partials/Sidebar.vue</code> from the array found in <code>src/data/menu.js</code> by default. To alter the menu, you can change this array accordingly or 'feed' the <code>&lt;base-navigation&gt;</code> component with a custom navigation array similar to the one we already provide.
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- END Getting Started -->
+
+                    <!-- HTML -->
+                    <h2 id="section-html">HTML</h2>
+                    <p>
+                        <strong>OneUI Vue Edition</strong> features a super flexible, smart and powerful layout which can be used to create dashboard and website pages with minimum effort using the same resources.
+                    </p>
+                    <p>
+                        The layout offers many options which can be enabled just by adding or removing a class in the <code>#page-container</code> element. We’ve already set up everything for you though, so you can easily change the available layout options through the Vuex store found in <code>src/store/index.js</code>.
+                    </p>
+                    <p>
+                        Layout partials and variations are created for reusable and customizable layouts:
+                    </p>
+                    <table class="table table-bordered push">
+                        <thead class="thead-light">
+                            <tr>
+                                <th style="width: 230px;">Files</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <i class="far fa-fw fa-file-alt mr-1"></i>
+                                    <code>layouts/Base.vue</code>
+                                </td>
+                                <td>
+                                    <p class="mb-0">
+                                        All base layout elements and transitions between router views are added in this folder. Moreover, all vital layout classes are accodringly set to the <code>#page-container</code> element based on the default Vuex store values.
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="far fa-fw fa-file-alt mr-1"></i>
+                                    <code>layouts/variations/*</code>
+                                </td>
+                                <td>
+                                    <p class="mb-0">
+                                        This is where you can create layout variations for your pages which extend <code>Base.vue</code> layout. By default, 3 main variations are created. The <code>Simple.vue</code> does not include any partials (sidebar, side overlay, header and footer) and can be used for login or landing pages. The <code>Backend.vue</code> variation includes all partials by default and it is the one used for all backend pages. The <code>BackendBoxed.vue</code> does not include sidebar and side overlay, uses the default footer but overrides the header content. You can set which layout each page will use in your <code>router/index.js</code> file. The <code>BackendStarter.vue</code> variation is based on the backend and showcases how you can easily override the content of the partials (it is used for the starter router <code>router/starter.js</code> as an example).
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="far fa-fw fa-file-alt mr-1"></i>
+                                    <code>layouts/partials/*</code>
+                                </td>
+                                <td>
+                                    <p class="mb-0">
+                                        All partials (sidebar, side overlay, header and footer) can be found here.
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>
+                        Let’s have a quick look at the generic HTML structure and get familiar with the layout approach:
+                    </p>
+                    <pre class="pre-sh"><code class="html">&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;
+        &lt;!-- Title, Meta, Icons and Web Fonts --&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;!-- Page Container --&gt;
+        &lt;div id=&quot;page-container&quot;&gt;    
+            &lt;!-- Page loader --&gt;
+            &lt;div id=&quot;page-loader&quot;&gt;&lt;/div&gt;
+
+            &lt;!-- Side Overlay--&gt;
+            &lt;div id=&quot;side-overlay&quot;&gt;
+                ...
+            &lt;/div&gt;
+            &lt;!-- END Side Overlay --&gt;
+
+            &lt;!-- Sidebar --&gt;
+            &lt;div id=&quot;sidebar&quot;&gt;
+                ...
+            &lt;/div&gt;
+            &lt;!-- END Sidebar --&gt;
+
+            &lt;!-- Header --&gt;
+            &lt;header id=&quot;page-header&quot;&gt;
+                ...
+            &lt;/header&gt;
+            &lt;!-- END Header --&gt;
+
+            &lt;!-- Main Container --&gt;
+            &lt;main id=&quot;main-container&quot;&gt;
+                ...
+            &lt;/main&gt;
+            &lt;!-- END Main Container --&gt;
+
+            &lt;!-- Footer --&gt;
+            &lt;footer id=&quot;page-footer&quot;&gt;
+                ...
+            &lt;/footer&gt;
+            &lt;!-- END Footer --&gt;
+        &lt;/div&gt;
+        &lt;!-- END Page Container --&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    <p>
+                        
+                    </p>
+                    <!-- END HTML -->
+
+                    <!-- Sass -->
+                    <h2 id="section-sass">Sass</h2>
+                    <p>
+                        <strong>OneUI Vue Edition</strong> was built with <a href="http://sass-lang.com/">Sass</a> using the latest <code>SCSS</code> syntax. It is a powerful CSS pre-processor which extends the CSS language, adding features that allow variables, mixins, functions and many other techniques, enabling you to make CSS that is more maintainable and extendable.
+                    </p>
+                    <p>
+                        If you would like to extend the framework and add your own styles or UI components, feel free to use the Sass files included in the source code under <code>src/assets/scss/*</code> folder. When you serve your project through <a href="#section-vue-cli" data-toggle="scroll-to" data-offset="50">Vue CLI </a>, you will instantly see live all the changes you make.
+                    </p>
+                    <p>
+                        It is highly recommended though, to use the custom files we created for you to add your own styles and make the <a href="#section-updating" data-toggle="scroll-to" data-offset="50">updating</a> process easier. They can be found in <code>assets/scss/custom/</code>. In <code>assets/scss/custom/_variables.scss</code> you will be able to override any variables you want and in <code>assets/scss/custom/_main.scss</code> you will be able to add your own styles or override current ones.
+                    </p>
+                    <p>
+                        Let’s have a better look at the Sass files structure:
+                    </p>
+                    <div class="table-responsive push">
+                        <table class="table table-bordered mb-0">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th class="w-25">Files</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <i class="far fa-fw fa-folder mr-1"></i>
+                                        <code>oneui/*</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Includes all OneUI Sass files which follow the structure Bootstrap uses. All Bootstrap overrides can also be found in here (variables/mixins/functions/styles). We basically override what we can (using the available Bootstrap variables) or want (functions/mixins) to match our needs. Then we override the styles we can’t alter with variables and add our own components. This method allows us to easily update Bootstrap, resuse its features in our styles and also export a smaller main CSS file with fewer style overrides.
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="far fa-fw fa-folder mr-1"></i>
+                                        <code>vendor/*</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Includes all third party styles (eg animation.css, fontawesome icons, simple line icons). In here, you will also find all style overrides for the integrated Vue.js plugins we showcase.
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="far fa-fw fa-folder mr-1"></i>
+                                        <code>custom/*</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            This is your own folder in which you can add your own styles or overrides. Making your own changes in here will enable you to just update all other folders (when an update becomes available) without worrying of erasing your changes.
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="far fa-fw fa-file-alt mr-1"></i>
+                                        <code>main.scss</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            This is the file where everything comes together. From here you could easily update the compiled CSS file by commenting out the components you won’t use in your project. This way, you can achieve the smallest possible footprint for your main CSS file by only including what you need.
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="alert alert-warning">
+                        <strong>OneUI Vue Edition</strong> uses the Sass styles from the <strong>OneUI Remastered</strong> version. Please have in mind though, that the styles between those two <strong>OneUI</strong> versions are not directly interchangeable because various changes are applied to both color theme and vendor styles.
+                    </p>
+                    <!-- END Sass -->
+
+                    <!-- Directives -->
+                    <h2 id="section-directives">Directives</h2>
+                    <p>
+                        Directives are actually HTML attributes that can be added to your HTML elements or components to init custom functionality. They all start with <code>v-</code> to indicate that they are a special Vue.js attributes. We created the following directives which are included and registered globally, meaning that you can use them out of the box in all your components. Directives are created in the <code>src/directives/</code> folder.
+                    </p>
+                    <div class="table-responsive push">
+                        <table class="table table-bordered mb-0">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th class="w-50">Usage (attribute)</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-body-light">
+                                    <td colspan="2">
+                                        <i class="far fa-fw fa-file-alt mr-1"></i>
+                                        <code>clickRipple.js</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>v-click-ripple</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            You can add the attribute to your buttons if you would like an animated ripple to appear on click. Inspired by material design.
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr class="bg-body-light">
+                                    <td colspan="2">
+                                        <i class="far fa-fw fa-file-alt mr-1"></i>
+                                        <code>toggleClass.js</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>v-toggle-class=&quot;{ targetId: 'elementId', class: 'className' }&quot;</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            You can add the attribute to a button or a link to toggle a CSS class of an element with the specific id set. Please have in mind that this directive manipulates the DOM directly and Vue.js is unaware of the changes. It is best to be used for not critical interactions or for demo showcases.
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- END Directives -->
+
+                    <!-- Components -->
+                    <h2 id="section-components">Components</h2>
+                    <p>
+                        Components are reusable Vue instances with a name. They are so many we can already use with <a href="https://bootstrap-vue.js.org/">BootstrapVue</a> but we also created a couple vital ones to assist you even further. Our custom components are created in the <code>src/components</code> folder and start with <code>Base</code> name. They are all globally registered in <code>main.js</code>, so you can use them in all pages out of the box. Let’s have a better look into them:
+                    </p>
+
+                    <h3>
+                        <code><i class="fa fa-file-alt"></i> BaseBackground.vue</code>
+                    </h3>
+                    <p class="mb-2">
+                        Renders a div with the specified image as its background and an inner div with a class (for color overlays), useful for creating sections in landing pages or dashboard headings. For example:
+                    </p>
+                    <pre class="pre-sh"><code class="html">&lt;base-background image=&quot;url/to/image&quot; inner-class=&quot;bg-black-50&quot;&gt;
+  ... Your Content ...
+&lt;/base-background&gt;</code></pre>
+                    <div class="table-responsive push">
+                        <table class="table table-bordered mb-0">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th style="width: 200px;">Properties</th>
+                                    <th style="width: 120px;">Type</th>
+                                    <th style="width: 100px;">Default</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <code>image</code>
+                                    </td>
+                                    <td>
+                                        String
+                                    </td>
+                                    <td>
+                                        -
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            The url of the image to show
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>inner-class</code>
+                                    </td>
+                                    <td>
+                                        String
+                                    </td>
+                                    <td>
+                                        -
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            The class of the inner div. Usually a background color with opacity class
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>image-top</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Align the image background to the top
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>image-bottom</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Align the image background to the bottom
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>image-fixed</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Set the background to fixed for a parallax effect
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h3>
+                        <code><i class="fa fa-file-alt"></i> BaseBlock.vue</code>
+                    </h3>
+                    <p class="mb-2">
+                        Renders one of the most vital elements of the template. You would usually use blocks to structure your content in most backend pages. For example:
+                    </p>
+                    <pre class="pre-sh"><code class="html">&lt;base-block title=&quot;Block Title&quot;&gt;
+  &lt;p&gt;
+    ...Your content...
+  &lt;/p&gt;
+&lt;/base-block&gt;</code></pre>
+                    <div class="table-responsive push">
+                        <table class="table table-bordered mb-0">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th style="width: 200px;">Properties</th>
+                                    <th style="width: 120px;">Type</th>
+                                    <th style="width: 100px;">Default</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <code>tag</code>
+                                    </td>
+                                    <td>
+                                        String
+                                    </td>
+                                    <td>
+                                        <code>div</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            The HTML tag of the component (div, a)
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>title</code>
+                                    </td>
+                                    <td>
+                                        String
+                                    </td>
+                                    <td>
+                                        -
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            The title of the block
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>subtitle</code>
+                                    </td>
+                                    <td>
+                                        String
+                                    </td>
+                                    <td>
+                                        -
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            The subtitle of the block
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>bordered</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Bordered block style
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>rounded</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Rounded block style
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>themed</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Themed block style
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>transparent</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Transparent block style
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>fx-shadow</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Shadow fx block style
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>fx-pop</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Pop fx block style
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>fx-rotate-right</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Rotate right fx block style
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>fx-rotate-left</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Rotate left fx block style
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>link-shadow</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Shadow style for block links
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>link-pop</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Pop style for block links
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>link-rotate</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Rotate style for block links
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>header-class</code>
+                                    </td>
+                                    <td>
+                                        String
+                                    </td>
+                                    <td>
+                                        -
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Add additional classes to default block-header
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>options-class</code>
+                                    </td>
+                                    <td>
+                                        String
+                                    </td>
+                                    <td>
+                                        -
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Add additional classes to default block-options
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>content-class</code>
+                                    </td>
+                                    <td>
+                                        String
+                                    </td>
+                                    <td>
+                                        -
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Add additional classes to default block-content
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>header-bg</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Add the default header background
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>header-rtl</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Reverse the order of elements in header
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>content-full</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Add full padding to the bottom of the default block-content
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>ribbon</code>
+                                    </td>
+                                    <td>
+                                        [Boolean, String]
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Enable the ribbon or enable it and also specify its content by setting a string value.
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>ribbon-left</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Position ribbon to the left
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>ribbon-bottom</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Position ribbon to the bottom
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>ribbon-bookmark</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Set the bookmark type to your ribbon
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>ribbon-modern</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Set the modern type to your ribbon
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>ribbon-variant</code>
+                                    </td>
+                                    <td>
+                                        String
+                                    </td>
+                                    <td>
+                                        <code>primary</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Set a different ribbon variant (primary, info, warning, danger, success, glass)
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>mode-loading</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Loading block mode
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>mode-fullscreen</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Fullscreen block mode
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>mode-pinned</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Pinned block mode
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>mode-content-hide</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Hide block’s content
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>mode-hide</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Hide block itself
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>btn-option-fullscreen</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Enable the fullscreen mode button
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>btn-option-pinned</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Enable the pinned mode button
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>btn-option-content</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Enable the content toggle button
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>btn-option-close</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Enable the close mode button
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-responsive push">
+                        <table class="table table-bordered mb-0">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th style="width: 200px;">Slot Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <code>header</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            For custom rendering the whole header section in your block
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>title</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            For custom rendering the title content in block header
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>subtitle</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            For custom rendering the subtitle content in block header
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>options</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            For custom rendering the options content in your block header
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>ribbon</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            For custom rendering the ribbon content (if ribbon is enabled)
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>content</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            For custom rendering additional content in your block
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>
+                      You can also set ref properties to your <code>base-block</code> elements and access their methods as required. Examples can be found in the Block API page.
+                    </p>
+                    <div class="table-responsive push">
+                        <table class="table table-bordered mb-0">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th style="width: 200px;">Method</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <code>fullscreenToggle()</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Toggles fullscreen mode
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>fullscreenOn()</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Sets fullscreen mode to on
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>fullscreenOff()</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Sets fullscreen mode to off
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>pinnedToggle()</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Toggles pinned mode
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>pinnedOn()</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Sets pinned mode to on
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>pinnedOff()</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Sets pinned mode to off
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>contentToggle()</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Toggles block’s content visibility
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>contentShow()</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Makes block’s content visible
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>contentHide()</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Hides block’s content
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>stateToggle()</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Toggles block’s state
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>stateLoading()</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Sets block’s state to loading
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>stateNormal()</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Sets block’s state to normal
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>open()</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Makes block itself visible
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>close()</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Hides block itself
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>
+                        <code><i class="fa fa-file-alt"></i> BaseLayoutModifier.vue</code>
+                    </h3>
+                    <p class="mb-2">
+                        Renders a button or a link with the specified action on click for manipulating the layout options. For example:
+                    </p>
+                    <pre class="pre-sh"><code class="html">&lt;base-layout-modifier action=&quot;sidebarToggle&quot;&gt;
+  &lt;i class=&quot;fa fa-fw fa-bars&quot;&gt;&lt;/i&gt;
+&lt;/base-layout-modifier&gt;</code></pre>
+                    <div class="table-responsive push">
+                        <table class="table table-bordered mb-0">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th style="width: 200px;">Properties</th>
+                                    <th style="width: 120px;">Type</th>
+                                    <th style="width: 100px;">Default</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <code>tag</code>
+                                    </td>
+                                    <td>
+                                        String
+                                    </td>
+                                    <td>
+                                        <code>button</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            The HTML tag of the component (button, a)
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>size</code>
+                                    </td>
+                                    <td>
+                                        String
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Button size (sm, lg)
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>variant</code>
+                                    </td>
+                                    <td>
+                                        String
+                                    </td>
+                                    <td>
+                                        <code>primary</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Button variant (primary, alt-primary, outline-primary, secondary, alt-secondary, outline-secondary, light, alt-light, outline-light, dark, alt-dark, outline-dark, danger, alt-danger, outline-danger, info, alt-info, outline-info, success, alt-success, outline-success, warning, alt-warning, outline-warning, dual)
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>action</code>
+                                    </td>
+                                    <td>
+                                        String
+                                    </td>
+                                    <td>
+                                        -
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Specify the layout modifier mode to apply on click (please check out the Layout API page for all available actions with live examples)
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>
+                        <code><i class="fa fa-file-alt"></i> BaseNavigation.vue</code>
+                    </h3>
+                    <p class="mb-2">
+                        Renders the main navigation element based on a given array of objects. Includes functionality for handling custom features such as dropdown toggling, setting active submenus/links, rendering multiple levels or hiding the sidebar on each link click if we are on small screens. For example:
+                    </p>
+                    <pre class="pre-sh"><code class="html">&lt;base-navigation :nodes=&quot;navigation&quot;&gt;&lt;/base-navigation&gt;</code></pre>
+                    <pre class="pre-sh"><code class="javascript">export default {
+  data () {
+    return {
+      navigation: [
+        {
+          name: &apos;Dashboard&apos;,
+          to: &apos;/backend/dashboard&apos;,
+          icon: &apos;si si-speedometer&apos;
+        },
+        {
+          name: &apos;User Interface&apos;,
+          heading: true
+        },
+        {
+          name: &apos;Blocks&apos;,
+          icon: &apos;si si-energy&apos;,
+          subActivePaths: &apos;/backend/blocks&apos;,
+          sub: [
+            {
+              name: &apos;Styles&apos;,
+              to: &apos;/backend/blocks/styles&apos;
+            },
+            {
+              name: &apos;Options&apos;,
+              to: &apos;/backend/blocks/options&apos;
+            },
+            {
+              name: &apos;Forms&apos;,
+              to: &apos;/backend/blocks/forms&apos;
+            },
+            {
+              name: &apos;Themed&apos;,
+              to: &apos;/backend/blocks/themed&apos;
+            },
+            {
+              name: &apos;API&apos;,
+              to: &apos;/backend/blocks/api&apos;
+            }
+          ]
+        }
+      ]
+    }
+  }
+}</code></pre>
+                    <div class="table-responsive push">
+                        <table class="table table-bordered mb-0">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th style="width: 200px;">Properties</th>
+                                    <th style="width: 120px;">Type</th>
+                                    <th style="width: 100px;">Default</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <code>nodes</code>
+                                    </td>
+                                    <td>
+                                        Array
+                                    </td>
+                                    <td>
+                                        -
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            The nodes of the navigation
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>sub-menu</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            If true, a submenu will be rendered (used when recursively creating the menu)
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>dark</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Dark mode for menu
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>horizontal</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Horizontal menu in large screen width
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>horizontal-hover</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Hover mode for horizontal menu
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>horizontal-center</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Center mode for horizontal menu
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>horizontal-justify</code>
+                                    </td>
+                                    <td>
+                                        Boolean
+                                    </td>
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            Justify mode for horizontal menu
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>
+                        <code><i class="fa fa-file-alt"></i> BasePageHeading.vue</code>
+                    </h3>
+                    <p class="mb-2">
+                        Renders a dashboard page heading with a Title and a subtitle along with an extra section to the right, usually for adding an action button or a breadcrumb. For example:
+                    </p>
+                    <pre class="pre-sh"><code class="html">&lt;base-page-heading title=&quot;Title&quot; subtitle=&quot;Your Subtitle&quot;&gt;
+  &lt;template #extra&gt;
+    &lt;b-breadcrumb class=&quot;breadcrumb-alt&quot;&gt;
+      &lt;b-breadcrumb-item href=&quot;javascript:void(0)&quot;&gt;Generic&lt;/b-breadcrumb-item&gt;
+      &lt;b-breadcrumb-item active&gt;Blank&lt;/b-breadcrumb-item&gt;
+    &lt;/b-breadcrumb&gt;
+  &lt;/template&gt;
+&lt;/base-page-heading&gt;</code></pre>
+                    <div class="table-responsive push">
+                        <table class="table table-bordered mb-0">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th style="width: 200px;">Properties</th>
+                                    <th style="width: 120px;">Type</th>
+                                    <th style="width: 100px;">Default</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <code>title</code>
+                                    </td>
+                                    <td>
+                                        String
+                                    </td>
+                                    <td>
+                                        -
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            The title of page heading section
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <code>subtitle</code>
+                                    </td>
+                                    <td>
+                                        String
+                                    </td>
+                                    <td>
+                                        -
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            The subtitle of page heading section
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-responsive push">
+                        <table class="table table-bordered mb-0">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th style="width: 200px;">Slot Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <code>extra</code>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0">
+                                            For custom rendering the right content of the page heading
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- END Components -->
+
+                    <!-- Plugins -->
+                    <h2 id="section-plugins">Plugins</h2>
+                    <p>
+                        Various plugins are showcased in <code>OneUI Vue Edition</code>. These are either pure Vue.js plugins or Vue.js wrappers of popular JavaScript libraries. It is very straightforward to use them in your page views. You will just have to import them along with their CSS styles (if any) and afterwards add them in your templates by using the components they provide.
+                    </p>
+                    <p>
+                        In each example plugin page, we include inline comments along with the required files you have to add as well as links to their online repository where you can find their documentation. For some of them, custom style overrides are also included after their default ones to alter the look and feel and make them compatible with the included color themes.
+                    </p>
+                    <p>
+                        You can remove any dependency from your project by running <code>npm remove module-name</code> from your system’s console. In a similar way, you can install any new plugin/library/tool by using <code>npm install module-name</code>. All dependencies can also be managed through the graphical web interface Vue CLI provides by running <code>vue ui</code>.
+                    </p>
+                    <!-- END Plugins -->
+
+                    <!-- Quick Tips -->
+                    <h2 id="section-tips">Quick Tips</h2>
+
+                    <h3>Prefetching assets</h3>
+                    <p>
+                        Vue CLI is set to prefetch all your app’s assets on first page load by default. This means that when a user visits your app, all required assets from all pages (media, JS and CSS) will be downloaded at once. That’s great to make sure your app pages load almost instantly but when you use many assets (<code>OneUI Vue Edition</code> includes tons of examples) it’s better to deactivate that functionality and let them download on each page load.
+                    </p>
+                    <p>
+                        Prefetch plugin is disabled in <code>vue.config.js</code> file (removing that line, re-enables it):
+                    </p>
+                    <pre class="pre-sh"><code class="javascript">module.exports = {
+  // Webpack configuration
+  chainWebpack: config => {
+    // Previous config...
+
+    // Remove prefetch plugin to stop downloading all assets on first page load
+    config.plugins.delete('prefetch')
+  }
+}</code></pre>
+                    <p>
+                        If you would like to enable prefetch for a specific page, you can specify it in your <code>router/index.js</code> file by using the <code>webpackPrefetch: true</code> option. By default, prefetch is enabled only for the dashboard page:
+                    </p>
+                    <pre class="pre-sh"><code class="javascript">// Backend: General
+const Dashboard = () => import(/* webpackChunkName: "pages-dashboard", webpackPrefetch: true */"@/views/Dashboard.vue")</code></pre>
+
+                    <h3>Production deployment in a subfolder</h3>
+                    <p>
+                        If you are planning on deploying your app in a subfolder on your online server, then before building, be sure that you set the <code>publicPath</code> accordingly in your <code>vue.config.js</code> file. For example, if you deploy it under <code>example.com/subfolder/test/</code>, you should set your <code>publicPath</code> as follows:
+                    </p>
+                    <pre class="pre-sh"><code class="javascript">module.exports = {
+  // Previous config...
+  publicPath: '/subfolder/test/'
+}</code></pre>
+                    <p>
+                        This has to be set to make sure that all your assets will be loaded correctly. You can also set the configuration via the dashboard provided by Vue CLI when running <code>vue ui</code>.
+                    </p>
+
+                    <h3>CSS prefixes for older browsers</h3>
+                    <p>
+                        You can update the following array in <code>package.json</code> accordingly if you would like the Autoprexifer to auto add CSS prefixes for older browser versions. By default, the following are used:
+                    </p>
+                    <pre class="pre-sh"><code class="javascript">"browserslist": [
+    ">= 1%",
+    "last 1 major version",
+    "not dead",
+    "Chrome >= 45",
+    "Firefox >= 38",
+    "Edge >= 12",
+    "iOS >= 9",
+    "Safari >= 9",
+    "Android >= 4.4",
+    "Opera >= 30"
+]</code></pre>
+
+                    <h3>High resolution screens</h3>
+                    <p>
+                        The UI will look crispy clear on high resolution screens and if you would like your images to look great, too, then you will have to use the <code>srcset</code> attribute of the <code>&lt;img&gt;</code> element. For example, if you have an image <code>url/to/image.jpg</code> and its high resolution version <code>url/to/image@2x.jpg</code>, you will have to use the following markup:
+                    </p>
+                    <pre class="pre-sh"><code class="html">&lt;img src="url/to/image.jpg" srcset="url/to/image@2x.jpg 2x" alt="Image Description"&gt;</code></pre>
+                    <p>
+                        The browser will auto select the best version and load it accordingly. Older browsers will ignore the <code>srcset</code> attribute and will load the regular image as usual.
+                    </p>
+
+                    <h3>Favicons</h3>
+                    <p>
+                        If you would like to auto create your favicons from your image/logo, you can use the free service over at <a href="http://realfavicongenerator.net">http://realfavicongenerator.net</a>
+                    </p>
+                    <!-- END Quick Tips -->
+
+                    <!-- Credits -->
+                    <h2 id="section-credits">Credits</h2>
+                    <p>
+                        We’ve used the following resources as listed. Special thanks to all the authors for their hard work!
+                    </p>
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Tooling</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="https://github.com/vuejs/vue-cli">Vue CLI</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Frameworks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="https://github.com/vuejs/vue">Vue.js</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="http://getbootstrap.com/">Bootstrap</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Photos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a class="font-w600" data-toggle="tooltip" data-placement="right" title="A project by pixelcave" href="http://myphotopack.com">
+                                        <i class="fa fa-star text-warning"></i> MyPhotoPack
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://unsplash.com/">Unsplash</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Icons</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="https://fontawesome.com/">Font Awesome 5</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://github.com/thesabbir/simple-line-icons">Simple Line Icons</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                            <tr>
+                                <th class="text-left">Libraries/Scripts</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="https://bootstrap-vue.js.org/">BootstrapVue</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://github.com/chartjs/Chart.js">Chart.js</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://ckeditor.com/ckeditor-5/">CKEditor</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://github.com/Grsmto/simplebar/tree/master/packages/simplebar-vue">SimpleBar Vue</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://github.com/apertureless/vue-chartjs">Vue Chart.js</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://github.com/xiaokaike/vue-color">Vue Color</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://github.com/fengyuanchen/vue-countdown">Vue Countdown</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://github.com/Agontuk/vue-cropperjs">Vue CropperJS</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://github.com/DotNetAge/vue-easy-pie-chart">Vue Easy Pie Chart</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://github.com/ankurk91/vue-flatpickr-component">Vue Flatpickr Component</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://github.com/RobinCK/vue-gallery">Vue Gallery</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://github.com/metachris/vue-highlightjs">Vue HighlighJS</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://github.com/niksmr/vue-masked-input">Vue Masked Input</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://github.com/vuejs/vue-router">Vue Router</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://github.com/sagalbot/vue-select">Vue Select</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://github.com/F-loat/vue-simplemde">Vue SimpleMDE</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://github.com/NightCatSama/vue-slider-component">Vue Slider Component</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://github.com/craigh411/vue-star-rating">Vue Star Rating</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://github.com/sweetalert2/sweetalert2">Vue SweetAlert2</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://github.com/rowanwins/vue-dropzone">Vue2 Dropzone</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://github.com/vuelidate/vuelidate">Vuelidate</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="https://github.com/vuejs/vuex">Vuex</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- END Credits -->
+
+                    <!-- Thank You -->
+                    <h2 id="section-thankyou">Thank You!</h2>
+                    <p>
+                        Thank you so much for supporting our work by choosing one of our products! We wish you all the best with your upcoming projects and endeavours in life! If you would like to check out more of our work, be sure to visit <a href="https://pixelcave.com">our website</a>.
+                    </p>
+                    <p>
+                        <strong>Have a great day and happy coding!</strong>
+                    </p>
+                    <!-- END Thank You -->
+                </div>
+                <!-- END Page Content -->
+
+                <!-- Pixelcave Logo -->
+                <div class="overflow-hidden py-6 bg-body-light text-center">
+                    <img class="img-fluid invisible" src="assets/media/various/pixelcave-logo.png" alt="pixelcave logo" data-toggle="appear" data-class="animated fadeInDown">
+                </div>
+                <!-- END Pixelcave Logo -->
+            </main>
+            <!-- END Main Container -->
+
+            <!-- Footer -->
+            <footer id="page-footer">
+                <div class="content content-full font-size-sm d-flex flex-column flex-sm-row justify-content-sm-between text-center text-sm-left">
+                    <div class="py-2 py-sm-0">
+                        <strong>Docs</strong> &copy; <span data-toggle="year-copy"></span>
+                    </div>
+                    <div class="py-2 py-sm-0">
+                        Crafted with <i class="fa fa-heart text-danger"></i> by <a class="font-w600" href="https://pixelcave.com">pixelcave</a>
+                    </div>
+                </div>
+            </footer>
+            <!-- END Footer -->
+        </div>
+        <!-- END Page Container -->
+
+        <!-- Docs JS -->
+        <script src="assets/js/pixelcave.docs.min.js"></script>
+    </body>
+</html>
