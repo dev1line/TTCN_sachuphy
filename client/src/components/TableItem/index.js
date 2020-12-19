@@ -7,7 +7,6 @@ const styleImage = {
   width: "150px",
   height: "150px",
 };
-var renderer = [];
 const TableItem = (props) => {
   const dispatch = useDispatch();
   
@@ -18,6 +17,25 @@ const TableItem = (props) => {
   //   renderer = change(data);
   // },[data,x]);
   // console.log("data:",change(data))
+  console.log(data)
+  
+
+  useEffect(()=>{
+    const cartList = data? data.map(el => {
+      return {
+        "slug" : el.default_spec?el.default_spec.slug:el.slug,
+        "quantity": el.number?el.number:el.quantity,
+      }
+    }):[];
+    dispatch({
+      type: "UPDATE_CART",
+      action: {
+        "cart":{
+          "products": cartList,
+        }
+      }
+    })
+  }, [data, dispatch])
   
   const columns = [
     {

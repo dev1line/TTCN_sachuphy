@@ -1,6 +1,6 @@
 import {convert} from '../help/convert';
 const initial = {
-  cartList: [],
+  cartList: localStorage.getItem("cart")? JSON.parse(localStorage.getItem("cart")):[],
   total: 0
 };
 
@@ -40,6 +40,24 @@ const cartReducer = (state = initial, action) => {
         ...state,
         cartList:temp,
         total: state.total - action.total
+      }
+    }
+    case "GET_CART_SUCCESS" : {
+      // let temp = convertItem(state.cartList,action);
+      console.log(action)
+      let totalPrice = 0;
+      if(!action.fetchCart.length) break;
+      else {
+        for(let i=0; i< action.fetchCart.length; i++) 
+        {
+          totalPrice += action.fetchCart[i].number * parseInt( action.fetchCart[i].default_spec?action.fetchCart[i].default_spec.price:action.fetchCart[i].price);
+        }
+      }
+      console.log(totalPrice)
+      return {
+        ...state,
+        cartList: action.fetchCart,
+        total:state.total + totalPrice
       }
     }
     // case "CHANGE_TOTAL": {
