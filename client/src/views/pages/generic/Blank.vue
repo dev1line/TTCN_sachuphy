@@ -1,0 +1,623 @@
+<template>
+  <div>
+    <!-- Page Content -->
+    <div class="content">
+      <!-- Full Table -->
+      <base-block title="products">
+        <template #options>
+          <b-button
+            variant="info"
+            class="d-flex align-items-center"
+            @click="showCreateProduct"
+            ><i class="si si-plus pr-2"></i>New Product</b-button
+          >
+        </template>
+        <b-pagination
+          @change="onPageChanged"
+          :total-rows="totalRows"
+          :per-page="perPage"
+          v-model="currentPage"
+          class="my-0"
+        />
+        <b-table-simple responsive bordered striped table-class="table-vcenter">
+          <b-thead>
+            <b-tr>
+              <b-th class="text-center" style="width: 100px">
+                <i class="far fa-file-image"></i>
+              </b-th>
+              <b-th>Name</b-th>
+              <b-th style="width: 30%">Slug</b-th>
+              <b-th style="width: 5%">Option</b-th>
+              <b-th style="width: 10%">Price</b-th>
+              <b-th class="text-center" style="min-width: 110px; width: 110px"
+                >Actions</b-th
+              >
+            </b-tr>
+          </b-thead>
+          <b-tbody>
+            <b-tr v-for="product in productsList" :key="product.id">
+              <b-td class="text-center">
+                <img
+                  class="img-avatar img-avatar48"
+                  :src="`http://localhost:3000/api/v1/images/image-1605759489102.jpg`"
+                  alt="Avatar"
+                />
+              </b-td>
+              <b-td class="font-w600 font-size-sm">
+                <a
+                  :href="`http://localhost:3000/api/v1/product/${product.default_spec.slug}`"
+                >
+                  {{ product.default_spec.name }}
+                </a>
+              </b-td>
+              <b-td class="font-size-sm">
+                <em class="text-muted">{{ product.default_spec.slug }}</em>
+              </b-td>
+              <b-td class="font-size-sm text-center">
+                <em class="text-muted">{{ product.options.length }}</em>
+              </b-td>
+              <b-td>
+                <em class="text-muted">{{ product.default_spec.price }} ₫</em>
+              </b-td>
+              <b-td class="text-center">
+                <b-button size="sm" variant="alt-primary">
+                  <i class="fa fa-fw fa-pencil-alt"></i>
+                </b-button>
+                <b-button size="sm" variant="alt-danger" @click="showDeleteProduct(product.default_spec.slug)">
+                  <i class="fa fa-fw fa-times"></i>
+                </b-button>
+              </b-td>
+            </b-tr>
+          </b-tbody>
+        </b-table-simple>
+      </base-block>
+      <!-- END Full Table -->
+      <!-- Start Modal -->
+      <b-modal
+        id="modal-create-product"
+        size="xl"
+        body-class="p-0"
+        hide-footer
+        hide-header
+      >
+        <div class="block block-themed block-transparent mb-0">
+          <div class="block-header bg-primary-dark">
+            <h3 class="block-title">Thêm sản phẩm mới</h3>
+          </div>
+          <div class="block-content block-content-full">
+            <div class="row gutters-tiny" style="justify-content: center">
+              <div class="col-6 px-2">
+                <b-form-group label="Name" label-for="block-form5-username">
+                  <b-form-input></b-form-input>
+                </b-form-group>
+                <b-form-group
+                  label="Manufacturer"
+                  label-for="block-form5-username"
+                >
+                  <b-form-input></b-form-input>
+                </b-form-group>
+                <b-form-group
+                  label="Processor"
+                  label-for="block-form5-username"
+                >
+                  <b-form-input></b-form-input>
+                </b-form-group>
+                <b-form-group label="Color" label-for="block-form5-username">
+                  <b-form-tags
+                    input-id="tags-basic"
+                    v-model="value"
+                    placeholder="Add color ..."
+                  ></b-form-tags>
+                </b-form-group>
+                <b-form-group label="Price" label-for="block-form5-username">
+                  <b-form-input></b-form-input>
+                </b-form-group>
+                <b-form-group label="Discount" label-for="block-form5-username">
+                  <b-form-input></b-form-input>
+                </b-form-group>
+                <b-form-group label="Image" label-for="block-form5-username">
+                  <b-form-tags
+                    input-id="tags-basic"
+                    v-model="value"
+                    placeholder="Add image ..."
+                  ></b-form-tags>
+                </b-form-group>
+                <b-form-group label="Storage" label-for="block-form5-username">
+                  <b-row class="px-3">
+                    <b-form-tags
+                      disabled
+                      class="col-9"
+                      input-id="tags-basic"
+                      v-model="value"
+                      placeholder="Add Storage ..."
+                    ></b-form-tags>
+                    <b-button variant="secondary" class="col-3" @click="showAddStorage"
+                      >Storage</b-button
+                    >
+                  </b-row>
+                </b-form-group>
+                <b-form-group label="Option" label-for="block-form5-username">
+                  <b-button variant="secondary" class="col-2"
+                    >Option</b-button
+                  >
+                </b-form-group>
+              </div>
+              <div class="col-6 px-2">
+                <b-form-group label="Slug" label-for="block-form5-username">
+                  <b-form-input></b-form-input>
+                </b-form-group>
+                <b-form-group label="Model" label-for="block-form5-username">
+                  <b-form-input></b-form-input>
+                </b-form-group>
+                <b-form-group
+                  label="Graphic Card"
+                  label-for="block-form5-username"
+                >
+                  <b-form-input></b-form-input>
+                </b-form-group>
+                <b-form-group
+                  label="Description"
+                  label-for="block-form5-username"
+                >
+                  <b-form-input></b-form-input>
+                </b-form-group>
+                <b-form-group label="Quantity" label-for="block-form5-username">
+                  <b-form-input></b-form-input>
+                </b-form-group>
+                <b-form-group
+                  label="Operating System"
+                  label-for="block-form5-username"
+                >
+                  <b-form-tags
+                    input-id="tags-basic"
+                    v-model="value"
+                    placeholder="Add operating system ..."
+                  ></b-form-tags>
+                </b-form-group>
+                <b-form-group label="Memory" label-for="block-form5-username">
+                  <b-row class="px-3">
+                    <b-form-tags
+                      disabled
+                      class="col-9"
+                      input-id="tags-basic"
+                      v-model="value"
+                      placeholder="Add Memory ..."
+                    ></b-form-tags>
+                    <b-button
+                      variant="secondary"
+                      class="col-3"
+                      @click="showAddMemory"
+                      >Memory</b-button
+                    >
+                  </b-row>
+                </b-form-group>
+                <b-form-group label="Features" label-for="block-form5-username">
+                  <b-row class="px-3">
+                    <b-form-tags
+                      disabled
+                      class="col-9"
+                      input-id="tags-basic"
+                      v-model="value"
+                      placeholder="Add Features ..."
+                    ></b-form-tags>
+                    <b-button variant="secondary" class="col-3" @click="showAddFeature"
+                      >Feature</b-button
+                    >
+                  </b-row>
+                </b-form-group>
+                <b-form-group label="Display" label-for="block-form5-username">
+                  <b-row class="px-3">
+                    <b-form-tags
+                      disabled
+                      class="col-9"
+                      input-id="tags-basic"
+                      v-model="value"
+                      placeholder="Add Display ..."
+                    ></b-form-tags>
+                    <b-button variant="secondary" class="col-3" @click="showAddDisplay"
+                      >Display</b-button
+                    >
+                  </b-row>
+                </b-form-group>
+              </div>
+              
+              <div class="col-auto px-2">
+                <!-- Sales -->
+                <b-button variant="success">Lưu</b-button>
+                <!-- END Sales -->
+              </div>
+              <div class="col-auto px-2">
+                <!-- Payments -->
+                <b-button
+                  variant="light"
+                  @click="$bvModal.hide('modal-create-product')"
+                  >Hủy</b-button
+                >
+                <!-- END Payments -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </b-modal>
+      <!-- End Modal  -->
+      <!-- Modal Add Memory -->
+      <b-modal
+        id="modal-add-memory"
+        size="sm"
+        centered
+        body-class="p-0"
+        hide-footer
+        hide-header
+      >
+        <div class="block block-themed block-transparent mb-0">
+          <div class="block-header bg-primary-dark">
+            <h3 class="block-title">Add Memory</h3>
+          </div>
+          <div class="block-content block-content-full">
+            <div class="row gutters-tiny" style="justify-content: center">
+              <div class="col-12 px-2">
+                <b-form-group label="Capacity" label-for="block-form5-username">
+                  <b-form-input></b-form-input>
+                </b-form-group>
+                <b-form-group
+                  label="Speed Bus"
+                  label-for="block-form5-username"
+                >
+                  <b-form-input></b-form-input>
+                </b-form-group>
+                <b-form-group label="Cas" label-for="block-form5-username">
+                  <b-form-input></b-form-input>
+                </b-form-group>
+                <b-form-group label="Text" label-for="block-form5-username">
+                  <b-form-input></b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col-auto px-2">
+                <b-button variant="success">Thêm</b-button>
+              </div>
+              <div class="col-auto px-2">
+                <b-button
+                  variant="light"
+                  @click="$bvModal.hide('modal-add-memory')"
+                  >Hủy</b-button
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </b-modal>
+      <!-- End Modal Memory -->
+      <!-- Modal Storage -->
+      <b-modal
+        id="modal-add-storage"
+        size="sm"
+        centered
+        body-class="p-0"
+        hide-footer
+        hide-header
+      >
+        <div class="block block-themed block-transparent mb-0">
+          <div class="block-header bg-primary-dark">
+            <h3 class="block-title">Add Storage</h3>
+          </div>
+          <div class="block-content block-content-full">
+            <div class="row gutters-tiny" style="justify-content: center">
+              <div class="col-12 px-2">
+                <b-form-group label="Capacity" label-for="block-form5-username">
+                  <b-form-input></b-form-input>
+                </b-form-group> 
+                <b-form-group label="Type" label-for="block-form5-username">
+                  <b-form-input></b-form-input>
+                </b-form-group>
+                <b-form-group label="Text" label-for="block-form5-username">
+                  <b-form-input></b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col-auto px-2">
+                <b-button variant="success">Thêm</b-button>
+              </div>
+              <div class="col-auto px-2">
+                <b-button
+                  variant="light"
+                  @click="$bvModal.hide('modal-add-storage')"
+                  >Hủy</b-button
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </b-modal>
+      <!-- End Modal Storage -->
+      <!-- Modal feature -->
+      <b-modal
+        id="modal-add-feature"
+        size="sm"
+        centered
+        body-class="p-0"
+        hide-footer
+        hide-header
+      >
+        <div class="block block-themed block-transparent mb-0">
+          <div class="block-header bg-primary-dark">
+            <h3 class="block-title">Add Feature</h3>
+          </div>
+          <div class="block-content block-content-full">
+            <div class="row gutters-tiny" style="justify-content: center">
+              <div class="col-12 px-2">
+                <b-form-group label="Name" label-for="block-form5-username">
+                  <b-form-input></b-form-input>
+                </b-form-group> 
+                <b-form-group label="More Info" label-for="block-form5-username">
+                  <b-form-input></b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col-auto px-2">
+                <b-button variant="success">Thêm</b-button>
+              </div>
+              <div class="col-auto px-2">
+                <b-button
+                  variant="light"
+                  @click="$bvModal.hide('modal-add-feature')"
+                  >Hủy</b-button
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </b-modal>
+      <!-- End Modal Feature-->
+      <!-- Modal Display -->
+      <b-modal
+        id="modal-add-display"
+        size="sm"
+        centered
+        body-class="p-0"
+        hide-footer
+        hide-header
+      >
+        <div class="block block-themed block-transparent mb-0">
+          <div class="block-header bg-primary-dark">
+            <h3 class="block-title">Add Display</h3>
+          </div>
+          <div class="block-content block-content-full">
+            <div class="row gutters-tiny" style="justify-content: center">
+              <div class="col-12 px-2">
+                <b-form-group label="Resolution" label-for="block-form5-username">
+                  <b-form-input></b-form-input>
+                </b-form-group> 
+                <b-form-group label="Size" label-for="block-form5-username">
+                  <b-form-input></b-form-input>
+                </b-form-group>
+                <b-form-group label="Panel" label-for="block-form5-username">
+                  <b-form-input></b-form-input>
+                </b-form-group>
+                <b-form-group label="More Info" label-for="block-form5-username">
+                  <b-form-input></b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col-auto px-2">
+                <b-button variant="success">Thêm</b-button>
+              </div>
+              <div class="col-auto px-2">
+                <b-button
+                  variant="light"
+                  @click="$bvModal.hide('modal-add-display')"
+                  >Hủy</b-button
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </b-modal>
+      <!-- End Modal Feature-->
+      <b-modal
+        id="modal-delete-product"
+        size="md"
+        body-class="p-0"
+        hide-footer
+        hide-header
+      >
+        <div class="block block-themed block-transparent mb-0">
+          <div class="block-header bg-primary-dark">
+            <h3 class="block-title">Bạn muốn xóa sản phẩm có slug {{currentSelectedProduct}} không ?</h3>
+          </div>
+          <div class="block-content block-content-full">
+            <div class="row gutters-tiny" style="justify-content: center">
+              <div class="col-auto px-2">
+                <!-- Sales -->
+                <b-button variant="danger" @click="deleteProductConfirm"
+                  >Đồng ý</b-button
+                >
+                <!-- END Sales -->
+              </div>
+              <div class="col-auto px-2">
+                <!-- Payments -->
+                <b-button
+                  variant="light"
+                  @click="$bvModal.hide('modal-delete-product')"
+                  >Từ chối</b-button
+                >
+                <!-- END Payments -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </b-modal>
+    </div>
+  </div>
+</template>
+
+<script>
+import { mapState, mapActions } from "vuex";
+import { chunk } from "lodash";
+// import configs from "@/configs";
+export default {
+  data() {
+    return {
+      currentSelectedProduct:"",
+      value:[],
+      currentPage: 1,
+      perPage: 5,
+      form: {
+        default_spec: {
+          name: "Laptop test create 7",
+          model: "82B500FXVN",
+          manufacturer: "Lenovo",
+          processor: "AMD Ryzen 5 4600H",
+          color: ["Black"],
+          graphic_card: "NVIDIA GeForce GTX 1650 4GB GDDR6",
+          memory: [
+            {
+              capacity: 8,
+              speed_bus: 3200,
+              cas: "16",
+              text: "8GB SO-DIMM DDR4-3200",
+            },
+          ],
+          storage: [
+            {
+              capacity: 512,
+              type: "SSD NVMe",
+              text: "512GB SSD M.2 2280 PCIe NVMe",
+            },
+          ],
+          display: [
+            {
+              resolution: "1920x1080",
+              size: 14,
+              panel: "IPS",
+              more_info: "300nits Anti-glare, 144Hz, 100% sRGB, Dolby Vision",
+            },
+          ],
+          features: [
+            {
+              name: "Keyboard",
+              more_info: "Backlit, English",
+            },
+            {
+              name: "Battery",
+              more_info: "Integrated 60Wh",
+            },
+            {
+              name: "Camera",
+              more_info: "720p",
+            },
+          ],
+          operating_system: ["Windows 10", "Ubuntu"],
+          images: [],
+          description:
+            "Laptop gaming best nhat cua nam, thay ai cung mua het a' nghe.",
+          quantity: 50,
+          price: 8890000,
+          discount: 5,
+          slug: "Laptop-test-create-7",
+        },
+        options: [],
+      },
+      users: [
+        {
+          id: 1,
+          name: "Adam McCoy",
+          avatar: "http://localhost:3000/api/v1/images/image-1605759489102.jpg",
+          href: "javascript:void(0)",
+          labelVariant: "success",
+          labelText: "VIP",
+        },
+        {
+          id: 2,
+          name: "Betty Kelley",
+          avatar: "avatar2",
+          href: "javascript:void(0)",
+          labelVariant: "info",
+          labelText: "Business",
+        },
+        {
+          id: 3,
+          name: "Jesse Fisher",
+          avatar: "avatar9",
+          href: "javascript:void(0)",
+          labelVariant: "primary",
+          labelText: "Personal",
+        },
+        {
+          id: 4,
+          name: "Ryan Flores",
+          avatar: "avatar12",
+          href: "javascript:void(0)",
+          labelVariant: "warning",
+          labelText: "Trial",
+        },
+        {
+          id: 5,
+          name: "Alice Moore",
+          avatar: "avatar4",
+          href: "javascript:void(0)",
+          labelVariant: "danger",
+          labelText: "Disabled",
+        },
+      ],
+    };
+  },
+  computed: {
+    totalRows() {
+      return this.products.length;
+    },
+    pageCount() {
+      let l = this.totalRows,
+        s = this.perPage;
+      return Math.floor(l / s);
+    },
+    chunkedProducts() {
+      return chunk(this.products, this.perPage);
+    },
+    paginatedProducts() {
+      return this.chunkedProducts[this.currentPage - 1];
+    },
+    productsList() {
+      if (!this.products) return [];
+      return this.paginatedProducts;
+    },
+    ...mapState("products", {
+      products: "products",
+    }),
+  },
+  created() {
+    console.log(this.fetchProducts());
+    this.fetchProducts();
+  },
+  methods: {
+    onPageChanged(page) {
+      // this.paginate(this.perPage, page - 1);
+      this.currentPage = page;
+    },
+    ...mapActions("products", {
+      fetchProducts: "fetchProducts",
+    }),
+    showCreateProduct() {
+      this.$bvModal.show("modal-create-product");
+    },
+    showAddMemory() {
+      this.$bvModal.show("modal-add-memory");
+    },
+    showAddStorage(){
+      this.$bvModal.show("modal-add-storage");
+    },
+    showAddFeature(){
+      this.$bvModal.show("modal-add-feature");
+    },
+    showAddDisplay(){
+      this.$bvModal.show("modal-add-display");
+    },
+    showDeleteProduct(slug){
+      this.$bvModal.show("modal-delete-product");
+      this.currentSelectedProduct=slug;
+    },
+    deleteProductConfirm(){
+      this.$bvModal.hide("modal-delete-product");
+    }
+  },
+};
+</script>
+
+<style>
+</style>

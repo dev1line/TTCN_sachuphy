@@ -9,16 +9,19 @@ const bcrypt = require("bcrypt")
 module.exports = async function signInController(req, res, next) {
   const { username, password } = req.body
 
+  let user
+
   // Validating
   try {
     await SignInValidator.validateAsync({
       username,
       password,
     })
-    let user = await UserModel.findOne({ username }).select('-__v').exec()
-    if (!user) throw new Error()
+    user = await UserModel.findOne({ username }).select('-__v').exec()
+    if (!user) throw new Error("user.notExisted")
     let isPasswordMatched = await bcrypt.compare(password, user.password)
-    if (!isPasswordMatched) throw new Error()
+    if (!isPasswordMatched) throw new Error("credentials.wrong")
+    if(user.deleted_at) throw new Error("user.deleted")
   } catch (err) {
     if (err.name === "ValidationError")
       return res.status(422).json({
@@ -27,7 +30,7 @@ module.exports = async function signInController(req, res, next) {
       })
     return res.status(422).json({
       success: false,
-      message: "credentials.wrong",
+      message: err.message,
     })
   }
 
@@ -39,5 +42,6 @@ module.exports = async function signInController(req, res, next) {
     success: true,
     message: "Signed in successfully",
     token,
+    role: user.role
   })
 }
