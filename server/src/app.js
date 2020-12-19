@@ -26,7 +26,7 @@ const cors = require("cors")
 
 app.use(cors())
 
-// Logging
+// Logging dangnhap
 
 const morgan = require("morgan")
 
