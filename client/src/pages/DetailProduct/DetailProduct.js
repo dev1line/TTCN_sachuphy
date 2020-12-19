@@ -76,6 +76,7 @@ const DetailProduct = (props) => {
       storage={product.storage}
       operating_system={product.operating_system}
       graphic_card={product.graphic_card}
+      color={product.color}
       click={(product) => handleClick(product)}
       product={productBySlug}
       options={options}
