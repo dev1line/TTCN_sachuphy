@@ -592,6 +592,7 @@ export default {
     },
     ...mapActions("products", {
       fetchProducts: "fetchProducts",
+      deleteProduct:"deleteProduct",
     }),
     showCreateProduct() {
       this.$bvModal.show("modal-create-product");
@@ -613,6 +614,8 @@ export default {
       this.currentSelectedProduct=slug;
     },
     deleteProductConfirm(){
+      const productSlug = this.currentSelectedProduct;
+      this.deleteProduct(productSlug);
       this.$bvModal.hide("modal-delete-product");
     }
   },

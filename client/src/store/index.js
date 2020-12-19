@@ -69,6 +69,21 @@ export default new Vuex.Store({
             console.log(error);
           }
         },
+        async deleteProduct({commit, rootState},productSlug){
+          try {
+            await axios.delete(
+              `${serverAPIURL}product/${productSlug}`,
+              {
+                headers: {
+                  Authorization: `Bearer ${rootState.token}`
+                }
+              }
+            );
+            commit("deleteProduct",productSlug);
+          } catch (error) {
+            console.log(error);
+          }
+        }
       },
       mutations:{
         setProducts(state,products){
@@ -76,6 +91,9 @@ export default new Vuex.Store({
         },
         pushProduct(state,product){
           state.products=[...state.products,product]
+        },
+        deleteProduct(state,productSlug){
+          state.products= state.products.filter(product=>product.default_spec.slug!==productSlug);
         }
       }
     },
