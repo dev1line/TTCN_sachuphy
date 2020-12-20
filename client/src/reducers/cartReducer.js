@@ -46,7 +46,7 @@ const cartReducer = (state = initial, action) => {
       // let temp = convertItem(state.cartList,action);
       console.log(action)
       let totalPrice = 0;
-      if(!action.fetchCart.length) break;
+      if(!action.fetchCart.length) totalPrice = 0;
       else {
         for(let i=0; i< action.fetchCart.length; i++) 
         {
@@ -56,7 +56,7 @@ const cartReducer = (state = initial, action) => {
       console.log(totalPrice)
       return {
         ...state,
-        cartList: action.fetchCart,
+        cartList: action.fetchCart?action.fetchCart:[],
         total:state.total + totalPrice
       }
     }
