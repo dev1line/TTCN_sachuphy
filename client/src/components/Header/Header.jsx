@@ -45,6 +45,7 @@ const Header = (props) => {
 
   console.log(total)
   useEffect(()=>{
+    if (localStorage.getItem("token") || token !== "") {
     console.log(cartList)
     const data = cartList? cartList.map(el => {
       return {
@@ -60,7 +61,8 @@ const Header = (props) => {
         }
       }
     })
-  }, [total, cartList, dispatch])
+  }
+  }, [total, cartList, token ,dispatch])
 
   useEffect(() => {
     if (account === "Log out") {

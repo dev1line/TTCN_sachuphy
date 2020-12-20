@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Table, InputNumber } from "antd";
 import { CloseCircleOutlined } from "@ant-design/icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {change} from '../../help/convert'
+
 const styleImage = {
   width: "150px",
   height: "150px",
 };
 const TableItem = (props) => {
   const dispatch = useDispatch();
+  const token = useSelector((state) => state.token.token);
   
   const {data, total} = props;
   // const [x, setX] = useState([]);
@@ -21,6 +23,7 @@ const TableItem = (props) => {
   
 
   useEffect(()=>{
+    if (localStorage.getItem("token") || token !== "") {
     const cartList = data? data.map(el => {
       return {
         "slug" : el.default_spec?el.default_spec.slug:el.slug,
@@ -35,7 +38,8 @@ const TableItem = (props) => {
         }
       }
     })
-  }, [data, dispatch])
+  }
+  }, [data,token, dispatch])
   
   const columns = [
     {

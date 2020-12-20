@@ -69,7 +69,11 @@ const cartReducer = (state = initial, action) => {
     //   }
     // }
     case "RESET_DATA": {
-      return initial;
+      return {
+        ...state,
+        cartList : [],
+        total: 0,
+      }
     }
     default: {
       return state;
