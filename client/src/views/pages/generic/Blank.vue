@@ -38,8 +38,8 @@
             <b-tr v-for="product in productsList" :key="product.id">
               <b-td class="text-center">
                 <img
-                  class="img-avatar img-avatar48"
-                  :src="`http://localhost:3000/api/v1/images/image-1605759489102.jpg`"
+                  class="img rounded" style="width:100px"
+                  :src="`http://localhost:3000/api/v1/images/${product.default_spec.images[0]}`"
                   alt="Avatar"
                 />
               </b-td>
@@ -108,7 +108,8 @@
                 </b-form-group>
                 <b-form-group label="Color" label-for="block-form5-username">
                   <b-form-tags
-                    input-id="tags-basic"
+                  tag-variant="primary"
+                    input-id="tags-basic1"
                     v-model="form.default_spec.color"
                     placeholder="Add color ..."
                   ></b-form-tags>
@@ -121,8 +122,9 @@
                 </b-form-group>
                 <b-form-group label="Image" label-for="block-form5-username">
                   <b-form-tags
-                    input-id="tags-basic"
-                    v-model="value"
+                    input-id="tags-basic2"
+                    tag-variant="primary"
+                    v-model="form.default_spec.images"
                     placeholder="Add image ..."
                   ></b-form-tags>
                 </b-form-group>
@@ -131,8 +133,9 @@
                     <b-form-tags
                       disabled
                       class="col-9"
-                      input-id="tags-basic"
-                      v-model="value"
+                      input-id="tags-basic3"
+                      tag-variant="primary"
+                      v-model="form.default_spec.storage"
                       placeholder="Add Storage ..."
                     ></b-form-tags>
                     <b-button
@@ -174,7 +177,7 @@
                   label-for="block-form5-username"
                 >
                   <b-form-tags
-                    input-id="tags-basic"
+                    input-id="tags-basic4"
                     v-model="form.default_spec.operating_system"
                     placeholder="Add operating system ..."
                   ></b-form-tags>
@@ -184,8 +187,9 @@
                     <b-form-tags
                       disabled
                       class="col-9"
-                      input-id="tags-basic"
-                      v-model="value"
+                      input-id="tags-basic5"
+                      tag-variant="primary"
+                      v-model="form.default_spec.memory"
                       placeholder="Add Memory ..."
                     ></b-form-tags>
                     <b-button
@@ -201,8 +205,9 @@
                     <b-form-tags
                       disabled
                       class="col-9"
-                      input-id="tags-basic"
-                      v-model="value"
+                      input-id="tags-basic6"
+                      tag-variant="primary"
+                      v-model="form.default_spec.features"
                       placeholder="Add Features ..."
                     ></b-form-tags>
                     <b-button
@@ -218,8 +223,9 @@
                     <b-form-tags
                       disabled
                       class="col-9"
-                      input-id="tags-basic"
-                      v-model="value"
+                      input-id="tags-basic7"
+                      tag-variant="primary"
+                      v-model="form.default_spec.display"
                       placeholder="Add Display ..."
                     ></b-form-tags>
                     <b-button
@@ -234,14 +240,14 @@
 
               <div class="col-auto px-2">
                 <!-- Sales -->
-                <b-button variant="success">Lưu</b-button>
+                <b-button variant="success" @click="createProductConfirm">Lưu</b-button>
                 <!-- END Sales -->
               </div>
               <div class="col-auto px-2">
                 <!-- Payments -->
                 <b-button
                   variant="light"
-                  @click="$bvModal.hide('modal-create-product')"
+                  @click="cancelCreateProduct"
                   >Hủy</b-button
                 >
                 <!-- END Payments -->
@@ -268,23 +274,23 @@
             <div class="row gutters-tiny" style="justify-content: center">
               <div class="col-12 px-2">
                 <b-form-group label="Capacity" label-for="block-form5-username">
-                  <b-form-input></b-form-input>
+                  <b-form-input v-model="tempForm.capacity"></b-form-input>
                 </b-form-group>
                 <b-form-group
                   label="Speed Bus"
                   label-for="block-form5-username"
                 >
-                  <b-form-input></b-form-input>
+                  <b-form-input v-model="tempForm.speed_bus"></b-form-input>
                 </b-form-group>
                 <b-form-group label="Cas" label-for="block-form5-username">
-                  <b-form-input></b-form-input>
+                  <b-form-input v-model="tempForm.cas"></b-form-input>
                 </b-form-group>
                 <b-form-group label="Text" label-for="block-form5-username">
-                  <b-form-input></b-form-input>
+                  <b-form-input v-model="tempForm.text"></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-auto px-2">
-                <b-button variant="success">Thêm</b-button>
+                <b-button variant="success" @click="addMemoryConfirm">Thêm</b-button>
               </div>
               <div class="col-auto px-2">
                 <b-button
@@ -315,17 +321,17 @@
             <div class="row gutters-tiny" style="justify-content: center">
               <div class="col-12 px-2">
                 <b-form-group label="Capacity" label-for="block-form5-username">
-                  <b-form-input></b-form-input>
+                  <b-form-input v-model="tempForm.capacity"></b-form-input>
                 </b-form-group>
                 <b-form-group label="Type" label-for="block-form5-username">
-                  <b-form-input></b-form-input>
+                  <b-form-input v-model="tempForm.type"></b-form-input>
                 </b-form-group>
                 <b-form-group label="Text" label-for="block-form5-username">
-                  <b-form-input></b-form-input>
+                  <b-form-input v-model="tempForm.text"></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-auto px-2">
-                <b-button variant="success">Thêm</b-button>
+                <b-button variant="success" @click="addStorageConfirm">Thêm</b-button>
               </div>
               <div class="col-auto px-2">
                 <b-button
@@ -356,17 +362,17 @@
             <div class="row gutters-tiny" style="justify-content: center">
               <div class="col-12 px-2">
                 <b-form-group label="Name" label-for="block-form5-username">
-                  <b-form-input></b-form-input>
+                  <b-form-input v-model="tempForm.name"></b-form-input>
                 </b-form-group>
                 <b-form-group
                   label="More Info"
                   label-for="block-form5-username"
                 >
-                  <b-form-input></b-form-input>
+                  <b-form-input v-model="tempForm.more_info"></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-auto px-2">
-                <b-button variant="success">Thêm</b-button>
+                <b-button variant="success" @click="addFeaturesConfirm">Thêm</b-button>
               </div>
               <div class="col-auto px-2">
                 <b-button
@@ -400,23 +406,23 @@
                   label="Resolution"
                   label-for="block-form5-username"
                 >
-                  <b-form-input></b-form-input>
+                  <b-form-input v-model="tempForm.resolution"></b-form-input>
                 </b-form-group>
                 <b-form-group label="Size" label-for="block-form5-username">
-                  <b-form-input></b-form-input>
+                  <b-form-input v-model="tempForm.size"></b-form-input>
                 </b-form-group>
                 <b-form-group label="Panel" label-for="block-form5-username">
-                  <b-form-input></b-form-input>
+                  <b-form-input v-model="tempForm.panel"></b-form-input>
                 </b-form-group>
                 <b-form-group
                   label="More Info"
                   label-for="block-form5-username"
                 >
-                  <b-form-input></b-form-input>
+                  <b-form-input v-model="tempForm.more_infor"></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-auto px-2">
-                <b-button variant="success">Thêm</b-button>
+                <b-button variant="success" @click="addDisplayConfirm">Thêm</b-button>
               </div>
               <div class="col-auto px-2">
                 <b-button
@@ -429,7 +435,7 @@
           </div>
         </div>
       </b-modal>
-      <!-- End Modal Feature-->
+      <!-- End Modal Display-->
       <b-modal
         id="modal-delete-product"
         size="md"
@@ -476,62 +482,38 @@ import { chunk } from "lodash";
 export default {
   data() {
     return {
+      tempForm:{},
       currentSelectedProduct: "",
       currentPage: 1,
       perPage: 5,
       form: {
         default_spec: {
-          name: "Laptop test create 7",
-          model: "82B500FXVN",
-          manufacturer: "Lenovo",
-          processor: "AMD Ryzen 5 4600H",
-          color: ["Black","Yellow"],
-          graphic_card: "NVIDIA GeForce GTX 1650 4GB GDDR6",
+          name: "",
+          model: "",
+          manufacturer: "",
+          processor: "",
+          color: ["Black","Grey"],
+          graphic_card: "",
           memory: [
-            {
-              capacity: 8,
-              speed_bus: 3200,
-              cas: "16",
-              text: "8GB SO-DIMM DDR4-3200",
-            },
+            
           ],
           storage: [
-            {
-              capacity: 512,
-              type: "SSD NVMe",
-              text: "512GB SSD M.2 2280 PCIe NVMe",
-            },
+            
           ],
           display: [
-            {
-              resolution: "1920x1080",
-              size: 14,
-              panel: "IPS",
-              more_info: "300nits Anti-glare, 144Hz, 100% sRGB, Dolby Vision",
-            },
+            
           ],
           features: [
-            {
-              name: "Keyboard",
-              more_info: "Backlit, English",
-            },
-            {
-              name: "Battery",
-              more_info: "Integrated 60Wh",
-            },
-            {
-              name: "Camera",
-              more_info: "720p",
-            },
+            
           ],
           operating_system: ["Windows 10", "Ubuntu"],
           images: [],
           description:
-            "Laptop gaming best nhat cua nam, thay ai cung mua het a' nghe.",
-          quantity: 50,
-          price: 8890000,
-          discount: 5,
-          slug: "Laptop-test-create-7",
+            "",
+          quantity: 0,
+          price: 0,
+          discount: 0,
+          slug: "",
         },
         options: [],
       },
@@ -617,6 +599,7 @@ export default {
     ...mapActions("products", {
       fetchProducts: "fetchProducts",
       deleteProduct: "deleteProduct",
+      createProduct: "createProduct"
     }),
     showCreateProduct() {
       this.$bvModal.show("modal-create-product");
@@ -637,10 +620,70 @@ export default {
       this.$bvModal.show("modal-delete-product");
       this.currentSelectedProduct = slug;
     },
+    createProductConfirm(){
+      // console.log(this.form);
+      this.form.default_spec.slug=this.slugAuto;
+      const product = this.form;
+      this.createProduct(product);
+    },
     deleteProductConfirm() {
       const productSlug = this.currentSelectedProduct;
       this.deleteProduct(productSlug);
       this.$bvModal.hide("modal-delete-product");
+    },
+    addStorageConfirm(){
+      this.form.default_spec.storage=[...this.form.default_spec.storage,this.tempForm];
+      this.tempForm={};
+      this.$bvModal.hide("modal-add-storage");
+    },
+    addMemoryConfirm(){
+      this.form.default_spec.memory=[...this.form.default_spec.memory,this.tempForm];
+      this.tempForm={};
+      this.$bvModal.hide("modal-add-memory");
+    },
+    addFeaturesConfirm(){
+      this.form.default_spec.features=[...this.form.default_spec.features,this.tempForm];
+      this.tempForm={};
+      this.$bvModal.hide("modal-add-feature");
+    },
+    addDisplayConfirm(){
+      this.form.default_spec.display=[...this.form.default_spec.display,this.tempForm];
+      this.tempForm={};
+      this.$bvModal.hide("modal-add-display");
+    },
+    cancelCreateProduct(){
+      this.$bvModal.hide("modal-create-product");
+      this.form={
+        default_spec: {
+          name: "",
+          model: "",
+          manufacturer: "",
+          processor: "",
+          color: ["Black","Grey"],
+          graphic_card: "",
+          memory: [
+            
+          ],
+          storage: [
+            
+          ],
+          display: [
+            
+          ],
+          features: [
+            
+          ],
+          operating_system: ["Windows 10", "Ubuntu"],
+          images: [],
+          description:
+            "",
+          quantity: 0,
+          price: 0,
+          discount: 0,
+          slug: "",
+        },
+        options: [],
+      }
     },
     stringToSlug(str) {
       str = str.replace(/^\s+|\s+$/g, ""); // trim
