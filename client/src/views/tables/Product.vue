@@ -495,7 +495,7 @@ export default {
           color: ["Black","Grey"],
           graphic_card: "",
           memory: [
-            
+           
           ],
           storage: [
             
@@ -621,7 +621,6 @@ export default {
       this.currentSelectedProduct = slug;
     },
     createProductConfirm(){
-      // console.log(this.form);
       this.form.default_spec.slug=this.slugAuto;
       const product = this.form;
       this.createProduct(product);
@@ -632,7 +631,8 @@ export default {
       this.$bvModal.hide("modal-delete-product");
     },
     addStorageConfirm(){
-      this.form.default_spec.storage=[...this.form.default_spec.storage,this.tempForm];
+      const {capacity,type,text}=this.tempForm
+      this.form.default_spec.storage=[...this.form.default_spec.storage,{capacity,type,text}];
       this.tempForm={};
       this.$bvModal.hide("modal-add-storage");
     },
@@ -647,7 +647,7 @@ export default {
       this.$bvModal.hide("modal-add-feature");
     },
     addDisplayConfirm(){
-      this.form.default_spec.display=[...this.form.default_spec.display,this.tempForm];
+      this.form.default_spec.display=[...this.form.default_spec.display,this.tempForm ];
       this.tempForm={};
       this.$bvModal.hide("modal-add-display");
     },
