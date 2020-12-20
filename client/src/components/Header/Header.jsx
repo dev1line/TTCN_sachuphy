@@ -68,7 +68,7 @@ const Header = (props) => {
     if (account === "Log out") {
       dispatch({ type: "LOG_OUT" });
     }
-  }, [account, dispatch]);
+  }, [account, setAccount,dispatch]);
 
   const cartListItem = useSelector((state) => state.cart.cartList);
 
