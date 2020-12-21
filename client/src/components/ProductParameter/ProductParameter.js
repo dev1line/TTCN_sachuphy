@@ -3,6 +3,7 @@ import { Row, Col, Button, Badge, Carousel } from "antd";
 import { Link, NavLink } from "react-router-dom";
 import { CheckOutlined, LeftOutlined, RightOutlined } from "@ant-design/icons";
 import styles from "./ProductParameter.module.css";
+import { Loading } from "../../components";
 
 const ProductParameter = (props) => {
   const carousel = React.createRef();
@@ -64,11 +65,16 @@ const ProductParameter = (props) => {
       </Col>
       <Col
         span={12}
-        style={{ border: "1px solid #636363", margin: "2vh 0 1vh" }}>
+        style={{ border: "1px solid #636363", margin: "2vh 0 1vh" }}
+      >
         <Carousel ref={carousel} style={{ borderBottom: "1px solid #636363" }}>
           {imageProduct.map((img, i) => (
             <div key={i}>
-              <img alt="product" src={img.img} style={{ width: "100%", height: "500px"}} />
+              <img
+                alt="product"
+                src={img.img}
+                style={{ width: "100%", height: "500px" }}
+              />
             </div>
           ))}
         </Carousel>
@@ -85,7 +91,8 @@ const ProductParameter = (props) => {
                   i === currentCarouselIndex ? styles["is-image-active"] : {}
                 }
                 onClick={() => handleClickImage(null, i)}
-                style={{ cursor: "pointer" }}>
+                style={{ cursor: "pointer" }}
+              >
                 <img alt="product" src={img.img} width="100%" />
               </div>
             ))}
@@ -100,7 +107,8 @@ const ProductParameter = (props) => {
               key={i}
               exact
               activeClassName={styles["is-active"]}
-              to={`/product/${option.slug}`}>
+              to={`/product/${option.slug}`}
+            >
               <Button
                 style={{
                   height: "5vh",
@@ -108,7 +116,8 @@ const ProductParameter = (props) => {
                   marginRight: "10px",
                   padding: "2px",
                   textOverflow: "ellipsis",
-                }}>
+                }}
+              >
                 {" "}
                 {`${i === 0 ? "Mặc định" : option.name}`}
               </Button>
@@ -116,7 +125,7 @@ const ProductParameter = (props) => {
           ))}
         </Row>
         <Row>
-          <Col>
+          <Col span={24}>
             <span style={{ fontWeight: "500", fontSize: "30px" }}>
               {(props.price * (100 - props.discount)) / 100} VNĐ
             </span>
@@ -128,10 +137,14 @@ const ProductParameter = (props) => {
               {props.price}
             </span>
           </Col>
-          <Col>
+          <Col span={24}>
             <Row style={{ padding: "10px", borderBottom: "1px solid #dbdbdb" }}>
               <Col span={10}>Màn hình:</Col>
-              <Col span={14}>{props.display[0].more_info}</Col>
+              <Col span={14}>
+                {props.display.length
+                  ? props.display[0].more_info
+                  : "Dang cap nhat ..."}
+              </Col>
             </Row>
             <Row style={{ padding: "10px", borderBottom: "1px solid #dbdbdb" }}>
               <Col span={10}>CPU:</Col>
@@ -140,24 +153,28 @@ const ProductParameter = (props) => {
             <Row style={{ padding: "10px", borderBottom: "1px solid #dbdbdb" }}>
               <Col span={10}>RAM:</Col>
               <Col span={14}>
-                {props.memory.map((memory, i) => (
-                  <div key={i}>
-                    {memory.text}
-                    {`${i === 0 ? ", (On board)" : ""}`}
-                    {`${i === props.memory.length - 1 ? "" : ","}`} <br />
-                  </div>
-                ))}
+                {props.memory.length
+                  ? props.memory.map((memory, i) => (
+                      <div key={i}>
+                        {memory.text}
+                        {`${i === 0 ? ", (On board)" : ""}`}
+                        {`${i === props.memory.length - 1 ? "" : ","}`} <br />
+                      </div>
+                    ))
+                  : "Dang cap nhat ..."}
               </Col>
             </Row>
             <Row style={{ padding: "10px", borderBottom: "1px solid #dbdbdb" }}>
               <Col span={10}>Ổ cứng:</Col>
               <Col span={14}>
-                {props.storage.map((storage, i) => (
-                  <div key={i}>
-                    {storage.text}
-                    {`${i !== props.storage.length - 1 ? "," : ""}`} <br />
-                  </div>
-                ))}
+                {props.storage.length
+                  ? props.storage.map((storage, i) => (
+                      <div key={i}>
+                        {storage.text}
+                        {`${i !== props.storage.length - 1 ? "," : ""}`} <br />
+                      </div>
+                    ))
+                  : "Dang cap nhat ..."}
               </Col>
             </Row>
             <Row style={{ padding: "10px", borderBottom: "1px solid #dbdbdb" }}>
@@ -182,7 +199,8 @@ const ProductParameter = (props) => {
                         fontSize: "14px",
                         fontWeight: "bold",
                       }}
-                      count={<CheckOutlined style={{ color: "green" }} />}>
+                      count={<CheckOutlined style={{ color: "green" }} />}
+                    >
                       <Col
                         style={{
                           background: `${color}`,
@@ -192,7 +210,8 @@ const ProductParameter = (props) => {
                           marginRight: "1vh",
                           cursor: "pointer",
                           position: "relative",
-                        }}>
+                        }}
+                      >
                         <a href="#" className="head-example" />
                       </Col>
                     </Badge>
@@ -206,7 +225,8 @@ const ProductParameter = (props) => {
               <Button
                 onClick={() => props.click(props.product)}
                 type="primary"
-                style={{ height: "50px" }}>
+                style={{ height: "50px" }}
+              >
                 Mua ngay
               </Button>
             </Link>

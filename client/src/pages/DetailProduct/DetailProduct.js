@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import "animate.css";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { ProductParameter, Loading } from "../../components";
 import { pickBy } from "lodash";
+import { Row, Col } from "antd";
 // import styles from "./styles.module.css";
 
 const DetailProduct = (props) => {
@@ -65,25 +67,33 @@ const DetailProduct = (props) => {
       behavior: "smooth",
     });
   }
-  return product.name ? (
-    <ProductParameter
-      slug={slug}
-      name={productBySlug.default_spec && productBySlug.default_spec.name}
-      price={product.price}
-      discount={product.discount}
-      display={product.display}
-      processor={product.processor}
-      memory={product.memory}
-      storage={product.storage}
-      operating_system={product.operating_system}
-      graphic_card={product.graphic_card}
-      color={product.color}
-      click={(product) => handleClick(product)}
-      product={productBySlug}
-      options={options}
-    />
-  ) : (
-    <Loading />
+  return (
+    <div className="animate__animated animate__fadeIn">
+      {product.name ? (
+        <ProductParameter
+          slug={slug}
+          name={productBySlug.default_spec && productBySlug.default_spec.name}
+          price={product.price}
+          discount={product.discount}
+          display={product.display}
+          processor={product.processor}
+          memory={product.memory}
+          storage={product.storage}
+          operating_system={product.operating_system}
+          graphic_card={product.graphic_card}
+          color={product.color}
+          click={(product) => handleClick(product)}
+          product={productBySlug}
+          options={options}
+        />
+      ) : (
+        <Row justify="center" style={{ margin: "30px 0", width: "100%" }}>
+          <Col>
+            <Loading />
+          </Col>
+        </Row>
+      )}
+    </div>
   );
 };
 export default DetailProduct;

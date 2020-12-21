@@ -54,12 +54,13 @@ export const ListItem = (props) => {
             size="large"
             defaultValue="Name"
             onChange={handleChangeProducts}
-            style={{ width: 200, float: "right" }}>
+            style={{ width: 200, float: "right" }}
+          >
             <Option value="Name">Sắp xếp theo tên</Option>
             <Option value="Price">Sắp xếp theo giá</Option>
           </Select>
         </Row>
-        <Row gutter={[32, 32]} style={{ marginTop: "30px" }}>
+        <Row style={{ margin: "30px 0", width: "100%" }}>
           {data.length ? (
             data.slice(maxminPage[0], maxminPage[1]).map((product, i) => (
               <Col key={i} span={8}>
@@ -75,7 +76,11 @@ export const ListItem = (props) => {
               </Col>
             ))
           ) : (
-            <Loading />
+            <Row justify="center" style={{ margin: "0", width: "100%" }}>
+              <Col>
+                <Loading />
+              </Col>
+            </Row>
           )}
         </Row>
       </Row>
