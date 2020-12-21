@@ -62,12 +62,12 @@ button {
 }
 .shop {
   text-align: end;
-  
 }
 .btn {
   background-color: #1789fc;
   height: 52px;
   width: 52px;
+  padding: 0;
 }
 .shopping {
   display: flex;

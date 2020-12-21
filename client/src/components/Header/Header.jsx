@@ -156,7 +156,7 @@ const Header = (props) => {
           <Search
             placeholder="What are you looking for ..."
             allowClear
-            enterButton="Search"
+            enterButton="Tìm kiếm"
             size="large"
             onSearch={onSearch}
           />
@@ -174,7 +174,7 @@ const Header = (props) => {
           </Badge>
         </Col>
         <Col span={3} className={styles["shopping"]}>
-          <b>My trolley</b>
+          <b>Giỏ hàng</b>
           <span>{total}</span>
         </Col>
       </Row>
@@ -188,7 +188,7 @@ const Header = (props) => {
             to="/"
             onClick={scrollToTop}
           >
-            HOME
+            TRANG CHỦ
           </NavLink>
           <NavLink
             exact
@@ -197,7 +197,7 @@ const Header = (props) => {
             to="/product"
             onClick={scrollToTop}
           >
-            SHOP
+            SẢN PHẨM
           </NavLink>
           <NavLink
             exact
@@ -206,7 +206,7 @@ const Header = (props) => {
             to="/about"
             onClick={scrollToTop}
           >
-            ABOUT US
+            CHÚNG TÔI
           </NavLink>
           <NavLink
             exact
@@ -215,7 +215,7 @@ const Header = (props) => {
             to="/contact"
             onClick={scrollToTop}
           >
-            CONTACT US
+            LIÊN HỆ
           </NavLink>
         </Col>
         <Col offset={1}></Col>

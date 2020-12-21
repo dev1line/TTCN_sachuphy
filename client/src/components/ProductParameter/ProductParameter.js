@@ -1,8 +1,58 @@
-import React from "react";
-import { Row, Col, Button } from "antd";
+import React, { useEffect, useState } from "react";
+import { Row, Col, Button, Badge, Carousel } from "antd";
 import { Link, NavLink } from "react-router-dom";
+import { CheckOutlined, LeftOutlined, RightOutlined } from "@ant-design/icons";
+import styles from "./ProductParameter.module.css";
 
 const ProductParameter = (props) => {
+  const carousel = React.createRef();
+  const [currentCarouselIndex, setCurrentCarouselIndex] = useState(0);
+  function handleClickImage(e, index) {
+    setCurrentCarouselIndex(index);
+    carousel.current.goTo(`${index}`, false);
+  }
+  function previous(e) {
+    carousel.current.prev();
+    setCurrentCarouselIndex(
+      currentCarouselIndex === 0
+        ? imageProduct.length - 1
+        : currentCarouselIndex - 1
+    );
+  }
+  function next(e) {
+    carousel.current.next();
+    setCurrentCarouselIndex(
+      currentCarouselIndex === imageProduct.length - 1
+        ? 0
+        : currentCarouselIndex + 1
+    );
+  }
+  useEffect(() => {
+    console.log(props.options);
+  }, [props.options]);
+
+  const imageProduct = [
+    {
+      img:
+        "https://hanoicomputercdn.com/media/product/52023_17z90n_v_ah75a5.png",
+    },
+    {
+      img:
+        "https://hanoicomputercdn.com/media/product/52023_17z90n_v_ah75a5.png",
+    },
+    {
+      img:
+        "https://hanoicomputercdn.com/media/product/52023_17z90n_v_ah75a5.png",
+    },
+    {
+      img:
+        "https://hanoicomputercdn.com/media/product/52023_17z90n_v_ah75a5.png",
+    },
+    {
+      img:
+        "https://hanoicomputercdn.com/media/product/52023_17z90n_v_ah75a5.png",
+    },
+  ];
   return (
     <Row style={{ marginBottom: "5vh" }}>
       <Col offset={1}>
@@ -12,12 +62,36 @@ const ProductParameter = (props) => {
       <Col offset={1} span={23} style={{ borderBottom: "1px solid #ababab" }}>
         <h1>{props.name}</h1>
       </Col>
-      <Col span={12}>
-        <img
-          alt="product"
-          src="https://hanoicomputercdn.com/media/product/52023_17z90n_v_ah75a5.png"
-          width="100%"
-        />
+      <Col
+        span={12}
+        style={{ border: "1px solid #636363", margin: "2vh 0 1vh" }}>
+        <Carousel ref={carousel} style={{ borderBottom: "1px solid #636363" }}>
+          {imageProduct.map((img, i) => (
+            <div key={i}>
+              <img alt="product" src={img.img} style={{ width: "100%", height: "500px"}} />
+            </div>
+          ))}
+        </Carousel>
+        <Row>
+          <LeftOutlined
+            onClick={() => previous(null)}
+            className={styles.left}
+          />
+          <Col style={{ display: "flex", padding: "10px 20px" }}>
+            {imageProduct.map((img, i) => (
+              <div
+                key={`images${i}`}
+                className={
+                  i === currentCarouselIndex ? styles["is-image-active"] : {}
+                }
+                onClick={() => handleClickImage(null, i)}
+                style={{ cursor: "pointer" }}>
+                <img alt="product" src={img.img} width="100%" />
+              </div>
+            ))}
+          </Col>
+          <RightOutlined onClick={() => next(null)} className={styles.right} />
+        </Row>
       </Col>
       <Col offset={2} span={8}>
         <Row style={{ margin: "2vh 0 1vh" }}>
@@ -25,17 +99,17 @@ const ProductParameter = (props) => {
             <NavLink
               key={i}
               exact
-              activeClassName
+              activeClassName={styles["is-active"]}
               to={`/product/${option.slug}`}>
               <Button
                 style={{
                   height: "5vh",
-                  borderRadius: "10px",
                   width: "7vw",
                   marginRight: "10px",
+                  padding: "2px",
                 }}>
                 {" "}
-                {`${i === 0 ? "Default" : option.name}`}
+                {`${i === 0 ? "Mặc định" : option.name}`}
               </Button>
             </NavLink>
           ))}
@@ -98,16 +172,29 @@ const ProductParameter = (props) => {
               <Col span={14}>
                 <Row>
                   {props.color.map((color, i) => (
-                    <Col
+                    <Badge
                       key={i}
                       style={{
-                        background: `${color}`,
-                        height: "3vh",
-                        width: "3vh",
-                        borderRadius: "999px",
-                        marginRight: "1vh",
-                        cursor: "pointer",
-                      }}></Col>
+                        position: "absolute",
+                        top: "2px",
+                        right: "10px",
+                        fontSize: "14px",
+                        fontWeight: "bold",
+                      }}
+                      count={<CheckOutlined style={{ color: "green" }} />}>
+                      <Col
+                        style={{
+                          background: `${color}`,
+                          height: "3vh",
+                          width: "3vh",
+                          borderRadius: "999px",
+                          marginRight: "1vh",
+                          cursor: "pointer",
+                          position: "relative",
+                        }}>
+                        <a href="#" className="head-example" />
+                      </Col>
+                    </Badge>
                   ))}
                 </Row>
               </Col>
