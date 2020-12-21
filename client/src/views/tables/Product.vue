@@ -485,7 +485,7 @@ export default {
       tempForm:{},
       currentSelectedProduct: "",
       currentPage: 1,
-      perPage: 5,
+      perPage: 4,
       form: {
         default_spec: {
           name: "",
@@ -624,6 +624,38 @@ export default {
       this.form.default_spec.slug=this.slugAuto;
       const product = this.form;
       this.createProduct(product);
+      this.$bvModal.hide("modal-create-product");
+      this.form={
+        default_spec: {
+          name: "",
+          model: "",
+          manufacturer: "",
+          processor: "",
+          color: ["Black","Grey"],
+          graphic_card: "",
+          memory: [
+            
+          ],
+          storage: [
+            
+          ],
+          display: [
+            
+          ],
+          features: [
+            
+          ],
+          operating_system: ["Windows 10", "Ubuntu"],
+          images: [],
+          description:
+            "",
+          quantity: 0,
+          price: 0,
+          discount: 0,
+          slug: "",
+        },
+        options: [],
+      }
     },
     deleteProductConfirm() {
       const productSlug = this.currentSelectedProduct;
