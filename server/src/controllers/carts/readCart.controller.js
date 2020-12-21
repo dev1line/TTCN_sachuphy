@@ -32,8 +32,7 @@ module.exports = async function readCartController(req, res, next) {
     {
       $project: {
         __v: 0,
-        "products.slug": 1,
-        "products._id": 1,
+        "products.__v": 0,
         user: 0,
         created_at: 0,
       },
@@ -43,8 +42,9 @@ module.exports = async function readCartController(req, res, next) {
   const cart = {
     updated_at: cartResult[0].updated_at,
     products: cartResult[0].products.map((product, index) => ({
-      ...cartResult[0].populatedProducts[index],
       ...product,
+      cartQuantity: product.quantity,
+      ...cartResult[0].populatedProducts[index],
     })),
   }
 
