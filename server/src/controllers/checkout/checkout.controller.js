@@ -18,11 +18,22 @@ const checkoutValidator = require("../../validators/checkout.validator")
  */
 
 module.exports = async function checkoutController(req, res, next) {
-  let order = req.user
+  let order = req.body.order
+
+  const userCart = req.user
     ? await CartModel.findOne({
         user: req.user.username,
       })
-    : req.body.order
+    : null
+
+  order.cart = req.user ? userCart : order.cart
+
+  if (!order.cart || !order.cart.products || !order.cart.products.length) {
+    return res.status(400).json({
+      success: false,
+      message: "Missing cart products",
+    })
+  }
 
   if (!req.user) {
     if (!order)
@@ -48,6 +59,7 @@ module.exports = async function checkoutController(req, res, next) {
         slug: {
           $in: order.cart.products.map((product) => product.slug),
         },
+        visibility: "public",
       },
     },
     {
@@ -61,15 +73,28 @@ module.exports = async function checkoutController(req, res, next) {
         slug: 1,
         price: 1,
         discount: 1,
+        name: 1,
+        images: 1,
       },
     },
   ])
+
+  if (specs.length !== order.cart.products.length) {
+    return res.status(422).json({
+      success: false,
+      message: "Please check again your cart, some product does not exist.",
+    })
+  }
 
   const orderProducts = specs.map((spec) => ({
     slug: spec.slug,
     price: (spec.price * (100 - spec.discount)) / 100,
     quantity: order.cart.products.find((product) => product.slug === spec.slug)
       .quantity,
+    detail: {
+      name: spec.name,
+      images: spec.images,
+    },
   }))
 
   const resultOrder = await OrderModel.create({
@@ -81,6 +106,12 @@ module.exports = async function checkoutController(req, res, next) {
   })
 
   const sanitizedResultOrder = sanitizeResultOrder(resultOrder.toObject())
+
+  if (req.user) {
+    await userCart.updateOne({
+      products: []
+    })
+  }
 
   return res.status(200).json({
     success: true,

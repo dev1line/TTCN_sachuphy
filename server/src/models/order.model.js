@@ -14,6 +14,9 @@ const OrderSchema = new Schema({
       },
       price: {
         type: Number
+      },
+      detail: {
+        type: Object
       }
     },
   ],
