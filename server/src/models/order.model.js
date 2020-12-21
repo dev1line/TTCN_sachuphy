@@ -19,15 +19,23 @@ const OrderSchema = new Schema({
   ],
   name: {
     type: String,
+    required: true
   },
   address: {
     type: String,
+    required: true
+  },
+  phoneNumber: {
+    type: String,
+    required: true
   },
   user: {
     type: String,
   },
   ordered_at: {
     type: Date,
+    required: true,
+    default: Date.now
   },
   created_at: {
     type: Date,
