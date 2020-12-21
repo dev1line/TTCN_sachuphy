@@ -15,7 +15,7 @@ module.exports = async function readCartController(req, res, next) {
     })
   }
 
-  const cart = await CartModel.aggregate([
+  const cartResult = await CartModel.aggregate([
     {
       $match: {
         user: req.user.username,
@@ -26,21 +26,30 @@ module.exports = async function readCartController(req, res, next) {
         from: "specs",
         localField: "products.slug",
         foreignField: "slug",
-        as: "products",
+        as: "populatedProducts",
       },
     },
     {
       $project: {
         __v: 0,
-        "products.__v": 0,
+        "products.slug": 1,
+        "products._id": 1,
         user: 0,
         created_at: 0,
       },
     },
   ])
 
+  const cart = {
+    updated_at: cartResult[0].updated_at,
+    products: cartResult[0].products.map((product, index) => ({
+      ...cartResult[0].populatedProducts[index],
+      ...product,
+    })),
+  }
+
   return res.status(200).json({
     success: true,
-    cart: cart[0],
+    cart: cart,
   })
 }
