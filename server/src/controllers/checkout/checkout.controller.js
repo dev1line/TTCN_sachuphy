@@ -72,7 +72,7 @@ module.exports = async function checkoutController(req, res, next) {
       .quantity,
   }))
 
-  await OrderModel.create({
+  const resultOrder = await OrderModel.create({
     products: orderProducts,
     name: order.name,
     address: order.address,
@@ -80,8 +80,16 @@ module.exports = async function checkoutController(req, res, next) {
     user: req.user ? req.user.username : "GUEST",
   })
 
+  const sanitizedResultOrder = sanitizeResultOrder(resultOrder.toObject())
+
   return res.status(200).json({
     success: true,
     message: "Order has been created.",
+    order: sanitizedResultOrder,
   })
+}
+
+function sanitizeResultOrder(order) {
+  const { __v, _id, ...returnOrder } = order
+  return returnOrder
 }
