@@ -6,6 +6,7 @@ import "antd/dist/antd.css";
 import styles from "./Header.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import logo from "../../logo192.png";
+import {change} from '../../help/convert'
 const { Search } = Input;
 
 const Header = (props) => {
@@ -44,23 +45,23 @@ const Header = (props) => {
   }, [token, dispatch]);
 
   console.log(total)
+  console.log(cartList)
   useEffect(()=>{
     if (localStorage.getItem("token") || token !== "") {
     console.log(cartList)
-    const data = cartList? cartList.map(el => {
-      return {
-        "slug" : el.default_spec?el.default_spec.slug:el.slug,
-        "quantity": el.number?el.number:0,
-      }
-    }):[];
+    
     dispatch({
       type: "UPDATE_CART",
       action: {
         "cart":{
-          "products": data,
+          "products": cartList,
         }
       }
     })
+  }
+  else {
+      localStorage.setItem("cart",JSON.stringify(change(cartList)));
+      localStorage.setItem("total", total);
   }
   }, [total, cartList, token ,dispatch])
 

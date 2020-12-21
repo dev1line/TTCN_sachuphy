@@ -21,6 +21,7 @@ function* getTokenLogin(input) {
     });
   console.log("data", data);
   if (data && data.success) {
+    localStorage.clear()
     localStorage.setItem("token", data.token);
     yield put({ type: "GET_TOKEN_SUCCESS", token: data.token });
   }

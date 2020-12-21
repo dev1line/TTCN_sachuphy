@@ -1,6 +1,6 @@
 import { put } from "redux-saga/effects";
 import axios from "axios";
-import {convertItem} from "../help/convertItem"
+import {change} from "../help/convert"
 // import { convert } from "../help/convert";
 
 const url = "http://localhost:3000/api/v1/cart";
@@ -21,7 +21,7 @@ function* readCart() {
       });
       console.log(fetchCart.cart.products)
     if(fetchCart.cart.products) {
-        let dataConvert = Object.values(convertItem([], fetchCart))
+        let dataConvert = Object.values(change(fetchCart.cart.products))
         console.log(dataConvert)
         localStorage.setItem("cart",  JSON.stringify(dataConvert));
         yield put({
@@ -34,10 +34,21 @@ function* readCart() {
 function* updateCart(input) {
     const cart = input.action;
     console.log(cart)
-    cart.cart.products?localStorage.setItem("cart",JSON.stringify(cart.cart.products)):localStorage.setItem("cart", "[]");
+    cart.cart.products?localStorage.setItem("cart",JSON.stringify(change(cart.cart.products))):localStorage.setItem("cart", "[]");
     console.log(cart);
-
-    let data = JSON.stringify(cart);
+    const products = cart? cart.cart.products.map(el => {
+      return {
+        "slug" : el.default_spec?el.default_spec.slug:el.slug,
+        "quantity": el.number,
+      }
+    }):[];
+    let data = {
+      "cart":
+      {
+        products
+      }
+    }
+    data = JSON.stringify(data);
     console.log(data)
     yield axios({
         method: "PUT",

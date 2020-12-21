@@ -90,15 +90,20 @@ export const convert = (list, item, type = "add") => {
 
 export const change = (list) => {
 
-    const temp = list && list.map((listItem, index) => {
-        return {
-            ...Object.fromEntries(Object.entries(listItem.default_spec? listItem.default_spec: listItem)),
-            ...{
-                key: index,
-                number: listItem?.number,
-                total: listItem.default_spec? listItem.default_spec.price * listItem?.number: listItem.price * listItem?.number ,
+    const temp = list && list.map((listItem, index, isfirt = false) => {
+        let number = listItem.number?listItem.number:listItem.cartQuantity;
+        console.log(number)
+        let price = parseInt(listItem.default_spec? listItem.default_spec.price:listItem.price)
+        console.log(listItem.default_spec? listItem.default_spec.price * listItem.number: listItem.price * listItem.number?listItem.number:listItem.cartQuantity)
+         return {
+                ...Object.fromEntries(Object.entries(listItem.default_spec? listItem.default_spec: listItem)),
+                ...{
+                    key: index,
+                    number: number,
+                    total: number * price
+                }
             }
-        }
+        
     })
     return temp;
 }

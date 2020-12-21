@@ -24,22 +24,18 @@ const TableItem = (props) => {
 
   useEffect(()=>{
     if (localStorage.getItem("token") || token !== "") {
-    const cartList = data? data.map(el => {
-      return {
-        "slug" : el.default_spec?el.default_spec.slug:el.slug,
-        "quantity": el.number?el.number:el.quantity,
-      }
-    }):[];
+    console.log(data)
+    
     dispatch({
       type: "UPDATE_CART",
       action: {
         "cart":{
-          "products": cartList,
+          "products": data,
         }
       }
     })
   }
-  }, [data,token, dispatch])
+  }, [total, data, token ,dispatch])
   
   const columns = [
     {
