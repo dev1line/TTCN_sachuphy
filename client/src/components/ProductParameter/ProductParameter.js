@@ -104,9 +104,10 @@ const ProductParameter = (props) => {
               <Button
                 style={{
                   height: "5vh",
-                  width: "7vw",
+                  width: "100px",
                   marginRight: "10px",
                   padding: "2px",
+                  textOverflow: "ellipsis",
                 }}>
                 {" "}
                 {`${i === 0 ? "Mặc định" : option.name}`}

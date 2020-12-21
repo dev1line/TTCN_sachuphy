@@ -49,6 +49,18 @@ const FilterProduct = React.forwardRef((props, ref) => {
           <Menu.Item key="MSI">
             MSI
           </Menu.Item>
+          <Menu.Item key="HP">
+            HP
+          </Menu.Item>
+          <Menu.Item key="Acer">
+            Acer
+          </Menu.Item>
+          <Menu.Item key="Apple">
+            Macbook
+          </Menu.Item>
+          <Menu.Item key="Google">
+            Google
+          </Menu.Item>
         </SubMenu>
       </Menu>
       <Row gutter={[0, 10]} style={{ marginTop: "20px" }}>
