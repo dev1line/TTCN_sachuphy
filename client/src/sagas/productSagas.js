@@ -21,7 +21,7 @@ function* filterProducts(input) {
   const filterPrice = input.filterByPrice;
   // console.log(input);
   const data = yield select();
-  const products = data.products.all_products;
+  const products = data.products.products;
   // console.log(products);
   const filteredProducts = yield _.filter(products, function (o) {
     if (filterName === "All") {
@@ -43,16 +43,13 @@ function* getProductBySlug(input) {
   const slug = input.slug;
   const data = yield select();
   const products = data.products.products;
-
   const existedSlugs = [
     products.flatMap((element) => [
       element.default_spec.slug,
       ...element.options.flatMap((option) => option.slug),
     ]),
   ];
-
-  if(existedSlugs.includes(slug)) return
-
+  if (existedSlugs.includes(slug)) return;
   const fetchProduct = yield axios({
     method: "get",
     url: `${url}/${slug}`,
@@ -64,5 +61,19 @@ function* getProductBySlug(input) {
     });
   }
 }
+function* sortProducts(input) {
+  const sort = input.sortProducts;
+  console.log(sort);
+  const data = yield select();
+  const products = data.products.products;
+  console.log(products);
+  const sortedProducts = _.sortBy(products, (o) => {return sort === "Name" ? o.default_spec.name : o.default_spec.price});
+  if (sortedProducts) {
+    yield put({
+      type: "SORT_PRODUCTS_SUCCESS",
+      sortedProducts: sortedProducts,
+    });
+  }
+}
 
-export { getProducts, filterProducts, getProductBySlug };
+export { getProducts, filterProducts, getProductBySlug, sortProducts };

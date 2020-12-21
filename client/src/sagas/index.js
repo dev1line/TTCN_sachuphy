@@ -1,7 +1,7 @@
 import { all, takeEvery } from "redux-saga/effects";
 import { setTokenLogin, getTokenLogin, logOut } from "./tokenSagas";
 import { SET_TOKEN } from "../constants";
-import { getProducts, filterProducts, getProductBySlug } from "./productSagas";
+import { getProducts, filterProducts, getProductBySlug, sortProducts } from "./productSagas";
 function* rootSagas() {
   yield all([
     takeEvery(SET_TOKEN, setTokenLogin),
@@ -10,6 +10,7 @@ function* rootSagas() {
     takeEvery("GET_ALL_PRODUCTS", getProducts),
     takeEvery("FILTER_PRODUCTS", filterProducts),
     takeEvery("GET_PRODUCT_BY_SLUG", getProductBySlug),
+    takeEvery("SORT_PRODUCTS", sortProducts),
   ]);
 }
 

@@ -9,10 +9,11 @@ const { SubMenu } = Menu;
 
 const FilterProduct = React.forwardRef((props, ref) => {
   const [rangePrice, setRangePrice] = useState([0, 100]);
-  const [nameProduct, setNameProduct] = useState("");
+  const [nameProduct, setNameProduct] = useState("All");
   const dispatch = useDispatch();
   const handleChange = (e) => {
     setNameProduct(e.key);
+    // console.log(rangePrice);
     dispatch({ type: "FILTER_PRODUCTS", filterByName: e.key, filterByPrice: rangePrice });
   };
   var leftContentClasses = classnames({

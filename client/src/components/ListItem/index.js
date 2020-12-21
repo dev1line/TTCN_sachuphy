@@ -1,25 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col, Select, Pagination, Spin } from "antd";
+import { Row, Col, Select, Pagination } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { Item } from "../Item";
-import { LoadingOutlined } from "@ant-design/icons";
+import { Loading } from "../../components";
 
 const { Option } = Select;
 
 export const ListItem = (props) => {
-  const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
-  const data = useSelector((state) => state.products.products);
-  // console.log(data);
+  const data = useSelector((state) => state.products.currentProduct);
   const numEachPage = 9;
   const [maxminPage, setMaxminPage] = useState([0, 8]);
   const dispatch = useDispatch();
+  const handleChangeProducts = (value) => {
+    dispatch({ type: "SORT_PRODUCTS", sortProducts: value });
+  };
   useEffect(() => {
     dispatch({ type: "GET_ALL_PRODUCTS" });
   }, [dispatch]);
 
   const handleClick = (item) => {
-    console.log("click item:", item.default_spec.price);
-    dispatch({ type: "ADD_CART", item, price: item.default_spec.price });
+    console.log(item);
+    dispatch({
+      type: "ADD_CART",
+      item: item.default_spec,
+      price: item.default_spec.price,
+    });
   };
 
   const handleChangePage = (value) => {
@@ -47,10 +52,11 @@ export const ListItem = (props) => {
           </p>
           <Select
             size="large"
-            defaultValue="ten"
+            defaultValue="Name"
+            onChange={handleChangeProducts}
             style={{ width: 200, float: "right" }}>
-            <Option value="ten">Sắp xếp theo tên</Option>
-            <Option value="gia">Sắp xếp theo giá</Option>
+            <Option value="Name">Sắp xếp theo tên</Option>
+            <Option value="Price">Sắp xếp theo giá</Option>
           </Select>
         </Row>
         <Row gutter={[32, 32]} style={{ marginTop: "30px" }}>
@@ -69,9 +75,7 @@ export const ListItem = (props) => {
               </Col>
             ))
           ) : (
-            <Col>
-              <Spin indicator={antIcon} />
-            </Col>
+            <Loading />
           )}
         </Row>
       </Row>

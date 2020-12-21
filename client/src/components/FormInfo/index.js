@@ -28,7 +28,6 @@ const FormInfo = (props) => {
     <Form.Item name="prefix" noStyle>
       <Select
         defaultValue="84"
-        value="84"
         style={{
           width: 70,
         }}

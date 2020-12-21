@@ -21,11 +21,12 @@ const DetailProduct = (props) => {
     dispatch({ type: "GET_PRODUCT_BY_SLUG", slug: slug });
   }, [dispatch, slug]);
   const handleClick = (product) => {
+    console.log(product);
     scrollToTop();
     dispatch({
       type: "ADD_CART",
       item: product,
-      price: product.price,
+      price: product.default_spec.price,
     });
   };
 
