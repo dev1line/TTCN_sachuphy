@@ -1,19 +1,47 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Table, InputNumber } from "antd";
-// import { CloseCircleOutlined } from "@ant-design/icons";
-// import { useDispatch } from "react-redux";
-import {change} from '../../help/convert'
+import { CloseCircleOutlined } from "@ant-design/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { change } from "../../help/convert";
+
 const styleImage = {
   width: "150px",
   height: "150px",
 };
-
 const TableItem = (props) => {
-  // const dispatch = useDispatch();
-  
-  const {data, total} = props;
-  console.log("data:",change(data))
-  
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.token.token);
+
+  const { data, total } = props;
+  // const [x, setX] = useState([]);
+  // useEffect(() => {
+  //   setX(data);
+  //   renderer = change(data);
+  // },[data,x]);
+  // console.log("data:",change(data))
+  console.log(data);
+
+    useEffect(() => {
+    if (localStorage.getItem("token") || token !== "") {
+      const cartList = data
+        ? data.map((el) => {
+            return {
+              slug: el.default_spec ? el.default_spec.slug : el.slug,
+              quantity: el.number ? el.number : el.quantity,
+            };
+          })
+        : [];
+      dispatch({
+        type: "UPDATE_CART",
+        action: {
+          cart: {
+            products: cartList,
+          },
+        },
+      });
+    }
+  }, [data, token, dispatch]);
+
   const columns = [
     {
       title: "STT",
@@ -47,13 +75,14 @@ const TableItem = (props) => {
       title: "Số lượng",
       dataIndex: "number",
       key: "number",
-      render: (number, row, index) => (
+      render: (number, row) => (
         <InputNumber
-          key={index}
+          // key={index}
+          value={row.number}
           min={1}
           max={100}
-          defaultValue={ number }
-          onChange={(value) => onChange(value, row.key)}
+          // defaultValue={ number }
+          onChange={(value) => onChange(value, row.price, row.key)}
         />
       ),
     },
@@ -65,44 +94,37 @@ const TableItem = (props) => {
     },
     {
       title: "Action",
-      dataIndex: "slug",
-      key: "slug",
-      // render: (row, index) => (
-      //   <CloseCircleOutlined value={1} key={index} onClick={() => handleClick(row.key)} />
-      // ),
+      render: (row, index) => (
+        <CloseCircleOutlined
+          value={1}
+          key={index}
+          onClick={() => handleClick(row.key, row.total)}
+        />
+      ),
     },
   ];
 
-  // const handleClick = (index) => {
-  //   console.log("index", index);
-  //   // dispatch({ type: "DELETE_ITEM", index });
-  //   // dataFormatted.splice(index, 1);
-  // };
-//   var all_in = 0;
-//   ans.map((el) => {
-//     all_in = all_in + el.total;
-//     return 0;
-//   });
-// const [total, SetTotal] = useState(all_in)
-// useEffect(() => {
-//   dispatch({type:"CHANGE_TOTAL", total})
-// },[total])
-  const onChange = (value, key) =>{
-      console.log(value);
-      // ans[key].number = value;
-      // ans[key].total = ans[key].price * ans[key].number;
-      // let newans = [...ans]
-      // setData(newans)
-      // ans.map((el) => {
-      //   all_in = all_in + el.total;
-      //   return 0;
-      // });
-      // SetTotal(all_in);
-      // console.log(newans);
-  }
+  const handleClick = (index, total) => {
+    console.log("index", index);
+    dispatch({ type: "DELETE", index, total });
+  };
 
-  
-  
+  const onChange = (value, price, key) => {
+    console.log(value);
+    console.log(data[key]);
+
+    // const item = {
+    //   default_spec: {
+    //     slug:slug
+    //   }
+    // };
+    // if (value < change(data)[key].number)
+    //   dispatch({type:"DELETE_ITEM", value:value, item});
+    // else
+    // dispatch({type:"ADD_ITEM", value:value, item});
+    dispatch({ type: "CHANGE_NUMBER", value, key, price });
+  };
+
   return (
     <div>
       <Table columns={columns} dataSource={change(data)} />

@@ -16,12 +16,29 @@ const isContained = (list, item) => {
     return -1;
 }
 
+const isContained2 = (list, item) => {
+    if (list)
+    for(let index = 0; index < list.length; index++) {
+        if (list[index] 
+            && list[index]
+            && list[index].slug 
+            && item
+            && item.slug
+            && list[index].slug == item.slug) {
+            console.log("index:", index)
+            return index;
+        }
+        
+    }
+    return -1;
+}
+
 //type : add || delete 
 
 export const convert = (list, item, type = "add") => {
 
     let locate = -1;
-    locate = isContained(list, item);
+    locate = item.default_spec ? isContained(list, item): isContained2(list, item);
     console.log("locate:", locate);
 
     switch(type) {
@@ -75,11 +92,11 @@ export const change = (list) => {
 
     const temp = list && list.map((listItem, index) => {
         return {
-            ...Object.fromEntries(Object.entries(listItem?.default_spec)),
+            ...Object.fromEntries(Object.entries(listItem.default_spec? listItem.default_spec: listItem)),
             ...{
                 key: index,
                 number: listItem?.number,
-                total: listItem?.default_spec.price * listItem?.number,
+                total: listItem.default_spec? listItem.default_spec.price * listItem?.number: listItem.price * listItem?.number ,
             }
         }
     })

@@ -57,6 +57,8 @@ function* logOut() {
     },
   });
   yield localStorage.clear();
+  window.location.href = "/";
+  yield put({type:"RESET_DATA"});
   yield put({ type: "LOG_OUT_DONE" });
 }
 export { getTokenLogin, setTokenLogin, logOut };

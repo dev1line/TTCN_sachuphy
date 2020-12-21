@@ -12,6 +12,7 @@ const Header = (props) => {
   const token = useSelector((state) => state.token.token);
   const dispatch = useDispatch();
   const total = useSelector((state) => state.cart.total);
+  const cartList = useSelector((state) => state.cart.cartList);
   const currs = ["VNĐ", "USD"];
   const langs = ["Tiếng Việt", "English"];
   const accs = ["My Account", "Log out"];
@@ -31,10 +32,43 @@ const Header = (props) => {
   }, [token, dispatch]);
 
   useEffect(() => {
+    dispatch({ type: "GET_ALL_PRODUCTS" });
+  }, [dispatch]);
+  
+  useEffect(() => {
+    if (localStorage.getItem("token") || token !== "") {
+      dispatch({
+        type: "GET_CART",
+      });
+    }
+  }, [token, dispatch]);
+
+  console.log(total)
+  useEffect(()=>{
+    if (localStorage.getItem("token") || token !== "") {
+    console.log(cartList)
+    const data = cartList? cartList.map(el => {
+      return {
+        "slug" : el.default_spec?el.default_spec.slug:el.slug,
+        "quantity": el.number?el.number:0,
+      }
+    }):[];
+    dispatch({
+      type: "UPDATE_CART",
+      action: {
+        "cart":{
+          "products": data,
+        }
+      }
+    })
+  }
+  }, [total, cartList, token ,dispatch])
+
+  useEffect(() => {
     if (account === "Log out") {
       dispatch({ type: "LOG_OUT" });
     }
-  }, [account, dispatch]);
+  }, [account, setAccount,dispatch]);
 
   const cartListItem = useSelector((state) => state.cart.cartList);
 
