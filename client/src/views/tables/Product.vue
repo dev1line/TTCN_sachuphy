@@ -38,7 +38,8 @@
             <b-tr v-for="product in productsList" :key="product.id">
               <b-td class="text-center">
                 <img
-                  class="img rounded" style="width:100px"
+                  class="img rounded"
+                  style="width: 100px"
                   :src="`http://localhost:3000/api/v1/images/${product.default_spec.images[0]}`"
                   alt="Avatar"
                 />
@@ -98,27 +99,35 @@
                   label="Manufacturer"
                   label-for="block-form5-username"
                 >
-                  <b-form-input v-model="form.default_spec.manufacturer"></b-form-input>
+                  <b-form-input
+                    v-model="form.default_spec.manufacturer"
+                  ></b-form-input>
                 </b-form-group>
                 <b-form-group
                   label="Processor"
                   label-for="block-form5-username"
                 >
-                  <b-form-input v-model="form.default_spec.processor"></b-form-input>
+                  <b-form-input
+                    v-model="form.default_spec.processor"
+                  ></b-form-input>
                 </b-form-group>
                 <b-form-group label="Color" label-for="block-form5-username">
                   <b-form-tags
-                  tag-variant="primary"
+                    tag-variant="primary"
                     input-id="tags-basic1"
                     v-model="form.default_spec.color"
                     placeholder="Add color ..."
                   ></b-form-tags>
                 </b-form-group>
                 <b-form-group label="Price" label-for="block-form5-username">
-                  <b-form-input v-model="form.default_spec.price"></b-form-input>
+                  <b-form-input
+                    v-model="form.default_spec.price"
+                  ></b-form-input>
                 </b-form-group>
                 <b-form-group label="Discount" label-for="block-form5-username">
-                  <b-form-input v-model="form.default_spec.discount"></b-form-input>
+                  <b-form-input
+                    v-model="form.default_spec.discount"
+                  ></b-form-input>
                 </b-form-group>
                 <b-form-group label="Image" label-for="block-form5-username">
                   <b-form-tags
@@ -135,7 +144,7 @@
                       class="col-9"
                       input-id="tags-basic3"
                       tag-variant="primary"
-                      v-model="form.default_spec.storage"
+                      v-model="tempStorage"
                       placeholder="Add Storage ..."
                     ></b-form-tags>
                     <b-button
@@ -155,22 +164,30 @@
                   <b-form-input v-model="this.slugAuto"></b-form-input>
                 </b-form-group>
                 <b-form-group label="Model" label-for="block-form5-username">
-                  <b-form-input v-model="form.default_spec.model"></b-form-input>
+                  <b-form-input
+                    v-model="form.default_spec.model"
+                  ></b-form-input>
                 </b-form-group>
                 <b-form-group
                   label="Graphic Card"
                   label-for="block-form5-username"
                 >
-                  <b-form-input v-model="form.default_spec.graphic_card"></b-form-input>
+                  <b-form-input
+                    v-model="form.default_spec.graphic_card"
+                  ></b-form-input>
                 </b-form-group>
                 <b-form-group
                   label="Description"
                   label-for="block-form5-username"
                 >
-                  <b-form-input v-model="form.default_spec.description"></b-form-input>
+                  <b-form-input
+                    v-model="form.default_spec.description"
+                  ></b-form-input>
                 </b-form-group>
                 <b-form-group label="Quantity" label-for="block-form5-username">
-                  <b-form-input v-model="form.default_spec.quantity"></b-form-input>
+                  <b-form-input
+                    v-model="form.default_spec.quantity"
+                  ></b-form-input>
                 </b-form-group>
                 <b-form-group
                   label="Operating System"
@@ -189,7 +206,7 @@
                       class="col-9"
                       input-id="tags-basic5"
                       tag-variant="primary"
-                      v-model="form.default_spec.memory"
+                      v-model="tempMemory"
                       placeholder="Add Memory ..."
                     ></b-form-tags>
                     <b-button
@@ -207,7 +224,7 @@
                       class="col-9"
                       input-id="tags-basic6"
                       tag-variant="primary"
-                      v-model="form.default_spec.features"
+                      v-model="tempFeatures"
                       placeholder="Add Features ..."
                     ></b-form-tags>
                     <b-button
@@ -225,7 +242,7 @@
                       class="col-9"
                       input-id="tags-basic7"
                       tag-variant="primary"
-                      v-model="form.default_spec.display"
+                      v-model="tempDisplay"
                       placeholder="Add Display ..."
                     ></b-form-tags>
                     <b-button
@@ -240,14 +257,14 @@
 
               <div class="col-auto px-2">
                 <!-- Sales -->
-                <b-button variant="success" @click="createProductConfirm">Lưu</b-button>
+                <b-button variant="success" @click="createProductConfirm"
+                  >Lưu</b-button
+                >
                 <!-- END Sales -->
               </div>
               <div class="col-auto px-2">
                 <!-- Payments -->
-                <b-button
-                  variant="light"
-                  @click="cancelCreateProduct"
+                <b-button variant="light" @click="cancelCreateProduct"
                   >Hủy</b-button
                 >
                 <!-- END Payments -->
@@ -290,7 +307,9 @@
                 </b-form-group>
               </div>
               <div class="col-auto px-2">
-                <b-button variant="success" @click="addMemoryConfirm">Thêm</b-button>
+                <b-button variant="success" @click="addMemoryConfirm"
+                  >Thêm</b-button
+                >
               </div>
               <div class="col-auto px-2">
                 <b-button
@@ -324,14 +343,19 @@
                   <b-form-input v-model="tempForm.capacity"></b-form-input>
                 </b-form-group>
                 <b-form-group label="Type" label-for="block-form5-username">
-                  <b-form-input v-model="tempForm.type"></b-form-input>
+                  <b-form-select
+                    v-model="tempForm.type"
+                    :options="storageTypeOptions"
+                  ></b-form-select>
                 </b-form-group>
                 <b-form-group label="Text" label-for="block-form5-username">
                   <b-form-input v-model="tempForm.text"></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-auto px-2">
-                <b-button variant="success" @click="addStorageConfirm">Thêm</b-button>
+                <b-button variant="success" @click="addStorageConfirm"
+                  >Thêm</b-button
+                >
               </div>
               <div class="col-auto px-2">
                 <b-button
@@ -372,7 +396,9 @@
                 </b-form-group>
               </div>
               <div class="col-auto px-2">
-                <b-button variant="success" @click="addFeaturesConfirm">Thêm</b-button>
+                <b-button variant="success" @click="addFeaturesConfirm"
+                  >Thêm</b-button
+                >
               </div>
               <div class="col-auto px-2">
                 <b-button
@@ -422,7 +448,9 @@
                 </b-form-group>
               </div>
               <div class="col-auto px-2">
-                <b-button variant="success" @click="addDisplayConfirm">Thêm</b-button>
+                <b-button variant="success" @click="addDisplayConfirm"
+                  >Thêm</b-button
+                >
               </div>
               <div class="col-auto px-2">
                 <b-button
@@ -482,7 +510,16 @@ import { chunk } from "lodash";
 export default {
   data() {
     return {
-      tempForm:{},
+      tempForm: {},
+      tempStorage: [],
+      tempMemory: [],
+      tempFeatures: [],
+      tempDisplay: [],
+      storageTypeOptions: [
+        { value: "SSD", text: "SSD" },
+        { value: "HDD", text: "HDD" },
+        { value: "SSD NVMe", text: "SSD NVMe" },
+      ],
       currentSelectedProduct: "",
       currentPage: 1,
       perPage: 4,
@@ -492,24 +529,15 @@ export default {
           model: "",
           manufacturer: "",
           processor: "",
-          color: ["Black","Grey"],
+          color: ["Black", "Grey"],
           graphic_card: "",
-          memory: [
-           
-          ],
-          storage: [
-            
-          ],
-          display: [
-            
-          ],
-          features: [
-            
-          ],
+          memory: [],
+          storage: [],
+          display: [],
+          features: [],
           operating_system: ["Windows 10", "Ubuntu"],
           images: [],
-          description:
-            "",
+          description: "",
           quantity: 0,
           price: 0,
           discount: 0,
@@ -517,48 +545,6 @@ export default {
         },
         options: [],
       },
-      users: [
-        {
-          id: 1,
-          name: "Adam McCoy",
-          avatar: "http://localhost:3000/api/v1/images/image-1605759489102.jpg",
-          href: "javascript:void(0)",
-          labelVariant: "success",
-          labelText: "VIP",
-        },
-        {
-          id: 2,
-          name: "Betty Kelley",
-          avatar: "avatar2",
-          href: "javascript:void(0)",
-          labelVariant: "info",
-          labelText: "Business",
-        },
-        {
-          id: 3,
-          name: "Jesse Fisher",
-          avatar: "avatar9",
-          href: "javascript:void(0)",
-          labelVariant: "primary",
-          labelText: "Personal",
-        },
-        {
-          id: 4,
-          name: "Ryan Flores",
-          avatar: "avatar12",
-          href: "javascript:void(0)",
-          labelVariant: "warning",
-          labelText: "Trial",
-        },
-        {
-          id: 5,
-          name: "Alice Moore",
-          avatar: "avatar4",
-          href: "javascript:void(0)",
-          labelVariant: "danger",
-          labelText: "Disabled",
-        },
-      ],
     };
   },
   computed: {
@@ -599,7 +585,7 @@ export default {
     ...mapActions("products", {
       fetchProducts: "fetchProducts",
       deleteProduct: "deleteProduct",
-      createProduct: "createProduct"
+      createProduct: "createProduct",
     }),
     showCreateProduct() {
       this.$bvModal.show("modal-create-product");
@@ -620,102 +606,102 @@ export default {
       this.$bvModal.show("modal-delete-product");
       this.currentSelectedProduct = slug;
     },
-    createProductConfirm(){
-      this.form.default_spec.slug=this.slugAuto;
+    createProductConfirm() {
+      this.form.default_spec.slug = this.slugAuto;
       const product = this.form;
+      // console.log(product);
       this.createProduct(product);
       this.$bvModal.hide("modal-create-product");
-      this.form={
+      this.tempForm={};
+      this.tempStorage=[];
+      this.tempMemory=[];
+      this.tempDisplay=[];
+      this.tempFeatures=[];
+      this.form = {
         default_spec: {
           name: "",
           model: "",
           manufacturer: "",
           processor: "",
-          color: ["Black","Grey"],
+          color: ["Black", "Grey"],
           graphic_card: "",
-          memory: [
-            
-          ],
-          storage: [
-            
-          ],
-          display: [
-            
-          ],
-          features: [
-            
-          ],
+          memory: [],
+          storage: [],
+          display: [],
+          features: [],
           operating_system: ["Windows 10", "Ubuntu"],
           images: [],
-          description:
-            "",
+          description: "",
           quantity: 0,
           price: 0,
           discount: 0,
           slug: "",
         },
         options: [],
-      }
+      };
     },
     deleteProductConfirm() {
       const productSlug = this.currentSelectedProduct;
       this.deleteProduct(productSlug);
       this.$bvModal.hide("modal-delete-product");
     },
-    addStorageConfirm(){
-      const {capacity,type,text}=this.tempForm
-      this.form.default_spec.storage=[...this.form.default_spec.storage,{capacity,type,text}];
-      this.tempForm={};
+    addStorageConfirm() {
+      const { capacity, type, text } = this.tempForm;
+      this.tempStorage.push({ capacity, type, text });
+      this.form.default_spec.storage.push({ capacity, type, text });
+      this.tempForm = {};
       this.$bvModal.hide("modal-add-storage");
     },
-    addMemoryConfirm(){
-      this.form.default_spec.memory=[...this.form.default_spec.memory,this.tempForm];
-      this.tempForm={};
+    addMemoryConfirm() {
+      const { capacity, speed_bus, cas, text } = this.tempForm;
+      this.tempMemory.push({ capacity, speed_bus, cas, text });
+      this.form.default_spec.memory.push({ capacity, speed_bus, cas, text });
+      this.tempForm = {};
       this.$bvModal.hide("modal-add-memory");
     },
-    addFeaturesConfirm(){
-      this.form.default_spec.features=[...this.form.default_spec.features,this.tempForm];
-      this.tempForm={};
+    addFeaturesConfirm() {
+      const { name, more_info } = this.tempForm;
+      this.tempFeatures.push({ name, more_info });
+      this.form.default_spec.features.push({ name, more_info });
+      this.tempForm = {};
       this.$bvModal.hide("modal-add-feature");
     },
-    addDisplayConfirm(){
-      this.form.default_spec.display=[...this.form.default_spec.display,this.tempForm ];
-      this.tempForm={};
+    addDisplayConfirm() {
+      const { resolution, size, panel, more_info } = this.tempForm;
+      this.tempDisplay.push({ resolution, size, panel, more_info });
+      this.form.default_spec.features.push({ resolution, size, panel, more_info });
+      this.tempForm = {};
       this.$bvModal.hide("modal-add-display");
     },
-    cancelCreateProduct(){
+    cancelCreateProduct() {
       this.$bvModal.hide("modal-create-product");
-      this.form={
+      this.tempForm={};
+      this.tempStorage=[];
+      this.tempMemory=[];
+      this.tempDisplay=[];
+      this.tempFeatures=[];
+      this.form = {
         default_spec: {
           name: "",
           model: "",
           manufacturer: "",
           processor: "",
-          color: ["Black","Grey"],
+          color: ["Black", "Grey"],
           graphic_card: "",
-          memory: [
-            
-          ],
-          storage: [
-            
-          ],
-          display: [
-            
-          ],
-          features: [
-            
-          ],
+          memory: [],
+          storage: [],
+          display: [],
+          features: [],
           operating_system: ["Windows 10", "Ubuntu"],
           images: [],
-          description:
-            "",
+          description: "",
           quantity: 0,
           price: 0,
           discount: 0,
           slug: "",
         },
         options: [],
-      }
+      };
     },
     stringToSlug(str) {
       str = str.replace(/^\s+|\s+$/g, ""); // trim
@@ -728,7 +714,10 @@ export default {
         str = str.replace(new RegExp(from.charAt(i), "g"), to.charAt(i));
       }
 
-      str = str.replace(/[^a-z0-9 -]/g, "").replace(/\s+/g, "-").replace(/-+/g, "-");
+      str = str
+        .replace(/[^a-z0-9 -]/g, "")
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-");
 
       return str;
     },

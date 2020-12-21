@@ -62,11 +62,12 @@ export default new Vuex.Store({
                 headers:{
                   Authorization: `Bearer ${rootState.token}`
                 }
-              }
+              } 
             );
             commit("pushProduct",product);
           } catch (error) {
             console.log(error);
+            console.dir(error);
           }
         },
         async deleteProduct({commit, rootState},productSlug){

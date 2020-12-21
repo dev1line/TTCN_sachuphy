@@ -329,6 +329,7 @@ export default {
     createUserConfirm() {
       this.$bvModal.hide("modal-create-user");
       const { username, password, role } = this.form;
+      console.log({ username, password, role });
       this.createUser({ username, password, role });
     },
     ...mapActions("users", {
