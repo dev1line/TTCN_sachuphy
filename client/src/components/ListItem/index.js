@@ -43,7 +43,7 @@ export const ListItem = (props) => {
       <Row>
         <Row style={{ marginTop: "30px", width: "100%", display: "block" }}>
           <p style={{ float: "left", fontSize: "18px", paddingTop: "5px" }}>
-            Tim thay {data.length ? data.length : "0"} sản phẩm
+            Tim thấy {data.length ? data.length : "0"} sản phẩm
           </p>
           <Select
             size="large"
