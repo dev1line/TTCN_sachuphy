@@ -150,7 +150,7 @@
                     <b-button
                       v-for="storage in tempStorage"
                       :key="storage.index"
-                      @click="showEditStorage(storage,tempStorage.indexOf(storage))"
+                      @click="showEditStorage('modal-edit-storage',storage,tempStorage.indexOf(storage))"
                       >Storage-{{ tempStorage.indexOf(storage) }}</b-button
                     >
                     <b-button
@@ -207,55 +207,74 @@
                 </b-form-group>
                 <b-form-group label="Memory" label-for="block-form5-username">
                   <b-row class="px-3">
-                    <b-form-tags
+                    <!-- <b-form-tags
                       disabled
                       class="col-9"
                       input-id="tags-basic5"
                       tag-variant="primary"
                       v-model="tempMemory"
                       placeholder="Add Memory ..."
-                    ></b-form-tags>
+                    ></b-form-tags> -->
+                    <b-button
+                      v-for="memory in tempMemory"
+                      :key="memory.index"
+                      @click="showEditMemory('modal-edit-memory',memory,tempMemory.indexOf(memory))"
+                    >Memory-{{tempMemory.indexOf(memory)}}</b-button>
                     <b-button
                       variant="secondary"
-                      class="col-3"
+                      class="col-1"
                       @click="showAddMemory"
-                      >Memory</b-button
+                      ><i class="si si-plus pr2"></i></b-button
                     >
                   </b-row>
                 </b-form-group>
                 <b-form-group label="Features" label-for="block-form5-username">
                   <b-row class="px-3">
-                    <b-form-tags
+                    <!-- <b-form-tags
                       disabled
                       class="col-9"
                       input-id="tags-basic6"
                       tag-variant="primary"
                       v-model="tempFeatures"
                       placeholder="Add Features ..."
-                    ></b-form-tags>
+                    ></b-form-tags> -->
+                    <b-button
+                    v-for="feature in tempFeatures"
+                    :key="feature.index"
+                    @click="showEditFeature('modal-edit-feature',feature,tempFeatures.indexOf(feature))"
+                    >
+                    Feature-{{tempFeatures.indexOf(feature)}}
+                    </b-button>
                     <b-button
                       variant="secondary"
-                      class="col-3"
+                      class="col-1"
                       @click="showAddFeature"
-                      >Feature</b-button
+                      ><i class="si si-plus pr2"></i></b-button
                     >
                   </b-row>
                 </b-form-group>
                 <b-form-group label="Display" label-for="block-form5-username">
                   <b-row class="px-3">
-                    <b-form-tags
+                    <!-- <b-form-tags
                       disabled
                       class="col-9"
                       input-id="tags-basic7"
                       tag-variant="primary"
                       v-model="tempDisplay"
                       placeholder="Add Display ..."
-                    ></b-form-tags>
+                    ></b-form-tags> -->
+                    <b-button
+                      v-for="display in tempDisplay"
+                      :key="display.index"
+                      @click="showEditDisplay('modal-edit-display',display,tempDisplay.indexOf(display))"
+                    >
+                      Display-{{tempDisplay.indexOf(display)}}
+                    </b-button>
                     <b-button
                       variant="secondary"
-                      class="col-3"
+                      class="col-1"
                       @click="showAddDisplay"
-                      >Display</b-button
+                      ><i class="si si-plus pr2"></i></b-button
                     >
                   </b-row>
                 </b-form-group>
@@ -320,7 +339,7 @@
               <div class="col-auto px-2">
                 <b-button
                   variant="light"
-                  @click="$bvModal.hide('modal-add-memory')"
+                  @click="hideModal('modal-add-memory')"
                   >Hủy</b-button
                 >
               </div>
@@ -329,6 +348,60 @@
         </div>
       </b-modal>
       <!-- End Modal Memory -->
+      <!-- Modal Edit Memory -->
+      <b-modal
+        id="modal-edit-memory"
+        size="sm"
+        centered
+        body-class="p-0"
+        hide-footer
+        hide-header
+      >
+        <div class="block block-themed block-transparent mb-0">
+          <div class="block-header bg-primary-dark">
+            <h3 class="block-title">Edit Memory</h3>
+          </div>
+          <div class="block-content block-content-full">
+            <div class="row gutters-tiny" style="justify-content: center">
+              <div class="col-12 px-2">
+                <b-form-group label="Capacity" label-for="block-form5-username">
+                  <b-form-input v-model="tempForm.capacity"></b-form-input>
+                </b-form-group>
+                <b-form-group
+                  label="Speed Bus"
+                  label-for="block-form5-username"
+                >
+                  <b-form-input v-model="tempForm.speed_bus"></b-form-input>
+                </b-form-group>
+                <b-form-group label="Cas" label-for="block-form5-username">
+                  <b-form-input v-model="tempForm.cas"></b-form-input>
+                </b-form-group>
+                <b-form-group label="Text" label-for="block-form5-username">
+                  <b-form-input v-model="tempForm.text"></b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col-auto px-2">
+                <b-button variant="success" @click="editMemoryConfirm"
+                  >Chỉnh sửa</b-button
+                >
+              </div>
+              <div class="col-auto px-2">
+                <b-button variant="success" @click="deleteElement('modal-edit-memory')"
+                  >Xóa</b-button
+                >
+              </div>
+              <div class="col-auto px-2">
+                <b-button
+                  variant="light"
+                  @click="hideModal('modal-edit-memory')"
+                  >Hủy</b-button
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </b-modal>
+      <!-- End Modal Edit Memory -->
       <!-- Modal Storage -->
       <b-modal
         id="modal-add-storage"
@@ -366,7 +439,58 @@
               <div class="col-auto px-2">
                 <b-button
                   variant="light"
-                  @click="$bvModal.hide('modal-add-storage')"
+                  @click="hideModal('modal-add-storage')"
+                  >Hủy</b-button
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </b-modal>
+      <!-- End Modal Storage -->
+      <!-- Modal Edit Storage -->
+      <b-modal
+        id="modal-edit-storage"
+        size="sm"
+        centered
+        body-class="p-0"
+        hide-footer
+        hide-header
+      >
+        <div class="block block-themed block-transparent mb-0">
+          <div class="block-header bg-primary-dark">
+            <h3 class="block-title">Edit Storage</h3>
+          </div>
+          <div class="block-content block-content-full">
+            <div class="row gutters-tiny" style="justify-content: center">
+              <div class="col-12 px-2">
+                <b-form-group label="Capacity" label-for="block-form5-username">
+                  <b-form-input v-model="tempForm.capacity"></b-form-input>
+                </b-form-group>
+                <b-form-group label="Type" label-for="block-form5-username">
+                  <b-form-select
+                    v-model="tempForm.type"
+                    :options="storageTypeOptions"
+                  ></b-form-select>
+                </b-form-group>
+                <b-form-group label="Text" label-for="block-form5-username">
+                  <b-form-input v-model="tempForm.text"></b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col-auto px-2">
+                <b-button variant="success" @click="editStorageConfirm"
+                  >Chỉnh sửa</b-button
+                >
+              </div>
+              <div class="col-auto px-2">
+                <b-button variant="success" @click="deleteElement('modal-edit-storage')"
+                  >Xóa</b-button
+                >
+              </div>
+              <div class="col-auto px-2">
+                <b-button
+                  variant="light"
+                  @click="hideModal('modal-edit-storage')"
                   >Hủy</b-button
                 >
               </div>
@@ -409,7 +533,7 @@
               <div class="col-auto px-2">
                 <b-button
                   variant="light"
-                  @click="$bvModal.hide('modal-add-feature')"
+                  @click="hideModal('modal-add-feature')"
                   >Hủy</b-button
                 >
               </div>
@@ -418,6 +542,54 @@
         </div>
       </b-modal>
       <!-- End Modal Feature-->
+      <!-- Modal Edit Feature -->
+      <b-modal
+        id="modal-edit-feature"
+        size="sm"
+        centered
+        body-class="p-0"
+        hide-footer
+        hide-header
+      >
+        <div class="block block-themed block-transparent mb-0">
+          <div class="block-header bg-primary-dark">
+            <h3 class="block-title">Edit Feature</h3>
+          </div>
+          <div class="block-content block-content-full">
+            <div class="row gutters-tiny" style="justify-content: center">
+              <div class="col-12 px-2">
+                <b-form-group label="Name" label-for="block-form5-username">
+                  <b-form-input v-model="tempForm.name"></b-form-input>
+                </b-form-group>
+                <b-form-group
+                  label="More Info"
+                  label-for="block-form5-username"
+                >
+                  <b-form-input v-model="tempForm.more_info"></b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col-auto px-2">
+                <b-button variant="success" @click="editFeatureConfirm"
+                  >Chỉnh sửa</b-button
+                >
+              </div>
+              <div class="col-auto px-2">
+                <b-button variant="success" @click="deleteElement('modal-edit-feature')"
+                  >Xóa</b-button
+                >
+              </div>
+              <div class="col-auto px-2">
+                <b-button
+                  variant="light"
+                  @click="hideModal('modal-edit-feature')"
+                  >Hủy</b-button
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </b-modal>
+      <!-- End Modal Edit Feature-->
       <!-- Modal Display -->
       <b-modal
         id="modal-add-display"
@@ -450,7 +622,7 @@
                   label="More Info"
                   label-for="block-form5-username"
                 >
-                  <b-form-input v-model="tempForm.more_infor"></b-form-input>
+                  <b-form-input v-model="tempForm.more_info"></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-auto px-2">
@@ -461,7 +633,7 @@
               <div class="col-auto px-2">
                 <b-button
                   variant="light"
-                  @click="$bvModal.hide('modal-add-display')"
+                  @click="hideModal('modal-add-display')"
                   >Hủy</b-button
                 >
               </div>
@@ -470,6 +642,63 @@
         </div>
       </b-modal>
       <!-- End Modal Display-->
+      <!-- Modal Edit Display -->
+      <b-modal
+        id="modal-edit-display"
+        size="sm"
+        centered
+        body-class="p-0"
+        hide-footer
+        hide-header
+      >
+        <div class="block block-themed block-transparent mb-0">
+          <div class="block-header bg-primary-dark">
+            <h3 class="block-title">Edit Display</h3>
+          </div>
+          <div class="block-content block-content-full">
+            <div class="row gutters-tiny" style="justify-content: center">
+              <div class="col-12 px-2">
+                <b-form-group
+                  label="Resolution"
+                  label-for="block-form5-username"
+                >
+                  <b-form-input v-model="tempForm.resolution"></b-form-input>
+                </b-form-group>
+                <b-form-group label="Size" label-for="block-form5-username">
+                  <b-form-input v-model="tempForm.size"></b-form-input>
+                </b-form-group>
+                <b-form-group label="Panel" label-for="block-form5-username">
+                  <b-form-input v-model="tempForm.panel"></b-form-input>
+                </b-form-group>
+                <b-form-group
+                  label="More Info"
+                  label-for="block-form5-username"
+                >
+                  <b-form-input v-model="tempForm.more_info"></b-form-input>
+                </b-form-group>
+              </div>
+              <div class="col-auto px-2">
+                <b-button variant="success" @click="editDisplayConfirm"
+                  >Chỉnh sửa</b-button
+                >
+              </div>
+              <div class="col-auto px-2">
+                <b-button variant="success" @click="deleteElement('modal-edit-display')"
+                  >Xóa</b-button
+                >
+              </div>
+              <div class="col-auto px-2">
+                <b-button
+                  variant="light"
+                  @click="hideModal('modal-edit-display')"
+                  >Hủy</b-button
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </b-modal>
+      <!-- End Modal Edit Display-->
       <b-modal
         id="modal-delete-product"
         size="md"
@@ -521,6 +750,7 @@ export default {
       tempMemory: [],
       tempFeatures: [],
       tempDisplay: [],
+      currentIndex:-1,
       storageTypeOptions: [
         { value: "SSD", text: "SSD" },
         { value: "HDD", text: "HDD" },
@@ -593,9 +823,87 @@ export default {
       deleteProduct: "deleteProduct",
       createProduct: "createProduct",
     }),
-    showEditStorage(storage,index){
-      console.log(storage);
-      console.log(index);
+    showEditStorage(modalName,storage,index){
+      this.tempForm = storage;
+      this.currentIndex = index;
+      this.$bvModal.show(modalName);
+    },
+    editStorageConfirm(){
+      const { capacity, type, text } = this.tempForm;
+      this.tempStorage[this.currentIndex]={ capacity, type, text };
+      this.form.default_spec.storage[this.currentIndex]={ capacity, type, text };
+      this.$bvModal.hide("modal-edit-storage");
+      this.tempForm={};
+      this.currentIndex=-1;
+    },
+    showEditMemory(modalName, memory, index){
+      this.tempForm = memory;
+      this.currentIndex=index;
+      this.$bvModal.show(modalName);
+    },
+    editMemoryConfirm(){
+      const { capacity, speed_bus, cas, text }= this.tempForm;
+      this.tempMemory[this.currentIndex]={ capacity, speed_bus, cas, text };
+      this.form.default_spec.memory[this.currentIndex]={ capacity, speed_bus, cas, text };
+      this.$bvModal.hide("modal-edit-memory");
+      this.tempForm={};
+      this.currentIndex=-1;
+    },
+    showEditFeature(modalName,feature,index){
+      this.tempForm = feature;
+      this.currentIndex = index;
+      this.$bvModal.show(modalName);
+    },
+    editFeatureConfirm(){
+      const { name, more_info } = this.tempForm;
+      this.tempFeatures[this.currentIndex]={ name, more_info };
+      this.form.default_spec.features[this.currentIndex]={ name, more_info };
+      this.$bvModal.hide("modal-edit-feature");
+      this.tempForm={};
+      this.currentIndex=-1;
+    },
+    showEditDisplay(modalName,display,index){
+      this.tempForm= display;
+      this.currentIndex = index;
+      this.$bvModal.show(modalName);
+    },
+    editDisplayConfirm(){
+      const { resolution, size, panel, more_info } = this.tempForm;
+      this.tempDisplay[this.currentIndex]={ resolution, size, panel, more_info };
+      this.form.default_spec.display[this.currentIndex]={ resolution, size, panel, more_info };
+      this.$bvModal.hide("modal-edit-display");
+      this.tempForm={};
+      this.currentIndex=-1;
+    },
+    deleteElement(modalName){
+     if(modalName==='modal-edit-storage'){
+       this.tempStorage=this.tempStorage.filter(item=>this.tempStorage.indexOf(item)!==this.currentIndex);
+       this.form.default_spec.storage = this.form.default_spec.storage.filter(item=>this.form.default_spec.storage.indexOf(item)!==this.currentIndex);
+       this.$bvModal.hide(modalName);
+       this.currentIndex=-1;
+     }
+     if(modalName==='modal-edit-memory'){
+       this.tempMemory=this.tempMemory.filter(item=>this.tempMemory.indexOf(item)!==this.currentIndex);
+       this.form.default_spec.memory = this.form.default_spec.memory.filter(item=>this.form.default_spec.memory.indexOf(item)!==this.currentIndex);
+       this.$bvModal.hide(modalName);
+       this.currentIndex=-1;
+     }
+     if(modalName==='modal-edit-feature'){
+       this.tempFeatures=this.tempFeatures.filter(item=>this.tempFeatures.indexOf(item)!==this.currentIndex);
+       this.form.default_spec.features = this.form.default_spec.features.filter(item=>this.form.default_spec.features.indexOf(item)!==this.currentIndex);
+       this.$bvModal.hide(modalName);
+       this.currentIndex=-1;
+     }
+     if(modalName==='modal-edit-display'){
+       this.tempDisplay=this.tempDisplay.filter(item=>this.tempDisplay.indexOf(item)!==this.currentIndex);
+       this.form.default_spec.display = this.form.default_spec.features.filter(item=>this.form.default_spec.features.indexOf(item)!==this.currentIndex);
+       this.$bvModal.hide(modalName);
+       this.currentIndex=-1;
+     }
+    },
+    hideModal(modalName){
+      this.$bvModal.hide(modalName);
+      this.tempForm={};
     },
     showCreateProduct() {
       this.$bvModal.show("modal-create-product");
