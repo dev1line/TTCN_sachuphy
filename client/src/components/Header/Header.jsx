@@ -6,7 +6,7 @@ import "antd/dist/antd.css";
 import styles from "./Header.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import logo from "../../logo192.png";
-import {change} from '../../help/convert'
+import {change ,formatMoney} from '../../help/convert'
 const { Search } = Input;
 
 const Header = (props) => {
@@ -217,7 +217,7 @@ const Header = (props) => {
         </Col>
         <Col span={3} className={styles["shopping"]}>
           <b>My trolley</b>
-          <span>{total}</span>
+          <span>{formatMoney(total)} VNĐ</span>
         </Col>
       </Row>
       <Row className={styles["menubar-wrapper"]}>

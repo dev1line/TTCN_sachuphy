@@ -9,3 +9,10 @@
     margin-top: 1.5em;
     width: 50%;
   }
+  .getorder-button {
+    display: block;
+    float: left;
+  }
+  .tag {
+    cursor: pointer;
+  }
