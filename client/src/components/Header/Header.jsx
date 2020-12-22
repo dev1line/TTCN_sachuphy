@@ -43,6 +43,13 @@ const Header = (props) => {
       });
     }
   }, [token, dispatch]);
+  useEffect(() => {
+    if (localStorage.getItem("token") || token !== "") {
+      dispatch({
+        type: "GET_ALL_ORDER",
+      });
+    }
+  }, [token, dispatch]);
 
   console.log(total)
   console.log(cartList)

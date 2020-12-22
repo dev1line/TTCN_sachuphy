@@ -1,7 +1,7 @@
 import {convert} from '../help/convert';
 const initial = {
   cartList: localStorage.getItem("cart")? JSON.parse(localStorage.getItem("cart")):[],
-  total: localStorage.getItem("total")? localStorage.getItem("total"):0
+  total: parseInt(localStorage.getItem("total"))? localStorage.getItem("total"):0
 };
 
 const cartReducer = (state = initial, action) => {

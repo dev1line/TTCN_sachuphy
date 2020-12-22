@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col, Form, Input, Button, Select } from "antd";
 import TableItem from "../TableItem";
 import "./style.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 const { Option } = Select;
 
@@ -16,19 +16,48 @@ const layout = {
 };
 
 const FormInfo = (props) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const data = useSelector((state) => state.cart.cartList);
   const total = useSelector(state => state.cart.total);
   console.log("data first:", data);
   const onFinish = (values) => {
-    console.log(values);
+    let order = {
+        name: values.name,
+        address: values.diachi,
+        phone_number: values.prefix?values.prefix:"84" + values.phone,
+    }
+    if(!localStorage.getItem("token")) {
+      let cartlist = Object.values(JSON.parse(localStorage.getItem("cart")));
+      console.log(cartlist.length)
+      let products = []
+      if(cartlist.length) {
+        for( let i = 0; i< cartlist.length; i++) {
+          products.push({
+            slug: cartlist[i].slug,
+            quantity: cartlist[i].number
+          })
+        }
+        order = {
+          ...order,
+          "cart": 
+          {
+            "products": products
+          }
+        }
+      }
+
+    }
+    console.log({order})
+    dispatch({
+      type: "CHECK_OUT",
+      action: {order}
+    });
   };
 
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select
-        defaultValue="84"
-        value="84"
+        defaultValue = "84"
         style={{
           width: 70,
         }}
