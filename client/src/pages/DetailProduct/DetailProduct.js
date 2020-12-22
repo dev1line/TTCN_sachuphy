@@ -143,7 +143,10 @@ const DetailProduct = (props) => {
           </Row>
         </Col>
         <Col>
-          <Row></Row>
+          <Row>
+            <Col>
+            </Col>
+          </Row>
         </Col>
       </Row>
     </div>

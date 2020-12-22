@@ -13,55 +13,92 @@ import {
   NotFound,
 } from "./pages";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Row, Col } from "antd";
 const App = () => {
   return (
     <Router>
       <Header />
       <Switch>
         <Route exact path="/">
-          <div className="main">
-            <Home />
-          </div>
+          <Row>
+            <Col span={24}>
+              <div className="main">
+                <Home />
+              </div>
+            </Col>
+          </Row>
         </Route>
         <Route exact path="/product">
-          <div className="main">
-            <Product />
-          </div>
+          <Row>
+            <Col span={24}>
+              <div className="main">
+                <Product />
+              </div>
+            </Col>
+          </Row>
         </Route>
         <Route exact path="/signin">
-          <div className="main">
-            <SignIn />
-          </div>
+          <Row>
+            <Col span={24}>
+              <div className="main">
+                <SignIn />
+              </div>
+            </Col>
+          </Row>
         </Route>
         <Route exact path="/signup">
-          <div className="main">
-            <SignUp />
-          </div>
+          <Row>
+            <Col span={24}>
+              <div className="main">
+                <SignUp />
+              </div>
+            </Col>
+          </Row>
         </Route>
         <Route exact path="/about">
-          <div className="main">
-            <About />
-          </div>
+          <Row>
+            <Col span={24}>
+              <div className="main">
+                <About />
+              </div>
+            </Col>
+          </Row>
         </Route>
         <Route exact path="/contact">
-          <div className="main">
-            <Contact />
-          </div>
+          <Row>
+            <Col span={24}>
+              <div className="main">
+                <Contact />
+              </div>
+            </Col>
+          </Row>
         </Route>
         <Route exact path="/shopcart">
-          <div className="main">
-            <Shopcart />
-          </div>
+          <Row>
+            <Col span={24}>
+              <div className="main">
+                <Shopcart />
+              </div>
+            </Col>
+          </Row>
         </Route>
         <Route exact path="/product/:slug">
-          <div className="main">
-            <DetailProduct />
-          </div>
+          <Row>
+            <Col span={24}>
+              <div className="main">
+                <DetailProduct />
+              </div>
+            </Col>
+          </Row>
         </Route>
         <Route>
-          <div className="main">
-            <NotFound />
-          </div>
+          <Row>
+            <Col span={24}>
+              <div className="main">
+                <NotFound />
+              </div>
+            </Col>
+          </Row>
         </Route>
       </Switch>
       <Footer />

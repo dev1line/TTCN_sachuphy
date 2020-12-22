@@ -1,4 +1,9 @@
 .main {
-  max-width: 1152px;
-  margin: 200px auto 0;
+  max-width: 1280px;
+  margin: 200px auto;
+}
+@media only screen and (max-width:992px) {
+  .main {
+    margin: 300px auto;
+  }
 }
