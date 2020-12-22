@@ -70,29 +70,82 @@ const DetailProduct = (props) => {
   return (
     <div className="animate__animated animate__fadeIn">
       {product.name ? (
-        <ProductParameter
-          slug={slug}
-          name={productBySlug.default_spec && productBySlug.default_spec.name}
-          price={product.price}
-          discount={product.discount}
-          display={product.display}
-          processor={product.processor}
-          memory={product.memory}
-          storage={product.storage}
-          operating_system={product.operating_system}
-          graphic_card={product.graphic_card}
-          color={product.color}
-          click={(product) => handleClick(product)}
-          product={productBySlug}
-          options={options}
-        />
+        <Row
+          justify="center"
+          style={{
+            margin: "30px 0",
+            width: "100%",
+            borderBottom: "1px solid #ababab",
+          }}
+        >
+          <Col>
+            <ProductParameter
+              slug={slug}
+              name={
+                productBySlug.default_spec && productBySlug.default_spec.name
+              }
+              price={product.price}
+              discount={product.discount}
+              display={product.display}
+              processor={product.processor}
+              memory={product.memory}
+              storage={product.storage}
+              operating_system={product.operating_system}
+              graphic_card={product.graphic_card}
+              color={product.color}
+              click={(product) => handleClick(product)}
+              product={productBySlug}
+              options={options}
+            />
+          </Col>
+        </Row>
       ) : (
-        <Row justify="center" style={{ margin: "30px 0", width: "100%" }}>
+        <Row
+          style={{
+            margin: "30px 0",
+            width: "100%",
+            borderBottom: "1px solid #ababab",
+          }}
+        >
           <Col>
             <Loading />
           </Col>
         </Row>
       )}
+      <Row
+        style={{
+          paddingBottom: "30px",
+          width: "100%",
+          borderBottom: "1px solid #ababab",
+        }}
+      >
+        <Col span={24}>
+          <Row>
+            <Col offset={1}>
+              <h1>Abc</h1>
+            </Col>
+          </Row>
+        </Col>
+        <Col>
+          <Row>
+            <Col style={{ fontSize: "20px", fontWeight: "500" }}>
+              {product.description}
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+      <Row>
+        <Col span={24}>
+          <Row>
+            <Col offset={1}>
+              <h1>Cac san pham</h1>
+            </Col>
+          </Row>
+        </Col>
+        <Col>
+          <Row></Row>
+        </Col>
+      </Row>
     </div>
   );
 };

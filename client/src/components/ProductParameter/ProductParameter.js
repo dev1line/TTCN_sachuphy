@@ -55,13 +55,17 @@ const ProductParameter = (props) => {
     },
   ];
   return (
-    <Row style={{ marginBottom: "5vh" }}>
+    <Row style={{ marginBottom: "1vh", width: "100%" }}>
       <Col offset={1}>
         <Link to="/product">Tất cả sản phẩm</Link> {">"}{" "}
         <Link to={`/product/${props.slug}`}>{props.name}</Link>
       </Col>
-      <Col offset={1} span={23} style={{ borderBottom: "1px solid #ababab" }}>
-        <h1>{props.name}</h1>
+      <Col span={24} style={{ borderBottom: "1px solid #ababab" }}>
+        <Row>
+          <Col offset={1}>
+            <h1>{props.name}</h1>
+          </Col>
+        </Row>
       </Col>
       <Col
         span={12}
@@ -100,32 +104,34 @@ const ProductParameter = (props) => {
           <RightOutlined onClick={() => next(null)} className={styles.right} />
         </Row>
       </Col>
-      <Col offset={2} span={8}>
+      <Col offset={2} span={10}>
         <Row style={{ margin: "2vh 0 1vh" }}>
-          {props.options.map((option, i) => (
-            <NavLink
-              key={i}
-              exact
-              activeClassName={styles["is-active"]}
-              to={`/product/${option.slug}`}
-            >
-              <Button
-                style={{
-                  height: "5vh",
-                  width: "100px",
-                  marginRight: "10px",
-                  padding: "2px",
-                  textOverflow: "ellipsis",
-                }}
+          <Col span={20}>
+            {props.options.map((option, i) => (
+              <NavLink
+                key={i}
+                exact
+                activeClassName={styles["is-active"]}
+                to={`/product/${option.slug}`}
               >
-                {" "}
-                {`${i === 0 ? "Mặc định" : option.name}`}
-              </Button>
-            </NavLink>
-          ))}
+                <Button
+                  style={{
+                    height: "5vh",
+                    width: "100px",
+                    marginRight: "10px",
+                    padding: "2px",
+                    textOverflow: "ellipsis",
+                  }}
+                >
+                  {" "}
+                  {`${i === 0 ? "Mặc định" : option.name}`}
+                </Button>
+              </NavLink>
+            ))}
+          </Col>
         </Row>
         <Row>
-          <Col span={24}>
+          <Col span={20}>
             <span style={{ fontWeight: "500", fontSize: "30px" }}>
               {(props.price * (100 - props.discount)) / 100} VNĐ
             </span>
@@ -137,7 +143,7 @@ const ProductParameter = (props) => {
               {props.price}
             </span>
           </Col>
-          <Col span={24}>
+          <Col span={20}>
             <Row style={{ padding: "10px", borderBottom: "1px solid #dbdbdb" }}>
               <Col span={10}>Màn hình:</Col>
               <Col span={14}>
@@ -220,7 +226,7 @@ const ProductParameter = (props) => {
               </Col>
             </Row>
           </Col>
-          <Col span={24} style={{ marginTop: "3vh" }}>
+          <Col span={20} style={{ marginTop: "3vh" }}>
             <Link to="/shopcart">
               <Button
                 onClick={() => props.click(props.product)}
@@ -231,12 +237,12 @@ const ProductParameter = (props) => {
               </Button>
             </Link>
           </Col>
-          <Col span={11} style={{ marginTop: "1vh" }}>
+          <Col span={9} style={{ marginTop: "1vh" }}>
             <Button onClick={() => props.click(props.product)}>
               Thêm vào giỏ hàng
             </Button>
           </Col>
-          <Col offset={2} span={11} style={{ marginTop: "1vh" }}>
+          <Col offset={2} span={9} style={{ marginTop: "1vh" }}>
             <Button>Xem cấu hình chi tiết</Button>
           </Col>
         </Row>
