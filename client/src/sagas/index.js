@@ -3,6 +3,7 @@ import { setTokenLogin, getTokenLogin, logOut } from "./tokenSagas";
 import { SET_TOKEN} from "../constants";
 import { getProducts, filterProducts, getProductBySlug, changeOption } from "./productSagas";
 import { readCart, updateCart } from "./cartSagas";
+import { checkout, getAllOrder } from "./orderSagas"
 function* rootSagas() {
   yield all([
     takeEvery(SET_TOKEN, setTokenLogin),
@@ -14,6 +15,8 @@ function* rootSagas() {
     takeEvery("CHANGE_OPTION", changeOption),
     takeEvery("GET_CART", readCart),
     takeEvery("UPDATE_CART", updateCart),
+    takeEvery("CHECK_OUT", checkout),
+    takeEvery("GET_ALL_ORDER", getAllOrder),
   ]);
 }
 
