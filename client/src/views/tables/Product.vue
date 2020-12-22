@@ -139,20 +139,26 @@
                 </b-form-group>
                 <b-form-group label="Storage" label-for="block-form5-username">
                   <b-row class="px-3">
-                    <b-form-tags
+                    <!-- <b-form-tags
                       disabled
                       class="col-9"
                       input-id="tags-basic3"
                       tag-variant="primary"
                       v-model="tempStorage"
                       placeholder="Add Storage ..."
-                    ></b-form-tags>
+                    ></b-form-tags> -->
+                    <b-button
+                      v-for="storage in tempStorage"
+                      :key="storage.index"
+                      @click="showEditStorage(storage,tempStorage.indexOf(storage))"
+                      >Storage-{{ tempStorage.indexOf(storage) }}</b-button
+                    >
                     <b-button
                       variant="secondary"
-                      class="col-3"
+                      class="col-1"
                       @click="showAddStorage"
-                      >Storage</b-button
-                    >
+                      ><i class="si si-plus pr-2"></i
+                    ></b-button>
                   </b-row>
                 </b-form-group>
                 <b-form-group label="Option" label-for="block-form5-username">
@@ -587,6 +593,10 @@ export default {
       deleteProduct: "deleteProduct",
       createProduct: "createProduct",
     }),
+    showEditStorage(storage,index){
+      console.log(storage);
+      console.log(index);
+    },
     showCreateProduct() {
       this.$bvModal.show("modal-create-product");
     },
@@ -612,11 +622,11 @@ export default {
       // console.log(product);
       this.createProduct(product);
       this.$bvModal.hide("modal-create-product");
-      this.tempForm={};
-      this.tempStorage=[];
-      this.tempMemory=[];
-      this.tempDisplay=[];
-      this.tempFeatures=[];
+      this.tempForm = {};
+      this.tempStorage = [];
+      this.tempMemory = [];
+      this.tempDisplay = [];
+      this.tempFeatures = [];
       this.form = {
         default_spec: {
           name: "",
@@ -669,17 +679,22 @@ export default {
     addDisplayConfirm() {
       const { resolution, size, panel, more_info } = this.tempForm;
       this.tempDisplay.push({ resolution, size, panel, more_info });
-      this.form.default_spec.features.push({ resolution, size, panel, more_info });
+      this.form.default_spec.features.push({
+        resolution,
+        size,
+        panel,
+        more_info,
+      });
       this.tempForm = {};
       this.$bvModal.hide("modal-add-display");
     },
     cancelCreateProduct() {
       this.$bvModal.hide("modal-create-product");
-      this.tempForm={};
-      this.tempStorage=[];
-      this.tempMemory=[];
-      this.tempDisplay=[];
-      this.tempFeatures=[];
+      this.tempForm = {};
+      this.tempStorage = [];
+      this.tempMemory = [];
+      this.tempDisplay = [];
+      this.tempFeatures = [];
       this.form = {
         default_spec: {
           name: "",
