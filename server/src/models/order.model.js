@@ -13,21 +13,36 @@ const OrderSchema = new Schema({
         default: 1,
       },
       price: {
-        type: Number
-      }
+        type: Number,
+      },
+      detail: {
+        type: Object,
+      },
     },
   ],
+  order_id: {
+    type: String,
+    required: true,
+  },
   name: {
     type: String,
+    required: true,
   },
   address: {
     type: String,
+    required: true,
+  },
+  phone_number: {
+    type: String,
+    required: true,
   },
   user: {
     type: String,
   },
   ordered_at: {
     type: Date,
+    required: true,
+    default: Date.now,
   },
   created_at: {
     type: Date,
