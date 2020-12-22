@@ -1,4 +1,3 @@
-const { reject } = require("lodash")
 const CartModel = require("../../models/cart.model")
 const SpecModel = require("../../models/specification.model")
 

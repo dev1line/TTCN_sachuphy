@@ -13,24 +13,28 @@ const OrderSchema = new Schema({
         default: 1,
       },
       price: {
-        type: Number
+        type: Number,
       },
       detail: {
-        type: Object
-      }
+        type: Object,
+      },
     },
   ],
+  order_id: {
+    type: String,
+    required: true,
+  },
   name: {
     type: String,
-    required: true
+    required: true,
   },
   address: {
     type: String,
-    required: true
+    required: true,
   },
-  phoneNumber: {
+  phone_number: {
     type: String,
-    required: true
+    required: true,
   },
   user: {
     type: String,
@@ -38,7 +42,7 @@ const OrderSchema = new Schema({
   ordered_at: {
     type: Date,
     required: true,
-    default: Date.now
+    default: Date.now,
   },
   created_at: {
     type: Date,

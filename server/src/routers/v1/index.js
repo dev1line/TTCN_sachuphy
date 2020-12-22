@@ -1,16 +1,18 @@
-const router = require('express').Router()
+const router = require("express").Router()
 
-const makeAuthenticationRouter = require('./authentication')
+const makeAuthenticationRouter = require("./authentication")
 
-const makeUserRouter = require('./users')
+const makeUserRouter = require("./users")
 
-const makeProductRouter = require('./products')
+const makeProductRouter = require("./products")
 
-const makeImageRouter = require('./images')
+const makeImageRouter = require("./images")
 
-const makeCartRouter = require('./carts')
+const makeCartRouter = require("./carts")
 
-const makeCheckoutRoute = require('./checkout')
+const makeCheckoutRoute = require("./checkout")
+
+const makeOrderRoute = require("./orders")
 
 makeCartRouter(router)
 
@@ -23,5 +25,7 @@ makeProductRouter(router)
 makeImageRouter(router)
 
 makeCheckoutRoute(router)
+
+makeOrderRoute(router)
 
 module.exports = router

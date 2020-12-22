@@ -97,19 +97,30 @@ module.exports = async function checkoutController(req, res, next) {
     },
   }))
 
+  let orderId = generateOrderId()
+
+  while (
+    await OrderModel.exists({
+      orderId,
+    })
+  ) {
+    orderId = generateOrderId()
+  }
+
   const resultOrder = await OrderModel.create({
     products: orderProducts,
     name: order.name,
     address: order.address,
-    phoneNumber: order.phoneNumber,
+    phone_number: order.phone_number,
     user: req.user ? req.user.username : "GUEST",
+    order_id: orderId,
   })
 
   const sanitizedResultOrder = sanitizeResultOrder(resultOrder.toObject())
 
   if (req.user) {
     await userCart.updateOne({
-      products: []
+      products: [],
     })
   }
 
@@ -123,4 +134,11 @@ module.exports = async function checkoutController(req, res, next) {
 function sanitizeResultOrder(order) {
   const { __v, _id, ...returnOrder } = order
   return returnOrder
+}
+
+function generateOrderId() {
+  return (
+    String.fromCharCode(65 + Math.random() * 26) +
+    Math.round(Math.random() * 10000000)
+  )
 }
