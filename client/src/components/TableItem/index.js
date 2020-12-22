@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table, InputNumber } from "antd";
 import { CloseCircleOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
-import {change} from '../../help/convert'
+import {change, formatMoney} from '../../help/convert'
 
 const styleImage = {
   width: "150px",
@@ -64,7 +64,7 @@ const TableItem = (props) => {
       title: "Giá",
       dataIndex: "price",
       key: "price",
-      render: (price, index) => <p key={index}>{price} VNĐ</p>,
+      render: (price, index) => <p key={index}>{formatMoney(price)} VNĐ</p>,
     },
     {
       title: "Số lượng",
@@ -85,7 +85,7 @@ const TableItem = (props) => {
       title: "Tổng",
       dataIndex: "total",
       key: "total",
-      render: (value, key) => <p key={key}>{value} VNĐ</p>,
+      render: (value, key) => <p key={key}>{formatMoney(value)} VNĐ</p>,
     },
     {
       title: "Action",
@@ -121,7 +121,7 @@ const TableItem = (props) => {
   return (
     <div>
       <Table columns={columns} dataSource={change(data)} />
-      <h2 style={{ textAlign: "left" }}>Tổng tiền:{total} VNĐ</h2>
+      <h2 style={{ textAlign: "left" }}>Tổng tiền:{formatMoney(total)} VNĐ</h2>
     </div>
   );
 };

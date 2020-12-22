@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col, Button } from "antd";
 import { Link } from "react-router-dom";
+import { formatMoney } from "../../help/convert"
 
 const ProductParameter = (props) => {
   return (
@@ -34,14 +35,14 @@ const ProductParameter = (props) => {
         <Row>
           <Col>
             <span style={{ fontWeight: "500", fontSize: "30px" }}>
-              {(props.price * (100 - props.discount)) / 100} VNĐ
+              {formatMoney((props.price * (100 - props.discount)) / 100)} VNĐ
             </span>
             <br></br>
             <span style={{ fontSize: "20px", fontWeight: "500" }}>
               Giá gốc:{" "}
             </span>
             <span style={{ textDecoration: "line-through", color: "#636363" }}>
-              {props.price}
+              {formatMoney(props.price)} VNĐ
             </span>
           </Col>
           <Col>
