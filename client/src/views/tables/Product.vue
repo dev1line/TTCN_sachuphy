@@ -256,9 +256,7 @@
                           'modal-edit-feature',
                           feature,
                           tempFeatures.indexOf(feature)
-                        )
-                      "
-                    >
+                        )">
                       Feature-{{ tempFeatures.indexOf(feature) }}
                     </b-button>
                     <b-button
@@ -503,9 +501,7 @@
                           'modal-edit-feature',
                           feature,
                           tempFeatures.indexOf(feature)
-                        )
-                      "
-                    >
+                        )">
                       Feature-{{ tempFeatures.indexOf(feature) }}
                     </b-button>
                     <b-button
@@ -893,7 +889,7 @@
                   label="More Info"
                   label-for="block-form5-username"
                 >
-                  <b-form-input v-model="tempForm.more_info"></b-form-input>
+                  <b-form-input v-model="tempForm.more_information"></b-form-input>
                 </b-form-group>
               </div>
               <div class="col-auto px-2">
@@ -1264,7 +1260,7 @@ export default {
     createProductConfirm() {
       this.form.default_spec.slug = this.slugAuto;
       const product = this.form;
-      // console.log(product);
+      console.log(product);
       this.createProduct(product);
       this.$bvModal.hide("modal-create-product");
       this.tempForm = {};
@@ -1324,7 +1320,7 @@ export default {
     addDisplayConfirm() {
       const { resolution, size, panel, more_info } = this.tempForm;
       this.tempDisplay.push({ resolution, size, panel, more_info });
-      this.form.default_spec.features.push({
+      this.form.default_spec.display.push({
         resolution,
         size,
         panel,
