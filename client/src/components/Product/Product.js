@@ -16,6 +16,7 @@ const Product = (props) => {
   return (
     <Card
       className={styles.card}
+      hoverable
       style={{ position: "relative", cursor: "pointer" }}
       cover={
         <img
@@ -26,29 +27,22 @@ const Product = (props) => {
     >
       <Row className={styles.actions}>
         <Col offset={2} span={22}>
-          <Row>
-            <Col offset={3} className={styles["options"]}>
-              {props.options.length
-                ? `Có ${props.options.length} cấu hình đề xuất`
-                : ""}
+          <Row justify="center">
+            <Col className={styles.shopping}>
+              <ShoppingOutlined
+                onClick={() => props.onClick(product)}
+                style={{ fontSize: "40px", color: "#636363" }}
+              />
             </Col>
           </Row>
-          <Row>
-            <Col offset={8} className={styles.shopping}>
-                <ShoppingOutlined
-                  onClick={() => props.onClick(product)}
+          <Row  justify="center">
+            <Col className={styles["see-details"]}>
+              <Link to={`/product/${props.slug}`}>
+                <InfoCircleOutlined
+                  onClick={scrollToTop}
                   style={{ fontSize: "40px", color: "#636363" }}
                 />
-            </Col>
-          </Row>
-          <Row>
-            <Col offset={8} className={styles["see-details"]}>
-                <Link to={`/product/${props.slug}`}>
-                  <InfoCircleOutlined
-                    onClick={scrollToTop}
-                    style={{ fontSize: "40px", color: "#636363" }}
-                  />
-                </Link>
+              </Link>
             </Col>
           </Row>
         </Col>
