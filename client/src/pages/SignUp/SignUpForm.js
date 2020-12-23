@@ -46,27 +46,28 @@ const SignupForm = (props) => {
         remember: true,
       }}
       onFinish={onFinish}
-      onFinishFailed={onFinishFailed}>
+      onFinishFailed={onFinishFailed}
+    >
       <Form.Item>
-        <h1 className="title">
-          SIGN UP
-        </h1>
+        <h1 className="title">Đăng ký</h1>
       </Form.Item>
-      <Form.Item>      
-          <p className='subtitle'>
-            <Link to="/signin">Have an account ?</Link>
-          </p>
+      <Form.Item>
+        <p className="subtitle">
+          <Link to="/signin">Have an account ?</Link>
+        </p>
         <Modal
           title="Notification"
           visible={visiable}
           onOk={handleOk}
-          onCancel={handleCancel}>
+          onCancel={handleCancel}
+        >
           {success ? <p>Successfull</p> : <p>Fail</p>}
         </Modal>
       </Form.Item>
       <Form.Item
         name="txtusername"
-        rules={[{ required: true, message: "Please input your username!" }]}>
+        rules={[{ required: true, message: "Please input your username!" }]}
+      >
         <Input
           size="large"
           prefix={<UserOutlined className="site-form-item-icon" />}
@@ -75,7 +76,8 @@ const SignupForm = (props) => {
       </Form.Item>
       <Form.Item
         name="txtpassword"
-        rules={[{ required: true, message: "Please input your password!" }]}>
+        rules={[{ required: true, message: "Please input your password!" }]}
+      >
         <Input.Password
           size="large"
           prefix={<LockOutlined className="site-form-item-icon" />}
@@ -102,7 +104,8 @@ const SignupForm = (props) => {
               );
             },
           }),
-        ]}>
+        ]}
+      >
         <Input.Password
           size="large"
           prefix={<LockOutlined className="site-form-item-icon" />}
@@ -115,8 +118,12 @@ const SignupForm = (props) => {
           type="success"
           htmlType="submit"
           className="btnsub"
-          style={{ backgroundColor:' #1789fc', fontWeight:'bold', color:'#FFFFFF'}}
-          >
+          style={{
+            backgroundColor: " #1789fc",
+            fontWeight: "bold",
+            color: "#FFFFFF",
+          }}
+        >
           SIGN UP
         </Button>
       </Form.Item>

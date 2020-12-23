@@ -1,7 +1,9 @@
 import React from "react";
-import { Card, Button } from "antd";
+import { Card, Row, Col } from "antd";
 import { Link } from "react-router-dom";
 import { formatPrice } from "../../help/formatPrice";
+import { ShoppingOutlined, InfoCircleOutlined } from "@ant-design/icons";
+import styles from "./Product.module.css";
 
 const Product = (props) => {
   const product = props.product;
@@ -13,8 +15,8 @@ const Product = (props) => {
   }
   return (
     <Card
-      hoverable
-      style={{ width: "auto" }}
+      className={styles.card}
+      style={{ position: "relative", cursor: "pointer" }}
       cover={
         <img
           alt="example"
@@ -22,9 +24,71 @@ const Product = (props) => {
         />
       }
     >
-      <div className="additional">
-        <h3>{props.name}</h3>
-        <p className="price">
+      <Row className={styles.actions}>
+        <Col offset={2} span={22}>
+          <Row>
+            <Col offset={3} className={styles["options"]}>
+              {props.options.length
+                ? `${props.options.length} cấu hình đề xuất`
+                : ""}
+            </Col>
+          </Row>
+          <Row>
+            <Col offset={8} className={styles.shopping}>
+                <ShoppingOutlined
+                  onClick={() => props.onClick(product)}
+                  style={{ fontSize: "40px", color: "#636363" }}
+                />
+            </Col>
+          </Row>
+          <Row>
+            <Col offset={8} className={styles["see-details"]}>
+                <Link to={`/product/${props.slug}`}>
+                  <InfoCircleOutlined
+                    onClick={scrollToTop}
+                    style={{ fontSize: "40px", color: "#636363" }}
+                  />
+                </Link>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+      <Row>
+        <Col
+          style={{
+            clipPath: "polygon(0% 0%, 100% 0%, 100% 70%, 50% 100%, 0 70%)",
+            position: "absolute",
+            width: "20%",
+            top: 0,
+            right: 0,
+            background: "rgb(255,50,50)",
+          }}
+        >
+          <Row
+            style={{
+              height: "100%",
+              padding: "10px 0 20px",
+              fontSize: "20px",
+              fontWeight: "bold",
+              color: "#fff",
+            }}
+            justify="center"
+          >
+            -{props.discount}%
+          </Row>
+        </Col>
+      </Row>
+      <Row style={{ position: "relative" }}>
+        <h3
+          style={{
+            position: "absolute",
+            top: "-60px",
+            textShadow: "5px 5px 5px #dbdbdb",
+          }}
+        >
+          {props.name}
+        </h3>
+        <p>
           <span style={{ fontWeight: "500", fontSize: "20px" }}>
             {formatPrice((props.price * (100 - props.discount)) / 100)}
           </span>{" "}
@@ -33,7 +97,7 @@ const Product = (props) => {
           </span>
         </p>
         <p>{props.ram}</p>
-        <Button
+        {/* <Button
           onClick={() => props.onClick(product)}
           size="large"
           style={{
@@ -56,8 +120,8 @@ const Product = (props) => {
           onClick={scrollToTop}
         >
           <Link to={`/product/${props.slug}`}>Chi tiết sản phẩm</Link>
-        </Button>
-      </div>
+        </Button> */}
+      </Row>
     </Card>
   );
 };

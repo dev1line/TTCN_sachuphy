@@ -29,9 +29,9 @@ const ProductParameter = (props) => {
         : currentCarouselIndex + 1
     );
   }
-  useEffect(() => {
-    console.log(props.options);
-  }, [props.options]);
+  // useEffect(() => {
+  //   console.log(props.options);
+  // }, [props.options]);
 
   const imageProduct = [
     {

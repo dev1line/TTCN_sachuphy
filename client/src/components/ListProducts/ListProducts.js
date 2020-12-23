@@ -10,10 +10,14 @@ const ListProducts = (props) => {
   const data = useSelector((state) => state.products.currentProduct);
   const numEachPage = 9;
   const [maxminPage, setMaxminPage] = useState([0, 8]);
+
   const dispatch = useDispatch();
   const handleChangeProducts = (value) => {
     dispatch({ type: "SORT_PRODUCTS", sortProducts: value });
   };
+  useEffect(() => {
+    console.log(data);
+  }, [data])
   useEffect(() => {
     dispatch({ type: "GET_ALL_PRODUCTS" });
   }, [dispatch]);
@@ -60,16 +64,19 @@ const ListProducts = (props) => {
             <Option value="Price">Sắp xếp theo giá</Option>
           </Select>
         </Row>
-        <Row style={{ margin: "30px 0", width: "100%" }}>
+        <Row style={{ margin: "30px 0", width: "100%" }} gutter={[16, 16]}>
           {data.length ? (
             data.slice(maxminPage[0], maxminPage[1]).map((product, i) => (
-              <Col key={i} lg={{ span: 8 }} xs={{ span: 24 }} sm={{span: 12}} >
+              <Col key={i} lg={{ span: 8 }} xs={{ span: 24 }} sm={{ span: 12 }}>
                 <Product
                   name={product.default_spec.name}
                   price={product.default_spec.price}
-                  discount={product.default_spec.discount}
+                  discount={product.options.length ? product.default_spec.discount =  Math.max.apply(Math,product.options.map((option) => (
+                    (product.default_spec.discount > option.discount) ? product.default_spec.discount : product.default_spec.discount = option.discount
+                  ))) : product.default_spec.discount}
                   ram={product.default_spec.memory.capacity}
                   slug={product.default_spec.slug}
+                  options={product.options}
                   product={product}
                   onClick={(name) => handleClick(name)}
                 />
@@ -85,14 +92,16 @@ const ListProducts = (props) => {
         </Row>
       </Row>
       <Row justify="center">
-        <Pagination
-          defaultCurrent={1}
-          defaultPageSize={numEachPage} //default size of page
-          onChange={(value) => handleChangePage(value)}
-          total={data.length < 9 ? 1 : Math.round(data.length / numEachPage)} //total number of card data available
-        />
+        <Col>
+          <Pagination
+            defaultCurrent={1}
+            defaultPageSize={numEachPage} //default size of page
+            onChange={(value) => handleChangePage(value)}
+            total={data.length < 9 ? 1 : Math.round(data.length / numEachPage)} //total number of card data available
+          />
+        </Col>
       </Row>
     </div>
   );
 };
-export default ListProducts
+export default ListProducts;

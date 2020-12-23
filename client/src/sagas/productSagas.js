@@ -63,7 +63,7 @@ function* getProductBySlug(input) {
 }
 function* sortProducts(input) {
   const sort = input.sortProducts;
-  console.log(sort);
+  // console.log(sort);
   const data = yield select();
   const products = data.products.products;
   console.log(products);

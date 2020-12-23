@@ -23,7 +23,7 @@ const DetailProduct = (props) => {
     dispatch({ type: "GET_PRODUCT_BY_SLUG", slug: slug });
   }, [dispatch, slug]);
   const handleClick = (product) => {
-    console.log(product);
+    // console.log(product);
     scrollToTop();
     dispatch({
       type: "ADD_CART",
@@ -52,12 +52,14 @@ const DetailProduct = (props) => {
       return { ...defaultSpecProduct, ...sanitisedOptionProduct };
     }
     const currentProduct = getCurrentProductBySlug();
-    console.log(currentProduct);
+    // console.log(currentProduct);
     setProduct(currentProduct);
   }, [productBySlug, slug]);
 
   useEffect(() => {
     if (!productBySlug) return;
+// console.log(productBySlug.options);
+// console.log(productBySlug.default_spec);
     setOptions([productBySlug.default_spec, ...productBySlug.options]);
   }, [productBySlug, slug]);
 
@@ -67,6 +69,9 @@ const DetailProduct = (props) => {
       behavior: "smooth",
     });
   }
+  // useEffect(() => {
+  //   console.log(options);
+  // }, [options])
   return (
     <div className="animate__animated animate__fadeIn">
       {product.name ? (
