@@ -1,9 +1,16 @@
 .main {
-  max-width: 1280px;
-  margin: 200px auto;
+  max-width: 1280px !important;
+  margin: 200px auto 0;
 }
 @media only screen and (max-width:992px) {
   .main {
-    margin: 300px auto;
+    width: 992px;
+    margin: 280px auto 0;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .main {
+    width: 768px;
+    margin: 300px auto 0;
   }
 }

@@ -8,6 +8,7 @@ import {
 import "antd/dist/antd.css";
 import styles from "./Footer.module.css";
 import MapShow from "../Map/MapShow";
+import {Link} from 'react-router-dom';
 
 const { Search } = Input;
 
@@ -20,7 +21,7 @@ function scrollToTop() {
 
 const Footer = (props) => {
   return (
-    <Row>
+    <Row className={styles.container}>
       <Col span={24}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
           <Row className={styles.footer}>
@@ -43,9 +44,9 @@ const Footer = (props) => {
             <Col offset={1} span={22} className={styles.footer_body}>
               <Row style={{ width: "100%" }} gutter={[32, 32]}>
                 <Col
-                  lg={{ span: 7 }}
+                  lg={{ span: 6}}
                   sm={{ span: 10 }}
-                  xs={{ span: 24 }}
+                  xs={{ span: 10 }}
                   style={{ margin: "0 auto" }}
                   className={styles.infor}
                 >
@@ -69,38 +70,38 @@ const Footer = (props) => {
                   </Row>
                 </Col>
                 <Col
-                  lg={{ span: 5 }}
+                  lg={{ span: 6 }}
                   sm={{ span: 10 }}
-                  xs={{ span: 24 }}
+                  xs={{ span: 10}}
                   style={{ margin: "0 auto" }}
                   className={styles.infor}
                 >
                   <p className={styles.content}>Thông tin thêm</p>
-                  <p className={styles["sub-content"]}>Về chúng tôi</p>
+                  <Link to="/about" onClick={() => scrollToTop()}  className={styles["sub-content"]}>Về chúng tôi</Link>
                   <p className={styles["sub-content"]}>Chính sách bảo mật</p>
                   <p className={styles["sub-content"]}>Điều khoản</p>
                 </Col>
                 <Col
-                  lg={{ span: 5 }}
+                  lg={{ span: 6 }}
                   sm={{ span: 10 }}
-                  xs={{ span: 24 }}
+                  xs={{ span: 10 }}
                   style={{ margin: "0 auto" }}
                   className={styles.infor}
                 >
                   <p className={styles.content}>Dịch vụ khách hàng</p>
                   <p className={styles["sub-content"]}>Bảo hành</p>
-                  <p className={styles["sub-content"]}>Vân chuển đơn hàng</p>
-                  <p className={styles["sub-content"]}>Liên hệ chúng tôi</p>
+                  <p className={styles["sub-content"]}>Vân chuyển đơn hàng</p>
+                  <Link to="/contact" onClick={() => scrollToTop()}  className={styles["sub-content"]}>Liên hệ chúng tôi</Link>
                 </Col>
                 <Col
-                  lg={{ span: 5 }}
+                  lg={{ span: 6 }}
                   sm={{ span: 10 }}
-                  xs={{ span: 24 }}
+                  xs={{ span: 10 }}
                   style={{ margin: "0 auto" }}
                   className={styles.infor}
                 >
                   <p className={styles.content}>Tài khoản</p>
-                  <p className={styles["sub-content"]}>Giỏ hàng</p>
+                  <Link to="/shopcart" onClick={() => scrollToTop()} className={styles["sub-content"]}>Giỏ hàng</Link>
                   <p className={styles["sub-content"]}>Lịch sử đặt hàng</p>
                   <p className={styles["sub-content"]}>Thay đổi mật khẩu</p>
                 </Col>

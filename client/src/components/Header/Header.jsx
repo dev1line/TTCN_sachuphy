@@ -85,7 +85,13 @@ const Header = (props) => {
       {curr &&
         curr.map((c) => {
           return (
-            <Menu.Item key={c} onClick={() => setCurrency(c)}>
+            <Menu.Item
+              key={c}
+              onClick={() => {
+                scrollToTop();
+                setCurrency(c);
+              }}
+            >
               {c}
             </Menu.Item>
           );
@@ -96,7 +102,13 @@ const Header = (props) => {
     <Menu>
       {lang &&
         lang.map((l) => (
-          <Menu.Item key={l} onClick={() => setLanguage(l)}>
+          <Menu.Item
+            key={l}
+            onClick={() => {
+              scrollToTop();
+              setLanguage(l);
+            }}
+          >
             {l}
           </Menu.Item>
         ))}
@@ -106,7 +118,13 @@ const Header = (props) => {
     <Menu>
       {acc &&
         acc.map((a) => (
-          <Menu.Item key={a} onClick={() => setAccount(a)}>
+          <Menu.Item
+            key={a}
+            onClick={() => {
+              scrollToTop();
+              setAccount(a);
+            }}
+          >
             {a}
           </Menu.Item>
         ))}
@@ -116,7 +134,13 @@ const Header = (props) => {
     <Menu>
       {sign &&
         sign.map((s, index) => (
-          <Menu.Item key={s} onClick={() => setSign(s)}>
+          <Menu.Item
+            key={s}
+            onClick={() => {
+              scrollToTop();
+              setSign(s);
+            }}
+          >
             <Link exact="true" to={`/${link[index]}`}>
               {s}
             </Link>
@@ -126,16 +150,17 @@ const Header = (props) => {
   );
   const onSearch = (value) => console.log(value);
   function scrollToTop() {
-    menuIsActive()
+    setMenuIsActive(false)
     return window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   }
   function menuIsActive(e) {
-    console.log(isActive);
+    scrollToTop();
     setMenuIsActive(!isActive);
   }
+
   return (
     <Row
       className={styles.header}

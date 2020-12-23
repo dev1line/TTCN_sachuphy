@@ -6,6 +6,9 @@
   background-position: center;
   /* background-size: contain; */
 }
+.container {
+  margin-bottom: 40px;
+}
 .form {
   display: flex;
   flex-direction: column;
@@ -127,3 +130,19 @@ label{
 .link {
 	color: gray;
 }
+@media only screen and (max-width: 992px) {
+
+.parallax  {
+  height: 60vh;
+  background-attachment: fixed;
+  background-size: cover;
+}
+}
+@media only screen and (max-width: 576px) {
+
+  .parallax  {
+    height: 40vh;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+  }

@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Row, Col, Select, Pagination } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { Item } from "../Item";
-import { Loading } from "../../components";
+import { Loading } from "..";
 
 const { Option } = Select;
 
-export const ListItem = (props) => {
+const ListProducts = (props) => {
   const data = useSelector((state) => state.products.currentProduct);
   const numEachPage = 9;
   const [maxminPage, setMaxminPage] = useState([0, 8]);
@@ -63,7 +63,7 @@ export const ListItem = (props) => {
         <Row style={{ margin: "30px 0", width: "100%" }}>
           {data.length ? (
             data.slice(maxminPage[0], maxminPage[1]).map((product, i) => (
-              <Col key={i} span={8}>
+              <Col key={i} lg={{ span: 8 }} xs={{ span: 24 }} sm={{span: 12}} >
                 <Item
                   name={product.default_spec.name}
                   price={product.default_spec.price}
@@ -95,3 +95,4 @@ export const ListItem = (props) => {
     </div>
   );
 };
+export default ListProducts

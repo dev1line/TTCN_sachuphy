@@ -14,30 +14,26 @@ import {
 const Home = (props) => {
   return (
     <div className="animate__animated animate__fadeIn">
-      <Row span={24} gutter={[0, 80]}>
+      <Row span={24} gutter={[0, 32]}>
         <Col span={24}>
           <PromotionsCarousel />
         </Col>
-        <Col offset={1}></Col>
-        <Col span={22}>
-          <Promotions />
+        <Col offset={1} span={22}>
+          <Row>
+            <Col span={24}>
+              <Promotions />
+            </Col>
+          </Row>
         </Col>
-        <Col offset={1}></Col>
         <Col span={24}>
           <Shopping />
         </Col>
         <Col span={24}>
           <Brands />
         </Col>
-        {/* <Col span={24}>
-        <BeginCmt></BeginCmt>
-      </Col> */}
         <Col span={24}>
           <Comments />
         </Col>
-        {/* <Col span={24}>
-        <EndCmt></EndCmt>
-      </Col> */}
       </Row>
     </div>
   );

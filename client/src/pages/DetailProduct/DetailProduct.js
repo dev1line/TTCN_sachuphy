@@ -122,13 +122,13 @@ const DetailProduct = (props) => {
         <Col span={24}>
           <Row>
             <Col offset={1}>
-              <h1>Abc</h1>
+              <h1>Mô tả sản phẩm</h1>
             </Col>
           </Row>
         </Col>
-        <Col>
+        <Col span={24}>
           <Row>
-            <Col style={{ fontSize: "20px", fontWeight: "500" }}>
+            <Col offset={1} style={{ fontSize: "20px", fontWeight: "500" }}>
               {product.description}
             </Col>
           </Row>

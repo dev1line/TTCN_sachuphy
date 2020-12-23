@@ -6,15 +6,15 @@
   background: #4c4c4c;
   position: absolute;
   top: 300px;
-  height: 85px;
+  /* height: 85px; */
   width: calc(100% - 150px);
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: 40px 40px;
 }
 .newsletters > p {
   text-align: center;
@@ -68,7 +68,7 @@
 }
 .copyright {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding: 1rem 4rem;
   border-top: 1px solid #636363;
   background: #4c4c4c;
@@ -98,6 +98,23 @@
     transition: all 0.5s linear;
   }
   .newsletters {
-
+    top: 280px;
+  }
+  .container {
+    width: 992px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .newsletters {
+    top: 240px;
+  }
+  .container {
+    width: 768px;
+  }
+}
+@media only screen and (max-width: 430px) {
+  .newsletters {
+    top: 300px;
+    padding: 10px;
   }
 }

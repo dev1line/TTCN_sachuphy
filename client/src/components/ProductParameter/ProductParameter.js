@@ -55,7 +55,7 @@ const ProductParameter = (props) => {
     },
   ];
   return (
-    <Row style={{ marginBottom: "1vh", width: "100%" }}>
+    <Row style={{ marginBottom: "20px", width: "100%" }} justify="center">
       <Col offset={1}>
         <Link to="/product">Tất cả sản phẩm</Link> {">"}{" "}
         <Link to={`/product/${props.slug}`}>{props.name}</Link>
@@ -68,7 +68,8 @@ const ProductParameter = (props) => {
         </Row>
       </Col>
       <Col
-        span={12}
+        lg={{ span: 12 }}
+        xs={{ span: 13 }}
         style={{ border: "1px solid #636363", margin: "2vh 0 1vh" }}
       >
         <Carousel ref={carousel} style={{ borderBottom: "1px solid #636363" }}>
@@ -104,9 +105,9 @@ const ProductParameter = (props) => {
           <RightOutlined onClick={() => next(null)} className={styles.right} />
         </Row>
       </Col>
-      <Col offset={2} span={10}>
+      <Col lg={{ span: 10, offset: 2 }} xs={{ span: 13 }}>
         <Row style={{ margin: "2vh 0 1vh" }}>
-          <Col span={20}>
+          <Col span={24}>
             {props.options.map((option, i) => (
               <NavLink
                 key={i}
@@ -131,7 +132,7 @@ const ProductParameter = (props) => {
           </Col>
         </Row>
         <Row>
-          <Col span={20}>
+          <Col span={24}>
             <span style={{ fontWeight: "500", fontSize: "30px" }}>
               {(props.price * (100 - props.discount)) / 100} VNĐ
             </span>
@@ -143,7 +144,7 @@ const ProductParameter = (props) => {
               {props.price}
             </span>
           </Col>
-          <Col span={20}>
+          <Col span={24}>
             <Row style={{ padding: "10px", borderBottom: "1px solid #dbdbdb" }}>
               <Col span={10}>Màn hình:</Col>
               <Col span={14}>
@@ -226,7 +227,7 @@ const ProductParameter = (props) => {
               </Col>
             </Row>
           </Col>
-          <Col span={20} style={{ marginTop: "3vh" }}>
+          <Col span={24} style={{ marginTop: "40px" }}>
             <Link to="/shopcart">
               <Button
                 onClick={() => props.click(props.product)}
@@ -237,12 +238,12 @@ const ProductParameter = (props) => {
               </Button>
             </Link>
           </Col>
-          <Col span={9} style={{ marginTop: "1vh" }}>
+          <Col span={11} style={{ marginTop: "1vh" }}>
             <Button onClick={() => props.click(props.product)}>
               Thêm vào giỏ hàng
             </Button>
           </Col>
-          <Col offset={2} span={9} style={{ marginTop: "1vh" }}>
+          <Col offset={2} span={11} style={{ marginTop: "1vh" }}>
             <Button>Xem cấu hình chi tiết</Button>
           </Col>
         </Row>
