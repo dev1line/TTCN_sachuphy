@@ -18,9 +18,14 @@ const Promotions = (props) => {
     },
   ];
   return (
-    <Row justify="space-between" align="middle" gutter={[32,32]}>
+    <Row justify="space-between" align="middle" gutter={[32, 32]}>
       {data.map((data, i) => (
-        <Col lg={{ span: 8 }} xs={{ span: 24 }} key={i} style={{display:"flex", justifyContent:"center"}}>
+        <Col
+          lg={{ span: 8 }}
+          xs={{ span: 24 }}
+          key={i}
+          style={{ display: "flex", justifyContent: "center" }}
+        >
           <img className={styles.img} alt="img" src={data.img}></img>
         </Col>
       ))}
