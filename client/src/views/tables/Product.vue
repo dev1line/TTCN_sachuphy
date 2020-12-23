@@ -77,7 +77,249 @@
         </b-table-simple>
       </base-block>
       <!-- END Full Table -->
-      <!-- Start Modal -->
+      <!-- Start Modal Add Option-->
+      <b-modal
+        id="modal-add-option"
+        size="xl"
+        body-class="p-0"
+        hide-footer
+        hide-header
+      >
+        <div class="block block-themed block-transparent mb-0">
+          <div class="block-header bg-primary-dark">
+            <h3 class="block-title">Add Option</h3>
+          </div>
+          <div class="block-content block-content-full">
+            <div class="row gutters-tiny" style="justify-content: center">
+              <div class="col-6 px-2">
+                <b-form-group label="Name" label-for="block-form5-username">
+                  <b-form-input v-model="formOption.name"></b-form-input>
+                </b-form-group>
+                <b-form-group
+                  label="Manufacturer"
+                  label-for="block-form5-username"
+                >
+                  <b-form-input
+                    v-model="formOption.manufacturer"
+                  ></b-form-input>
+                </b-form-group>
+                <b-form-group
+                  label="Processor"
+                  label-for="block-form5-username"
+                >
+                  <b-form-input
+                    v-model="formOption.processor"
+                  ></b-form-input>
+                </b-form-group>
+                <b-form-group label="Color" label-for="block-form5-username">
+                  <b-form-tags
+                    tag-variant="primary"
+                    input-id="tags-basic1"
+                    v-model="formOption.color"
+                    placeholder="Add color ..."
+                  ></b-form-tags>
+                </b-form-group>
+                <b-form-group label="Price" label-for="block-form5-username">
+                  <b-form-input
+                    v-model="formOption.price"
+                  ></b-form-input>
+                </b-form-group>
+                <b-form-group label="Discount" label-for="block-form5-username">
+                  <b-form-input
+                    v-model="formOption.discount"
+                  ></b-form-input>
+                </b-form-group>
+                <b-form-group label="Image" label-for="block-form5-username">
+                  <b-form-tags
+                    input-id="tags-basic2"
+                    tag-variant="primary"
+                    v-model="formOption.images"
+                    placeholder="Add image ..."
+                  ></b-form-tags>
+                </b-form-group>
+                <b-form-group label="Storage" label-for="block-form5-username">
+                  <b-row class="px-3">
+                    <!-- <b-form-tags
+                      disabled
+                      class="col-9"
+                      input-id="tags-basic3"
+                      tag-variant="primary"
+                      v-model="tempStorage"
+                      placeholder="Add Storage ..."
+                    ></b-form-tags> -->
+                    <b-button
+                      v-for="storage in tempStorage"
+                      :key="storage.index"
+                      @click="
+                        showEditStorage(
+                          'modal-edit-storage',
+                          storage,
+                          tempStorage.indexOf(storage)
+                        )
+                      "
+                      >Storage-{{ tempStorage.indexOf(storage) }}</b-button
+                    >
+                    <b-button
+                      variant="secondary"
+                      class="col-1"
+                      @click="showAddStorage"
+                      ><i class="si si-plus pr-2"></i
+                    ></b-button>
+                  </b-row>
+                </b-form-group>
+              </div>
+              <div class="col-6 px-2">
+                <b-form-group label="Slug" label-for="block-form5-username">
+                  <b-form-input v-model="this.slugAuto"></b-form-input>
+                </b-form-group>
+                <b-form-group label="Model" label-for="block-form5-username">
+                  <b-form-input
+                    v-model="form.default_spec.model"
+                  ></b-form-input>
+                </b-form-group>
+                <b-form-group
+                  label="Graphic Card"
+                  label-for="block-form5-username"
+                >
+                  <b-form-input
+                    v-model="form.default_spec.graphic_card"
+                  ></b-form-input>
+                </b-form-group>
+                <b-form-group
+                  label="Description"
+                  label-for="block-form5-username"
+                >
+                  <b-form-input
+                    v-model="form.default_spec.description"
+                  ></b-form-input>
+                </b-form-group>
+                <b-form-group label="Quantity" label-for="block-form5-username">
+                  <b-form-input
+                    v-model="form.default_spec.quantity"
+                  ></b-form-input>
+                </b-form-group>
+                <b-form-group
+                  label="Operating System"
+                  label-for="block-form5-username"
+                >
+                  <b-form-tags
+                    input-id="tags-basic4"
+                    v-model="form.default_spec.operating_system"
+                    placeholder="Add operating system ..."
+                  ></b-form-tags>
+                </b-form-group>
+                <b-form-group label="Memory" label-for="block-form5-username">
+                  <b-row class="px-3">
+                    <!-- <b-form-tags
+                      disabled
+                      class="col-9"
+                      input-id="tags-basic5"
+                      tag-variant="primary"
+                      v-model="tempMemory"
+                      placeholder="Add Memory ..."
+                    ></b-form-tags> -->
+                    <b-button
+                      v-for="memory in tempMemory"
+                      :key="memory.index"
+                      @click="
+                        showEditMemory(
+                          'modal-edit-memory',
+                          memory,
+                          tempMemory.indexOf(memory)
+                        )
+                      "
+                      >Memory-{{ tempMemory.indexOf(memory) }}</b-button
+                    >
+                    <b-button
+                      variant="secondary"
+                      class="col-1"
+                      @click="showAddMemory"
+                      ><i class="si si-plus pr2"></i
+                    ></b-button>
+                  </b-row>
+                </b-form-group>
+                <b-form-group label="Features" label-for="block-form5-username">
+                  <b-row class="px-3">
+                    <!-- <b-form-tags
+                      disabled
+                      class="col-9"
+                      input-id="tags-basic6"
+                      tag-variant="primary"
+                      v-model="tempFeatures"
+                      placeholder="Add Features ..."
+                    ></b-form-tags> -->
+                    <b-button
+                      v-for="feature in tempFeatures"
+                      :key="feature.index"
+                      @click="
+                        showEditFeature(
+                          'modal-edit-feature',
+                          feature,
+                          tempFeatures.indexOf(feature)
+                        )
+                      "
+                    >
+                      Feature-{{ tempFeatures.indexOf(feature) }}
+                    </b-button>
+                    <b-button
+                      variant="secondary"
+                      class="col-1"
+                      @click="showAddFeature"
+                      ><i class="si si-plus pr2"></i
+                    ></b-button>
+                  </b-row>
+                </b-form-group>
+                <b-form-group label="Display" label-for="block-form5-username">
+                  <b-row class="px-3">
+                    <!-- <b-form-tags
+                      disabled
+                      class="col-9"
+                      input-id="tags-basic7"
+                      tag-variant="primary"
+                      v-model="tempDisplay"
+                      placeholder="Add Display ..."
+                    ></b-form-tags> -->
+                    <b-button
+                      v-for="display in tempDisplay"
+                      :key="display.index"
+                      @click="
+                        showEditDisplay(
+                          'modal-edit-display',
+                          display,
+                          tempDisplay.indexOf(display)
+                        )">
+                      Display-{{ tempDisplay.indexOf(display) }}
+                    </b-button>
+                    <b-button
+                      variant="secondary"
+                      class="col-1"
+                      @click="showAddDisplay"
+                      ><i class="si si-plus pr2"></i
+                    ></b-button>
+                  </b-row>
+                </b-form-group>
+              </div>
+
+              <div class="col-auto px-2">
+                <!-- Sales -->
+                <b-button variant="success" @click="createOptionConfirm"
+                  >Lưu</b-button
+                >
+                <!-- END Sales -->
+              </div>
+              <div class="col-auto px-2">
+                <!-- Payments -->
+                <b-button variant="light" @click="cancelCreateOption"
+                  >Hủy</b-button
+                >
+                <!-- END Payments -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </b-modal>
+      <!-- End Modal Add option -->
+       <!-- Start Modal Create Product-->
       <b-modal
         id="modal-create-product"
         size="xl"
@@ -150,19 +392,27 @@
                     <b-button
                       v-for="storage in tempStorage"
                       :key="storage.index"
-                      @click="showEditStorage('modal-edit-storage',storage,tempStorage.indexOf(storage))"
+                      @click="
+                        showEditStorage(
+                          'modal-edit-storage',
+                          storage,
+                          tempStorage.indexOf(storage)
+                        )
+                      "
                       >Storage-{{ tempStorage.indexOf(storage) }}</b-button
                     >
                     <b-button
                       variant="secondary"
                       class="col-1"
-                      @click="showAddStorage"
+                      @click="showAddStorage('product')"
                       ><i class="si si-plus pr-2"></i
                     ></b-button>
                   </b-row>
                 </b-form-group>
                 <b-form-group label="Option" label-for="block-form5-username">
-                  <b-button variant="secondary" class="col-2">Option</b-button>
+                  <b-button v-for="option in tempOption" :key="option.index"
+                    >Option-{{tempOption.indexOf(option)}}</b-button>
+                  <b-button variant="secondary" class="col-2" @click="showAddOption('product')"><i class="si si-plus pr-2"></i></b-button>
                 </b-form-group>
               </div>
               <div class="col-6 px-2">
@@ -218,14 +468,21 @@
                     <b-button
                       v-for="memory in tempMemory"
                       :key="memory.index"
-                      @click="showEditMemory('modal-edit-memory',memory,tempMemory.indexOf(memory))"
-                    >Memory-{{tempMemory.indexOf(memory)}}</b-button>
+                      @click="
+                        showEditMemory(
+                          'modal-edit-memory',
+                          memory,
+                          tempMemory.indexOf(memory)
+                        )
+                      "
+                      >Memory-{{ tempMemory.indexOf(memory) }}</b-button
+                    >
                     <b-button
                       variant="secondary"
                       class="col-1"
-                      @click="showAddMemory"
-                      ><i class="si si-plus pr2"></i></b-button
-                    >
+                      @click="showAddMemory('product')"
+                      ><i class="si si-plus pr2"></i
+                    ></b-button>
                   </b-row>
                 </b-form-group>
                 <b-form-group label="Features" label-for="block-form5-username">
@@ -239,18 +496,24 @@
                       placeholder="Add Features ..."
                     ></b-form-tags> -->
                     <b-button
-                    v-for="feature in tempFeatures"
-                    :key="feature.index"
-                    @click="showEditFeature('modal-edit-feature',feature,tempFeatures.indexOf(feature))"
+                      v-for="feature in tempFeatures"
+                      :key="feature.index"
+                      @click="
+                        showEditFeature(
+                          'modal-edit-feature',
+                          feature,
+                          tempFeatures.indexOf(feature)
+                        )
+                      "
                     >
-                    Feature-{{tempFeatures.indexOf(feature)}}
+                      Feature-{{ tempFeatures.indexOf(feature) }}
                     </b-button>
                     <b-button
                       variant="secondary"
                       class="col-1"
-                      @click="showAddFeature"
-                      ><i class="si si-plus pr2"></i></b-button
-                    >
+                      @click="showAddFeature('product')"
+                      ><i class="si si-plus pr2"></i
+                    ></b-button>
                   </b-row>
                 </b-form-group>
                 <b-form-group label="Display" label-for="block-form5-username">
@@ -266,16 +529,20 @@
                     <b-button
                       v-for="display in tempDisplay"
                       :key="display.index"
-                      @click="showEditDisplay('modal-edit-display',display,tempDisplay.indexOf(display))"
-                    >
-                      Display-{{tempDisplay.indexOf(display)}}
+                      @click="
+                        showEditDisplay(
+                          'modal-edit-display',
+                          display,
+                          tempDisplay.indexOf(display)
+                        )">
+                      Display-{{ tempDisplay.indexOf(display) }}
                     </b-button>
                     <b-button
                       variant="secondary"
                       class="col-1"
-                      @click="showAddDisplay"
-                      ><i class="si si-plus pr2"></i></b-button
-                    >
+                      @click="showAddDisplay('product')"
+                      ><i class="si si-plus pr2"></i
+                    ></b-button>
                   </b-row>
                 </b-form-group>
               </div>
@@ -298,7 +565,7 @@
           </div>
         </div>
       </b-modal>
-      <!-- End Modal  -->
+      <!-- End Modal Create Product-->
       <!-- Modal Add Memory -->
       <b-modal
         id="modal-add-memory"
@@ -337,9 +604,7 @@
                 >
               </div>
               <div class="col-auto px-2">
-                <b-button
-                  variant="light"
-                  @click="hideModal('modal-add-memory')"
+                <b-button variant="light" @click="hideModal('modal-add-memory')"
                   >Hủy</b-button
                 >
               </div>
@@ -386,7 +651,9 @@
                 >
               </div>
               <div class="col-auto px-2">
-                <b-button variant="success" @click="deleteElement('modal-edit-memory')"
+                <b-button
+                  variant="success"
+                  @click="deleteElement('modal-edit-memory')"
                   >Xóa</b-button
                 >
               </div>
@@ -483,7 +750,9 @@
                 >
               </div>
               <div class="col-auto px-2">
-                <b-button variant="success" @click="deleteElement('modal-edit-storage')"
+                <b-button
+                  variant="success"
+                  @click="deleteElement('modal-edit-storage')"
                   >Xóa</b-button
                 >
               </div>
@@ -574,7 +843,9 @@
                 >
               </div>
               <div class="col-auto px-2">
-                <b-button variant="success" @click="deleteElement('modal-edit-feature')"
+                <b-button
+                  variant="success"
+                  @click="deleteElement('modal-edit-feature')"
                   >Xóa</b-button
                 >
               </div>
@@ -683,7 +954,9 @@
                 >
               </div>
               <div class="col-auto px-2">
-                <b-button variant="success" @click="deleteElement('modal-edit-display')"
+                <b-button
+                  variant="success"
+                  @click="deleteElement('modal-edit-display')"
                   >Xóa</b-button
                 >
               </div>
@@ -750,7 +1023,8 @@ export default {
       tempMemory: [],
       tempFeatures: [],
       tempDisplay: [],
-      currentIndex:-1,
+      tempOption:[],
+      currentIndex: -1,
       storageTypeOptions: [
         { value: "SSD", text: "SSD" },
         { value: "HDD", text: "HDD" },
@@ -780,6 +1054,24 @@ export default {
           slug: "",
         },
         options: [],
+      },
+      formOption: {
+        name: "",
+        model: "",
+        manufacturer: "",
+        processor: "",
+        color: ["Black", "Grey"],
+        graphic_card: "",
+        memory: [],
+        storage: [],
+        display: [],
+        features: [],
+        operating_system: ["Windows 10", "Ubuntu"],
+        images: [],
+        description: "",
+        quantity: 0,
+        price: 0,
+        discount: 0,
       },
     };
   },
@@ -823,102 +1115,147 @@ export default {
       deleteProduct: "deleteProduct",
       createProduct: "createProduct",
     }),
-    showEditStorage(modalName,storage,index){
+    showEditStorage(modalName, storage, index) {
       this.tempForm = storage;
       this.currentIndex = index;
       this.$bvModal.show(modalName);
     },
-    editStorageConfirm(){
+    editStorageConfirm() {
       const { capacity, type, text } = this.tempForm;
-      this.tempStorage[this.currentIndex]={ capacity, type, text };
-      this.form.default_spec.storage[this.currentIndex]={ capacity, type, text };
+      this.tempStorage[this.currentIndex] = { capacity, type, text };
+      this.form.default_spec.storage[this.currentIndex] = {
+        capacity,
+        type,
+        text,
+      };
       this.$bvModal.hide("modal-edit-storage");
-      this.tempForm={};
-      this.currentIndex=-1;
+      this.tempForm = {};
+      this.currentIndex = -1;
     },
-    showEditMemory(modalName, memory, index){
+    showEditMemory(modalName, memory, index) {
       this.tempForm = memory;
-      this.currentIndex=index;
+      this.currentIndex = index;
       this.$bvModal.show(modalName);
     },
-    editMemoryConfirm(){
-      const { capacity, speed_bus, cas, text }= this.tempForm;
-      this.tempMemory[this.currentIndex]={ capacity, speed_bus, cas, text };
-      this.form.default_spec.memory[this.currentIndex]={ capacity, speed_bus, cas, text };
+    editMemoryConfirm() {
+      const { capacity, speed_bus, cas, text } = this.tempForm;
+      this.tempMemory[this.currentIndex] = { capacity, speed_bus, cas, text };
+      this.form.default_spec.memory[this.currentIndex] = {
+        capacity,
+        speed_bus,
+        cas,
+        text,
+      };
       this.$bvModal.hide("modal-edit-memory");
-      this.tempForm={};
-      this.currentIndex=-1;
+      this.tempForm = {};
+      this.currentIndex = -1;
     },
-    showEditFeature(modalName,feature,index){
+    showEditFeature(modalName, feature, index) {
       this.tempForm = feature;
       this.currentIndex = index;
       this.$bvModal.show(modalName);
     },
-    editFeatureConfirm(){
+    editFeatureConfirm() {
       const { name, more_info } = this.tempForm;
-      this.tempFeatures[this.currentIndex]={ name, more_info };
-      this.form.default_spec.features[this.currentIndex]={ name, more_info };
+      this.tempFeatures[this.currentIndex] = { name, more_info };
+      this.form.default_spec.features[this.currentIndex] = { name, more_info };
       this.$bvModal.hide("modal-edit-feature");
-      this.tempForm={};
-      this.currentIndex=-1;
+      this.tempForm = {};
+      this.currentIndex = -1;
     },
-    showEditDisplay(modalName,display,index){
-      this.tempForm= display;
+    showEditDisplay(modalName, display, index) {
+      this.tempForm = display;
       this.currentIndex = index;
       this.$bvModal.show(modalName);
     },
-    editDisplayConfirm(){
+    editDisplayConfirm() {
       const { resolution, size, panel, more_info } = this.tempForm;
-      this.tempDisplay[this.currentIndex]={ resolution, size, panel, more_info };
-      this.form.default_spec.display[this.currentIndex]={ resolution, size, panel, more_info };
+      this.tempDisplay[this.currentIndex] = {
+        resolution,
+        size,
+        panel,
+        more_info,
+      };
+      this.form.default_spec.display[this.currentIndex] = {
+        resolution,
+        size,
+        panel,
+        more_info,
+      };
       this.$bvModal.hide("modal-edit-display");
-      this.tempForm={};
-      this.currentIndex=-1;
+      this.tempForm = {};
+      this.currentIndex = -1;
     },
-    deleteElement(modalName){
-     if(modalName==='modal-edit-storage'){
-       this.tempStorage=this.tempStorage.filter(item=>this.tempStorage.indexOf(item)!==this.currentIndex);
-       this.form.default_spec.storage = this.form.default_spec.storage.filter(item=>this.form.default_spec.storage.indexOf(item)!==this.currentIndex);
-       this.$bvModal.hide(modalName);
-       this.currentIndex=-1;
-     }
-     if(modalName==='modal-edit-memory'){
-       this.tempMemory=this.tempMemory.filter(item=>this.tempMemory.indexOf(item)!==this.currentIndex);
-       this.form.default_spec.memory = this.form.default_spec.memory.filter(item=>this.form.default_spec.memory.indexOf(item)!==this.currentIndex);
-       this.$bvModal.hide(modalName);
-       this.currentIndex=-1;
-     }
-     if(modalName==='modal-edit-feature'){
-       this.tempFeatures=this.tempFeatures.filter(item=>this.tempFeatures.indexOf(item)!==this.currentIndex);
-       this.form.default_spec.features = this.form.default_spec.features.filter(item=>this.form.default_spec.features.indexOf(item)!==this.currentIndex);
-       this.$bvModal.hide(modalName);
-       this.currentIndex=-1;
-     }
-     if(modalName==='modal-edit-display'){
-       this.tempDisplay=this.tempDisplay.filter(item=>this.tempDisplay.indexOf(item)!==this.currentIndex);
-       this.form.default_spec.display = this.form.default_spec.features.filter(item=>this.form.default_spec.features.indexOf(item)!==this.currentIndex);
-       this.$bvModal.hide(modalName);
-       this.currentIndex=-1;
-     }
+    deleteElement(modalName) {
+      if (modalName === "modal-edit-storage") {
+        this.tempStorage = this.tempStorage.filter(
+          (item) => this.tempStorage.indexOf(item) !== this.currentIndex
+        );
+        this.form.default_spec.storage = this.form.default_spec.storage.filter(
+          (item) =>
+            this.form.default_spec.storage.indexOf(item) !== this.currentIndex
+        );
+        this.$bvModal.hide(modalName);
+        this.currentIndex = -1;
+      }
+      if (modalName === "modal-edit-memory") {
+        this.tempMemory = this.tempMemory.filter(
+          (item) => this.tempMemory.indexOf(item) !== this.currentIndex
+        );
+        this.form.default_spec.memory = this.form.default_spec.memory.filter(
+          (item) =>
+            this.form.default_spec.memory.indexOf(item) !== this.currentIndex
+        );
+        this.$bvModal.hide(modalName);
+        this.currentIndex = -1;
+      }
+      if (modalName === "modal-edit-feature") {
+        this.tempFeatures = this.tempFeatures.filter(
+          (item) => this.tempFeatures.indexOf(item) !== this.currentIndex
+        );
+        this.form.default_spec.features = this.form.default_spec.features.filter(
+          (item) =>
+            this.form.default_spec.features.indexOf(item) !== this.currentIndex
+        );
+        this.$bvModal.hide(modalName);
+        this.currentIndex = -1;
+      }
+      if (modalName === "modal-edit-display") {
+        this.tempDisplay = this.tempDisplay.filter(
+          (item) => this.tempDisplay.indexOf(item) !== this.currentIndex
+        );
+        this.form.default_spec.display = this.form.default_spec.features.filter(
+          (item) =>
+            this.form.default_spec.features.indexOf(item) !== this.currentIndex
+        );
+        this.$bvModal.hide(modalName);
+        this.currentIndex = -1;
+      }
     },
-    hideModal(modalName){
+    hideModal(modalName) {
       this.$bvModal.hide(modalName);
-      this.tempForm={};
+      this.tempForm = {};
     },
     showCreateProduct() {
       this.$bvModal.show("modal-create-product");
     },
-    showAddMemory() {
-      this.$bvModal.show("modal-add-memory");
+    showAddMemory(type) {
+      if(type === 'product'){this.$bvModal.show("modal-add-memory");}
     },
-    showAddStorage() {
-      this.$bvModal.show("modal-add-storage");
+    showAddStorage(type) {
+      if(type === 'product'){this.$bvModal.show("modal-add-storage");}
     },
-    showAddFeature() {
-      this.$bvModal.show("modal-add-feature");
+    showAddFeature(type) {
+      if(type === 'product'){
+      this.$bvModal.show("modal-add-feature");}
     },
-    showAddDisplay() {
-      this.$bvModal.show("modal-add-display");
+    showAddDisplay(type) {
+      if(type === 'product'){
+      this.$bvModal.show("modal-add-display");}
+    },
+    showAddOption(type){
+      if(type === 'product'){
+      this.$bvModal.show("modal-add-option");}
     },
     showDeleteProduct(slug) {
       this.$bvModal.show("modal-delete-product");
@@ -1025,6 +1362,32 @@ export default {
         },
         options: [],
       };
+    },
+    createOptionConfirm(){
+      
+    },
+    cancelCreateOption(){
+      this.$bvModal.hide("modal-add-option");
+      this.tempForm={};
+      this.formoption={
+        name: "",
+          model: "",
+          manufacturer: "",
+          processor: "",
+          color: ["Black", "Grey"],
+          graphic_card: "",
+          memory: [],
+          storage: [],
+          display: [],
+          features: [],
+          operating_system: ["Windows 10", "Ubuntu"],
+          images: [],
+          description: "",
+          quantity: 0,
+          price: 0,
+          discount: 0,
+          slug: "",
+      }
     },
     stringToSlug(str) {
       str = str.replace(/^\s+|\s+$/g, ""); // trim
