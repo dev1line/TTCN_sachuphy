@@ -11,7 +11,7 @@ export const ListItem = (props) => {
   const data = useSelector((state) => state.products.products);
   // console.log(data);
   const numEachPage = 9;
-  const [maxminPage, setMaxminPage] = useState([0, 8]);
+  const [maxminPage, setMaxminPage] = useState([0, 9]);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({ type: "GET_ALL_PRODUCTS" });
@@ -78,9 +78,9 @@ export const ListItem = (props) => {
       <Row justify="center">
         <Pagination
           defaultCurrent={1}
-          defaultPageSize={numEachPage} //default size of page
+          defaultPageSize= {numEachPage} //default size of page
           onChange={(value) => handleChangePage(value)}
-          total={data.length < 9 ? 1 : Math.round(data.length / numEachPage)} //total number of card data available
+          total={data.length < 9 ? 10 : Math.round(data.length / numEachPage)*10} //total number of card data available
         />
       </Row>
     </div>
