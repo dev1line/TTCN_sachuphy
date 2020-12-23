@@ -29,7 +29,7 @@ const Product = (props) => {
           <Row>
             <Col offset={3} className={styles["options"]}>
               {props.options.length
-                ? `${props.options.length} cấu hình đề xuất`
+                ? `Có ${props.options.length} cấu hình đề xuất`
                 : ""}
             </Col>
           </Row>

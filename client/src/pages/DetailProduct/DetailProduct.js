@@ -143,7 +143,7 @@ const DetailProduct = (props) => {
         <Col span={24}>
           <Row>
             <Col offset={1}>
-              <h1>Cac san pham</h1>
+              <h1>Các sản phẩm liên quan</h1>
             </Col>
           </Row>
         </Col>

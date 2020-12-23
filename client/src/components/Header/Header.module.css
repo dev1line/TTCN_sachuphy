@@ -110,6 +110,7 @@
 }
 .collapse {
   font-size: 40px;
+  cursor: pointer;
 }
 .menu {
   transition: all .5s linear;
