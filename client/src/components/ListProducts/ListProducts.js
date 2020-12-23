@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Row, Col, Select, Pagination } from "antd";
 import { useSelector, useDispatch } from "react-redux";
-import { Item } from "../Item";
+import { Product } from "../../components";
 import { Loading } from "..";
 
 const { Option } = Select;
@@ -64,7 +64,7 @@ const ListProducts = (props) => {
           {data.length ? (
             data.slice(maxminPage[0], maxminPage[1]).map((product, i) => (
               <Col key={i} lg={{ span: 8 }} xs={{ span: 24 }} sm={{span: 12}} >
-                <Item
+                <Product
                   name={product.default_spec.name}
                   price={product.default_spec.price}
                   discount={product.default_spec.discount}

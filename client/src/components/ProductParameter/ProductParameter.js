@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { CheckOutlined, LeftOutlined, RightOutlined } from "@ant-design/icons";
 import styles from "./ProductParameter.module.css";
 import { Loading } from "../../components";
+import { formatPrice } from "../../help/formatPrice";
 
 const ProductParameter = (props) => {
   const carousel = React.createRef();
@@ -56,7 +57,7 @@ const ProductParameter = (props) => {
   ];
   return (
     <Row style={{ marginBottom: "20px", width: "100%" }} justify="center">
-      <Col offset={1}>
+      <Col offset={1} span={23}>
         <Link to="/product">Tất cả sản phẩm</Link> {">"}{" "}
         <Link to={`/product/${props.slug}`}>{props.name}</Link>
       </Col>
@@ -134,14 +135,14 @@ const ProductParameter = (props) => {
         <Row>
           <Col span={24}>
             <span style={{ fontWeight: "500", fontSize: "30px" }}>
-              {(props.price * (100 - props.discount)) / 100} VNĐ
+              {formatPrice((props.price * (100 - props.discount)) / 100)} VNĐ
             </span>
             <br></br>
             <span style={{ fontSize: "20px", fontWeight: "500" }}>
               Giá gốc:{" "}
             </span>
             <span style={{ textDecoration: "line-through", color: "#636363" }}>
-              {props.price}
+              {formatPrice(props.price)}
             </span>
           </Col>
           <Col span={24}>

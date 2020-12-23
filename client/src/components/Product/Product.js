@@ -1,8 +1,9 @@
 import React from "react";
 import { Card, Button } from "antd";
 import { Link } from "react-router-dom";
+import { formatPrice } from "../../help/formatPrice";
 
-export const Item = (props) => {
+const Product = (props) => {
   const product = props.product;
   function scrollToTop() {
     return window.scrollTo({
@@ -25,10 +26,10 @@ export const Item = (props) => {
         <h3>{props.name}</h3>
         <p className="price">
           <span style={{ fontWeight: "500", fontSize: "20px" }}>
-            {(props.price * (100 - props.discount)) / 100}
+            {formatPrice((props.price * (100 - props.discount)) / 100)}
           </span>{" "}
           <span style={{ textDecoration: "line-through", color: "#636363" }}>
-            {props.price}
+            {formatPrice(props.price)}
           </span>
         </p>
         <p>{props.ram}</p>
@@ -60,3 +61,4 @@ export const Item = (props) => {
     </Card>
   );
 };
+export default Product;

@@ -10,6 +10,7 @@ import "antd/dist/antd.css";
 import styles from "./Header.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import logo from "../../logo192.png";
+import {formatPrice} from '../../help/formatPrice';
 const { Search } = Input;
 
 const Header = (props) => {
@@ -150,7 +151,7 @@ const Header = (props) => {
   );
   const onSearch = (value) => console.log(value);
   function scrollToTop() {
-    setMenuIsActive(false)
+    setMenuIsActive(false);
     return window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -279,7 +280,7 @@ const Header = (props) => {
                     </Col>
                     <Col className={styles["shopping"]}>
                       <b>Giỏ hàng</b>
-                      <span>{total}</span>
+                      <span>{formatPrice(total)}</span>
                     </Col>
                   </Row>
                 </Col>
@@ -294,59 +295,62 @@ const Header = (props) => {
               </Row>
             </Col>
           </Row>
-          <Row className={isActive ? styles.menu : styles["menu-is-active"]}>
-            <Col offset={1} span={22}>
-              <Row>
-                <Col span={24}>
-                  <Row gutter={[32, 8]}>
-                    <Col lg={{ span: 4 }} xs={{ span: 24 }}>
-                      <NavLink
-                        exact
-                        activeClassName={styles["is-active"]}
-                        className={styles["menu-item"]}
-                        to="/"
-                        onClick={scrollToTop}
-                      >
-                        TRANG CHỦ
-                      </NavLink>
-                    </Col>
-                    <Col lg={{ span: 4 }} xs={{ span: 24 }}>
-                      <NavLink
-                        exact
-                        activeClassName={styles["is-active"]}
-                        className={styles["menu-item"]}
-                        to="/product"
-                        onClick={scrollToTop}
-                      >
-                        SẢN PHẨM
-                      </NavLink>
-                    </Col>
-                    <Col lg={{ span: 4 }} xs={{ span: 24 }}>
-                      <NavLink
-                        exact
-                        activeClassName={styles["is-active"]}
-                        className={styles["menu-item"]}
-                        to="/about"
-                        onClick={scrollToTop}
-                      >
-                        CHÚNG TÔI
-                      </NavLink>
-                    </Col>
-                    <Col lg={{ span: 4 }} xs={{ span: 24 }}>
-                      <NavLink
-                        exact
-                        activeClassName={styles["is-active"]}
-                        className={styles["menu-item"]}
-                        to="/contact"
-                        onClick={scrollToTop}
-                      >
-                        LIÊN HỆ
-                      </NavLink>
+              <Row
+                className={isActive ? styles.menu : styles["menu-is-active"]}
+                
+              >
+                <Col offset={1} span={22}>
+                  <Row>
+                    <Col span={24}>
+                      <Row justify="end" gutter={[32, 8]}>
+                        <Col lg={{ span: 4 }} xs={{ span: 24 }} style={{textAlign: "end"}}>
+                          <NavLink
+                            exact
+                            activeClassName={styles["is-active"]}
+                            className={styles["menu-item"]}
+                            to="/"
+                            onClick={scrollToTop}
+                          >
+                            TRANG CHỦ
+                          </NavLink>
+                        </Col>
+                        <Col lg={{ span: 4 }} xs={{ span: 24 }} style={{textAlign: "end"}}>
+                          <NavLink
+                            exact
+                            activeClassName={styles["is-active"]}
+                            className={styles["menu-item"]}
+                            to="/product"
+                            onClick={scrollToTop}
+                          >
+                            SẢN PHẨM
+                          </NavLink>
+                        </Col>
+                        <Col lg={{ span: 4 }} xs={{ span: 24 }} style={{textAlign: "end"}}>
+                          <NavLink
+                            exact
+                            activeClassName={styles["is-active"]}
+                            className={styles["menu-item"]}
+                            to="/about"
+                            onClick={scrollToTop}
+                          >
+                            CHÚNG TÔI
+                          </NavLink>
+                        </Col>
+                        <Col lg={{ span: 4 }} xs={{ span: 24 }} style={{textAlign: "end"}}>
+                          <NavLink
+                            exact
+                            activeClassName={styles["is-active"]}
+                            className={styles["menu-item"]}
+                            to="/contact"
+                            onClick={scrollToTop}
+                          >
+                            LIÊN HỆ
+                          </NavLink>
+                        </Col>
+                      </Row>
                     </Col>
                   </Row>
                 </Col>
-              </Row>
-            </Col>
           </Row>
         </div>
       </Col>
