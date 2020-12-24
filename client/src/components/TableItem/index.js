@@ -62,8 +62,8 @@ const TableItem = (props) => {
     },
     {
       title: "Giá",
-      dataIndex: "price",
-      key: "price",
+      dataIndex: "new_price",
+      key: "new_price",
       render: (price, index) => <p key={index}>{formatMoney(price)} VNĐ</p>,
     },
     {
@@ -115,6 +115,7 @@ const TableItem = (props) => {
       // dispatch({type:"ADD_ITEM", value:value, item});
       dispatch({type:"CHANGE_NUMBER", value, key, price});
   }
+  console.log(change(data))
 
   
   
