@@ -29,9 +29,7 @@
               <b-th style="width: 25%">Slug</b-th>
               <b-th style="width: 8%">Option</b-th>
               <b-th style="width: 10%">Price</b-th>
-              <b-th class="text-center" style="width:10%"
-                >Actions</b-th
-              >
+              <b-th class="text-center" style="width: 10%">Actions</b-th>
             </b-tr>
           </b-thead>
           <b-tbody>
@@ -45,9 +43,7 @@
                 />
               </b-td>
               <b-td class="font-w600 font-size-sm">
-                <a
-                  :href="`${CLIENT_URL}/product/${product.default_spec.slug}`"
-                >
+                <a :href="`${CLIENT_URL}/product/${product.default_spec.slug}`">
                   {{ product.default_spec.name }}
                 </a>
               </b-td>
@@ -68,7 +64,11 @@
                 <em class="text-muted">{{ product.default_spec.price }} ₫</em>
               </b-td>
               <b-td class="text-center">
-                <b-button size="sm" variant="alt-primary" @click="showEditProduct(product.default_spec.slug)">
+                <b-button
+                  size="sm"
+                  variant="alt-primary"
+                  @click="showEditProduct(product.default_spec.slug)"
+                >
                   <i class="fa fa-fw fa-pencil-alt"></i>
                 </b-button>
                 <b-button
@@ -78,13 +78,13 @@
                 >
                   <i class="fa fa-fw fa-times"></i>
                 </b-button>
-                <!-- <b-button
+                <b-button
                   size="sm"
                   variant="alt-success"
                   @click="showAddOption(product.default_spec.slug)"
                 >
                   <i class="fa fa-fw fa-plus"></i>
-                </b-button> -->
+                </b-button>
               </b-td>
             </b-tr>
           </b-tbody>
@@ -314,9 +314,7 @@
                           'modal-edit-feature',
                           feature,
                           tempFeatures.indexOf(feature)
-                        )
-                      "
-                    >
+                        )">
                       Feature-{{ tempFeatures.indexOf(feature) }}
                     </b-button>
                     <b-button
@@ -916,7 +914,9 @@
           </div>
           <div class="block-content block-content-full">
             <div class="row gutters-tiny" style="justify-content: center">
-              <GalleryForProduct :chosenImages="form.default_spec.images"></GalleryForProduct>
+              <GalleryForProduct
+                :chosenImages="form.default_spec.images"
+              ></GalleryForProduct>
             </div>
           </div>
         </div>
@@ -1187,19 +1187,28 @@
           </div>
           <div class="block-content block-content-full">
             <div class="row gutters-tiny" style="justify-content: center">
-             <b-table
-          responsive
-          striped
-          bordered
-          hover
-          class="text-center"
-          :fields="fields"
-          :items="currentOptions"
-        ></b-table>
+              <b-table
+                responsive
+                striped
+                bordered
+                hover
+                class="text-center"
+                :fields="fields"
+                :items="currentOptions"
+                ><template #cell(actions)="order">
+                  <b-button
+                    size="sm"
+                    variant="alt-primary"
+                    v-b-modal.modal-create-option
+                    @click="showEditOption(order.item)"
+                  >
+                    <i class="fa fa-fw fa-eye"></i>
+                  </b-button>
+                </template>
+              </b-table>
               <div class="col-auto px-2">
                 <b-button
                   variant="success"
-                  @click="addFeaturesConfirm(isOption)"
                   >Thêm</b-button
                 >
               </div>
@@ -1219,24 +1228,20 @@
 </template>
 
 <script>
-import Vue from 'vue';
+import Vue from "vue";
 import { mapState, mapActions } from "vuex";
 import { chunk } from "lodash";
 import configs from "@/configs";
 import GalleryForProduct from "@/components/GalleryForProduct";
-import { pickBy,findIndex } from "lodash";
+import { pickBy, findIndex } from "lodash";
 export default {
   data() {
     return {
-      fields: [
-        "slug",
-        "name",
-         "actions"
-      ],
-      currentOptions:[],
+      fields: ["slug", "name", "actions"],
+      currentOptions: [],
       CLIENT_URL: configs.CLIENT_URL,
       API_SERVER_URL: configs.API_SERVER_URL,
-      currentSelectedProductIndex:-1,
+      currentSelectedProductIndex: -1,
       tempForm: {},
       tempStorage: [],
       tempMemory: [],
@@ -1342,7 +1347,7 @@ export default {
       deleteProduct: "deleteProduct",
       createProduct: "createProduct",
       createOption: "createOption",
-      updateProduct: "updateProduct"
+      updateProduct: "updateProduct",
     }),
     showEditStorage(modalName, storage, index) {
       this.tempForm = storage;
@@ -1486,21 +1491,26 @@ export default {
       this.$bvModal.show("modal-create-product");
       this.isOption = false;
     },
-    showOptions(options){
-      this.$bvModal.show("modal-edit-options")
+    showOptions(options) {
+      this.$bvModal.show("modal-edit-options");
       console.log(options);
-      this.currentOptions=options;
+      this.currentOptions = options;
     },
-    showEditProduct(slug){
+    showEditProduct(slug) {
       this.$bvModal.show("modal-edit-product");
       this.currentSelectedProduct = slug;
-      this.currentSelectedProductIndex = findIndex(this.productsList,function(o){return o.default_spec.slug===slug});
+      this.currentSelectedProductIndex = findIndex(
+        this.productsList,
+        function (o) {
+          return o.default_spec.slug === slug;
+        }
+      );
       const index = this.currentSelectedProductIndex;
-      this.tempStorage=this.productsList[index].default_spec.storage;
-      this.tempMemory=this.productsList[index].default_spec.memory;
-      this.tempDisplay=this.productsList[index].default_spec.display;
-      this.tempFeatures=this.productsList[index].default_spec.tempFeatures;
-      Vue.set(this.form,"default_spec",this.productsList[index].default_spec);
+      this.tempStorage = this.productsList[index].default_spec.storage;
+      this.tempMemory = this.productsList[index].default_spec.memory;
+      this.tempDisplay = this.productsList[index].default_spec.display;
+      this.tempFeatures = this.productsList[index].default_spec.features;
+      Vue.set(this.form, "default_spec", this.productsList[index].default_spec);
     },
     showAddMemory(type) {
       if (type === "product") {
@@ -1530,6 +1540,9 @@ export default {
       this.$bvModal.show("modal-delete-product");
       this.currentSelectedProduct = slug;
     },
+    showEditOption(optionItem){
+      this.formOption=optionItem
+    },
     createOptionConfirm() {
       const slug = this.currentSelectedProduct;
       this.formOption.slug = this.slugAutoOption;
@@ -1540,8 +1553,10 @@ export default {
           (typeof propertyValue === "number" && propertyValue >= 0)
         );
       });
+      console.log("datasend");
       console.log(dataSend);
-      this.createOption({ slug, data: dataSend });
+      this.$bvModal.hide("modal-create-option")
+      this.createOption({ slug, data: dataSend });  
     },
     showAddOption(slug) {
       this.currentSelectedProduct = slug;
@@ -1549,15 +1564,15 @@ export default {
       this.$bvModal.show("modal-create-option");
       console.log("Slug : " + slug);
     },
-    editProductConfirm(){
-      this.form.default_spec.slug=this.slugAuto;
+    editProductConfirm() {
+      this.form.default_spec.slug = this.slugAuto;
       const slug = this.currentSelectedProduct;
       const index = this.currentSelectedProductIndex;
-      const productPayload =this.form.default_spec;
+      const productPayload = this.form.default_spec;
       console.log("san pham edit");
       console.log(productPayload);
-      console.log("slug"+slug);
-      this.updateProduct({index,slug,productPayload});
+      console.log("slug" + slug);
+      this.updateProduct({ index, slug, productPayload });
       this.$bvModal.hide("modal-edit-product");
       this.tempForm = {};
       this.tempStorage = [];
@@ -1675,10 +1690,12 @@ export default {
     },
     addFeaturesConfirm(isOption) {
       const { name, more_info } = this.tempForm;
+      console.log("truoc feature");
       this.tempFeatures.push({ name, more_info });
       if (isOption == false) {
         this.form.default_spec.features.push({ name, more_info });
       }
+       console.log("sau feature");
       if (isOption == true) {
         this.formOption.features.push({ name, more_info });
       }
