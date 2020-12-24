@@ -16,10 +16,11 @@ const DetailProduct = (props) => {
   }, [dispatch, slug]);
   const handleClick = (product) => {
     scrollToTop();
+    console.log(product.price * (100 - product.discount) / 100)
     dispatch({
       type: "ADD_CART",
       item: product,
-      price: product.price,
+      price: product.price * (100 - product.discount) / 100,
     });
   };
 

@@ -9,6 +9,7 @@ const cartReducer = (state = initial, action) => {
     case "ADD_CART": {
       let temp = convert(state.cartList,action.item,"add");
       console.log("temp1:",temp)
+      console.log(action)
       return {
         ...state,
         cartList: temp,

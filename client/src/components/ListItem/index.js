@@ -19,7 +19,7 @@ export const ListItem = (props) => {
 
   const handleClick = (item) => {
     console.log("click item:", item.default_spec.price);
-    dispatch({ type: "ADD_CART", item, price: item.default_spec.price });
+    dispatch({ type: "ADD_CART", item, price: item.default_spec.price * (100 - item.default_spec.discount) / 100});
   };
 
   const handleChangePage = (value) => {

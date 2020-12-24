@@ -93,7 +93,8 @@ export const change = (list) => {
     const temp = list && list.map((listItem, index, isfirt = false) => {
         let number = listItem.number?listItem.number:listItem.cartQuantity;
         console.log(number)
-        let price = parseInt(listItem.default_spec? listItem.default_spec.price:listItem.price)
+        // (props.price * (100 - props.discount)) / 100)
+        let price = parseInt(listItem.default_spec? listItem.default_spec.price* (100 - listItem.default_spec.discount) / 100:listItem.price* (100 - listItem.discount) / 100)
         console.log(listItem.default_spec? listItem.default_spec.price * listItem.number: listItem.price * listItem.number?listItem.number:listItem.cartQuantity)
          return {
                 ...Object.fromEntries(Object.entries(listItem.default_spec? listItem.default_spec: listItem)),
