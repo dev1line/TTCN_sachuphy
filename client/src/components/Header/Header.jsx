@@ -16,8 +16,8 @@ const Header = (props) => {
   const cartList = useSelector((state) => state.cart.cartList);
   const currs = ["VNĐ", "USD"];
   const langs = ["Tiếng Việt", "English"];
-  const accs = ["My Account", "Log out"];
-  const signs = ["Sign In", "Sign Up"];
+  const accs = ["Tài khoản", "Đăng xuất"];
+  const signs = ["Đăng nhập", "Đăng ký"];
   const links = ["Signin", "Signup"];
   const [currency, setCurrency] = useState(currs[0]);
   const [language, setLanguage] = useState(langs[0]);
@@ -73,7 +73,7 @@ const Header = (props) => {
   }, [total, cartList, token ,dispatch])
 
   useEffect(() => {
-    if (account === "Log out") {
+    if (account === "Đăng xuất") {
       dispatch({ type: "LOG_OUT" });
     }
   }, [account, setAccount,dispatch]);
@@ -196,9 +196,9 @@ const Header = (props) => {
         </Col>
         <Col span={12} className={styles["search"]}>
           <Search
-            placeholder="What are you looking for ..."
+            placeholder="TÌm kiếm điều bạn muốn ngay nào ..."
             allowClear
-            enterButton="Search"
+            enterButton="Tìm kiếm"
             size="large"
             onSearch={onSearch}
           />
@@ -216,7 +216,7 @@ const Header = (props) => {
           </Badge>
         </Col>
         <Col span={3} className={styles["shopping"]}>
-          <b>My trolley</b>
+          <b>Giỏ hàng</b>
           <span>{formatMoney(total)} VNĐ</span>
         </Col>
       </Row>

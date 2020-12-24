@@ -49,12 +49,12 @@ const SignupForm = (props) => {
       onFinishFailed={onFinishFailed}>
       <Form.Item>
         <h1 className="title">
-          SIGN UP
+        ĐĂNG KÝ
         </h1>
       </Form.Item>
       <Form.Item>      
           <p className='subtitle'>
-            <Link to="/signin">Have an account ?</Link>
+            <Link to="/signin">Đã có tài khoản</Link>
           </p>
         <Modal
           title="Notification"

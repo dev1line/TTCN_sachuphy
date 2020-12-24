@@ -90,7 +90,7 @@ const TableItem = (props) => {
     {
       title: "Action",
       render: (row, index) => (
-        <CloseCircleOutlined value={1} key={index} onClick={() => handleClick(row.key, row.total)} />
+        <CloseCircleOutlined  style={{fontSize:'20px', color:'red'}} value={1} key={index} onClick={() => handleClick(row.key, row.total)} />
       ),
     },
   ];

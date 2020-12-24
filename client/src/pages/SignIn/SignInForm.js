@@ -48,12 +48,12 @@ const SigninForm = (props) => {
       onFinishFailed={onFinishFailed}>
       <Form.Item>
         <h1 className="title">
-          SIGN IN
+        ĐĂNG NHẬP
         </h1>
       </Form.Item>
       <Form.Item>
         <p className="subtitle">
-          <Link to="/signup">Need an account ?</Link>
+          <Link to="/signup">tạo tài khoản mới ngay</Link>
         </p>
       </Form.Item>
       <Form.Item

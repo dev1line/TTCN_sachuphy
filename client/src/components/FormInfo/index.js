@@ -23,6 +23,8 @@ const FormInfo = (props) => {
   const data = useSelector((state) => state.cart.cartList);
   const total = useSelector(state => state.cart.total);
   const orders = useSelector(state => state.order.orders);
+  const options = ["+84", "+1", "+2"]
+  const [stateOption, setStateOption] = useState(options[0]);
   console.log("data first:", data);
   console.log(orders)
 
@@ -76,14 +78,14 @@ const FormInfo = (props) => {
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select
-        defaultValue = "84"
+        defaultValue={options[0]}
         style={{
           width: 70,
         }}
       >
-        <Option value="84">+84</Option>
-        <Option value="1">+1</Option>
-        <Option value="2">+2</Option>
+        {options.map((e, index) => {
+          return <Option key={index} value={e} >{e}</Option>
+        })}
       </Select>
     </Form.Item>
   );
@@ -173,7 +175,7 @@ const FormInfo = (props) => {
     <Row>
       <Col span={24}>
         <Button type="primary" className="getorder" size="large" onClick={showModal}>
-          Danh sách order của bạn
+          Danh sách đơn hàng của bạn
         </Button>
         <Modal title="Danh sách order" width={1000} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
           <Table columns={columns} dataSource={dataOrder} scroll={{ x: 500 }}/>
@@ -184,7 +186,7 @@ const FormInfo = (props) => {
           onFinish={onFinish}
           className="abc-form"
         >
-          <h1 style={{ textAlign: "center" }}> Thông tin khách hàng</h1>
+          <h1 style={{ textAlign: "center", textDecoration:'uppercase' }}> Thông tin khách hàng</h1>
           <Form.Item
             name="name"
             label="Họ Tên"
