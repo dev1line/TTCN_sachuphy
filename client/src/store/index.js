@@ -182,6 +182,32 @@ export default new Vuex.Store({
         }
       }
     },
+    orders:{  
+      namespaced:true,
+      state:{
+        orders:[]
+      },
+      getters:{},
+      actions:{
+        async fetchOrders({commit,rootState}){
+          const response = await axios.get(
+            `${serverAPIURL}order`,
+            {
+              headers: {
+                Authorization: `Bearer ${rootState.token}`
+              }
+            }
+          );
+          const { orders} = response.data;
+          commit("setOrders",orders);
+        }
+      },
+      mutations:{
+        setOrders:(state,orders)=>{
+          state.orders=orders;
+        }
+      }
+    },
     users: {
       namespaced: true,
       state: {
