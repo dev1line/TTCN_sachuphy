@@ -25,33 +25,30 @@ const helpers = {
 import router from "@/router";
 
 import axios from "axios";
-import { pick, findIndex , filter } from "lodash";
-import configs from '@/configs';
-const serverAPIURL = configs.API_SERVER_URL
+import { pick, findIndex, filter } from "lodash";
+import configs from "@/configs";
+const serverAPIURL = configs.API_SERVER_URL;
 // Vuex Store
 export default new Vuex.Store({
   modules: {
-    products:{
+    products: {
       namespaced: true,
-      state:{
-        products:[]
+      state: {
+        products: []
       },
-      getters:{},
-      actions:{
-        async fetchProducts({commit,rootState}){
-          const response = await axios.get(
-            `${serverAPIURL}product`,
-            {
-              headers: {
-                Authorization: `Bearer ${rootState.token}`
-              }
+      getters: {},
+      actions: {
+        async fetchProducts({ commit, rootState }) {
+          const response = await axios.get(`${serverAPIURL}product`, {
+            headers: {
+              Authorization: `Bearer ${rootState.token}`
             }
-          );
+          });
           const products = response.data.products;
           console.log(products);
           commit("setProducts", products);
         },
-        async createProduct({commit,rootState},product){
+        async createProduct({ commit, rootState }, product) {
           try {
             await axios.post(
               `${serverAPIURL}product`,
@@ -59,42 +56,127 @@ export default new Vuex.Store({
                 ...product
               },
               {
-                headers:{
+                headers: {
                   Authorization: `Bearer ${rootState.token}`
                 }
-              } 
+              }
             );
-            commit("pushProduct",product);
+            commit("pushProduct", product);
           } catch (error) {
             console.log(error);
             console.dir(error);
           }
         },
-        async deleteProduct({commit, rootState},productSlug){
+        async deleteProduct({ commit, rootState }, productSlug) {
           try {
-            await axios.delete(
-              `${serverAPIURL}product/${productSlug}`,
+            await axios.delete(`${serverAPIURL}product/${productSlug}`, {
+              headers: {
+                Authorization: `Bearer ${rootState.token}`
+              }
+            });
+            commit("deleteProduct", productSlug);
+          } catch (error) {
+            console.log(error);
+          }
+        },
+        async createOption({ commit, rootState }, { slug, data }) {
+          const dataOption = data;
+          console.log(dataOption);
+          try {
+            await axios.post(
+              `${serverAPIURL}product/${slug}`,
+              {
+                ...dataOption
+              },
               {
                 headers: {
                   Authorization: `Bearer ${rootState.token}`
                 }
               }
             );
-            commit("deleteProduct",productSlug);
+            commit("addOption", { slug, data });
           } catch (error) {
             console.log(error);
+            console.dir(error);
+          }
+        },
+        async updateProduct({ commit, rootState }, { index,slug, productPayload }) {
+          const sanitizedData = pick(productPayload, [
+            "name",
+            "modules",
+            "manufacturer",
+            "processor",
+            "visibility",
+            "color",
+            "graphic_card",
+            "memory",
+            "storage",
+            "display",
+            "features",
+            "operating_system",
+            "images",
+            "description",
+            "quantity",
+            "price",
+            "discount",
+            "slug"
+          ]);
+          console.log("data ");
+          console.log(sanitizedData);
+          try {
+            await axios.put(
+              `${serverAPIURL}product/${slug}`,
+              {
+                ...sanitizedData
+              },
+              {
+                headers: {
+                  Authorization: `Bearer ${rootState.token}`
+                }
+              }
+            );
+            commit("updateProduct", {index, sanitizedData });
+          } catch (error) {
+            console.log(error);
+            console.dir(error);
           }
         }
       },
-      mutations:{
-        setProducts(state,products){
+      mutations: {
+        setProducts(state, products) {
           state.products = products;
         },
-        pushProduct(state,product){
-          state.products=[...state.products,product]
+        pushProduct(state, product) {
+          state.products = [...state.products, product];
         },
-        deleteProduct(state,productSlug){
-          state.products= state.products.filter(product=>product.default_spec.slug!==productSlug);
+        deleteProduct(state, productSlug) {
+          state.products = state.products.filter(
+            product => product.default_spec.slug !== productSlug
+          );
+        },
+        updateProduct: (state, { index,sanitizedData }) => {
+          
+          Vue.set(state.products, index, {
+            ...state.products[index],
+            default_spec: {
+              ...state.products[index].default_spec,
+              ...sanitizedData
+            }
+          });
+
+          console.log(state.products[index])
+        },
+        addOption(state, { slug, optionData }) {
+          console.log("trong hamf add");
+          for (let i = 0; i < state.products.length; i++) {
+            if (state.products[i].slug === slug) {
+              state.products[i].options.push(optionData);
+            }
+          }
+          // let productIndex= findIndex(state.products,{slug:slug});
+          // console.log("index cua product:"+productIndex);
+          // console.log("Option data"+optionData);
+          // state.products[productIndex].options.push(optionData);
         }
       }
     },
@@ -111,100 +193,92 @@ export default new Vuex.Store({
         signIn: async ({ commit, rootState }, credentials) => {
           try {
             console.log(credentials);
-            const response = await axios.post(
-              `${serverAPIURL}sign-in`,
-              {
-                ...credentials
-              }
-            );
+            const response = await axios.post(`${serverAPIURL}sign-in`, {
+              ...credentials
+            });
 
             // if(response.data.role !== "admin") throw
 
             console.log(response);
 
             const { token, role } = response.data;
-            
-            if(role !== 'admin') throw new Error("Bạn không phải là Admin!")
+
+            if (role !== "admin") throw new Error("Bạn không phải là Admin!");
 
             rootState.token = token;
             localStorage.setItem("token", token);
             router.push("/backend");
 
             const user = {
-              username: credentials.username,
-            }
+              username: credentials.username
+            };
 
             commit("setCurrentUser", user);
             localStorage.setItem("user", JSON.stringify(user));
           } catch (err) {
-            if(err.response) {
-              return commit('setError', err.response.data.message)
+            if (err.response) {
+              return commit("setError", err.response.data.message);
             }
-            commit('setError', err.message)
+            commit("setError", err.message);
           }
         },
         updateCurrentUser: async ({ commit }, currentUser) => {
           commit("setCurrentUser", currentUser);
         },
-        logOut :async({commit,rootState})=>{
+        logOut: async ({ commit, rootState }) => {
           console.log(rootState.token);
           try {
-            await axios.post(`${serverAPIURL}sign-out`,
-            {
-              
-            },
-            {
-              headers: {
-                Authorization: `Bearer ${rootState.token}`
+            await axios.post(
+              `${serverAPIURL}sign-out`,
+              {},
+              {
+                headers: {
+                  Authorization: `Bearer ${rootState.token}`
+                }
               }
-            }
             );
             commit("removeCurrentData");
-            rootState.token="";
-            rootState.users.users = []
+            rootState.token = "";
+            rootState.users.users = [];
           } catch (error) {
             console.log(error.response);
-
           }
         }
       },
       mutations: {
         setCurrentUser(state, user) {
-          state.currentUser = user
+          state.currentUser = user;
         },
-        removeCurrentData(state){
+        removeCurrentData(state) {
           localStorage.removeItem("user");
           localStorage.removeItem("token");
-          state.currentUser={};
+          state.currentUser = {};
         },
-        setError(state, err){
+        setError(state, err) {
           state.error = err;
         }
       }
     },
-    orders:{  
-      namespaced:true,
-      state:{
-        orders:[]
+    orders: {
+      namespaced: true,
+      state: {
+        orders: []
       },
-      getters:{},
-      actions:{
-        async fetchOrders({commit,rootState}){
-          const response = await axios.get(
-            `${serverAPIURL}order`,
-            {
-              headers: {
-                Authorization: `Bearer ${rootState.token}`
-              }
+      getters: {},
+      actions: {
+        async fetchOrders({ commit, rootState }) {
+          const response = await axios.get(`${serverAPIURL}order`, {
+            headers: {
+              Authorization: `Bearer ${rootState.token}`
             }
-          );
-          const { orders} = response.data;
-          commit("setOrders",orders);
+          });
+          const { orders } = response.data;
+          commit("setOrders", orders);
         }
       },
-      mutations:{
-        setOrders:(state,orders)=>{
-          state.orders=orders;
+      mutations: {
+        setOrders: (state, orders) => {
+          state.orders = orders;
         }
       }
     },
@@ -216,17 +290,14 @@ export default new Vuex.Store({
       getters: {},
       actions: {
         async fetchUsers({ commit, rootState }) {
-          const response = await axios.get(
-            `${serverAPIURL}user`,
-            {
-              params: {
-                limit: 500
-              },
-              headers: {
-                Authorization: `Bearer ${rootState.token}`
-              }
+          const response = await axios.get(`${serverAPIURL}user`, {
+            params: {
+              limit: 500
+            },
+            headers: {
+              Authorization: `Bearer ${rootState.token}`
             }
-          );
+          });
           const { users } = response.data;
           console.log(users);
           commit("setUsers", users);
@@ -252,14 +323,11 @@ export default new Vuex.Store({
         },
         async deleteUser({ commit, rootState }, username) {
           try {
-            await axios.delete(
-              `${serverAPIURL}user/${username}`,
-              {
-                headers: {
-                  Authorization: `Bearer ${rootState.token}`
-                }
+            await axios.delete(`${serverAPIURL}user/${username}`, {
+              headers: {
+                Authorization: `Bearer ${rootState.token}`
               }
-            );
+            });
             commit("deleteUser", username);
           } catch (error) {
             console.log(error);
@@ -305,30 +373,26 @@ export default new Vuex.Store({
             ...state.users[userIndex],
             ...sanitizedData
           });
-        },
+        }
       }
     },
-    images:{
-      namespaced : true,
-      state:{
-        images:[]
+    images: {
+      namespaced: true,
+      state: {
+        images: []
       },
-      getters:{},
-      actions:{
+      getters: {},
+      actions: {
         async fetchImages({ commit, rootState }) {
           try {
-            const response = await axios.get(
-              `${serverAPIURL}images`,
-              {
-                headers: {
-                  Authorization: `Bearer ${rootState.token}`
-                }
+            const response = await axios.get(`${serverAPIURL}images`, {
+              headers: {
+                Authorization: `Bearer ${rootState.token}`
               }
-            );
+            });
             const images = response.data.images;
             // console.log(images);
             commit("setImages", images);
-            
           } catch (error) {
             console.log(error);
           }
@@ -345,48 +409,45 @@ export default new Vuex.Store({
               }
             );
 
-            const {image} = response.data
-            
-            commit("pushImage", image)
+            const { image } = response.data;
+
+            commit("pushImage", image);
           } catch (err) {
             console.log(err);
           }
         },
         async deleteImages({ commit, rootState }, objectToDelete) {
           try {
-            await axios.delete(
-              `${serverAPIURL}images`,
-              {
-                headers: {
-                  Authorization: `Bearer ${rootState.token}`
-                },
-                data:{
-                  "imageNames":objectToDelete
-                }
+            await axios.delete(`${serverAPIURL}images`, {
+              headers: {
+                Authorization: `Bearer ${rootState.token}`
+              },
+              data: {
+                imageNames: objectToDelete
               }
-            );
+            });
             commit("deleteImages", objectToDelete);
           } catch (error) {
             console.log(error);
           }
-        },
-      },
-      mutations:{
-        setImages : (state,images)=>{
-          state.images = images;
-        },
-        pushImage : (state,image)=>{
-          state.images = [...state.images,image]
-        },
-        deleteImages : (state,objectToDelete)=>{
-          state.images = filter(state.images,(o)=>{
-            return !objectToDelete.includes(o.name)
-          })
         }
       },
-    },
+      mutations: {
+        setImages: (state, images) => {
+          state.images = images;
+        },
+        pushImage: (state, image) => {
+          state.images = [...state.images, image];
+        },
+        deleteImages: (state, objectToDelete) => {
+          state.images = filter(state.images, o => {
+            return !objectToDelete.includes(o.name);
+          });
+        }
+      }
+    }
   },
-  
+
   state: {
     token: null,
     // App vital details
