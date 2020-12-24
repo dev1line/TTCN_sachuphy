@@ -3,7 +3,7 @@ import { Row, Col, Button, Badge, Carousel } from "antd";
 import { Link, NavLink } from "react-router-dom";
 import { CheckOutlined, LeftOutlined, RightOutlined } from "@ant-design/icons";
 import styles from "./ProductParameter.module.css";
-import { Loading } from "../../components";
+// import { Loading } from "../../components";
 import { formatPrice } from "../../help/formatPrice";
 
 const ProductParameter = (props) => {
@@ -70,7 +70,9 @@ const ProductParameter = (props) => {
       </Col>
       <Col
         lg={{ span: 12 }}
-        xs={{ span: 13 }}
+        md={{span:13}}
+        xs={{ span: 24 }}
+
         style={{ border: "1px solid #636363", margin: "2vh 0 1vh" }}
       >
         <Carousel ref={carousel} style={{ borderBottom: "1px solid #636363" }}>
@@ -106,7 +108,7 @@ const ProductParameter = (props) => {
           <RightOutlined onClick={() => next(null)} className={styles.right} />
         </Row>
       </Col>
-      <Col lg={{ span: 10, offset: 2 }} xs={{ span: 13 }}>
+      <Col lg={{ span: 10, offset: 2 }} xs={{ span: 20 }} md={{span:13}}>
         <Row style={{ margin: "2vh 0 1vh" }}>
           <Col span={24}>
             {props.options.map((option, i) => (

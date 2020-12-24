@@ -29,9 +29,9 @@ const Product = (props) => {
       window.removeEventListener("scroll", handleAnchorBottom);
     };
   });
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  });
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // });
   return (
     <div className="animate__animated animate__fadeIn" style={{marginBottom: '40px', minHeight: '100vh'}}>
       <Row gutter={[16,0]}>

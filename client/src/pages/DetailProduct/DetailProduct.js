@@ -40,6 +40,8 @@ const DetailProduct = (props) => {
         products.splice(Math.random() * (products.length - 1), 1).pop()
       );
     }
+    setProductsRandom([])
+    setProductsRandom(productsRandom)
   }, [productsRandom]);
   useEffect(() => {
     console.log("aaa", productsRandom);
@@ -76,15 +78,18 @@ const DetailProduct = (props) => {
     setOptions([productBySlug.default_spec, ...productBySlug.options]);
   }, [productBySlug, slug]);
 
-  function scrollToTop() {
-    return window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }
+  // function scrollToTop() {
+  //   return window.scrollTo({
+  //     top: 0,
+  //     behavior: "smooth",
+  //   });
+  // }
   // useEffect(() => {
   //   console.log(options);
   // }, [options])
+  // useEffect(() => {
+  //   console.log(product);
+  // }, [product])
   return (
     <div className="animate__animated animate__fadeIn">
       {product.name ? (
@@ -99,7 +104,10 @@ const DetailProduct = (props) => {
             <ProductParameter
               slug={slug}
               name={
-                productBySlug ? productBySlug.default_spec && productBySlug.default_spec.name : ""
+                productBySlug
+                  ? productBySlug.default_spec &&
+                    productBySlug.default_spec.name
+                  : ""
               }
               price={product.price}
               discount={product.discount}
@@ -160,9 +168,13 @@ const DetailProduct = (props) => {
             </Row>
           </Col>
           <Col>
-            <Row gutter={[16, 16]}>
+            <Row gutter={[16, 16]} justify="center">
               {productsRandom.map((product, i) => (
-                <Col span={6} key={i}>
+                <Col
+                  lg={{ span: 6 }}
+                  xs={{ span: 18 }}
+                  sm={{ span: 12 }}
+                  key={i}>
                   <Product
                     name={product.default_spec.name}
                     price={product.default_spec.price}

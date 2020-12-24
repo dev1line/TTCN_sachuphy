@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Row, Col } from "antd";
 import { Link } from "react-router-dom";
 import { formatPrice } from "../../help/formatPrice";
-import { ShoppingOutlined, InfoCircleOutlined } from "@ant-design/icons";
+import { ShoppingCartOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import styles from "./Product.module.css";
 
 const Product = (props) => {
@@ -29,7 +29,7 @@ const Product = (props) => {
         <Col offset={2} span={22}>
           <Row justify="center">
             <Col className={styles.shopping}>
-              <ShoppingOutlined
+              <ShoppingCartOutlined 
                 onClick={() => props.onClick(product)}
                 style={{ fontSize: "40px", color: "#636363" }}
               />
