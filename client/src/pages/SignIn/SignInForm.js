@@ -17,7 +17,7 @@ const SigninForm = (props) => {
       setClick(false);
       setVisiable(true);
     }
-  }, [token, form, click, setClick]);
+  }, [token, form, click]);
   const [visiable, setVisiable] = useState(false);
   const onFinish = (values) => {
     console.log("value:", values);
@@ -93,7 +93,7 @@ const SigninForm = (props) => {
         visible={visiable}
         onOk={handleOk}
         onCancel={handleCancel}>
-          <p>Login Fail ....Please login again !</p>
+         {token !== "" ? <p>Successfully</p> :  <p>Login Fail ....Please login again !</p>}
       </Modal>
     }
     </Form>
