@@ -95,13 +95,13 @@ export const change = (list) => {
         console.log(number)
         // (props.price * (100 - props.discount)) / 100)
         let price = parseInt(listItem.default_spec? listItem.default_spec.price* (100 - listItem.default_spec.discount) / 100:listItem.price* (100 - listItem.discount) / 100)
-        console.log(listItem.default_spec? listItem.default_spec.price * listItem.number: listItem.price * listItem.number?listItem.number:listItem.cartQuantity)
-         return {
+        return {
                 ...Object.fromEntries(Object.entries(listItem.default_spec? listItem.default_spec: listItem)),
                 ...{
                     key: index,
                     number: number,
-                    total: number * price
+                    total: number * price,
+                    new_price: price
                 }
             }
         
