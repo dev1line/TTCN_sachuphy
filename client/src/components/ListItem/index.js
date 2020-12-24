@@ -3,13 +3,28 @@ import { Row, Col, Select, Pagination, Spin } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { Item } from "../Item";
 import { LoadingOutlined } from "@ant-design/icons";
+import queryString from "query-string";
 
 const { Option } = Select;
 
 export const ListItem = (props) => {
+  const params = queryString.parse(window.location.search)
+  var key = params.q;
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
-  const data = useSelector((state) => state.products.products);
-  // console.log(data);
+  const data_product = useSelector((state) => state.products.products);
+  let data = []
+  console.log(key)
+  if(key) {
+    key = decodeURI(key).toLowerCase();
+    Object.values(data_product).map((el, index) => {
+      if(el.default_spec.name.toLowerCase().search(key) >= 0) {
+        data.push(el)
+      }
+      return null;
+    })
+  }
+  else data = data_product
+  console.log(data)
   const numEachPage = 9;
   const [maxminPage, setMaxminPage] = useState([0, 9]);
   const dispatch = useDispatch();
@@ -43,7 +58,7 @@ export const ListItem = (props) => {
       <Row>
         <Row style={{ marginTop: "30px", width: "100%", display: "block" }}>
           <p style={{ float: "left", fontSize: "18px", paddingTop: "5px" }}>
-            Tim thay {data.length ? data.length : "0"} sản phẩm
+            Tìm thấy {data.length ? data.length : "0"} sản phẩm {`${key?"cho từ khoá " + "\""+key+"\"":""}`}
           </p>
           <Select
             size="large"
@@ -80,7 +95,7 @@ export const ListItem = (props) => {
           defaultCurrent={1}
           defaultPageSize= {numEachPage} //default size of page
           onChange={(value) => handleChangePage(value)}
-          total={data.length < 9 ? 10 : Math.floor(data.length / numEachPage)*10} //total number of card data available
+          total={data.length < 9 ? 9 : Math.floor(data.length / numEachPage)*10} //total number of card data available
         />
       </Row>
     </div>

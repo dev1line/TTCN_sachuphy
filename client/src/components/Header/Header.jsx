@@ -78,6 +78,10 @@ const Header = (props) => {
     }
   }, [account, setAccount,dispatch]);
 
+  const onSearch = (value) => {
+    window.location.href="/product?q="+value;
+  }
+
   const cartListItem = useSelector((state) => state.cart.cartList);
 
   if (token) console.log("token header:", token);
@@ -125,7 +129,7 @@ const Header = (props) => {
         ))}
     </Menu>
   );
-  const onSearch = (value) => console.log(value);
+  
   function scrollToTop() {
     return window.scrollTo({
       top: 0,
