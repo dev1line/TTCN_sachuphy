@@ -39,6 +39,7 @@ const SigninForm = (props) => {
         name="user"
         rules={[{ required: true, message: "Please input your username!" }]}>
         <Input
+          className="input-group-item"
           size="large"
           prefix={<UserOutlined className="site-form-item-icon" />}
           placeholder="Username"
@@ -48,6 +49,7 @@ const SigninForm = (props) => {
         name="pass"
         rules={[{ required: true, message: "Please input your password!" }]}>
         <Input.Password
+          className="input-group-item"
           size="large"
           prefix={<LockOutlined className="site-form-item-icon" />}
           placeholder="Password"
