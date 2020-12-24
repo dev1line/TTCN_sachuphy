@@ -80,7 +80,7 @@ export const ListItem = (props) => {
           defaultCurrent={1}
           defaultPageSize= {numEachPage} //default size of page
           onChange={(value) => handleChangePage(value)}
-          total={data.length < 9 ? 10 : Math.round(data.length / numEachPage)*10} //total number of card data available
+          total={data.length < 9 ? 10 : Math.floor(data.length / numEachPage)*10} //total number of card data available
         />
       </Row>
     </div>
