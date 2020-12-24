@@ -171,15 +171,13 @@ const FormInfo = (props) => {
   
   return (
     <Row>
-      <Col span = {24}>
-      <Button type="primary" className="getorder" size="large" onClick={showModal}>
-        Danh sách order của bạn
-      </Button>
-      <Modal title="Basic Modal" width={1000} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-        <Table columns={columns} dataSource={dataOrder} scroll={{ x: 500 }}/>
-      </Modal>
-      </Col>
       <Col span={24}>
+        <Button type="primary" className="getorder" size="large" onClick={showModal}>
+          Danh sách order của bạn
+        </Button>
+        <Modal title="Danh sách order" width={1000} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+          <Table columns={columns} dataSource={dataOrder} scroll={{ x: 500 }}/>
+        </Modal>
         <Form
           {...layout}
           name="nest-messages"
