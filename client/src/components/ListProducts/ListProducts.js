@@ -15,9 +15,9 @@ const ListProducts = (props) => {
   const handleChangeProducts = (value) => {
     dispatch({ type: "SORT_PRODUCTS", sortProducts: value });
   };
-  useEffect(() => {
-    console.log(data);
-  }, [data])
+  // useEffect(() => {
+  //   console.log(data);
+  // }, [data])
   useEffect(() => {
     dispatch({ type: "GET_ALL_PRODUCTS" });
   }, [dispatch]);

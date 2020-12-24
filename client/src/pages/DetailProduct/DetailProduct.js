@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "animate.css";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { ProductParameter, Loading } from "../../components";
+import { ProductParameter, Loading, Product } from "../../components";
 import { pickBy } from "lodash";
 import { Row, Col } from "antd";
 // import styles from "./styles.module.css";
@@ -16,22 +16,34 @@ const DetailProduct = (props) => {
         element.options.some((option) => option.slug === slug)
     )
   );
+  const products = useSelector((state) => state.products.products);
   const [product, setProduct] = useState({});
   const [options, setOptions] = useState([]);
+  const [productsRandom, setProductsRandom] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({ type: "GET_PRODUCT_BY_SLUG", slug: slug });
   }, [dispatch, slug]);
   const handleClick = (product) => {
     // console.log(product);
-    scrollToTop();
+    // scrollToTop();
     dispatch({
       type: "ADD_CART",
       item: product,
       price: product.default_spec.price,
     });
   };
-
+  useEffect(() => {
+    if (products.length === 0) return;
+    for (var i = 0; i < 4; i++) {
+      productsRandom.push(
+        products.splice(Math.random() * (products.length - 1), 1).pop()
+      );
+    }
+  }, [productsRandom]);
+  useEffect(() => {
+    console.log("aaa", productsRandom);
+  }, [productsRandom]);
   useEffect(() => {
     if (!productBySlug) return;
     function getCurrentProductBySlug() {
@@ -57,9 +69,10 @@ const DetailProduct = (props) => {
   }, [productBySlug, slug]);
 
   useEffect(() => {
+    // setProductsRandom([]);
     if (!productBySlug) return;
-// console.log(productBySlug.options);
-// console.log(productBySlug.default_spec);
+    // console.log(productBySlug.options);
+    // console.log(productBySlug.default_spec);
     setOptions([productBySlug.default_spec, ...productBySlug.options]);
   }, [productBySlug, slug]);
 
@@ -81,13 +94,12 @@ const DetailProduct = (props) => {
             margin: "30px 0",
             width: "100%",
             borderBottom: "1px solid #ababab",
-          }}
-        >
+          }}>
           <Col>
             <ProductParameter
               slug={slug}
               name={
-                productBySlug.default_spec && productBySlug.default_spec.name
+                productBySlug ? productBySlug.default_spec && productBySlug.default_spec.name : ""
               }
               price={product.price}
               discount={product.discount}
@@ -111,7 +123,7 @@ const DetailProduct = (props) => {
             width: "100%",
             borderBottom: "1px solid #ababab",
           }}
-        >
+          justify="center">
           <Col>
             <Loading />
           </Col>
@@ -122,8 +134,7 @@ const DetailProduct = (props) => {
           paddingBottom: "30px",
           width: "100%",
           borderBottom: "1px solid #ababab",
-        }}
-      >
+        }}>
         <Col span={24}>
           <Row>
             <Col offset={1}>
@@ -139,21 +150,48 @@ const DetailProduct = (props) => {
           </Row>
         </Col>
       </Row>
-      <Row>
-        <Col span={24}>
-          <Row>
-            <Col offset={1}>
-              <h1>Các sản phẩm liên quan</h1>
-            </Col>
-          </Row>
-        </Col>
-        <Col>
-          <Row>
-            <Col>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
+      {productsRandom.length ? (
+        <Row>
+          <Col span={24}>
+            <Row>
+              <Col offset={1}>
+                <h1>Các sản phẩm liên quan</h1>
+              </Col>
+            </Row>
+          </Col>
+          <Col>
+            <Row gutter={[16, 16]}>
+              {productsRandom.map((product, i) => (
+                <Col span={6} key={i}>
+                  <Product
+                    name={product.default_spec.name}
+                    price={product.default_spec.price}
+                    discount={
+                      product.options.length
+                        ? (product.default_spec.discount = Math.max.apply(
+                            Math,
+                            product.options.map((option) =>
+                              product.default_spec.discount > option.discount
+                                ? product.default_spec.discount
+                                : (product.default_spec.discount =
+                                    option.discount)
+                            )
+                          ))
+                        : product.default_spec.discount
+                    }
+                    ram={product.default_spec.memory.capacity}
+                    slug={product.default_spec.slug}
+                    product={product}
+                    onClick={(name) => handleClick(name)}
+                  />
+                </Col>
+              ))}
+            </Row>
+          </Col>
+        </Row>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

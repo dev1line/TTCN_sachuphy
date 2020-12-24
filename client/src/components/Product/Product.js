@@ -91,30 +91,6 @@ const Product = (props) => {
           </span>
         </p>
         <p>{props.ram}</p>
-        {/* <Button
-          onClick={() => props.onClick(product)}
-          size="large"
-          style={{
-            marginRight: "auto",
-            marginLeft: "auto",
-            display: "block",
-            width: "100%",
-          }}
-        >
-          Thêm vào giỏ hàng
-        </Button>
-        <Button
-          size="large"
-          style={{
-            marginRight: "auto",
-            marginLeft: "auto",
-            display: "block",
-            width: "100%",
-          }}
-          onClick={scrollToTop}
-        >
-          <Link to={`/product/${props.slug}`}>Chi tiết sản phẩm</Link>
-        </Button> */}
       </Row>
     </Card>
   );

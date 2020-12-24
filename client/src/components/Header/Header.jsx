@@ -52,7 +52,7 @@ const Header = (props) => {
   // console.log(total);
   useEffect(() => {
     if (localStorage.getItem("token") || token !== "") {
-      console.log(cartList);
+      // console.log(cartList);
       const data = cartList
         ? cartList.map((el) => {
             return {
@@ -80,7 +80,7 @@ const Header = (props) => {
 
   const cartListItem = useSelector((state) => state.cart.cartList);
 
-  if (token) console.log("token header:", token);
+  // if (token) console.log("token header:", token);
   const menuCurrency = (curr = currs) => (
     <Menu>
       {curr &&
