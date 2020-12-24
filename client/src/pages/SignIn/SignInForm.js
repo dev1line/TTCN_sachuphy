@@ -1,24 +1,45 @@
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, Modal } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./SignInForm.css";
 import { Link, Redirect } from "react-router-dom";
 
 const SigninForm = (props) => {
+  const [form] = Form.useForm();
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token.token);
-  // console.log("token", token);
-  // localStorage.setItem("token", token);
+  const [click, setClick] = useState(false);
+  console.log("token", token);
+  useEffect(() => {
+    if (token === "" && click) {
+      form.resetFields();
+      setClick(false);
+      setVisiable(true);
+    }
+  }, [token, form, click, setClick]);
+  const [visiable, setVisiable] = useState(false);
   const onFinish = (values) => {
     console.log("value:", values);
     dispatch({ type: "LOGIN", username: values.user, password: values.pass });
+    console.log("token in on finish", token);
+    setClick(true);
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+  const handleOk = (e) => {
+    console.log(e);
+    setVisiable(false);
+  };
+
+  const handleCancel = (e) => {
+    console.log(e);
+    setVisiable(false);
+  };
   return (
     <Form
+      form={form}
       className="container"
       initialValues={{
         remember: true,
@@ -66,7 +87,15 @@ const SigninForm = (props) => {
           SIGN IN
         </Button>
       </Form.Item>
-      {token !== "" ? <Redirect to="/" /> : <Redirect to="/signin" />}
+      {token !== "" ? <Redirect to="/" />: 
+      <Modal
+        title="Notification"
+        visible={visiable}
+        onOk={handleOk}
+        onCancel={handleCancel}>
+          <p>Login Fail ....Please login again !</p>
+      </Modal>
+    }
     </Form>
   );
 };
