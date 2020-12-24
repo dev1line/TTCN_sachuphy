@@ -26,7 +26,7 @@ const cors = require("cors")
 
 app.use(cors())
 
-// Logging dangnhap
+// Logging
 
 const morgan = require("morgan")
 
@@ -48,8 +48,6 @@ app.use(function (err, req, res, next) {
   console.error(err.stack)
   res.status(500).send("Internal Server Error!")
 })
-
-
 
 const chalk = require("chalk")
 

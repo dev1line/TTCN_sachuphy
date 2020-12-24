@@ -1,7 +1,7 @@
 const joi = require("joi")
 
 module.exports = joi.object({
-  name: joi.string().min(10).max(50).optional(),
+  name: joi.string().min(10).max(50).required(),
   processor: joi.string().min(10).max(50).optional(),
   graphic_card: joi.string().min(10).max(50).optional(),
   visibility: joi

@@ -36,7 +36,15 @@ export default {
       icon: "si si-picture",
       to: "/backend/plugins/gallery"
     },
-    
+    {
+      name: "Orders",
+      heading: true
+    },
+    {
+      name: "Tables",
+      icon: "si si-picture",
+      to: "/backend/tables/orders"
+    },
     {
       name: "Pages",
       heading: true
