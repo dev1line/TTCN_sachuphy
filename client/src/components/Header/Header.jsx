@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Menu, Dropdown, Input, Button, Badge } from "antd";
-import { DownOutlined, ShoppingCartOutlined } from "@ant-design/icons";
+import {
+  DownOutlined,
+  ShoppingCartOutlined,
+  AlignRightOutlined,
+} from "@ant-design/icons";
 import { Link, NavLink } from "react-router-dom";
 import "antd/dist/antd.css";
 import styles from "./Header.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import logo from "../../logo192.png";
 import {change ,formatMoney} from '../../help/convert'
+import {formatPrice} from '../../help/formatPrice';
 const { Search } = Input;
 
 const Header = (props) => {
@@ -23,6 +28,7 @@ const Header = (props) => {
   const [language, setLanguage] = useState(langs[0]);
   const [account, setAccount] = useState(accs[0]);
   const [sign, setSign] = useState(signs[0]);
+  const [isActive, setMenuIsActive] = useState(false);
   useEffect(() => {
     if (localStorage.getItem("token") && token === "") {
       dispatch({
@@ -35,7 +41,7 @@ const Header = (props) => {
   useEffect(() => {
     dispatch({ type: "GET_ALL_PRODUCTS" });
   }, [dispatch]);
-  
+
   useEffect(() => {
     if (localStorage.getItem("token") || token !== "") {
       dispatch({
@@ -76,7 +82,7 @@ const Header = (props) => {
     if (account === "Đăng xuất") {
       dispatch({ type: "LOG_OUT" });
     }
-  }, [account, setAccount,dispatch]);
+  }, [account, setAccount, dispatch]);
 
   const onSearch = (value) => {
     window.location.href="/product?q="+value;
@@ -84,13 +90,19 @@ const Header = (props) => {
 
   const cartListItem = useSelector((state) => state.cart.cartList);
 
-  if (token) console.log("token header:", token);
+  // if (token) console.log("token header:", token);
   const menuCurrency = (curr = currs) => (
     <Menu>
       {curr &&
         curr.map((c) => {
           return (
-            <Menu.Item key={c} onClick={() => setCurrency(c)}>
+            <Menu.Item
+              key={c}
+              onClick={() => {
+                scrollToTop();
+                setCurrency(c);
+              }}
+            >
               {c}
             </Menu.Item>
           );
@@ -101,7 +113,13 @@ const Header = (props) => {
     <Menu>
       {lang &&
         lang.map((l) => (
-          <Menu.Item key={l} onClick={() => setLanguage(l)}>
+          <Menu.Item
+            key={l}
+            onClick={() => {
+              scrollToTop();
+              setLanguage(l);
+            }}
+          >
             {l}
           </Menu.Item>
         ))}
@@ -111,7 +129,13 @@ const Header = (props) => {
     <Menu>
       {acc &&
         acc.map((a) => (
-          <Menu.Item key={a} onClick={() => setAccount(a)}>
+          <Menu.Item
+            key={a}
+            onClick={() => {
+              scrollToTop();
+              setAccount(a);
+            }}
+          >
             {a}
           </Menu.Item>
         ))}
@@ -121,7 +145,13 @@ const Header = (props) => {
     <Menu>
       {sign &&
         sign.map((s, index) => (
-          <Menu.Item key={s} onClick={() => setSign(s)}>
+          <Menu.Item
+            key={s}
+            onClick={() => {
+              scrollToTop();
+              setSign(s);
+            }}
+          >
             <Link exact="true" to={`/${link[index]}`}>
               {s}
             </Link>
@@ -131,142 +161,210 @@ const Header = (props) => {
   );
   
   function scrollToTop() {
+    setMenuIsActive(false);
     return window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   }
+  function menuIsActive(e) {
+    scrollToTop();
+    setMenuIsActive(!isActive);
+  }
+
   return (
-    <div className={styles.header}>
-      <div className={styles["headbar-wrapper"]}>
-        <Row className={styles.headbar}>
-          <Col span={13} className={styles.hotline}>
-            Tel: +84 965 857 082
-          </Col>
-          <Col offset={4}></Col>
-          <Col className={styles.item} span={7}>
-            <Dropdown
-              className={styles.dropdown}
-              overlay={menuCurrency}
-              trigger={["click"]}
-            >
-              <div>
-                {currency}
-                <DownOutlined className={styles.icon} />
-              </div>
-            </Dropdown>
-            <Dropdown
-              className={styles.dropdown}
-              overlay={menuLanguage}
-              trigger={["click"]}
-            >
-              <div>
-                {language}
-                <DownOutlined className={styles.icon} />
-              </div>
-            </Dropdown>
-            {token === "" ? (
-              <Dropdown
-                className={styles.dropdown}
-                overlay={menuSign}
-                trigger={["click"]}
+    <Row
+      className={styles.header}
+      style={{ borderBottom: "0.1px solid #f3f3f4" }}
+    >
+      <Col
+        span={24}
+        className={styles["headbar-wrapper"]}
+        style={{ borderBottom: "1px solid #dbdbdb" }}
+      >
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <Row className={styles.headbar}>
+            <Col offset={1} span={22}>
+              <Row>
+                <Col
+                  lg={{ span: 10 }}
+                  xs={{ span: 24 }}
+                  className={styles.hotline}
+                  style={{ marginRight: "auto" }}
+                >
+                  Tel: +84 965 857 082
+                </Col>
+                <Col
+                  lg={{ span: 10 }}
+                  xs={{ span: 24 }}
+                  className={styles.item}
+                  style={{ marginLeft: "auto" }}
+                >
+                  <Dropdown
+                    className={styles.dropdown}
+                    overlay={menuCurrency}
+                    trigger={["click"]}
+                  >
+                    <div>
+                      {currency}
+                      <DownOutlined className={styles.icon} />
+                    </div>
+                  </Dropdown>
+                  <Dropdown
+                    className={styles.dropdown}
+                    overlay={menuLanguage}
+                    trigger={["click"]}
+                  >
+                    <div>
+                      {language}
+                      <DownOutlined className={styles.icon} />
+                    </div>
+                  </Dropdown>
+                  {token === "" ? (
+                    <Dropdown
+                      className={styles.dropdown}
+                      overlay={menuSign}
+                      trigger={["click"]}
+                    >
+                      <div>
+                        {sign}
+                        <DownOutlined className={styles.icon} />
+                      </div>
+                    </Dropdown>
+                  ) : (
+                    <Dropdown
+                      className={styles.dropdown}
+                      overlay={menuAccount}
+                      trigger={["click"]}
+                    >
+                      <div>
+                        {account}
+                        <DownOutlined className={styles.icon} />
+                      </div>
+                    </Dropdown>
+                  )}
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </div>
+      </Col>
+      <Col span={24}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <Row>
+            <Col offset={1} span={22}>
+              <Row gutter={[16, 16]} className={styles.navbar}>
+                <Col className={styles.logo}>
+                  <Link to="/">
+                    <img width="52px" height="52px" src={logo} alt="logo" />
+                    <span className={styles.name}>SACHUPHY</span>
+                  </Link>
+                </Col>
+                <Col
+                  lg={{ span: 13 }}
+                  xs={{ span: 20 }}
+                  className={styles["search"]}
+                  style={{ margin: "0 auto" }}
+                >
+                  <Search
+                    placeholder="Tìm kiếm sản phẩm ..."
+                    allowClear
+                    enterButton="Tìm kiếm"
+                    size="large"
+                    onSearch={onSearch}
+                  />
+                </Col>
+                <Col className={styles.cart}>
+                  <Row>
+                    <Col className={styles["shop"]}>
+                      <Badge
+                        count={cartListItem && cartListItem.length}
+                        style={{ backgroundColor: "#1789FC" }}
+                      >
+                        <Button type="primary" className={styles.btn}>
+                          <Link exact="true" to="/shopcart">
+                            <ShoppingCartOutlined style={{ fontSize: 24 }} />
+                          </Link>
+                        </Button>
+                      </Badge>
+                    </Col>
+                    <Col className={styles["shopping"]}>
+                      <b>Giỏ hàng</b>
+                      <span>{formatPrice(total)}</span>
+                    </Col>
+                  </Row>
+                </Col>
+                <Col style={{ marginLeft: "auto" }} className={styles.collapse}>
+                  <div
+                    onClick={() => menuIsActive()}
+                    className={styles.checkbtn}
+                  >
+                    <AlignRightOutlined />
+                  </div>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+              <Row
+                className={isActive ? styles.menu : styles["menu-is-active"]}
+                
               >
-                <div>
-                  {sign}
-                  <DownOutlined className={styles.icon} />
-                </div>
-              </Dropdown>
-            ) : (
-              <Dropdown
-                className={styles.dropdown}
-                overlay={menuAccount}
-                trigger={["click"]}
-              >
-                <div>
-                  {account}
-                  <DownOutlined className={styles.icon} />
-                </div>
-              </Dropdown>
-            )}
-          </Col>
-        </Row>
-      </div>
-      <Row className={styles.navbar}>
-        <Col span={6} className={styles.logo}>
-          <Link to="/">
-            <img width="52px" height="52px" src={logo} alt="logo" />
-            <span className={styles.name}>SACHUPHY</span>
-          </Link>
-        </Col>
-        <Col span={12} className={styles["search"]}>
-          <Search
-            placeholder="TÌm kiếm điều bạn muốn ngay nào ..."
-            allowClear
-            enterButton="Tìm kiếm"
-            size="large"
-            onSearch={onSearch}
-          />
-        </Col>
-        <Col span={3} className={styles["shop"]}>
-          <Badge
-            count={cartListItem && cartListItem.length}
-            style={{ backgroundColor: "#1789FC" }}
-          >
-            <Button type="primary" className={styles.btn}>
-              <Link exact="true" to="/shopcart">
-                <ShoppingCartOutlined style={{ fontSize: 24 }} />
-              </Link>
-            </Button>
-          </Badge>
-        </Col>
-        <Col span={3} className={styles["shopping"]}>
-          <b>Giỏ hàng</b>
-          <span>{formatMoney(total)} VNĐ</span>
-        </Col>
-      </Row>
-      <Row className={styles["menubar-wrapper"]}>
-        <Col offset={12}></Col>
-        <Col span={11} className={styles["menubar"]}>
-          <NavLink
-            exact
-            activeClassName={styles["is-active"]}
-            className={styles["menu-item"]}
-            to="/"
-            onClick={scrollToTop}
-          >
-            HOME
-          </NavLink>
-          <NavLink
-            exact
-            activeClassName={styles["is-active"]}
-            className={styles["menu-item"]}
-            to="/product"
-            onClick={scrollToTop}
-          >
-            SHOP
-          </NavLink>
-          <NavLink
-            exact
-            activeClassName={styles["is-active"]}
-            className={styles["menu-item"]}
-            to="/about"
-            onClick={scrollToTop}
-          >
-            ABOUT US
-          </NavLink>
-          <NavLink
-            exact
-            activeClassName={styles["is-active"]}
-            className={styles["menu-item"]}
-            to="/contact"
-            onClick={scrollToTop}
-          >
-            CONTACT US
-          </NavLink>
-        </Col>
-        <Col offset={1}></Col>
-      </Row>
-    </div>
+                <Col offset={1} span={22}>
+                  <Row>
+                    <Col span={24}>
+                      <Row justify="end" gutter={[32, 8]}>
+                        <Col lg={{ span: 4 }} xs={{ span: 24 }} style={{textAlign: "end"}}>
+                          <NavLink
+                            exact
+                            activeClassName={styles["is-active"]}
+                            className={styles["menu-item"]}
+                            to="/"
+                            onClick={scrollToTop}
+                          >
+                            TRANG CHỦ
+                          </NavLink>
+                        </Col>
+                        <Col lg={{ span: 4 }} xs={{ span: 24 }} style={{textAlign: "end"}}>
+                          <NavLink
+                            exact
+                            activeClassName={styles["is-active"]}
+                            className={styles["menu-item"]}
+                            to="/product"
+                            onClick={scrollToTop}
+                          >
+                            SẢN PHẨM
+                          </NavLink>
+                        </Col>
+                        <Col lg={{ span: 4 }} xs={{ span: 24 }} style={{textAlign: "end"}}>
+                          <NavLink
+                            exact
+                            activeClassName={styles["is-active"]}
+                            className={styles["menu-item"]}
+                            to="/about"
+                            onClick={scrollToTop}
+                          >
+                            CHÚNG TÔI
+                          </NavLink>
+                        </Col>
+                        <Col lg={{ span: 4 }} xs={{ span: 24 }} style={{textAlign: "end"}}>
+                          <NavLink
+                            exact
+                            activeClassName={styles["is-active"]}
+                            className={styles["menu-item"]}
+                            to="/contact"
+                            onClick={scrollToTop}
+                          >
+                            LIÊN HỆ
+                          </NavLink>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
+                </Col>
+          </Row>
+        </div>
+      </Col>
+    </Row>
   );
 };
 

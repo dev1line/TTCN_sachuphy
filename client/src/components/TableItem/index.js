@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Table, InputNumber } from "antd";
 import { CloseCircleOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
-import {change, formatMoney} from '../../help/convert'
-
+import {change} from '../../help/convert'
+import {formatPrice} from '../../help/formatPrice';
 const styleImage = {
   width: "150px",
   height: "150px",
@@ -11,18 +11,17 @@ const styleImage = {
 const TableItem = (props) => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token.token);
-  
-  const {data, total} = props;
+
+  const { data, total } = props;
   // const [x, setX] = useState([]);
   // useEffect(() => {
   //   setX(data);
   //   renderer = change(data);
   // },[data,x]);
   // console.log("data:",change(data))
-  console.log(data)
-  
+  console.log(data);
 
-  useEffect(()=>{
+    useEffect(() => {
     if (localStorage.getItem("token") || token !== "") {
     console.log(data)
     
@@ -64,7 +63,7 @@ const TableItem = (props) => {
       title: "Giá",
       dataIndex: "new_price",
       key: "new_price",
-      render: (price, index) => <p key={index}>{formatMoney(price)} VNĐ</p>,
+      render: (price, index) => <p key={index}>{formatPrice(price)} VNĐ</p>,
     },
     {
       title: "Số lượng",
@@ -85,7 +84,7 @@ const TableItem = (props) => {
       title: "Tổng",
       dataIndex: "total",
       key: "total",
-      render: (value, key) => <p key={key}>{formatMoney(value)} VNĐ</p>,
+      render: (value, key) => <p key={key}>{formatPrice(value)} VNĐ</p>,
     },
     {
       title: "Action",
@@ -117,12 +116,10 @@ const TableItem = (props) => {
   }
   console.log(change(data))
 
-  
-  
   return (
     <div>
       <Table columns={columns} dataSource={change(data)} />
-      <h2 style={{ textAlign: "left" }}>Tổng tiền:{formatMoney(total)} VNĐ</h2>
+      <h2 style={{ textAlign: "left" }}>Tổng tiền:{formatPrice(total)} VNĐ</h2>
     </div>
   );
 };

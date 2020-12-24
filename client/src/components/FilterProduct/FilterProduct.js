@@ -9,10 +9,11 @@ const { SubMenu } = Menu;
 
 const FilterProduct = React.forwardRef((props, ref) => {
   const [rangePrice, setRangePrice] = useState([0, 100]);
-  const [nameProduct, setNameProduct] = useState("");
+  const [nameProduct, setNameProduct] = useState("All");
   const dispatch = useDispatch();
   const handleChange = (e) => {
     setNameProduct(e.key);
+    // console.log(rangePrice);
     dispatch({ type: "FILTER_PRODUCTS", filterByName: e.key, filterByPrice: rangePrice });
   };
   var leftContentClasses = classnames({
@@ -47,6 +48,18 @@ const FilterProduct = React.forwardRef((props, ref) => {
           </Menu.Item>
           <Menu.Item key="MSI">
             MSI
+          </Menu.Item>
+          <Menu.Item key="HP">
+            HP
+          </Menu.Item>
+          <Menu.Item key="Acer">
+            Acer
+          </Menu.Item>
+          <Menu.Item key="Apple">
+            Macbook
+          </Menu.Item>
+          <Menu.Item key="Google">
+            Google
           </Menu.Item>
         </SubMenu>
       </Menu>

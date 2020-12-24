@@ -45,7 +45,8 @@ const SigninForm = (props) => {
         remember: true,
       }}
       onFinish={onFinish}
-      onFinishFailed={onFinishFailed}>
+      onFinishFailed={onFinishFailed}
+    >
       <Form.Item>
         <h1 className="title">
         ĐĂNG NHẬP
@@ -58,7 +59,8 @@ const SigninForm = (props) => {
       </Form.Item>
       <Form.Item
         name="user"
-        rules={[{ required: true, message: "Please input your username!" }]}>
+        rules={[{ required: true, message: "Please input your username!" }]}
+      >
         <Input
           className="input-group-item"
           size="large"
@@ -68,7 +70,8 @@ const SigninForm = (props) => {
       </Form.Item>
       <Form.Item
         name="pass"
-        rules={[{ required: true, message: "Please input your password!" }]}>
+        rules={[{ required: true, message: "Please input your password!" }]}
+      >
         <Input.Password
           className="input-group-item"
           size="large"
@@ -82,8 +85,12 @@ const SigninForm = (props) => {
           type="success"
           htmlType="submit"
           className="btnsub"
-          style={{ backgroundColor:' #1789fc', fontWeight:'bold', color:'#FFFFFF'}}
-          >
+          style={{
+            backgroundColor: " #1789fc",
+            fontWeight: "bold",
+            color: "#FFFFFF",
+          }}
+        >
           SIGN IN
         </Button>
       </Form.Item>

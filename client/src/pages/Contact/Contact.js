@@ -1,5 +1,5 @@
 import React from "react";
-import "./Contact.css";
+import styles from "./Contact.module.css";
 import "animate.css";
 import { Row, Col, message } from "antd";
 
@@ -11,64 +11,64 @@ const About = (props) => {
   };
   const onFinish = (e) => {};
   return (
-    <div className="animate__animated animate__fadeIn" style={{'marginBottom': '40px'}}>
+    <div className="animate__animated animate__fadeIn" className={styles.container}>
       <Row justify="center">
-        <Col className="parallax" span={9} offset={2}></Col>
-        <Col className="form" span={9} offset={1}>
-          <div className="footer-header">
-            <h1>Contact us</h1>
-            <p className="sub-title">
-              Contact us for a quote, help or to join the team.
+        <Col className={styles["parallax"]} lg={{ span: 9, offset: 2 }} xs={{ span: 24 }} ></Col>
+        <Col className={styles["form"]} lg={{ span: 9, offset: 1 }} xs={{ span: 16 }}>
+          <div className={styles["footer-header"]}>
+            <h1>Liên hệ</h1>
+            <p className={styles["sub-title"]}>
+            Liên hệ với chúng tôi để được báo giá, trợ giúp hoặc tham gia Team Sachuphy.
             </p>
-            <div className="contact-us">
-              <div className="address-us">
-                <p className="content">Adress</p>
-                <p className="sub-content">54 Sachuphy</p>
+            <div className={styles["contact-us"]}>
+              <div className={styles["address-us"]}>
+                <p className={styles["content"]}>Địa chỉ</p>
+                <p className={styles["sub-content"]}>54 Sachuphy</p>
               </div>
-              <div className="email-us">
-                <p className="content">Email</p>
-                <p className="sub-content">sachuphy@studio.com</p>
+              <div className={styles["email-us"]}>
+                <p className={styles["content"]}>Email</p>
+                <p className={styles["sub-content"]}>sachuphy@studio.com</p>
               </div>
-              <div className="phone-us">
-                <p className="content">Phone</p>
-                <p className="sub-content">+84 132 456 789</p>
+              <div className={styles["phone-us"]}>
+                <p className={styles["content"]}>Điện thoại</p>
+                <p className={styles["sub-content"]}>+84 132 456 789</p>
               </div>
             </div>
           </div>
-          <form className="footer-section wrapper">
-            <h2 className={"message"}>Get a quote</h2>
-            <div className="input-data">
-              <input className="input" type="text" required></input>
-              <label className="label">Name</label>
+          <form className={styles["footer-section wrapper"]}>
+            <h2 className={styles["message"]}>Nhận Báo giá</h2>
+            <div className={styles["input-data"]}>
+              <input className={styles["input"]} type="text" required></input>
+              <label className={styles["label"]}>Tên</label>
             </div>
-            <div className="input-data">
-              <input className="input" type="text" required></input>
-              <label className="label">Email</label>
+            <div className={styles["input-data"]}>
+              <input className={styles["input"]} type="text" required></input>
+              <label className={styles["label"]}>Email</label>
             </div>
-            <div className="input-data">
-              <label>Message</label>
+            <div className={styles["input-data"]}>
+              <label>Ghi chú</label>
               <textarea
-                placeholder="Type here ..."
-                className="textarea"></textarea>
+                placeholder="Nhập vào đây ... "
+                className={styles["textarea"]}></textarea>
             </div>
-            <div className="btn-send">
-              <button onClick={onFinish}>Send message</button>
+            <div className={styles["btn-send"]}>
+              <button onClick={onFinish}>Gửi</button>
             </div>
           </form>
-          <div className="contact-footer">
-            <h2 className="follow">Follow us</h2>
-            <div className="social-media">
-              <div className="media">
-                <a className="link">Facebook</a>
+          <div className={styles["contact-footer"]}>
+            <h2 className={styles["follow"]}>Mạng xã hội</h2>
+            <div className={styles["social-media"]}>
+              <div className={styles["media"]}>
+                <a className={styles["link"]}>Facebook</a>
               </div>
-              <div className="media">
-                <a className="link">Twitter</a>
+              <div className={styles["media"]}>
+                <a className={styles["link"]}>Twitter</a>
               </div>
-              <div className="media">
-                <a className="link">Instagram</a>
+              <div className={styles["media"]}>
+                <a className={styles["link"]}>Instagram</a>
               </div>
-              <div className="media">
-                <a className="link">Github</a>
+              <div className={styles["media"]}>
+                <a className={styles["link"]}>Github</a>
               </div>
             </div>
           </div>

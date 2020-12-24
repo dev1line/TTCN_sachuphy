@@ -1,7 +1,7 @@
 .shopping {
   background: #1789fc;
-  height: 140px;
   position: relative;
+  padding: 40px;
 }
 .shopping::before {
   content: "";
@@ -25,7 +25,6 @@
   font-size: 20px;
   letter-spacing: 2px;
   color: #ffffff;
-  margin-bottom: 0;
 }
 .btn {
   color: #1789fc;

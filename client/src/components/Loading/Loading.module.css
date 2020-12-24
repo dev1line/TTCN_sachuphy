@@ -1,0 +1,37 @@
+.gooey {
+  width: 100%;
+  padding: 50px 0;
+}
+.dot {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #1789fc;
+  border-radius: 50%;
+  transform: translateX(0);
+  animation: dot 2.8s infinite;
+}
+.dots {
+  transform: translateX(0);
+  margin-left: 18px;
+  animation: dots 2.8s infinite;
+}
+.dots > span {
+  display: block;
+  float: left;
+  width: 16px;
+  height: 16px;
+  margin-left: 16px;
+  background: #1789fc;
+  border-radius: 50%;
+}
+@keyframes dot {
+  50% {
+    transform: translateX(96px);
+  }
+}
+@keyframes dots {
+  50% {
+    transform: translateX(-31px);
+  }
+}

@@ -21,7 +21,7 @@ function* filterProducts(input) {
   const filterPrice = input.filterByPrice;
   // console.log(input);
   const data = yield select();
-  const products = data.products.all_products;
+  const products = data.products.products;
   // console.log(products);
   const filteredProducts = yield _.filter(products, function (o) {
     if (filterName === "All") {
@@ -42,61 +42,38 @@ function* filterProducts(input) {
 function* getProductBySlug(input) {
   const slug = input.slug;
   const data = yield select();
-  const products = data.products.all_products;
-  console.log(products);
-  // console.log(slug);
-  if (products.length) {
-    const productDefault = products.find((o) => o.default_spec.slug === slug);
-    if (!productDefault) {
-      const productOptionDetail = products.find((o) =>
-        o.options.some((o) => o.slug === slug)
-      );
-      const optionBySlug = productOptionDetail.options.find(
-        (o) => o.slug === slug
-      );
-      const option = _.pickBy(optionBySlug, o => o === 0 || (o && !_.isArray(o)) || (_.isArray(o) && o.length));
-      const product = productOptionDetail.default_spec;
-      console.log(product);
-      console.log(option);
-      const productOption = _.assign({}, product, option);
-      console.log(productOption);
-      if (productOption) {
-        yield put({
-          type: "CHANGE_OPTION_SUCCESS",
-          fetchProduct: productOption,
-        });
-      }
-    } else {
-      if (productDefault) {
-        yield put({
-          type: "GET_PRODUCT_SUCCESS",
-          fetchProduct: productDefault,
-        });
-      }
-    }
-  } else {
-    // const fetchProduct = yield axios({
-    //   method: "get",
-    //   url: `${url}/${slug}`,
-    // });
-    // // console.log(fetchProduct.data.product);
-    // if (fetchProduct) {
-    //   yield put({
-    //     type: "GET_PRODUCT_SUCCESS",
-    //     fetchProduct: fetchProduct.data.product,
-    //   });
-    // }
-    return;
+  const products = data.products.products;
+  const existedSlugs = [
+    products.flatMap((element) => [
+      element.default_spec.slug,
+      ...element.options.flatMap((option) => option.slug),
+    ]),
+  ];
+  if (existedSlugs.includes(slug)) return;
+  const fetchProduct = yield axios({
+    method: "get",
+    url: `${url}/${slug}`,
+  });
+  if (fetchProduct) {
+    yield put({
+      type: "GET_PRODUCT_SUCCESS",
+      fetchProduct: fetchProduct.data.product,
+    });
   }
 }
-function* changeOption(input) {
-  // const option = input.option
-  // const data = yield select();
-  // const product = data.products
-  // console.log(input);
-  // console.log("asdsad");
-  // if (option) {
-  //   yield put ({type: "CHANGE_PRODUCT_SUCCESS", data: {...products,...option}})
-  // }
+function* sortProducts(input) {
+  const sort = input.sortProducts;
+  // console.log(sort);
+  const data = yield select();
+  const products = data.products.products;
+  console.log(products);
+  const sortedProducts = _.sortBy(products, (o) => {return sort === "Name" ? o.default_spec.name : o.default_spec.price});
+  if (sortedProducts) {
+    yield put({
+      type: "SORT_PRODUCTS_SUCCESS",
+      sortedProducts: sortedProducts,
+    });
+  }
 }
-export { getProducts, filterProducts, getProductBySlug, changeOption };
+
+export { getProducts, filterProducts, getProductBySlug, sortProducts };

@@ -19,8 +19,8 @@ const isContained = (list, item) => {
         }
         
     }
-    return -1;
-}
+  return -1;
+};
 
 const isContained2 = (list, item) => {
     if (list)
@@ -40,10 +40,10 @@ const isContained2 = (list, item) => {
         }
         
     }
-    return -1;
-}
+  return -1;
+};
 
-//type : add || delete 
+//type : add || delete
 
 export const convert = (list, item, type = "add") => {
     console.log("item show:", item);
@@ -95,8 +95,22 @@ export const convert = (list, item, type = "add") => {
             return list;
         }
     }
-    // return;
-}
+  //   default: {
+  //     console.log("item default:", item);
+  //     const newItem = {
+  //       ...Object.fromEntries(Object.entries(item)),
+  //       ...{ number: 1 },
+  //     };
+  //     console.log(newItem);
+  //     if (locate === -1) list.push(newItem);
+  //     else if (list[locate]) {
+  //       list[locate].number += 1;
+  //     }
+  //     return list;
+  //   }
+  // }
+  // return;
+};
 
 export const change = (list) => {
 

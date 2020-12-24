@@ -4,7 +4,8 @@ import TableItem from "../TableItem";
 import "./style.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { formatMoney } from "../../help/convert"
+// import { formatMoney } from "../../help/convert"
+import {formatPrice} from '../../help/formatPrice';
 
 const { Option } = Select;
 
@@ -137,7 +138,7 @@ const FormInfo = (props) => {
       dataIndex: 'total',
       key: 'total',
       width: 10,
-      render: text => <p>{formatMoney(text)} VNĐ</p>,
+      render: text => <p>{formatPrice(text)} VNĐ</p>,
     },
   ];
 
@@ -213,7 +214,7 @@ const FormInfo = (props) => {
               },
             ]}
           >
-            <Input placeholder="iloveyou300@gmail.com" />
+            <Input placeholder="example@gmail.com" />
           </Form.Item>
           <Form.Item
             name="diachi"
@@ -221,11 +222,11 @@ const FormInfo = (props) => {
             rules={[
               {
                 required: true,
-                message: "Vui lòng nhập địa chỉ!",
+                message: "Vui lòng điền địa chỉ!",
               },
             ]}
           >
-            <Input placeholder="Cho bố cái địa chỉ!?" />
+            <Input placeholder="54 Nguyễn Lương Bằng Tp. Đà Nẵng" />
           </Form.Item>
           <Form.Item
             name="phone"

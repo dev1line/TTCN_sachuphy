@@ -2,7 +2,6 @@ import {
   GET_ALL_PRODUCTS,
   FILTER_PRODUCTS,
   GET_PRODUCT_BY_SLUG,
-  CHANGE_OPTION
 } from "../constants";
 
 export const getProducts = (products) => {
@@ -23,9 +22,4 @@ export const getProductBySlug = (product) => {
     product,
   };
 };
-export const changeOption = (product) => {
-  return {
-    type: CHANGE_OPTION,
-    product,
-  };
-};
+
