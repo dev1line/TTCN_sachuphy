@@ -119,7 +119,7 @@ const TableItem = (props) => {
   return (
     <div>
       <Table columns={columns} dataSource={change(data)} />
-      <h2 style={{ textAlign: "left" }}>Tổng tiền:{formatPrice(total)} VNĐ</h2>
+      <h2 style={{ textAlign: "left" }}>Tổng tiền: {formatPrice(total)} VNĐ</h2>
     </div>
   );
 };

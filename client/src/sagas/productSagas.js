@@ -1,8 +1,9 @@
 import { put, select } from "redux-saga/effects";
 import axios from "axios";
 import _ from "lodash";
+import config from '../config'
 
-const url = "http://localhost:3000/api/v1/product";
+const url = `http://${config.HOST}:${config.PORT}/api/v1/product`;
 
 function* getProducts() {
   const fetchProducts = yield axios({
@@ -19,10 +20,10 @@ function* getProducts() {
 function* filterProducts(input) {
   const filterName = input.filterByName;
   const filterPrice = input.filterByPrice;
-  // console.log(input);
+  // 
   const data = yield select();
   const products = data.products.products;
-  // console.log(products);
+  // 
   const filteredProducts = yield _.filter(products, function (o) {
     if (filterName === "All") {
       return (
@@ -32,7 +33,7 @@ function* filterProducts(input) {
     } else return o.default_spec.manufacturer === filterName && o.default_spec.price >= filterPrice[0] * 1000000 && o.default_spec.price <= filterPrice[1] * 1000000;
   });
   if (filteredProducts) {
-    // console.log(filterProduct, "ok");
+    // 
     yield put({
       type: "FILTER_PRODUCTS_SUCCESS",
       filteredProducts: filteredProducts,
@@ -63,10 +64,10 @@ function* getProductBySlug(input) {
 }
 function* sortProducts(input) {
   const sort = input.sortProducts;
-  // console.log(sort);
+  // 
   const data = yield select();
   const products = data.products.products;
-  console.log(products);
+  
   const sortedProducts = _.sortBy(products, (o) => {return sort === "Name" ? o.default_spec.name : o.default_spec.price});
   if (sortedProducts) {
     yield put({

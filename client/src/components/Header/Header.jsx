@@ -9,9 +9,9 @@ import { Link, NavLink } from "react-router-dom";
 import "antd/dist/antd.css";
 import styles from "./Header.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import logo from "../../logo192.png";
-import {change ,formatMoney} from '../../help/convert'
-import {formatPrice} from '../../help/formatPrice';
+import logo from "../../logo.png";
+import { change } from '../../help/convert'
+import { formatPrice } from '../../help/formatPrice';
 const { Search } = Input;
 
 const Header = (props) => {
@@ -57,26 +57,26 @@ const Header = (props) => {
     }
   }, [token, dispatch]);
 
-  console.log(total)
-  console.log(cartList)
-  useEffect(()=>{
+  
+  
+  useEffect(() => {
     if (localStorage.getItem("token") || token !== "") {
-    console.log(cartList)
-    
-    dispatch({
-      type: "UPDATE_CART",
-      action: {
-        "cart":{
-          "products": cartList,
+      
+
+      dispatch({
+        type: "UPDATE_CART",
+        action: {
+          "cart": {
+            "products": cartList,
+          }
         }
-      }
-    })
-  }
-  else {
-      localStorage.setItem("cart",JSON.stringify(change(cartList)));
+      })
+    }
+    else {
+      localStorage.setItem("cart", JSON.stringify(change(cartList)));
       localStorage.setItem("total", total);
-  }
-  }, [total, cartList, token ,dispatch])
+    }
+  }, [total, cartList, token, dispatch])
 
   useEffect(() => {
     if (account === "Đăng xuất") {
@@ -85,12 +85,13 @@ const Header = (props) => {
   }, [account, setAccount, dispatch]);
 
   const onSearch = (value) => {
-    window.location.href="/product?q="+value;
+    if (value)
+      window.location.href = "/product?q=" + value
   }
 
   const cartListItem = useSelector((state) => state.cart.cartList);
 
-  // if (token) console.log("token header:", token);
+  // if (token) 
   const menuCurrency = (curr = currs) => (
     <Menu>
       {curr &&
@@ -159,7 +160,7 @@ const Header = (props) => {
         ))}
     </Menu>
   );
-  
+
   function scrollToTop() {
     setMenuIsActive(false);
     return window.scrollTo({
@@ -232,17 +233,17 @@ const Header = (props) => {
                       </div>
                     </Dropdown>
                   ) : (
-                    <Dropdown
-                      className={styles.dropdown}
-                      overlay={menuAccount}
-                      trigger={["click"]}
-                    >
-                      <div>
-                        {account}
-                        <DownOutlined className={styles.icon} />
-                      </div>
-                    </Dropdown>
-                  )}
+                      <Dropdown
+                        className={styles.dropdown}
+                        overlay={menuAccount}
+                        trigger={["click"]}
+                      >
+                        <div>
+                          {account}
+                          <DownOutlined className={styles.icon} />
+                        </div>
+                      </Dropdown>
+                    )}
                 </Col>
               </Row>
             </Col>
@@ -256,8 +257,7 @@ const Header = (props) => {
               <Row gutter={[16, 16]} className={styles.navbar}>
                 <Col className={styles.logo}>
                   <Link to="/">
-                    <img width="52px" height="52px" src={logo} alt="logo" />
-                    <span className={styles.name}>SACHUPHY</span>
+                    <img width="auto" height="auto" src={logo} alt="logo" />
                   </Link>
                 </Col>
                 <Col
@@ -281,7 +281,7 @@ const Header = (props) => {
                         count={cartListItem && cartListItem.length}
                         style={{ backgroundColor: "#1789FC" }}
                       >
-                        <Button type="primary" className={styles.btn}>
+                        <Button onClick={() => scrollToTop()} type="primary" className={styles.btn}>
                           <Link exact="true" to="/shopcart">
                             <ShoppingCartOutlined style={{ fontSize: 24 }} />
                           </Link>
@@ -305,62 +305,62 @@ const Header = (props) => {
               </Row>
             </Col>
           </Row>
-              <Row
-                className={isActive ? styles.menu : styles["menu-is-active"]}
-                
-              >
-                <Col offset={1} span={22}>
-                  <Row>
-                    <Col span={24}>
-                      <Row justify="end" gutter={[32, 8]}>
-                        <Col lg={{ span: 4 }} xs={{ span: 24 }} style={{textAlign: "end"}}>
-                          <NavLink
-                            exact
-                            activeClassName={styles["is-active"]}
-                            className={styles["menu-item"]}
-                            to="/"
-                            onClick={scrollToTop}
-                          >
-                            TRANG CHỦ
+          <Row
+            className={isActive ? styles.menu : styles["menu-is-active"]}
+
+          >
+            <Col offset={1} span={22}>
+              <Row>
+                <Col span={24}>
+                  <Row justify="end" gutter={[32, 8]}>
+                    <Col lg={{ span: 4 }} xs={{ span: 24 }} style={{ textAlign: "end" }}>
+                      <NavLink
+                        exact
+                        activeClassName={styles["is-active"]}
+                        className={styles["menu-item"]}
+                        to="/"
+                        onClick={scrollToTop}
+                      >
+                        TRANG CHỦ
                           </NavLink>
-                        </Col>
-                        <Col lg={{ span: 4 }} xs={{ span: 24 }} style={{textAlign: "end"}}>
-                          <NavLink
-                            exact
-                            activeClassName={styles["is-active"]}
-                            className={styles["menu-item"]}
-                            to="/product"
-                            onClick={scrollToTop}
-                          >
-                            SẢN PHẨM
+                    </Col>
+                    <Col lg={{ span: 4 }} xs={{ span: 24 }} style={{ textAlign: "end" }}>
+                      <NavLink
+                        exact
+                        activeClassName={styles["is-active"]}
+                        className={styles["menu-item"]}
+                        to="/product"
+                        onClick={scrollToTop}
+                      >
+                        SẢN PHẨM
                           </NavLink>
-                        </Col>
-                        <Col lg={{ span: 4 }} xs={{ span: 24 }} style={{textAlign: "end"}}>
-                          <NavLink
-                            exact
-                            activeClassName={styles["is-active"]}
-                            className={styles["menu-item"]}
-                            to="/about"
-                            onClick={scrollToTop}
-                          >
-                            CHÚNG TÔI
+                    </Col>
+                    <Col lg={{ span: 4 }} xs={{ span: 24 }} style={{ textAlign: "end" }}>
+                      <NavLink
+                        exact
+                        activeClassName={styles["is-active"]}
+                        className={styles["menu-item"]}
+                        to="/about"
+                        onClick={scrollToTop}
+                      >
+                        CHÚNG TÔI
                           </NavLink>
-                        </Col>
-                        <Col lg={{ span: 4 }} xs={{ span: 24 }} style={{textAlign: "end"}}>
-                          <NavLink
-                            exact
-                            activeClassName={styles["is-active"]}
-                            className={styles["menu-item"]}
-                            to="/contact"
-                            onClick={scrollToTop}
-                          >
-                            LIÊN HỆ
+                    </Col>
+                    <Col lg={{ span: 4 }} xs={{ span: 24 }} style={{ textAlign: "end" }}>
+                      <NavLink
+                        exact
+                        activeClassName={styles["is-active"]}
+                        className={styles["menu-item"]}
+                        to="/contact"
+                        onClick={scrollToTop}
+                      >
+                        LIÊN HỆ
                           </NavLink>
-                        </Col>
-                      </Row>
                     </Col>
                   </Row>
                 </Col>
+              </Row>
+            </Col>
           </Row>
         </div>
       </Col>

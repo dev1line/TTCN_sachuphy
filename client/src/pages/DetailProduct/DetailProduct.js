@@ -26,11 +26,13 @@ const DetailProduct = (props) => {
   }, [dispatch, slug]);
   const handleClick = (product) => {
     // scrollToTop();
-    // console.log(product.price * (100 - product.discount) / 100)
+    //
     dispatch({
       type: "ADD_CART",
       item: product,
-      price: product.default_spec.price * (100 - product.default_spec.discount) / 100,
+      price:
+        (product.default_spec.price * (100 - product.default_spec.discount)) /
+        100,
     });
   };
   useEffect(() => {
@@ -40,11 +42,8 @@ const DetailProduct = (props) => {
         products.splice(Math.random() * (products.length - 1), 1).pop()
       );
     }
-    setProductsRandom([])
-    setProductsRandom(productsRandom)
-  }, [productsRandom]);
-  useEffect(() => {
-    console.log("aaa", productsRandom);
+    setProductsRandom([]);
+    setProductsRandom(productsRandom);
   }, [productsRandom]);
   useEffect(() => {
     if (!productBySlug) return;
@@ -66,15 +65,15 @@ const DetailProduct = (props) => {
       return { ...defaultSpecProduct, ...sanitisedOptionProduct };
     }
     const currentProduct = getCurrentProductBySlug();
-    // console.log(currentProduct);
+    //
     setProduct(currentProduct);
   }, [productBySlug, slug]);
 
   useEffect(() => {
     // setProductsRandom([]);
     if (!productBySlug) return;
-    // console.log(productBySlug.options);
-    // console.log(productBySlug.default_spec);
+    //
+    //
     setOptions([productBySlug.default_spec, ...productBySlug.options]);
   }, [productBySlug, slug]);
 
@@ -85,13 +84,15 @@ const DetailProduct = (props) => {
   //   });
   // }
   // useEffect(() => {
-  //   console.log(options);
+  //
   // }, [options])
   // useEffect(() => {
-  //   console.log(product);
+  //
   // }, [product])
   return (
-    <div className="animate__animated animate__fadeIn">
+    <div
+      className="animate__animated animate__fadeIn"
+      style={{ marginBottom: "80px" }}>
       {product.name ? (
         <Row
           justify="center"
@@ -118,6 +119,7 @@ const DetailProduct = (props) => {
               operating_system={product.operating_system}
               graphic_card={product.graphic_card}
               color={product.color}
+              img={product.images}
               click={(product) => handleClick(product)}
               product={productBySlug}
               options={options}
@@ -152,14 +154,17 @@ const DetailProduct = (props) => {
         </Col>
         <Col span={24}>
           <Row>
-            <Col offset={1} style={{ fontSize: "20px", fontWeight: "500" }}>
+            <Col
+              offset={1}
+              span={22}
+              style={{ fontSize: "20px", fontWeight: "500" }}>
               {product.description}
             </Col>
           </Row>
         </Col>
       </Row>
       {productsRandom.length ? (
-        <Row>
+        <Row style={{ marginTop: "40px" }}>
           <Col span={24}>
             <Row>
               <Col offset={1}>
@@ -167,14 +172,14 @@ const DetailProduct = (props) => {
               </Col>
             </Row>
           </Col>
-          <Col>
+          <Col span={24}>
             <Row gutter={[16, 16]} justify="center">
               {productsRandom.map((product, i) => (
                 <Col
                   lg={{ span: 6 }}
                   xs={{ span: 18 }}
                   sm={{ span: 12 }}
-                  key={i}>
+                  key={`suggestProduct${i}`}>
                   <Product
                     name={product.default_spec.name}
                     price={product.default_spec.price}
@@ -193,6 +198,7 @@ const DetailProduct = (props) => {
                     }
                     ram={product.default_spec.memory.capacity}
                     slug={product.default_spec.slug}
+                    img={product.default_spec.images}
                     product={product}
                     onClick={(name) => handleClick(name)}
                   />

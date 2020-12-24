@@ -1,18 +1,16 @@
 .abc-form {
-    border-radius: 10px;
-    padding: 40px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    align-items: center;
-    justify-content: center;
-  }
-  .checkout-button {
-    margin-top: 1.5em;
-    width: 100%;
-  }
-  .getorder-button {
-    display: block;
-    float: left;
-  }
-  .tag {
-    cursor: pointer;
-  }
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.checkout-button {
+  margin-top: 1.5em;
+  width: 100%;
+}
+.getorder-button {
+  display: block;
+  float: left;
+}
+.tag {
+  cursor: pointer;
+}

@@ -39,13 +39,7 @@
   display: flex;
   align-items: flex-end;
 }
-.name {
-  font-weight: 900;
-  font-size: 24px;
-  line-height: 28px;
-  letter-spacing: 5px;
-  color: #4c4c4c;
-}
+
 .search {
   display: flex;
   align-items: flex-end;
@@ -138,6 +132,8 @@
     left: 0;
     transition: all .5s ;
     background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur( 4px );
+-webkit-backdrop-filter: blur( 4px );
   }
   .hotline{
     text-align: center;

@@ -19,7 +19,7 @@ const ListProducts = (props) => {
     dispatch({ type: "SORT_PRODUCTS", sortProducts: value });
   };
   let data = []
-  console.log(key)
+  
   if(key) {
     key = decodeURI(key).toLowerCase();
     Object.values(data_product).map((el, index) => {
@@ -31,14 +31,14 @@ const ListProducts = (props) => {
   }
   else data = data_product
   // useEffect(() => {
-  //   console.log(data);
+  //   
   // }, [data])
   useEffect(() => {
     dispatch({ type: "GET_ALL_PRODUCTS" });
   }, [dispatch]);
 
   const handleClick = (item) => {
-    console.log(item);
+    
     dispatch({
       type: "ADD_CART",
       item: item.default_spec,
@@ -47,7 +47,7 @@ const ListProducts = (props) => {
   };
 
   const handleChangePage = (value) => {
-    console.log("page:", value);
+    
     maxminPage[0] = (value - 1) * numEachPage;
     maxminPage[1] = value * numEachPage;
     const new_data = [...maxminPage];
@@ -91,6 +91,7 @@ const ListProducts = (props) => {
                   ))) : product.default_spec.discount}
                   ram={product.default_spec.memory.capacity}
                   slug={product.default_spec.slug}
+                  img={product.default_spec.images}
                   options={product.options}
                   product={product}
                   onClick={(name) => handleClick(name)}

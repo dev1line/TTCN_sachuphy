@@ -1,11 +1,10 @@
-// import { formatMoney } from "../../help/convert"
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { Row, Col, Button, Carousel } from "antd";
 import { Link, NavLink } from "react-router-dom";
-import { CheckOutlined, LeftOutlined, RightOutlined } from "@ant-design/icons";
+import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import styles from "./ProductParameter.module.css";
-// import { Loading } from "../../components";
 import { formatPrice } from "../../help/formatPrice";
+import config from "../../config";
 
 const ProductParameter = (props) => {
   const carousel = React.createRef();
@@ -18,14 +17,14 @@ const ProductParameter = (props) => {
     carousel.current.prev();
     setCurrentCarouselIndex(
       currentCarouselIndex === 0
-        ? imageProduct.length - 1
+        ? props.img.length - 1
         : currentCarouselIndex - 1
     );
   }
   function next(e) {
     carousel.current.next();
     setCurrentCarouselIndex(
-      currentCarouselIndex === imageProduct.length - 1
+      currentCarouselIndex === props.img.length - 1
         ? 0
         : currentCarouselIndex + 1
     );
@@ -34,28 +33,6 @@ const ProductParameter = (props) => {
   //   console.log(props.options);
   // }, [props.options]);
 
-  const imageProduct = [
-    {
-      img:
-        "https://hanoicomputercdn.com/media/product/52023_17z90n_v_ah75a5.png",
-    },
-    {
-      img:
-        "https://hanoicomputercdn.com/media/product/52023_17z90n_v_ah75a5.png",
-    },
-    {
-      img:
-        "https://hanoicomputercdn.com/media/product/52023_17z90n_v_ah75a5.png",
-    },
-    {
-      img:
-        "https://hanoicomputercdn.com/media/product/52023_17z90n_v_ah75a5.png",
-    },
-    {
-      img:
-        "https://hanoicomputercdn.com/media/product/52023_17z90n_v_ah75a5.png",
-    },
-  ];
   return (
     <Row style={{ marginBottom: "20px", width: "100%" }} justify="center">
       <Col offset={1} span={23}>
@@ -71,17 +48,15 @@ const ProductParameter = (props) => {
       </Col>
       <Col
         lg={{ span: 12 }}
-        md={{span:13}}
+        md={{ span: 13 }}
         xs={{ span: 24 }}
-
-        style={{ border: "1px solid #636363", margin: "2vh 0 1vh" }}
-      >
+        style={{ border: "1px solid #636363", margin: "2vh 0 1vh" }}>
         <Carousel ref={carousel} style={{ borderBottom: "1px solid #636363" }}>
-          {imageProduct.map((img, i) => (
+          {props.img.map((img, i) => (
             <div key={i}>
               <img
                 alt="product"
-                src={img.img}
+                src={`http://${config.HOST}:${config.PORT}/api/v1/images/${img}`}
                 style={{ width: "100%", height: "500px" }}
               />
             </div>
@@ -92,24 +67,30 @@ const ProductParameter = (props) => {
             onClick={() => previous(null)}
             className={styles.left}
           />
-          <Col style={{ display: "flex", padding: "10px 20px" }}>
-            {imageProduct.map((img, i) => (
-              <div
-                key={`images${i}`}
-                className={
-                  i === currentCarouselIndex ? styles["is-image-active"] : {}
-                }
-                onClick={() => handleClickImage(null, i)}
-                style={{ cursor: "pointer" }}
-              >
-                <img alt="product" src={img.img} width="100%" />
-              </div>
-            ))}
+          <Col span={24}>
+            <Row>
+              {props.img.map((img, i) => (
+                <Col
+                  span={6}
+                  key={`images${i}`}
+                  className={
+                    i === currentCarouselIndex ? styles["is-image-active"] : {}
+                  }
+                  onClick={() => handleClickImage(null, i)}
+                  style={{ cursor: "pointer", width: "100%", height:"120px", padding: "20px 20px 20px"}}>
+                  <img
+                    alt="product"
+                    src={`http://${config.HOST}:${config.PORT}/api/v1/images/${img}`}
+                    height="100%" width="100%"
+                  />
+                </Col>
+              ))}
+            </Row>
           </Col>
           <RightOutlined onClick={() => next(null)} className={styles.right} />
         </Row>
       </Col>
-      <Col lg={{ span: 10, offset: 2 }} xs={{ span: 20 }} md={{span:13}}>
+      <Col lg={{ span: 10, offset: 2 }} xs={{ span: 20 }} md={{ span: 13 }}>
         <Row style={{ margin: "2vh 0 1vh" }}>
           <Col span={24}>
             {props.options.map((option, i) => (
@@ -117,8 +98,7 @@ const ProductParameter = (props) => {
                 key={i}
                 exact
                 activeClassName={styles["is-active"]}
-                to={`/product/${option.slug}`}
-              >
+                to={`/product/${option.slug}`}>
                 <Button
                   style={{
                     height: "5vh",
@@ -126,8 +106,7 @@ const ProductParameter = (props) => {
                     marginRight: "10px",
                     padding: "2px",
                     textOverflow: "ellipsis",
-                  }}
-                >
+                  }}>
                   {" "}
                   {`${i === 0 ? "Mặc định" : option.name}`}
                 </Button>
@@ -203,20 +182,18 @@ const ProductParameter = (props) => {
               <Col span={14}>
                 <Row>
                   {props.color.map((color, i) => (
-                    
-                      <Col
-                        style={{
-                          background: `${color}`,
-                          height: "3vh",
-                          width: "3vh",
-                          borderRadius: "999px",
-                          marginRight: "1vh",
-                          cursor: "pointer",
-                          position: "relative",
-                        }}
-                      >
-                        <a href="#" className="head-example" />
-                      </Col>
+                    <Col
+                      style={{
+                        background: `${color}`,
+                        height: "3vh",
+                        width: "3vh",
+                        borderRadius: "999px",
+                        marginRight: "1vh",
+                        cursor: "pointer",
+                        position: "relative",
+                      }}>
+                      <a href="#" className="head-example" />
+                    </Col>
                   ))}
                 </Row>
               </Col>
@@ -227,20 +204,18 @@ const ProductParameter = (props) => {
               <Button
                 onClick={() => props.click(props.product)}
                 type="primary"
-                style={{ height: "50px", width:'100%'  }}
-              >
+                style={{ height: "50px", width: "100%" }}>
                 Mua ngay
               </Button>
             </Link>
           </Col>
-          <Col span={24} style={{ marginTop: "1vh", width:'100%' }}>
-            <Button onClick={() => props.click(props.product)}>
+          <Col span={24} style={{ marginTop: "1vh" }}>
+            <Button
+              onClick={() => props.click(props.product)}
+              style={{ width: "100%", height: "40px" }}>
               Thêm vào giỏ hàng
             </Button>
           </Col>
-          {/* <Col offset={2} span={11} style={{ marginTop: "1vh" }}>
-            <Button>Xem cấu hình chi tiết</Button>
-          </Col> */}
         </Row>
       </Col>
     </Row>

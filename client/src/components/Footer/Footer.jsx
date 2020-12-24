@@ -8,7 +8,7 @@ import {
 import "antd/dist/antd.css";
 import styles from "./Footer.module.css";
 import MapShow from "../Map/MapShow";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const { Search } = Input;
 
@@ -44,7 +44,7 @@ const Footer = (props) => {
             <Col offset={1} span={22} className={styles.footer_body}>
               <Row style={{ width: "100%" }} gutter={[32, 32]}>
                 <Col
-                  lg={{ span: 6}}
+                  lg={{ span: 6 }}
                   sm={{ span: 10 }}
                   xs={{ span: 10 }}
                   style={{ margin: "0 auto" }}
@@ -58,26 +58,26 @@ const Footer = (props) => {
                     Địa chỉ tại 69 Trần Duy Hưng
                   </p>
                   <Row>
-                    <a href="/">
+                    <div style={{cursor:"pointer"}}>
                       <FacebookOutlined className={styles.icon} />
-                    </a>
-                    <a href="/">
+                    </div>
+                    <div style={{cursor:"pointer"}}>
                       <InstagramOutlined className={styles.icon} />
-                    </a>
-                    <a href="/">
+                    </div>
+                    <div style={{cursor:"pointer"}}>
                       <TwitterOutlined className={styles.icon} />
-                    </a>
+                    </div>
                   </Row>
                 </Col>
                 <Col
                   lg={{ span: 6 }}
                   sm={{ span: 10 }}
-                  xs={{ span: 10}}
+                  xs={{ span: 10 }}
                   style={{ margin: "0 auto" }}
                   className={styles.infor}
                 >
                   <p className={styles.content}>Thông tin thêm</p>
-                  <Link to="/about" onClick={() => scrollToTop()}  className={styles["sub-content"]}>Về chúng tôi</Link>
+                  <Link to="/about" onClick={() => scrollToTop()} className={styles["sub-content"]}>Về chúng tôi</Link>
                   <p className={styles["sub-content"]}>Chính sách bảo mật</p>
                   <p className={styles["sub-content"]}>Điều khoản</p>
                 </Col>
@@ -91,7 +91,7 @@ const Footer = (props) => {
                   <p className={styles.content}>Dịch vụ khách hàng</p>
                   <p className={styles["sub-content"]}>Bảo hành</p>
                   <p className={styles["sub-content"]}>Vân chuyển đơn hàng</p>
-                  <Link to="/contact" onClick={() => scrollToTop()}  className={styles["sub-content"]}>Liên hệ chúng tôi</Link>
+                  <Link to="/contact" onClick={() => scrollToTop()} className={styles["sub-content"]}>Liên hệ chúng tôi</Link>
                 </Col>
                 <Col
                   lg={{ span: 6 }}
@@ -119,9 +119,9 @@ const Footer = (props) => {
                   xs={{ span: 24 }}
                   style={{ textAlign: "end" }}
                 >
-                  <a href="/" onClick={scrollToTop} className={styles.para}>
+                  <div onClick={scrollToTop} className={styles.para}>
                     Về đầu trang
-                  </a>
+                  </div>
                 </Col>
               </Row>
             </Col>

@@ -10,6 +10,15 @@
   transition: all 0.3s linear;
   transform: translateX(0%);
 }
+.sale {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 50% 100%, 0px 70%);
+  position: absolute;
+  width: 20%;
+  height: 60px;
+  top: 0px;
+  right: 0px;
+  background: rgb(255, 50, 50);
+}
 
 .actions {
   position: absolute;
@@ -20,18 +29,18 @@
   height: 100%;
   opacity: 0;
   background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur( 2px );
+-webkit-backdrop-filter: blur( 2px );
 }
 .shopping {
   transition: all 0.5s linear;
   cursor: pointer;
-  width: 20%;
   height: 50%;
-  margin-top: 30%;
+  margin-top: 20%;
   transform: translateX(-200%);
 }
 .see-details {
   cursor: pointer;
-  width: 20%;
   height: 50%;
   transition: all 0.6s linear;
   margin-top: 10%;

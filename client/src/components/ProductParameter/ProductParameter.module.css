@@ -1,36 +1,40 @@
 .is-active > button {
-	color: white !important;
-	background: #40a9ff !important;
-	border-color: #40a9ff !important;
+  color: white !important;
+  background: #40a9ff !important;
+  border-color: #40a9ff !important;
 }
-.slick-slide{
-	width: 10px !important;
+.slick-slide {
+  width: 10px !important;
 }
-/* .is-active:hover > button {
-	color: white;
-	background: #40a9ff;
-	border-color: #40a9ff;
-}  */
+
 .is-image-active {
-	border: 3px solid #40a9ff;
+  transform: scale(1.2);
+}
+.left:hover,
+.right:hover {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .left {
-  position: absolute;
-  font-size: 50px;
-  top: 48%;
   left: 1%;
-  z-index: 10;
-  transition: 0.4s;
-  color: rgba(0, 0, 0, 0.5);
 }
+.left,
 .right {
   position: absolute;
   font-size: 50px;
-  top: 48%;
-  right: 1%;
+  height: 10%;
+  width: 10%;
+  top: 40%;
   z-index: 10;
   transition: 0.4s;
   color: rgba(0, 0, 0, 0.5);
-	
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.right {
+  right: 1%;
 }

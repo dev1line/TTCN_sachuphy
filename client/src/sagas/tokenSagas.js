@@ -1,7 +1,8 @@
 import { put } from "redux-saga/effects";
+import config from '../config'
 import axios from "axios";
 //generator function
-const url = `http://localhost:3000/api/v1`;
+const url = `http://${config.HOST}:${config.PORT}/api/v1`
 
 function* getTokenLogin(input) {
   const { username, password } = input;
@@ -19,7 +20,7 @@ function* getTokenLogin(input) {
     .catch((err) => {
       return err.data;
     });
-  console.log("data", data);
+  
   if (data && data.success) {
     localStorage.clear()
     localStorage.setItem("token", data.token);

@@ -5,7 +5,7 @@ import "./style.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 // import { formatMoney } from "../../help/convert"
-import {formatPrice} from '../../help/formatPrice';
+import { formatPrice } from "../../help/formatPrice";
 
 const { Option } = Select;
 
@@ -20,14 +20,11 @@ const layout = {
 
 const FormInfo = (props) => {
   const dispatch = useDispatch();
-  const [isModalVisible, setIsModalVisible] = useState(false)
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const data = useSelector((state) => state.cart.cartList);
-  const total = useSelector(state => state.cart.total);
-  const orders = useSelector(state => state.order.orders);
-  const options = ["+84", "+1", "+2"]
-  const [stateOption, setStateOption] = useState(options[0]);
-  console.log("data first:", data);
-  console.log(orders)
+  const total = useSelector((state) => state.cart.total);
+  const orders = useSelector((state) => state.order.orders);
+  const options = ["+84", "+1", "+2"];
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -40,39 +37,41 @@ const FormInfo = (props) => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
-
+  function scrollToTop() {
+    return window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
 
   const onFinish = (values) => {
     let order = {
-        name: values.name,
-        address: values.diachi,
-        phone_number: values.prefix?values.prefix:"84" + values.phone,
-    }
-    if(!localStorage.getItem("token")) {
+      name: values.name,
+      address: values.diachi,
+      phone_number: values.prefix ? values.prefix : "84" + values.phone,
+    };
+    if (!localStorage.getItem("token")) {
       let cartlist = Object.values(JSON.parse(localStorage.getItem("cart")));
-      console.log(cartlist.length)
-      let products = []
-      if(cartlist.length) {
-        for( let i = 0; i< cartlist.length; i++) {
+
+      let products = [];
+      if (cartlist.length) {
+        for (let i = 0; i < cartlist.length; i++) {
           products.push({
             slug: cartlist[i].slug,
-            quantity: cartlist[i].number
-          })
+            quantity: cartlist[i].number,
+          });
         }
         order = {
           ...order,
-          "cart": 
-          {
-            "products": products
-          }
-        }
+          cart: {
+            products: products,
+          },
+        };
       }
-
     }
-    console.log({order})
     dispatch({
       type: "CHECK_OUT",
-      action: {order}
+      action: { order },
     });
   };
 
@@ -82,81 +81,81 @@ const FormInfo = (props) => {
         defaultValue={options[0]}
         style={{
           width: 70,
-        }}
-      >
+        }}>
         {options.map((e, index) => {
-          return <Option key={index} value={e} >{e}</Option>
+          return (
+            <Option key={index} value={e}>
+              {e}
+            </Option>
+          );
         })}
       </Select>
     </Form.Item>
   );
 
-
   const columns = [
     {
-      title: 'Tên',
-      dataIndex: 'name',
-      key: 'name',
+      title: "Tên",
+      dataIndex: "name",
+      key: "name",
       width: 100,
-      render: text => <a>{text}</a>,
+      render: (text) => <a>{text}</a>,
     },
     {
-      title: 'Địa chỉ',
-      dataIndex: 'address',
+      title: "Địa chỉ",
+      dataIndex: "address",
       width: 100,
-      key: 'address',
+      key: "address",
     },
     {
-      title: 'Số điện thoại',
-      dataIndex: 'phone_number',
-      key: 'phone_number',
+      title: "Số điện thoại",
+      dataIndex: "phone_number",
+      key: "phone_number",
       width: 15,
     },
     {
-      title: 'Sản Phẩm',
-      key: 'products',
-      dataIndex: 'products',
+      title: "Sản Phẩm",
+      key: "products",
+      dataIndex: "products",
       width: 200,
       render: (products, row) => (
         <span>
-          {products.map((product, index )=> {
-            let color = product.length > 5 ? 'geekblue' : 'green';
+          {products.map((product, index) => {
+            let color = product.length > 5 ? "geekblue" : "green";
             return (
               <Link to={`/product/${row.slugs[index]}`}>
                 <Tag className="tag" color={color} key={product}>
                   {product}
                 </Tag>
               </Link>
-              
             );
           })}
         </span>
       ),
     },
     {
-      title: 'Tổng tiền',
-      dataIndex: 'total',
-      key: 'total',
+      title: "Tổng tiền",
+      dataIndex: "total",
+      key: "total",
       width: 10,
-      render: text => <p>{formatPrice(text)} VNĐ</p>,
+      render: (text) => <p>{formatPrice(text)} VNĐ</p>,
     },
   ];
 
   const dataOrder = [];
-  let listOrders = Object.values(orders)
-  console.log(listOrders)
-  if(listOrders) {
-    listOrders.map(el => {
+  let listOrders = Object.values(orders);
+  if (listOrders) {
+    listOrders.map((el) => {
       let products = [];
       let slugs = [];
       let total = 0;
-      el.products.map(product =>{
+      el.products.map((product) => {
         total += parseInt(product.quantity) * parseInt(product.price);
-        slugs.push(product.slug)
-        let str = product.quantity + " sản phẩm: "+product.detail.name;
+        slugs.push(product.slug);
+        let str = product.quantity + " sản phẩm: " + product.detail.name;
         products.push(str);
-      })
-      // console.log(el)
+      });
+      //
       let order = {
         name: el.name,
         address: el.address,
@@ -164,30 +163,41 @@ const FormInfo = (props) => {
         products,
         total,
         slugs,
-      }
-      dataOrder.push(order)
-      return null
-    })
+      };
+      dataOrder.push(order);
+      return null;
+    });
   }
-  console.log(dataOrder)
-  
-  
+
   return (
     <Row>
       <Col span={24}>
-        <Button type="primary" className="getorder" size="large" onClick={showModal}>
+        <Button
+          type="primary"
+          className="getorder"
+          size="large"
+          onClick={showModal}>
           Danh sách đơn hàng của bạn
         </Button>
-        <Modal title="Danh sách order" width={1000} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-          <Table columns={columns} dataSource={dataOrder} scroll={{ x: 500 }}/>
+        <Modal
+          title="Danh sách order"
+          width={1000}
+          visible={isModalVisible}
+          onOk={handleOk}
+          onCancel={handleCancel}>
+          <Table columns={columns} dataSource={dataOrder} scroll={{ x: 500 }} />
         </Modal>
         <Form
           {...layout}
           name="nest-messages"
           onFinish={onFinish}
-          className="abc-form"
-        >
-          <h1 style={{ textAlign: "center", textDecoration:'uppercase' }}> Thông tin khách hàng</h1>
+          className="abc-form">
+          <TableItem data={data} total={total}></TableItem>
+
+          <h1 style={{ textAlign: "center", textDecoration: "uppercase" }}>
+            {" "}
+            Thông tin khách hàng
+          </h1>
           <Form.Item
             name="name"
             label="Họ Tên"
@@ -196,8 +206,7 @@ const FormInfo = (props) => {
                 required: true,
                 message: "Vui lòng nhập Tên!",
               },
-            ]}
-          >
+            ]}>
             <Input placeholder="Nguyễn Văn A" />
           </Form.Item>
           <Form.Item
@@ -212,8 +221,7 @@ const FormInfo = (props) => {
                 type: "email",
                 message: "Email không hợp lệ!",
               },
-            ]}
-          >
+            ]}>
             <Input placeholder="example@gmail.com" />
           </Form.Item>
           <Form.Item
@@ -224,8 +232,7 @@ const FormInfo = (props) => {
                 required: true,
                 message: "Vui lòng điền địa chỉ!",
               },
-            ]}
-          >
+            ]}>
             <Input placeholder="54 Nguyễn Lương Bằng Tp. Đà Nẵng" />
           </Form.Item>
           <Form.Item
@@ -236,8 +243,7 @@ const FormInfo = (props) => {
                 required: true,
                 message: "Vui lòng nhập số điện thoại!",
               },
-            ]}
-          >
+            ]}>
             <Input
               placeholder="vd: 0123456789"
               addonBefore={prefixSelector}
@@ -249,17 +255,19 @@ const FormInfo = (props) => {
           <Form.Item name="information" label="Chú thích thêm">
             <Input.TextArea placeholder="something" />
           </Form.Item>
-          <TableItem data={data} total={total}></TableItem>
-          <Button
-            className="checkout"
-            size="large"
-            type="primary"
-            htmlType="submit"
-          >
-            Đặt Hàng
-          </Button>
+          <div style={{width:"100%", display: "flex", justifyContent: "center"}}>
+            <Button
+              className="checkout"
+              size="large"
+              type="primary"
+              htmlType="submit"
+              style={{ width: "40%" }}
+              onClick={() => scrollToTop()}>
+              Đặt Hàng
+            </Button>
+          </div>
         </Form>
-      </Col>
+      </Col>4
     </Row>
   );
 };
