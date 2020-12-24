@@ -2,12 +2,18 @@ const isContained = (list, item) => {
     if (list)
     for(let index = 0; index < list.length; index++) {
         if (list[index] 
-            && list[index].default_spec 
-            && list[index].default_spec.slug 
             && item
             && item.default_spec
             && item.default_spec.slug
-            && list[index].default_spec.slug == item.default_spec.slug) {
+            && ((
+                list[index].default_spec 
+                && list[index].default_spec.slug 
+                && list[index].default_spec.slug === item.default_spec.slug
+                )
+                ||
+                (list[index].slug
+                && list[index].slug === item.default_spec.slug
+                ))) {
             console.log("index:", index)
             return index;
         }
@@ -20,11 +26,15 @@ const isContained2 = (list, item) => {
     if (list)
     for(let index = 0; index < list.length; index++) {
         if (list[index] 
-            && list[index]
-            && list[index].slug 
             && item
             && item.slug
-            && list[index].slug == item.slug) {
+            && ((list[index].slug 
+            && list[index].slug === item.slug)
+            ||
+            (
+                list[index].default_spec
+                && list[index].default_spec.slug
+                && list[index].default_spec.slug === item.slug))) {
             console.log("index:", index)
             return index;
         }
@@ -36,7 +46,7 @@ const isContained2 = (list, item) => {
 //type : add || delete 
 
 export const convert = (list, item, type = "add") => {
-
+    console.log("item show:", item);
     let locate = -1;
     locate = item.default_spec ? isContained(list, item): isContained2(list, item);
     console.log("locate:", locate);
