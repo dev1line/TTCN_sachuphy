@@ -94,7 +94,7 @@ const SigninForm = (props) => {
           SIGN IN
         </Button>
       </Form.Item>
-      {token !== "" ? <Redirect to="/" />: 
+      {token !== "" ? <Redirect to="/" />: ""}
       <Modal
         title="Notification"
         visible={visiable}
@@ -102,7 +102,6 @@ const SigninForm = (props) => {
         onCancel={handleCancel}>
          {token !== "" ? <p>Successfully</p> :  <p>Login Fail ....Please login again !</p>}
       </Modal>
-    }
     </Form>
   );
 };
