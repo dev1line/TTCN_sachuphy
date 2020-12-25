@@ -50,6 +50,7 @@ module.exports = async function createImageController(req, res, next) {
   const uniqueImageNames = uniq(imageNames)
 
   async.forEach(uniqueImageNames, async (name) => {
+    await deleteFile(path.join(configs.APP_PATH, "assets/images/" + name))
     return await ImageModel.deleteOne({ name })
   })
 
