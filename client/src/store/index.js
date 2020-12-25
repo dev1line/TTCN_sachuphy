@@ -100,7 +100,10 @@ export default new Vuex.Store({
             console.dir(error);
           }
         },
-        async updateProduct({ commit, rootState }, { index,slug, productPayload }) {
+        async updateProduct(
+          { commit, rootState },
+          { index, slug, type = "default_spec", productPayload }
+        ) {
           const sanitizedData = pick(productPayload, [
             "name",
             "modules",
@@ -121,8 +124,6 @@ export default new Vuex.Store({
             "discount",
             "slug"
           ]);
-          console.log("data ");
-          console.log(sanitizedData);
           try {
             await axios.put(
               `${serverAPIURL}product/${slug}`,
@@ -135,9 +136,8 @@ export default new Vuex.Store({
                 }
               }
             );
-            commit("updateProduct", {index, sanitizedData });
+            commit("updateProduct", { index, type, sanitizedData });
           } catch (error) {
-            console.log(error);
             console.dir(error);
           }
         }
@@ -154,17 +154,31 @@ export default new Vuex.Store({
             product => product.default_spec.slug !== productSlug
           );
         },
-        updateProduct: (state, { index,sanitizedData }) => {
-          
-          Vue.set(state.products, index, {
-            ...state.products[index],
-            default_spec: {
-              ...state.products[index].default_spec,
-              ...sanitizedData
-            }
-          });
+        updateProduct: (state, { index, type, sanitizedData }) => {
+          if (type === "default_spec")
+            return Vue.set(state.products, index, {
+              ...state.products[index],
+              default_spec: {
+                ...state.products[index].default_spec,
+                ...sanitizedData
+              }
+            });
 
-          console.log(state.products[index])
+          const stateProduct = state.products[index];
+          const optionIndex = findIndex(
+            stateProduct.options,
+            option => option.slug === sanitizedData.slug
+          );
+          const clonedOptions = [...stateProduct.options];
+          clonedOptions[optionIndex] = {
+            ...clonedOptions[optionIndex],
+            ...sanitizedData
+          };
+
+          Vue.set(state.products, index, {
+            default_spec: stateProduct.default_spec,
+            options: clonedOptions
+          });
         },
         addOption(state, { slug, optionData }) {
           console.log("trong hamf add");
