@@ -53,7 +53,7 @@ const ElementsColorThemes = () => import("@/views/elements/ColorThemes.vue")
 const TablesStyles = () => import("@/views/tables/Styles.vue")
 const TablesUser = () => import("@/views/tables/User.vue")
 const TablesProduct = () => import("@/views/tables/Product.vue")
-const TablesHelpers = () => import("@/views/tables/Helpers.vue")
+const TablesOrder = () => import("@/views/tables/Order.vue")
 const TablesPricing = () => import("@/views/tables/Pricing.vue")
 
 // Backend: Forms
@@ -459,9 +459,9 @@ const router = new Router({
               component: TablesProduct
             },
             {
-              path: 'helpers',
-              name: 'Tables Helpers',
-              component: TablesHelpers
+              path: 'orders',
+              name: 'Tables Orders',
+              component: TablesOrder
             },
             {
               path: 'pricing',
